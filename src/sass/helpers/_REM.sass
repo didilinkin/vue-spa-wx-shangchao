@@ -1,0 +1,28 @@
+@charset "utf-8"
+// REM转换混合
+
+=REM( $attr, $size, $important: null )
+    #{$attr}: ( $size/37.5px )*1rem #{$important}
+
+=REM-W-H( $width, $height: $width )
+    +REM( width, $width )
+    +REM( height, $height )
+
+=REM-padding-TB( $padding-top, $padding-bottom: $padding-top )
+    +REM( padding-top, $padding-top )
+    +REM( padding-bottom, $padding-bottom )
+
+=REM-padding-LR( $padding-left, $padding-right: $padding-left )
+    +REM( padding-left, $padding-left )
+    +REM( padding-right, $padding-right )
+
+// REM 字体转换
+=REM-fontStyle( $fontSize, $fontColor, $lineHeight: 1.5 )
+    +REM( font-size, $fontSize )
+    +REM( line-height, $fontSize*$lineHeight )
+    color: $fontColor
+
+// 可定义宽度( 并转换成REM )的混合
+=REM-imgCover($width)
+    +REM(width, $width)
+    object-fit: cover

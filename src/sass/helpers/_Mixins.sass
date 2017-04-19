@@ -1,0 +1,227 @@
+@charset "utf-8"
+
+@import "./Color"
+@import "./Font"
+@import "./Var"
+@import "./Extend"
+@import "./REM"
+
+// 跨浏览器设置透明度
+=opacity($opacity)
+    opacity: $opacity
+    $opacity-ie: $opacity * 100
+    filter: alpha(opacity=$opacity-ie)  // IE8
+
+=boxShadow($h-shadow, $v-shadow, $blur, $shadowColor)
+    -moz-box-shadow: $h-shadow $v-shadow $blur $shadowColor
+    -webkit-box-shadow: $h-shadow $v-shadow $blur $shadowColor
+    box-shadow: $h-shadow $v-shadow $blur $shadowColor
+
+=w-h($width, $height)
+    width: $width
+    height: $height
+
+// CSS框模型 / 内填充
+=pB($paddingBottom)
+    padding-bottom: $paddingBottom
+
+=pL($paddingLeft)
+    padding-left: $paddingLeft
+
+=pR($paddingRight)
+    padding-right: $paddingRight
+
+=pT($paddingTop)
+    padding-top: $paddingTop
+
+// CSS框模型 / 外边距
+=mB($marginBottom)
+    margin-bottom: $marginBottom
+
+=mL($marginLeft)
+    margin-left: $marginLeft
+
+=mR($marginRight)
+    margin-right: $marginRight
+
+=mT($marginTop)
+    margin-top: $marginTop
+
+=lH($lH)
+    line-height: $lH
+
+=fZ($size)
+    font-size: $size
+
+=fW($fontWeight: 500)
+    font-weight: $fontWeight
+
+=fontStyle($size, $lineHeight, $color)
+    font-size: $size
+    line-height: $lineHeight
+    color: $color
+
+=bC($backgroundColor)
+    background-color: $backgroundColor
+
+=light( $color, $size )
+    lighten( $color, $size )
+
+=dark( $color, $size )
+    darken( $color, size )
+
+=gray( $color )
+    greyscale( $color )
+
+// 只考虑加深或者变浅, 未添加灰度
+// 参数: 伪类名称, 变色的属性名称, 处理的颜色函数, 颜色变量, 颜色变化量
+=pseudoClassColor( $pseudoName, $attr, $colorFunction, $color, $size )
+    &:#{$pseudoName}
+        @if $colorFunction == darken
+            #{$attr}: darken( $color, $size )
+        @else if $colorFunction == lighten
+            #{$attr}: lighten( $color, $size )
+
+=complement( $color )       // 补充色
+    complement( $color )
+
+=bP($backgroundPositionX, $backgroundPositionY)
+    background-position: $backgroundPositionX $backgroundPositionY
+
+=lS($letterSpacing)
+    letter-spacing: $letterSpacing  // 设置字符间距。
+
+=textD($textDecoration:none)
+    text-decoration: $textDecoration    // 向文本添加修饰( 避免下划线 )
+
+=listST($listStyleType:none)
+    list-style-type: $listStyleType
+
+=oC($outlineColor)
+    outline: $outlineColor      // 轮廓颜色
+
+=radius($size)
+    border-radius: $size    // 圆角混合( 接受圆角百分比值 )
+
+=borderW($borderWidth)
+    border-width: $borderWidth      // 边框宽度
+
+=borderC($borderColor)
+    border-color: $borderC          // 边框颜色
+
+=borderBottom( $color )
+    border-bottom: 1px solid $color
+
+// 0.5像素边框线混合( 依赖上方部分混合, 所以此混合位置要在最后 )
+=halfString( $color, $width )
+    +REL
+    &::before
+        content: ''
+        +ABS
+        +w-h( $width, $width )
+        border: 1px solid $color
+        border-bottom: none
+        transform-origin: 0 0
+        transform: scale( .5, .5 )
+        box-sizing: border-box
+
+// 分割线样式
+=string($string-color)
+    display: block
+    width: 100%
+    +REM( height, 1px )
+    border-top: 1px solid $string-color
+    +REM(border-bottom-width, 1px)
+
+// 移动端图片控制
+=mobileImg($imgHeight)
+    width: 100%
+    +REM(height, $imgHeight)
+    object-fit: cover
+
+// 可定义宽度( 并转换成REM )的混合
+=imgCover($width)
+    width: $width
+    object-fit: cover
+
+// 省略号, 添加行数控制 参数为(行高,行数)
+=ell-line($lineHeight, $lineNum)
+    -ms-text-overflow: ellipsis
+    text-overflow: ellipsis
+    +lH($lineHeight)
+    word-break: break-all
+    display: -webkit-box
+    -webkit-line-clamp: $lineNum
+    -webkit-box-orient: vertical
+    overflow: hidden
+
+// 椭圆按钮( 有阴影 )
+=ellipseBtn( $margin:10px, $padding-LR:20px )
+	position: relative
+	margin: $margin
+	padding: 0 $padding-LR
+	text-align: center
+	text-decoration: none
+	text-shadow: 1px 1px 1px rgba(255,255,255, .22)
+	border-radius: 30px
+	box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44)
+	transition: all 0.15s ease
+
+
+// flex居中
+=flexCenter( $align: center, $justify: center )
+    display: flex
+    align-items: $align
+    justify-content: $justify
+
+// 文本居中
+=textCenter
+    text-align: center
+
+// margin居中
+=mC
+    margin: 0 auto
+
+// 清除浮动
+=overflow
+    overflow: hidden
+
+=REL
+    position: relative
+
+=ABS
+    position: absolute
+
+=FIXED
+    position: fixed
+
+=floatL
+    float: left
+
+=floatR
+    float: right
+
+=block
+    display: block
+
+=dib
+    display: inline-block
+    *display: inline
+    *zoom: 1
+
+=dNone
+    display: none
+
+// 全宽
+=W100
+    width: 100%
+
+// 全高
+=H100
+    height: 100%
+
+// 移动端图片控制
+=mobileImg($imgHeight)
+    width: 100%
+    +REM(height, $imgHeight)
+    object-fit: cover

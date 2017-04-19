@@ -1,21 +1,21 @@
 <template lang="pug">
 #app
-    mt-button( @click.native="handleClick" ) 按钮
+    router-view( name="AppContent" )
+    router-view( name="AppBottomTitle" )
 </template>
 
 <script>
 export default {
-    name: 'app',
-    methods: {
-        handleClick: function() {
-            this.$toast( 'Hello world!' )
-        }
-    }
+    name: 'app'
 }
 </script>
 
 <style lang="sass">
+@import "./sass/main"
 
 h1 
     color: red
+
+div
+    +bC( yellow )
 </style>
