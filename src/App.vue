@@ -12,10 +12,12 @@ export default {
 
 <style lang="sass">
 @import "./sass/main"
+@import "./sass/Modules/ModulesStyle"
+
+#app
+    height: 100vh
+    +bC( $C-base )
 
 h1 
     color: red
-
-div
-    +bC( yellow )
 </style>

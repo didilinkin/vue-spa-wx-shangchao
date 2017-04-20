@@ -32,7 +32,9 @@ module.exports = {
                 // 全部 变量检查
                 "vars": "all",
                 // 全部 参数检查
-                "args": "all"
+                "args": "all",
+                // 下划线开头的参数 不需要检查
+                "argsIgnorePattern": "^_" 
             }],
         // 要求或禁止函数圆括号之前有一个空格
         "space-before-function-paren": ["error", {

@@ -2,8 +2,9 @@ import Vue          from 'vue'
 import Router       from 'vue-router'
 
 import BottomTitle  from '@/components/common/BottomTitle'
+import Home         from '@/view/Home'
 
-import Bulletin     from '@/view/Bulletin.vue'
+import Bulletin     from '@/view/Bulletin'
 import Bill         from '@/view/Bill'
 import Fault        from '@/view/Fault'
 import Proposal     from '@/view/Proposal'
@@ -17,7 +18,7 @@ export default new Router({
             path: '/',                                      // 默认 -> '物业公告'
             name: 'index',
             components: {
-                AppContent: Bulletin,
+                AppContent: Home,
                 AppBottomTitle: BottomTitle
             }
         }, {
