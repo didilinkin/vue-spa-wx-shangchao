@@ -1,9 +1,9 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue          from 'vue'
-import Mint         from 'mint-ui'
 import 'mint-ui/lib/style.min.css'
-import VueScrollTo  from 'vue-scrollto'
+// import VueScrollTo  from 'vue-scrollto'
+import StarRating   from 'vue-star-rating'
 
 import App          from './App'
 import router       from './router'
@@ -13,8 +13,12 @@ Vue.config.productionTip = false
 Vue.config.devtools = true
 Vue.config.debug = true
 
-Vue.use( Mint )
-Vue.use( VueScrollTo )
+import { Button, InfiniteScroll } from 'mint-ui'
+Vue.component( 
+    Button.name, Button, InfiniteScroll
+)
+// Vue.use( VueScrollTo )
+Vue.use( StarRating )
 
 /* eslint-disable no-new */
 new Vue({

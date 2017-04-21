@@ -8,16 +8,17 @@
 | 技术名称                                                      | 作用                |  版本  |
 | --------                                                      | -----:             | :----:  |
 | [Vuejs](http://cn.vuejs.org/)                                 | 框架                |   2.2.6     |
-| Vuex                                                          | 状态管理            |   2.2.1   |
-| Vue-router                                                    | 路由管理            |  2.3.1  |
-| Axios                                                         | 交互处理            |  0.16.0  |
-| Sass                                                          | 样式预处理器        |  4.5.2  |
-| Webpack                                                       | 模块打包            |  2.2.1  |
-| Gulp                                                          | 自动构建工具        |  3.9.1  |
-| Babel                                                         | ES6转译ES5          |  6.22.1  |
-| Yarn                                                          | 模块依赖安装         |  0.20.3  |
-| [Muse UI](https://museui.github.io/#/index)                   | UI框架              |  2.0.1  |
-| [Pug](https://pugjs.org/zh-cn/api/getting-started.html)       | Node模版语言         |  2.0.0-beta11  |
+| [Vuex](https://vuex.vuejs.org/zh-cn/)                         | 状态管理            |   2.3.1   |
+| [Vue-router](http://router.vuejs.org/zh-cn/)                  | 路由管理            |  2.4.0  |
+| [Axios](https://github.com/mzabriskie/axios)                  | 交互处理            |  0.16.1  |
+| [Sass](https://www.sass.hk/)                                  | 样式预处理器        |  4.5.2  |
+| [Webpack](http://webpack.github.io/)                          | 模块打包            |  2.2.1  |
+| [Gulp](http://www.gulpjs.com.cn/docs/getting-started/)        | 自动构建工具        |  3.9.1  |
+| [Babel](http://babeljs.cn/)                                   | ES6转译ES5          |  6.22.1  |
+| [Yarn](https://yarnpkg.com/zh-Hans/)                          | 模块依赖安装         |  0.20.3  |
+| [Faker](http://marak.github.io/faker.js/)                     | 本地调试模拟接口      |  4.1.0  |
+| [Mint-ui](https://museui.github.io/#/index)                   | UI框架              |  2.2.3  |
+| [Pug](https://pugjs.org/zh-cn/api/getting-started.html)       | Node模版语言         |  2.0.0-beta.12  |
 
 ## Build Setup / 开发流程
 #### **请尽量确保 本地Nodejs版本 >= 7**
@@ -50,4 +51,5 @@ npm run build --report
 - [ ]  `Mockjs` 测试模拟数据
 - [ ]  `SPA` 动态修改 页面 `title`信息方案
 - [ ]  微信公众号开发 用户信息获取
-- [ ]  性能优化: 将 `MintUI`的*全部引入* 改为 *按需引入组件*
+- [x]  性能优化: 将 `MintUI`的*全部引入* 改为 *按需引入组件*
+- [ ]  处理模拟数据的 日期 + 时间( 用正则切分 )

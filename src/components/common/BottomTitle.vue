@@ -1,4 +1,4 @@
-// 底部标题
+// 通用组件 - 底部标题
 <template lang="pug">
 #BottomTitle
     .BottomTitle--content.auto--modulePaddingTB
