@@ -1,0 +1,1 @@
+export const getterBulletinInfo = state => state.bulletinInfo   // 公告信息

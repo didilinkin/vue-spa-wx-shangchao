@@ -2,12 +2,15 @@
 <template lang="pug">
 #Bulletin
     h1 物业公告
-    TimeLine( v-bind:renderListArr="BulletinTimeLineArr" )
+    BulletinLine( v-bind:bulletinLineArr="BulletinLineArr" )
 </template>
 
 <script>
-import TimeLine         from '../components/common/TimeLine'
-const components = { TimeLine }
+import { mapGetters } from 'vuex'
+
+import BulletinLine     from '../components/Bulletin/BulletinLine'
+const components = { BulletinLine }
+
 export default {
     name: 'Bulletin',
     methods: {
@@ -20,7 +23,16 @@ export default {
     },
     data() {
         return {
-            BulletinTimeLineArr: this.$store.state.bulletin.bulletinInfo.data
+            BulletinLineArr: []
+        }
+    },
+    computed: mapGetters({
+        getterBulletinInfo: 'getterBulletinInfo'
+    }),
+    watch: { 
+        // 当 公告内容获取到, 触发
+        getterBulletinInfo: function() {
+            this.$data.BulletinLineArr = this.getterBulletinInfo
         }
     },
     mounted: function() {

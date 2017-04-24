@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue          from 'vue'
 import 'mint-ui/lib/style.min.css'
+import Mint         from 'mint-ui'
 // import VueScrollTo  from 'vue-scrollto'
 import StarRating   from 'vue-star-rating'
 
@@ -13,10 +14,7 @@ Vue.config.productionTip = false
 Vue.config.devtools = true
 Vue.config.debug = true
 
-import { Button, InfiniteScroll } from 'mint-ui'
-Vue.component( 
-    Button.name, Button, InfiniteScroll
-)
+Vue.use( Mint )
 // Vue.use( VueScrollTo )
 Vue.use( StarRating )
 
