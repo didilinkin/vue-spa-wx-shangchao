@@ -9,7 +9,8 @@ for( let i = 0; i < 20; i++ ) {
     bulletinInfoArr.push( 
         {
             id: faker.random.number( 5000 ),
-            title: faker.name.title(),
+            // title: faker.name.title(),
+            title: faker.lorem.sentence(),
             time: faker.date.recent(),
             text: faker.lorem.paragraphs()
         }

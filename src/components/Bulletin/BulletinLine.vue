@@ -11,9 +11,13 @@
             v-for="item in renderArr"
             v-bind:key="item.title"
         )
-            h2.auto--titleStyle {{ item.title }}
+            h2.auto--titleStyle(
+                @click="toBulletinDetails( item.id )"
+            ) {{ item.title }}
             span.auto--textStyle {{ item.date }}
             span.auto--textStyle {{ item.time }}
+            // 标注圆圈
+            .BulletinLine--labelCircle      
 
     .BulletinLine--null
         // img
@@ -47,7 +51,7 @@ export default {
         countBulletin() {
             let awaitNum = this.$data.bulletinNum - 10 * this.$data.loadNum                                     
             let multipleNum = parseInt( awaitNum / 10 )                                                         
-            if( awaitNum > 0 ) {                                                                                
+            if( typeof awaitNum === 'number' && awaitNum > 0 ) {                                                                                
                 multipleNum === 0 ? this.countLoad( awaitNum ) : this.countLoad( 10 )                          
             } 
         },
@@ -67,19 +71,16 @@ export default {
         asyncTime( asyncNum ) {
             this.$data.loading = true
             let that = this                                                                                    
-            
             let countLoadTime = function() {                                                                    
                 return new Promise( ( resolve ) => {
                     setTimeout( resolve, 2000 )
                 })
             }
-
             let asyncSetTimeOut = async function( asyncNum ) {
                 await countLoadTime()
                 that.$data.loading = false
                 that.countRender( asyncNum )                                                                    
             }
-
             asyncSetTimeOut( asyncNum )
         },
         // 目的: 计算 $data 渲染数组 + 修改 $data.loadNum 加载次数
@@ -90,6 +91,11 @@ export default {
             }
             let timeNum = this.$data.loadNum                                                                    
             this.$data.loadNum = timeNum + 1                                                                    
+        },
+        // 目的: 点击标题 触发 '前往公告详情页' 事件
+        toBulletinDetails( idUrl ) {
+            // console.log( idUrl )
+            location.href = '#/bulletin/' + idUrl
         }
     },
     data() {
@@ -120,13 +126,25 @@ export default {
 @import "../../sass/main"
 
 #BulletinLine
+    +bC( $C-W )
     .BulletinLine--item
+        +REL
         +REM-padding-TB( $D-autoPadding )
         +mL( .5rem )
         +pL( .5rem )
-        border-left: 1px solid $C-title
-        &:first-child
-            padding-top: 0
+        border-left: 1px solid $C-line
+        >h2
+            +pseudoClassColor( hover, color, darken, $C-theme, 2% )
+            +pseudoClassColor( active, color, darken, $C-theme, 2% )
         >span:first-of-type
             +REM( margin-right, $D-autoMargin )
+        .BulletinLine--labelCircle
+            +ABS
+            left: -.25rem
+            top: .5rem
+            +REM-W-H( $F-title )
+            +bC( $C-theme )
+            border: 1px solid $C-L-theme
+            +radius( 50% )
+            +boxShadow( 0, 0, $F-title/2, darken( $C-theme, 2% ) )
 </style>
