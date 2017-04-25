@@ -45,19 +45,14 @@ export default {
     methods: {
         // 目的: 计算'公告' - 负责计算当前环境量
         countBulletin() {
-            let awaitNum = this.$data.bulletinNum - 10 * this.$data.loadNum                                     // 等待渲染'公告' 数
-            let multipleNum = parseInt( awaitNum / 10 )                                                         // 等待渲染'公告' 计算10的倍数
-            if( awaitNum > 0 ) {                                                                                // 负值 & =0 => 渲染完成, 不再渲染
-                multipleNum === 0 ? this.countLoad( awaitNum ) : this.countLoad( 10 )                           // 倍数是否小于0 ? 渲染当前数 + 余数( 可不用 ) : 渲染10个 + 余数( 判断是否整除后, 无余数 => 不再渲染 )
+            let awaitNum = this.$data.bulletinNum - 10 * this.$data.loadNum                                     
+            let multipleNum = parseInt( awaitNum / 10 )                                                         
+            if( awaitNum > 0 ) {                                                                                
+                multipleNum === 0 ? this.countLoad( awaitNum ) : this.countLoad( 10 )                          
             } 
         },
         // 目的: 加载更多 - 根据 环境量的参数, 进行逻辑判断( 是否调用计时器 )
         countLoad( num ) {
-            // 是否是第一次加载 => 不执行计时器
-            // 第一个参数 是否等于10( '公告'数 > 10 => 判断是否有余数 )
-                // 余数 === 0, 那么 已整除
-                // 余数 != 0
-            // 第一个参数 不等于10( '公告'数 < 10 => 直接渲染第一个参数 )
             if( this.$data.loadNum === 0 ) {                                                                    // 初次加载
                 this.countRender( num )             
             } else {
@@ -71,9 +66,9 @@ export default {
         // 目的: async计时器函数
         asyncTime( asyncNum ) {
             this.$data.loading = true
-            let that = this                                                                                     // 保存 this
+            let that = this                                                                                    
             
-            let countLoadTime = function() {                                                                    // 计时器 - 通过逻辑判断, 使用回调调用
+            let countLoadTime = function() {                                                                    
                 return new Promise( ( resolve ) => {
                     setTimeout( resolve, 2000 )
                 })
@@ -82,7 +77,7 @@ export default {
             let asyncSetTimeOut = async function( asyncNum ) {
                 await countLoadTime()
                 that.$data.loading = false
-                that.countRender( asyncNum )                                                                    // 将逻辑传入的参数( asyncNum ) 传给计算函数
+                that.countRender( asyncNum )                                                                    
             }
 
             asyncSetTimeOut( asyncNum )
@@ -93,16 +88,16 @@ export default {
                 let addBulletinObj = this.$props.bulletinLineArr[i + 10 * this.$data.loadNum]
                 this.$data.renderArr.push( addBulletinObj )
             }
-            let timeNum = this.$data.loadNum                                                                    // 重复次数 
-            this.$data.loadNum = timeNum + 1                                                                    // 完成逻辑 次数加1
+            let timeNum = this.$data.loadNum                                                                    
+            this.$data.loadNum = timeNum + 1                                                                    
         }
     },
     data() {
         return {
             loading: false,
-            canRender: false,                                                                                   // 可否渲染数据
-            renderArr: [],                                                                                      // 用于渲染的数组( 需要将 $props的数据赋值 )
-            bulletinNum: 0,                                                                                     // 记录 $props中 '公告'数量
+            canRender: false,                                                                                   
+            renderArr: [],                                                                                      
+            bulletinNum: 0,                                                                                     // $props中 '公告'数量
             loadNum: 0                                                                                          // 加载次数
         }
     },
@@ -111,8 +106,7 @@ export default {
             let bulletinLength = this.$props.bulletinLineArr.length
             if( typeof bulletinLength === 'number' && bulletinLength > 0 ) {
                 this.$data.canRender = true                                                                     // 可渲染
-                this.$data.bulletinNum = bulletinLength                                                         // 保存'公告'数量
-                this.$data.maxMultiple = parseInt( bulletinLength / 10 )                                        // 保存最大倍数
+                this.$data.bulletinNum = bulletinLength                                                         
                 this.countBulletin()
             } else {
                 this.$data.canRender = false                                                                    // 不可 -> 显示'无消息'图片
