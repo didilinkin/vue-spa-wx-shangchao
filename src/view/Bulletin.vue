@@ -1,7 +1,6 @@
 // 物业公告
 <template lang="pug">
 #Bulletin
-    h1 物业公告
     BulletinLine( v-bind:bulletinLineArr="BulletinLineArr" )
 </template>
 
