@@ -28,7 +28,7 @@ export default {
     computed: mapGetters({
         getterBulletinInfo: 'getterBulletinInfo'
     }),
-    watch: { 
+    watch: {
         // 当 公告内容获取到, 触发
         getterBulletinInfo: function() {
             this.$data.BulletinLineArr = this.getterBulletinInfo
@@ -40,3 +40,8 @@ export default {
     components: components
 }
 </script>
+
+<style lang="sass">
+@import "../sass/main"
+
+</style>

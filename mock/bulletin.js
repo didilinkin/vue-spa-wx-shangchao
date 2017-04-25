@@ -6,17 +6,17 @@ faker.locale = 'zh_CN'
 let bulletinInfoArr = []
 
 for( let i = 0; i < 20; i++ ) {
-    bulletinInfoArr.push( 
+    bulletinInfoArr.push(
         {
             id: faker.random.number( 5000 ),
             // title: faker.name.title(),
-            title: faker.lorem.sentence(),
+            title: faker.name.firstName() + faker.name.lastName(),
             time: faker.date.recent(),
             text: faker.lorem.paragraphs()
         }
     )
 }
-    
+
 
 module.exports = {
     api: '/mock/bulletin',
