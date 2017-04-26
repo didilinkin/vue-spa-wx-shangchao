@@ -144,11 +144,12 @@
     width: $width
     object-fit: cover
 
-// 省略号, 添加行数控制 参数为(行高,行数)
+// 省略号, 添加行数控制 参数为( 行高, 行数 )
 =ell-line($lineHeight, $lineNum)
     -ms-text-overflow: ellipsis
     text-overflow: ellipsis
-    +lH($lineHeight)
+    // +lH($lineHeight)
+    +REM( line-height, $lineHeight )
     word-break: break-all
     display: -webkit-box
     -webkit-line-clamp: $lineNum

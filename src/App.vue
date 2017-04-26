@@ -1,6 +1,10 @@
 <template lang="pug">
 #app
-    router-view( name="AppContent" )
+    router-view(
+        name="AppContent" 
+        v-wechat-title="$route.meta.title"
+        img-set="/static/favicon.png"
+    )
     router-view( name="AppBottomTitle" )
 </template>
 

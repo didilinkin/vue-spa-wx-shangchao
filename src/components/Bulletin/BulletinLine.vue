@@ -132,8 +132,11 @@ export default {
         +REM-padding-TB( $D-autoPadding )
         +mL( .5rem )
         +pL( .5rem )
+        +pR( .5rem )
         border-left: 1px solid $C-line
         >h2
+            +REM( margin-bottom, $D-autoMargin/2 )
+            +ell-line( $F-title*1.5, 3 )
             cursor: pointer
             +pseudoClassColor( hover, color, darken, $C-theme, 2% )
             +pseudoClassColor( active, color, darken, $C-theme, 2% )
