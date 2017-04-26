@@ -2,13 +2,17 @@
 <template lang="pug">
 #Bulletin
     BulletinLine( v-bind:bulletinLineArr="BulletinLineArr" )
+    ScrollTo(
+        v-bind:ScrollToCanShowBoolean="this.$data.scrollStatus"
+    )
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters }   from 'vuex'
 
 import BulletinLine     from '../components/Bulletin/BulletinLine'
-const components = { BulletinLine }
+import ScrollTo         from '../components/common/ScrollTo'
+const components = { BulletinLine, ScrollTo }
 
 export default {
     name: 'Bulletin',
@@ -18,11 +22,23 @@ export default {
             this.$store.dispatch({
                 type: 'bulletin/REQUEST_BULLETIN_INFO'
             })
+        },
+        // 目的: 监听滚轴
+        watchScroll() {
+            window.onscroll = () => {
+                let yValue = window.scrollY                             // 滚轴状态
+                if( typeof yValue === 'number' && yValue <= 100 ) {
+                    this.$data.scrollStatus = false                     // 归零
+                } else {
+                    this.$data.scrollStatus = true                      // 改变
+                }
+            } 
         }
     },
     data() {
         return {
-            BulletinLineArr: []
+            BulletinLineArr: [],
+            scrollStatus: false                                         // 滚轴状态 => 是否显示'返回顶部'
         }
     },
     computed: mapGetters({
@@ -36,6 +52,7 @@ export default {
     },
     mounted: function() {
         this.requireBulletinInfo()
+        this.watchScroll()
     },
     components: components
 }

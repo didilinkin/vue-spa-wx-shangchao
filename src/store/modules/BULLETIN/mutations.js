@@ -12,5 +12,6 @@ export default {
             resArr[i]['time'] = timeObj                             // 存入时间( 处理完成 )
         }
         state.bulletinInfo = resArr                                 // 将resArr 数据存入 state
+        // state.bulletinInfo = []                                  // 空数组 - 用于测试空数据
     }
 }

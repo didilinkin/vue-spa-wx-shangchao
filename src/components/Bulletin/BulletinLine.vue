@@ -16,16 +16,19 @@
             ) {{ item.title }}
             span.auto--textStyle {{ item.date }}
             span.auto--textStyle {{ item.time }}
-            // 标注圆圈
             .BulletinLine--labelCircle
-
-    .BulletinLine--null
-        // img
-        h1 无消息
+    .BulletinLine--null(
+        v-else
+        class="auto--modulePaddingTB"
+    )
+        img(
+            v-bind:srcset="bulletinNullObj.normalImg + ' 1x,' + bulletinNullObj.retinaImg + ' 2x'"
+        )
+        h2.auto--titleStyle {{ bulletinNullObj.title }}
 </template>
 
 <script>
-/* global Promise:true */
+/* global Promise require:true */
 export default {
     name: 'BulletinLine',
     props: {
@@ -101,10 +104,15 @@ export default {
     data() {
         return {
             loading: false,
-            canRender: false,
+            canRender: true,
             renderArr: [],
             bulletinNum: 0,                                                                                     // $props中 '公告'数量
-            loadNum: 0                                                                                          // 加载次数
+            loadNum: 0,                                                                                         // 加载次数
+            bulletinNullObj: {
+                normalImg: require( '../../assets/images/picNotice@2x.png' ),
+                retinaImg: require( '../../assets/images/picNotice@3x.png' ),
+                title: '抱歉！当前没有公告~'
+            }
         }
     },
     watch: {
@@ -153,4 +161,11 @@ export default {
             +boxShadow( 0, 0, $F-title/2, darken( $C-theme, 2% ) )
     ul
         +mB( 2rem )
+    // '空数据'
+    .BulletinLine--null
+        +mT( 20% )
+        +textCenter
+        >img
+            +mB( $D-autoMargin )
+            +imgCover( 25% )
 </style>

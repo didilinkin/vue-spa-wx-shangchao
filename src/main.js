@@ -5,7 +5,8 @@
 import Vue          from 'vue'
 import 'mint-ui/lib/style.min.css'
 import Mint         from 'mint-ui'
-// import VueScrollTo  from 'vue-scrollto'
+import layzr        from 'layzr.js'
+import VueScrollTo  from 'vue-scrollto'
 import StarRating   from 'vue-star-rating'
 
 import App          from './App'
@@ -16,10 +17,19 @@ Vue.config.productionTip = false
 Vue.config.devtools = true
 Vue.config.debug = true
 
+const lazyLoader = layzr({
+    normal: 'data-normal',
+    retina: 'data-retina',
+    srcset: 'data-srcset',
+    threshold: 35
+})
+
 Vue.use( Mint )
-// Vue.use( VueScrollTo )
+Vue.use( lazyLoader )
+Vue.use( VueScrollTo )
 Vue.use( StarRating )
 Vue.use( require( 'vue-wechat-title' ) )
+
 
 /* eslint-disable no-new */
 new Vue({

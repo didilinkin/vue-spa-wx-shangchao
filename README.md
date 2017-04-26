@@ -4,7 +4,7 @@
 
 > 本页面需要在服务器环境下访问( 可使用 `yarn run dev` 预览 ), 勿直接浏览静态页面
 
-### 使用技术:
+## 使用技术:
 | 技术名称                                                      | 作用                |  版本  |
 | --------                                                      | -----:             | :----:  |
 | [Vuejs](http://cn.vuejs.org/)                                 | 框架                |   2.2.6     |
@@ -16,9 +16,17 @@
 | [Gulp](http://www.gulpjs.com.cn/docs/getting-started/)        | 自动构建工具        |  3.9.1  |
 | [Babel](http://babeljs.cn/)                                   | ES6转译ES5          |  6.22.1  |
 | [Yarn](https://yarnpkg.com/zh-Hans/)                          | 模块依赖安装         |  0.20.3  |
-| [Faker](http://marak.github.io/faker.js/)                     | 本地调试模拟接口      |  4.1.0  |
+| [Faker.js](http://marak.github.io/faker.js/)                  | 本地调试模拟接口      |  4.1.0  |
 | [Mint-ui](https://museui.github.io/#/index)                   | UI框架              |  2.2.3  |
 | [Pug](https://pugjs.org/zh-cn/api/getting-started.html)       | Node模版语言         |  2.0.0-beta.12  |
+
+## 使用插件:
+| 插件名称                                                           | 作用                           |  版本  |
+| --------                                                          | -----:                        | :----:  |
+| [Layzr.js](https://github.com/callmecavs/layzr.js)                | 图片懒加载 + 自适应分辨率       |   2.2.2     |
+| [vue-scrollto](https://github.com/rigor789/vue-scrollto)          | Vue卷轴插件                    |   2.6.7     |
+| [vue-star-rating](https://github.com/craigh411/vue-star-rating)   | Vue星星点评插件                 |   1.3.2     |
+| [vue-wechat-title](https://github.com/deboyblog/vue-wechat-title) | Vue动态修改微信网页标题插件      |   2.0.4     |
 
 ## Build Setup / 开发流程
 #### **请尽量确保 本地Nodejs版本 >= 7**
