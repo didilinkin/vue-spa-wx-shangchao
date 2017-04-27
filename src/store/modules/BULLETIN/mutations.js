@@ -13,5 +13,10 @@ export default {
         }
         state.bulletinInfo = resArr                                 // 将resArr 数据存入 state
         // state.bulletinInfo = []                                  // 空数组 - 用于测试空数据
+    },
+    [types.SET_BULLETIN_DETAILS_INFO]( state, res ) {
+        let resObj = res
+        resObj['content'] = res.content.contentInfo
+        state.bulletinDetailsInfo = resObj
     }
 }

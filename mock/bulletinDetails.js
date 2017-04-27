@@ -12,9 +12,11 @@ const mockData = {
     content: Mock.mock({
         'contentInfo|1-4': [                            // 随机 数组( 1 - 8个 )
             {                                           // 段落 ( >0 )
+                type: 'paragraph',
                 paragraph: Random.cparagraph()              
             }, {                                        // 图片 ( ~0 )
-                img: Random.image()
+                type: 'img',
+                imgUrl: Random.image()
             }
         ]
     })

@@ -11,6 +11,8 @@
 @import "../Components/Distance"
 
 // 项目内通用的混合 - 输出css
+.auto--modulePadding
+    +REM( padding, $D-autoPadding )
 
 .auto--modulePaddingTB
     +REM-padding-TB( $D-autoPadding )
@@ -19,5 +21,16 @@
     +REM-fontStyle( $F-title, $C-title )
 
 .auto--textStyle
-    +REM-fontStyle( $F-text, $C-text )
+    +REM-padding-TB( $D-autoPadding )
+    +REM-fontStyle( $F-text, $C-text, 1.5 )
 
+.auto--assistStyle
+    +REM-fontStyle( $F-text, $C-assist )
+
+.auto--routerContentBottom
+    +pB( 2.3rem )
+
+// 文本缩进两个文字
+.auto--textIndent
+    +REM( text-indent, $F-text*2 )
+    +textJustify

@@ -70,7 +70,7 @@ export default {
 
 .scrollTo
     >img
-        +REM( width, $D-badgeWidth )
-        +REM( height, $D-badgeWidth )
+        +REM( width, $D-badgeWidth*.75 )
+        +REM( height, $D-badgeWidth*.75 )
         object-fit: cover
 </style>

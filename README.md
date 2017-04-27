@@ -56,8 +56,10 @@ npm run build --report
 ## API docs / 接口文档
 
 ## **ToDoList**
-- [x]  `Faker.js` 测试模拟数据
+- [x]  `Faker.js` 模拟数据
+- [x]  `Mock.js` 模拟数据( 中文模拟数据 )
 - [x]  `SPA` 动态修改 页面 `title`信息方案
 - [ ]  微信公众号开发 用户信息获取
 - [x]  性能优化: 将 `MintUI`的*全部引入* 改为 *按需引入组件*
 - [x]  处理模拟数据的 日期 + 时间
+- [ ]  加入手势操作

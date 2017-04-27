@@ -29,10 +29,10 @@ export default {
     +bC( $C-base )
     .BottomTitle--content
         h2
-            +REM-fontStyle( $F-title, $C-copy )
+            +REM-fontStyle( $F-badge, $C-copy )
             +dib
         >img
-            +REM-padding-LR( $D-autoPadding/2 )
-            +REM-W-H( $F-title*1.5 )
+            +REM-padding-LR( $F-badge )
+            +REM-W-H( $F-badge*1.5 )
             +imgAlignBottom
 </style>

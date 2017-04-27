@@ -1,14 +1,16 @@
-import Vue          from 'vue'
-import Router       from 'vue-router'
+import Vue              from 'vue'
+import Router           from 'vue-router'
 
-import BottomTitle  from '@/components/common/BottomTitle'
-import Home         from '@/view/Home'
+import BottomTitle      from '@/components/common/BottomTitle'
+import Home             from '@/view/Home'
 
-import Bulletin     from '@/view/Bulletin'
-import Bill         from '@/view/Bill'
-import Fault        from '@/view/Fault'
-import Proposal     from '@/view/Proposal'
-import Binding      from '@/view/Binding'
+import Bulletin         from '@/view/Bulletin'
+import Bill             from '@/view/Bill'
+import Fault            from '@/view/Fault'
+import Proposal         from '@/view/Proposal'
+import Binding          from '@/view/Binding'
+
+import BulletinDetails  from '@/pages/Bulletin/BulletinDetails'
 
 Vue.use( Router )
 
@@ -60,6 +62,14 @@ export default new Router({
             meta: { title: '绑定房间' },
             components: {
                 AppContent: Binding,
+                AppBottomTitle: BottomTitle
+            }
+        }, {
+            path: '/bulletin/:id',
+            name: 'BulletinDetails',
+            meta: { title: '公告详情' },
+            components: {
+                AppContent: BulletinDetails,
                 AppBottomTitle: BottomTitle
             }
         }
