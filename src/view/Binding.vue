@@ -7,7 +7,6 @@
         v-bind:buttonContentStr="stateButtonObj.title"
         v-on:buttonClickEvent="setBinding()"
     )
-    // @click="setBinding()"
 </template>
 
 <script>
@@ -33,7 +32,7 @@ export default {
             // 状态按钮 - props集合对象
             stateButtonObj: {                       
                 styleObj: {
-                    className: 'auto--titleStyle',      // 默认标题样式 / 完成后 传入主题色class( 禁用class: is-disabled )
+                    className: 'auto--titleStyle',                  // 默认标题样式 / 完成后 传入主题色class( 禁用class: is-disabled )
                     size: 'large'                                   // 默认尺寸: 大
                 },
                 buttonPlainBoolean: true,                           // 默认幽灵状态
