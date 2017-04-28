@@ -26,7 +26,7 @@
 export default {
     name: 'TimeLine',
     props: {
-        // 渲染'公告'
+        // 渲染'公告'类型
         renderBulletinBoolean: {
             type: Boolean,
             default: true
