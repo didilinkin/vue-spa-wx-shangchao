@@ -7,6 +7,7 @@
         v-bind:type="buttonStyleObj.type"
         v-bind:icon="buttonStyleObj.icon"
         v-bind:plain="buttonPlainBoolean"
+        @click.native="buttonClickEvent()"
     )
         // 是否需要 自定义图标( 空值则不渲染 )
         img(
@@ -16,6 +17,7 @@
             v-bind:height="buttonImgIconObj.height"
             slot="icon"
         )
+        // 按钮内文字( 必填 ) - pug内联( '|'符号 )
         | {{ buttonContentStr }}
 </template>
 
@@ -58,6 +60,12 @@ export default {
                     iconImgUrl: require( '../../assets/images/defaultBtn.png' ) // 自定义图标图片( 需要父级使用require引入, 然后通过props传入 )
                 }
             }
+        }
+    },
+    methods: {
+        // 目的: 按钮点击事件( 向父级返回事件 ) => 本身无处理, 只向父级传递事件相应
+        buttonClickEvent() {
+            this.$emit( 'buttonClickEvent' )
         }
     }
 }    
