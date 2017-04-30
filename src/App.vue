@@ -1,7 +1,7 @@
 <template lang="pug">
 #app
     router-view(
-        name="AppContent" 
+        name="AppContent"
         v-wechat-title="$route.meta.title"
         img-set="/static/favicon.png"
         class="auto--routerContentBottom"
@@ -21,8 +21,6 @@ export default {
 
 #app
     height: 100%
-    +bC( $C-base )
-
-h1 
+h1
     color: red
 </style>

@@ -2,7 +2,7 @@
 <template lang="pug">
 #Building.auto--modulePadding
     StateButton(
-        v-bind:buttonStyleObj="stateButtonObj.styleObj"     
+        v-bind:buttonStyleObj="stateButtonObj.styleObj"
         v-bind:buttonPlainBoolean="stateButtonObj.buttonPlainBoolean"
         v-bind:buttonContentStr="stateButtonObj.title"
         v-on:buttonClickEvent="setBinding()"
@@ -30,13 +30,13 @@ export default {
     data() {
         return {
             // 状态按钮 - props集合对象
-            stateButtonObj: {                       
+            stateButtonObj: {
                 styleObj: {
                     className: 'auto--titleStyle',                  // 默认标题样式 / 完成后 传入主题色class( 禁用class: is-disabled )
                     size: 'large'                                   // 默认尺寸: 大
                 },
                 buttonPlainBoolean: true,                           // 默认幽灵状态
-                title: '绑定',                
+                title: '绑定',
                 icon: {
                     iconState: 'null'
                 }
@@ -58,6 +58,3 @@ export default {
 #Building
     +bC( $C-W )
 </style>
-
-// mt-button( type="primary" ) primary
-// mt-button( type="danger" ) danger

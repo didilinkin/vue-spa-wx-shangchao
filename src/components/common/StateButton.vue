@@ -2,7 +2,7 @@
 <template lang="pug">
 .StateButton
     mt-button(
-        v-bind:class="buttonStyleObj.className"    
+        v-bind:class="buttonStyleObj.className"
         v-bind:size="buttonStyleObj.size"
         v-bind:type="buttonStyleObj.type"
         v-bind:icon="buttonStyleObj.icon"
@@ -22,11 +22,11 @@
 </template>
 
 <script>
-/* global require:true */ 
+/* global require:true */
 export default {
     name: 'StateButton',
     props: {
-        // 按钮 - 样式 
+        // 按钮 - 样式
         buttonStyleObj: {
             type: Object,
             default: function() {
@@ -47,7 +47,7 @@ export default {
         buttonContentStr: {                                                     // 按钮内标题
             type: String,
             required: true,                                                     // 必填项
-            default: 'default'                                       
+            default: 'default'
         },
         // 按钮 - 自定义图标
         buttonImgIconObj: {
@@ -55,7 +55,7 @@ export default {
             default: function() {
                 return {
                     iconState: '',                                              // 是否需要自定义icon( '': 不需要 / 'img': 自定义图片图标  )
-                    width: '10',        
+                    width: '10',
                     height: '10',
                     iconImgUrl: require( '../../assets/images/defaultBtn.png' ) // 自定义图标图片( 需要父级使用require引入, 然后通过props传入 )
                 }
@@ -68,7 +68,7 @@ export default {
             this.$emit( 'buttonClickEvent' )
         }
     }
-}    
+}
 </script>
 
 <style lang="sass">
