@@ -1,0 +1,1 @@
+export const getterBuildingList = state => state.buildingList   // '绑定' - 建筑物列表

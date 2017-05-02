@@ -4,8 +4,6 @@ const Mock = require( 'mockjs' )
 const Random = Mock.Random
 
 // 生成数据
-// const mockData = Mock.mock( '@cparagraph' )
-// const mockData = Random.cparagraph()
 const mockData = {
     title: Random.ctitle( 10, 15 ),                     // 标题
     dataTime: Random.datetime(),                        // 日期 + 时间

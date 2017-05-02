@@ -6,3 +6,5 @@ export const BULLETIN = BaseUrl + '/bulletin'                           // 公�
 
 export const BULLETIN_DETAILS = BaseUrl + '/bulletinDetails'            // 公告详情
 
+export const BUILDING_LIST = BaseUrl + '/binding'                       // 绑定
+
