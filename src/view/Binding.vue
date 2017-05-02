@@ -11,6 +11,7 @@
 
 <script>
 import { mapGetters }   from 'vuex'
+import Picker           from 'better-picker'
 
 import StateButton      from '../components/common/StateButton'
 const components = { StateButton }
@@ -25,6 +26,15 @@ export default {
         // 目的: 触发'绑定' 按钮
         setBinding() {
             console.log( '子组件反馈触发事件' )
+
+            // 临时存放 Picker对象
+            let picker = new Picker({
+                data: [1, 2, 3],
+                selectedIndex: [0, 1, 2],
+                title: '我们都是小学生'
+            })
+
+            console.log( picker )
         }
     },
     data() {

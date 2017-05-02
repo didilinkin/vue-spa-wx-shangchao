@@ -1,7 +1,6 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 /* global require:true */
-/* @flow */
 
 import Vue          from 'vue'
 import 'mint-ui/lib/style.min.css'
@@ -30,7 +29,6 @@ Vue.use( lazyLoader )
 Vue.use( VueScrollTo )
 Vue.use( StarRating )
 Vue.use( require( 'vue-wechat-title' ) )
-
 
 /* eslint-disable no-new */
 new Vue({

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-/* global require: ture */ 
+/* global require: ture */
 export default {
     name: 'BottomTitle',
     data() {
@@ -15,7 +15,7 @@ export default {
             BottomTitleImg: require( '../../assets/favicon.png' )
         }
     }
-}    
+}
 </script>
 
 <style lang="sass">

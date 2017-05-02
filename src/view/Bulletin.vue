@@ -32,7 +32,7 @@ export default {
                 } else {
                     this.$data.scrollStatus = true                      // 改变
                 }
-            } 
+            }
         }
     },
     data() {
@@ -57,8 +57,3 @@ export default {
     components: components
 }
 </script>
-
-<style lang="sass">
-@import "../sass/main"
-
-</style>
