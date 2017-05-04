@@ -9,7 +9,7 @@ const mockData = {
     building: Mock.mock({                       
         buildingArr: [                                          
             {
-                buildingName: Random.ctitle( 3, 5 ),                // 3个办公楼
+                text: Random.ctitle( 3, 5 ),                // 3个办公楼
                 'value|+1': 1, 
                 'floorArr|2-6': [                                   // 楼层号( 2 - 6 )
                     {
@@ -26,7 +26,7 @@ const mockData = {
                     }
                 ]
             }, {
-                buildingName: Random.ctitle( 3, 5 ),                // 3个办公楼
+                text: Random.ctitle( 3, 5 ),                // 3个办公楼
                 'value|+1': 2, 
                 'floorArr|2-6': [                                   // 楼层号( 2 - 6 )
                     {
@@ -43,7 +43,7 @@ const mockData = {
                     }
                 ]
             }, {
-                buildingName: Random.ctitle( 3, 5 ),                // 3个办公楼
+                text: Random.ctitle( 3, 5 ),                // 3个办公楼
                 'value|+1': 3, 
                 'floorArr|2-6': [                                   // 楼层号( 2 - 6 )
                     {

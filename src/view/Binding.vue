@@ -1,6 +1,14 @@
 // 绑定房间
 <template lang="pug">
 #Building.auto--modulePadding
+    // 初始化数据 通过 $props 传给 PickerView 组件 
+    PickerView(
+        v-on:watchPicker="setPickerData"
+        v-bind:buildingArr="pickerDataObj.buildingArr"
+        v-bind:floorArr="pickerDataObj.floorArr"
+        v-bind:roomArr="pickerDataObj.roomArr"
+    )
+
     StateButton(
         v-bind:buttonStyleObj="stateButtonObj.styleObj"
         v-bind:buttonPlainBoolean="stateButtonObj.buttonPlainBoolean"
@@ -15,8 +23,9 @@
 import { mapGetters }   from 'vuex'
 import Picker           from 'better-picker'
 
+import PickerView       from '../components/common/PickerView'
 import StateButton      from '../components/common/StateButton'
-const components = { StateButton }
+const components = { StateButton, PickerView }
 
 export default {
     name: 'Binding',
@@ -29,8 +38,56 @@ export default {
         },
         // 目的: 触发'绑定' 按钮
         setBinding() {
-            console.log( '子组件反馈触发事件' )
+            console.log( '子组件反馈触发事件' )  // 用于'绑定'键
             this.pickerClick()
+        },
+        // 目的: 处理Picker 需要的三个data值; 只要级别值改变 就触发此函数; Picker组件初始化时也会触发一次
+        setPickerData() {
+            let buildingList = this.$data.buildingList,                                             // 筛选器结果( 3列 )
+                argumentObj = this.$data.selectedValue,                                             // 交互返回结果 
+                buildingResult = [],                                                                // 储存 建筑物 结果
+                floorResult = [],                                                                   // 储存 楼层 结果
+                roomResult = [],                                                                    // 储存 房间 结果
+                floorData = buildingList[argumentObj.buildingValue].floorArr,
+                roomData = floorData[argumentObj.floorValue].roomArr
+            
+            class BuildingObj {
+                constructor( text, value ) {
+                    this.text = text
+                    this.value = value
+                }
+            }
+
+            // 设置保存 建筑物 结果
+            const setBuildingData = () => {
+                for( let i = 0; i < buildingList.length; i++ ) {
+                    let buildingObj = new BuildingObj( buildingList[i].text, buildingList[i].value )
+                    buildingResult.push( buildingObj )
+                }
+                this.$data.pickerDataObj.buildingArr = buildingResult                               // 将结果保存到 $data的结果中( 格式化后的所有建筑物 数组 )
+            }
+
+            // 设置保存 楼层 结果
+            const setFloorData = () => {
+                for( let i = 0; i < floorData.length; i++ ) {
+                    let floorObj = new BuildingObj( floorData[i].text, floorData[i].value )
+                    floorResult.push( floorObj )
+                }
+                this.$data.pickerDataObj.floorArr = floorResult                                     // 将结果保存到 $data的结果中( 格式化后的所有建筑物 数组 )
+            }
+        
+            // 设置保存 房间号 结果
+            const setRoomData = () => {
+                for( let i = 0; i < roomData.length; i++ ) {
+                    let roomObj = new BuildingObj( roomData[i].text, roomData[i].value )
+                    roomResult.push( roomObj )
+                }
+                this.$data.pickerDataObj.roomArr = roomResult
+            }
+
+            setBuildingData()                                                                       // 最后运行 全部
+            setFloorData()
+            setRoomData()
         },
         // 目的: picker 事件( 由 'setBinding'事件触发 )
         pickerClick() {
@@ -127,43 +184,6 @@ export default {
             })
             picker.show()
         },
-        // 目的: 处理Picker 需要的三个 data值; 只要级别值改变 就触发此函数; 初始化时也会触发一次[ TODO: 使用async回调数据 ]
-        setPickerData() {
-            // console.log( '执行' )
-            let argumentObj = this.$data.pickerArgumentObj
-            // console.log( argumentObj )   // success
-
-            // 通用class( 楼层 + 房间号 ) 
-            class BuildingObj {
-                constructor( text, value ) {
-                    this.text = text
-                    this.value = value
-                }
-            }
-
-            // 设置2级 楼层数据
-            let floorData = this.$data.buildingList[argumentObj.buildingValue].floorArr         // 建筑物中 建筑值的建筑物 => 获取它的 楼层数据( 正确 )
-            // console.log( floorData )    // 检查检索后的 数据( success )
-            let setFloorArr = []                                                                // 空数组 - 存放格式化之后的数组
-            for( let i = 0; i < floorData.length; i++ ) {
-                let floorObj = new BuildingObj( floorData[i].text, floorData[i].value )
-                setFloorArr.push( floorObj )
-                // console.log( floorObj ) // 检索结果值对象 success
-            }
-            this.$data.pickerDataObj.floorArr = setFloorArr
-            // console.log( this.$data.pickerDataObj.floorArr ) // success => bug: $data改变 但是数据没有实时改变
-            // console.log( this.$data.dataPicker )             // success  调用到 Picker方法
-            // let Picker = this.$data.dataPicker               // 改变修改思路
-
-            // 设置3级 房间号数据
-            let roomData = floorData[argumentObj.floorValue].roomArr                            // 建筑物楼层中 楼层值 => 获取它的 楼层所有房间号数据( 正确 )
-            let setRoomArr = []
-            for( let i = 0; i < roomData.length; i++ ) {
-                let roomObj = new BuildingObj( roomData[i].text, roomData[i].value )
-                setRoomArr.push( roomObj )
-            }
-            this.$data.pickerDataObj.roomArr = setRoomArr
-        },
         // 目的: 处理建筑物 名称数组( this.setPickerData() 触发 )
         setBuildingData() {
             let setBuildingList = this.$data.buildingList                                       // 临时存储 交互获取的建筑物数据
@@ -176,7 +196,7 @@ export default {
                 }
             }
             for( let i = 0; i < setBuildingList.length; i++ ) {                                 // 遍历 交互返回的建筑物数组
-                let buildingObj = new BuildingObj( setBuildingList[i].buildingName, setBuildingList[i].value )     // 创建对象( 标题, value值=i+1 )
+                let buildingObj = new BuildingObj( setBuildingList[i].text, setBuildingList[i].value )     // 创建对象( 标题, value值=i+1 )
                 setBuildingName.push( buildingObj )                                             // push保存到数组中
             }
             this.$data.pickerDataObj.buildingArr = setBuildingName
@@ -198,18 +218,17 @@ export default {
             },
             inputState: 'null',                                                                 // 输入状态
             buildingList: [],                                                                   // 建筑列表
-            dataPicker: {},                                                                     // Picker方法( 保存下, 其他作用域可以使用 )
             // Picker 用于展示的数据( 经过处理的data筛选值 )
             pickerDataObj: {
                 buildingArr: [],                                                                // 建筑物 数组
                 floorArr: [],                                                                   // 楼层 数组
                 roomArr: []                                                                     // 房间号 数组
             },
-            // Picker 参数对象
-            pickerArgumentObj: {
-                buildingValue: 0,
-                floorValue: 0,
-                roomValue: 0
+            // Picker 选择结果( 3列 结果值 )
+            selectedValue: {                                                                    // 筛选器结果 保存值
+                buildingValue: 0,                                                               // 建筑物 选择值
+                floorValue: 0,                                                                  // 楼层 选择值
+                roomValue: 0                                                                    // 房间 选择值
             }
         }
     },
@@ -220,8 +239,7 @@ export default {
         // 监听: '绑定' 建筑物列表
         getterBuildingList: function() {
             this.$data.buildingList = this.getterBuildingList
-            this.setPickerData()                                                                    // ( 初始化 )处理picker需要的 data数据
-            this.setBuildingData()                                                                  // 处理 建筑物名称 数组( 不需要参数 ) 
+            this.setPickerData()                                                                  //  ( 初始化 )处理picker需要的 data数据
         }
     },
     mounted: function() {
