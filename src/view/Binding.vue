@@ -1,9 +1,9 @@
 // 绑定房间
 <template lang="pug">
 #Building.auto--modulePadding
-    // 初始化数据 通过 $props 传给 PickerView 组件 
+    // 初始化数据 通过 $props 传给 PickerView 组件
     PickerView(
-        v-on:watchPicker="setPickerData"
+        v-on:watchPicker="setPickerVal"
         v-bind:buildingArr="pickerDataObj.buildingArr"
         v-bind:floorArr="pickerDataObj.floorArr"
         v-bind:roomArr="pickerDataObj.roomArr"
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-/* global Promise: true */ 
+/* global Promise: true */
 import { mapGetters }   from 'vuex'
 import Picker           from 'better-picker'
 
@@ -44,13 +44,13 @@ export default {
         // 目的: 处理Picker 需要的三个data值; 只要级别值改变 就触发此函数; Picker组件初始化时也会触发一次
         setPickerData() {
             let buildingList = this.$data.buildingList,                                             // 筛选器结果( 3列 )
-                argumentObj = this.$data.selectedValue,                                             // 交互返回结果 
+                argumentObj = this.$data.selectedValue,                                             // 交互返回结果
                 buildingResult = [],                                                                // 储存 建筑物 结果
                 floorResult = [],                                                                   // 储存 楼层 结果
                 roomResult = [],                                                                    // 储存 房间 结果
                 floorData = buildingList[argumentObj.buildingValue].floorArr,
                 roomData = floorData[argumentObj.floorValue].roomArr
-            
+
             class BuildingObj {
                 constructor( text, value ) {
                     this.text = text
@@ -75,7 +75,7 @@ export default {
                 }
                 this.$data.pickerDataObj.floorArr = floorResult                                     // 将结果保存到 $data的结果中( 格式化后的所有建筑物 数组 )
             }
-        
+
             // 设置保存 房间号 结果
             const setRoomData = () => {
                 for( let i = 0; i < roomData.length; i++ ) {
@@ -88,6 +88,32 @@ export default {
             setBuildingData()                                                                       // 最后运行 全部
             setFloorData()
             setRoomData()
+        },
+        // 目的: 监听 Picker组件 筛选器更改结果 => 保存结果到 $data 然后执行 setPickerData() 处理数据
+        setPickerVal( pickerValObj ) {
+            // console.log( pickerValObj )
+
+            // 异步操作 $data中的 筛选器值
+            const asyncSelectedValue = ( valObj ) => {
+                return new Promise( ( resolve ) => {
+                    this.$data.selectedValue[valObj.indexName] = valObj.val
+                    resolve()
+                })
+            }
+
+            const asyncSetPickerData = async () => {
+                try {
+                    await asyncSelectedValue( pickerValObj )    // 异步更改 $data中的 筛选器值
+
+                    await this.setPickerData()                        // 根据最新 筛选器结果 => 更新 筛选器 展示数据
+
+                    console.log( '展示最新数据' )
+                    console.log( this.$data.pickerDataObj )
+                } catch( err ) {
+                    console.log( err )
+                }
+            }
+            asyncSetPickerData()                                // 执行
         },
         // 目的: picker 事件( 由 'setBinding'事件触发 )
         pickerClick() {
@@ -119,14 +145,14 @@ export default {
                         that.$data.pickerArgumentObj[argName] = argValue
                         resolve()
                     })
-                } 
+                }
 
                 switch( index ) {
                     case 0:
                         // console.log( '建筑物列改变' )
                         // console.log( '列值改变:' + selectedIndex )
                         const asyncSetBuildingValue = async function() {
-                            try {   
+                            try {
                                 await setBuildingArgument( 'buildingValue', selectedIndex )         // 异步修改 $data 参数
                                 await that.setPickerData()                                          // 刷新 $data 中 data数据
 
@@ -141,14 +167,14 @@ export default {
                         }
                         asyncSetBuildingValue() // 执行
                         break
-                    case 1: 
+                    case 1:
                         // console.log( '楼层改变' )
                         // console.log( '列值改变:' + selectedIndex )
                         const asyncSetFloorValue = async function() {
-                            try {   
+                            try {
                                 await setBuildingArgument( 'floorValue', selectedIndex )
                                 await that.setPickerData()                                          // 刷新 $data 中 data数据
-                                
+
                                 let asyncRoomArr = that.$data.pickerDataObj.roomArr
                                 picker.refillColumn( 2, asyncRoomArr )
                             } catch( err ) {
@@ -157,11 +183,11 @@ export default {
                         }
                         asyncSetFloorValue() // 执行
                         break
-                    case 2: 
+                    case 2:
                         // console.log( '房间号改变' )
                         // console.log( '房间号列值改变:' + selectedIndex )
                         const asyncSetRoomValue = async function() {
-                            try {   
+                            try {
                                 await setBuildingArgument( 'roomValue', selectedIndex )
                                 console.log( '完成修改: 房间值' + that.$data.pickerArgumentObj.roomValue )
                                 // 刷新 $data 中 data数据
@@ -192,7 +218,7 @@ export default {
             class BuildingObj {
                 constructor( text, value ) {
                     this.text = text
-                    this.value = value 
+                    this.value = value
                 }
             }
             for( let i = 0; i < setBuildingList.length; i++ ) {                                 // 遍历 交互返回的建筑物数组
