@@ -53,12 +53,6 @@ export default {
         }
     },
     methods: {
-        // 目的: 初始化 Picker筛选结果
-        // initPicker() {
-        //     // console.log( this.pickerTitle )
-        //     this.$emit( 'watchPicker' )       // 触发 父级监听 Picker事件, 参数: 筛选器结果
-        // },
-
         // 目的: Picker被点击
         pickerClick() {
             // console.log( '被点击' )
@@ -87,12 +81,22 @@ export default {
                 const emitSelectedVal = ( selectValObj ) => {
                     return new Promise( ( resolve ) => {
                         this.$emit( 'watchPicker', selectValObj )
-                        resolve()
+
+                        console.log( '此时-$props未更新' )
+                        console.log( this.$props.floorArr )
+                        console.log( '此时-$props未更新 END' )
+
+                        this.$watch( 'floorArr', () => {
+                            console.log( '$props改变啦!!!' )
+
+                            console.log( '此时-$props更新' )
+                            console.log( this.$props.floorArr )
+                            console.log( '此时-$props更新 END' )
+
+                            resolve( console.log( '交给父级事件 完成;' ) )
+                        })
                     })
                 }
-
-                // let pickerValObj = {}       // 用来保存
-
                 class PickerValObj {
                     constructor( indexName, val ) {
                         this.indexName = indexName
@@ -102,8 +106,6 @@ export default {
 
                 switch( index ) {
                     case 0:
-                        // console.log( '建筑物列改变' )
-                        // console.log( '列值改变:' + selectedIndex )
                         let selectedObjA = new PickerValObj( 'buildingValue', selectedIndex )
 
                         const asyncSetBuildingValue = async () => {
@@ -117,8 +119,7 @@ export default {
                                 console.log( err )
                             }
                         }
-                        asyncSetBuildingValue() // 执行
-
+                        asyncSetBuildingValue()
                         break
                     case 1:
                         // console.log( '楼层改变' )

@@ -97,6 +97,8 @@ export default {
             const asyncSelectedValue = ( valObj ) => {
                 return new Promise( ( resolve ) => {
                     this.$data.selectedValue[valObj.indexName] = valObj.val
+
+                    this.setPickerData()                        // 根据最新 筛选器结果 => 更新 筛选器 展示数据
                     resolve()
                 })
             }
@@ -109,6 +111,7 @@ export default {
 
                     console.log( '展示最新数据' )
                     console.log( this.$data.pickerDataObj )
+                    console.log( '展示最新数据 完成' )
                 } catch( err ) {
                     console.log( err )
                 }
