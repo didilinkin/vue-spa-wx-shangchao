@@ -62,8 +62,8 @@ export default {
 
             let picker = new Picker({
                 data: [buildingArr, floorArr, roomArr],
-                selectedIndex: [0, 0, 0],
-                title: '我们都是小学生'
+                selectedIndex: [0, 0, 0]
+                // title: '选择'
             })
 
             // 保存 Picker筛选器结果 => 改变标题为 结果
@@ -73,30 +73,18 @@ export default {
 
             // 当一列滚动停止的时候，派发 picker.change 事件 => 传递: 列序号 index 及滚动停止的位置 selectedIndex
             picker.on( 'picker.change', ( index, selectedIndex ) => {
-                // 每次滚动滚轴 都会触发此事件 => 根据 列 index的值 判断修改的 $data属性, 将 列值赋值给属性( 使用switch判断 )
-                // console.log( '列改变:' + index )
-                // console.log( '列值改变:' + selectedIndex )
+                let selectArr = []      // 数组容器( 保存改变的列值; 已数组的形式传给 emitSelectedVal(); 1列改变需要初始化3列 )
 
                 // 异步使用 $emit 将参数传给父级组件
-                const emitSelectedVal = ( selectValObj ) => {
+                const emitSelectedVal = ( selectValArr ) => {
                     return new Promise( ( resolve ) => {
-                        this.$emit( 'watchPicker', selectValObj )
-
-                        console.log( '此时-$props未更新' )
-                        console.log( this.$props.floorArr )
-                        console.log( '此时-$props未更新 END' )
-
-                        this.$watch( 'floorArr', () => {
-                            console.log( '$props改变啦!!!' )
-
-                            console.log( '此时-$props更新' )
-                            console.log( this.$props.floorArr )
-                            console.log( '此时-$props更新 END' )
-
-                            resolve( console.log( '交给父级事件 完成;' ) )
+                        this.$emit( 'watchPicker', selectValArr )
+                        this.$watch( 'roomArr', () => {
+                            resolve()                                       // $props - 只监听第三列的数据 roomArr ( 因为改变1列值时, 2列更新， 3列要根据2列联动更新 )
                         })
                     })
                 }
+
                 class PickerValObj {
                     constructor( indexName, val ) {
                         this.indexName = indexName
@@ -106,15 +94,23 @@ export default {
 
                 switch( index ) {
                     case 0:
-                        let selectedObjA = new PickerValObj( 'buildingValue', selectedIndex )
+                        picker.scrollColumn( 1, 0 )                         // 复位 第2列 起始值返回0( 避免 第2列选择后, 返回 再修改1列值, 2列未复位的问题 )
+                        picker.scrollColumn( 2, 0 )                         // 复位 第3列 起始值返回0( 避免情况 同上, 只是防止第3列未复位的问题 )
+
+                        let selectedObjA = new PickerValObj( 'buildingValue', selectedIndex ),
+                            defaultSelectedObjC = new PickerValObj( 'floorValue', 0 )            // 将2列设置为0, 这样3列就会变成初始值
+
+                        selectArr = [ selectedObjA, defaultSelectedObjC ]
 
                         const asyncSetBuildingValue = async () => {
                             try {
-                                await emitSelectedVal( selectedObjA )
+                                await emitSelectedVal( selectArr )          // 传入 将2列改为默认值的对象;
 
-                                let asyncFloorArr = this.$props.floorArr  // 保存 父组件处理完的数据 ( $props )
+                                let asyncFloorArr = this.$props.floorArr    // 保存 父组件处理完的数据 ( $props ) - 第二列
+                                let asyncRoomArr = this.$props.roomArr      // 保存 父组件处理完的数据 ( $props ) - 第三列
 
-                                picker.refillColumn( 1, asyncFloorArr )
+                                picker.refillColumn( 1, asyncFloorArr )     // 更新第二列
+                                picker.refillColumn( 2, asyncRoomArr )     // 更新第二列
                             } catch( err ) {
                                 console.log( err )
                             }
@@ -122,13 +118,13 @@ export default {
                         asyncSetBuildingValue()
                         break
                     case 1:
-                        // console.log( '楼层改变' )
-                        // console.log( '列值改变:' + selectedIndex )
                         let selectedObjB = new PickerValObj( 'floorValue', selectedIndex )
+
+                        selectArr = [ selectedObjB ]
 
                         const asyncSetFloorValue = async () => {
                             try {
-                                await emitSelectedVal( selectedObjB )
+                                await emitSelectedVal( selectArr )
 
                                 let asyncRoomArr = this.$props.roomArr  // 保存 父组件处理完的数据 ( $props )
 
@@ -137,7 +133,7 @@ export default {
                                 console.log( err )
                             }
                         }
-                        asyncSetFloorValue() // 执行
+                        asyncSetFloorValue()
 
                         break
                     case 2:
@@ -149,14 +145,12 @@ export default {
                             try {
                                 await emitSelectedVal( selectedObjC )
 
-                                // 第三个 不需要更新
-                                // let asyncRoomArr = this.$props.roomArr  // 保存 父组件处理完的数据 ( $props )
-                                // picker.refillColumn( 3, asyncRoomArr )
+                                // 第三个 不需要更新; 只负责将数据传给 父级 保存参数即可
                             } catch( err ) {
                                 console.log( err )
                             }
                         }
-                        asyncSetRoomValue() // 执行
+                        asyncSetRoomValue()
 
                         break
                     default:
@@ -181,11 +175,6 @@ export default {
             pickerIconImg: require( '../../assets/images/iconBuilding@2x.png' )
         }
     }
-    // ,
-    // mounted: function() {
-    //     // this.initPicker()
-    //     // console.log( this.$props )
-    // }
 }
 </script>
 
