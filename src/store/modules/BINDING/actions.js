@@ -12,5 +12,19 @@ export default {
             }
         }
         asyncBuildingList()
+    },
+    [types.VERIFY_VALUE]: ({ commit }, pickerValObj ) => {
+        // console.log( commit )
+        // console.log( pickerValObj )
+        const asyncBuildingVerifyValue = async function() {
+            try {
+                let result = await bindingAPI.apiBuildingVerifyValue( pickerValObj )
+                console.log( result )
+                commit( types.SET_VERIFY_VALUE, result )
+            } catch( err ) {
+                console.log( err )
+            }
+        }
+        asyncBuildingVerifyValue()
     }
 }

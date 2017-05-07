@@ -2,17 +2,18 @@
 <template lang="pug">
 #Building.auto--modulePadding
     PickerView(
-        v-on:watchPicker="setPickerVal"
+        v-on:watchPickerIndex="setPickerIndex"
+        v-on:watchPickerVal="setPickerValue"
         v-bind:buildingArr="pickerDataObj.buildingArr"
         v-bind:floorArr="pickerDataObj.floorArr"
         v-bind:roomArr="pickerDataObj.roomArr"
     )
 
     StateButton(
+        v-on:buttonClickEvent="setBinding()"
         v-bind:buttonStyleObj="stateButtonObj.styleObj"
         v-bind:buttonPlainBoolean="stateButtonObj.buttonPlainBoolean"
         v-bind:buttonContentStr="stateButtonObj.title"
-        v-on:buttonClickEvent="setBinding()"
     )
 </template>
 
@@ -40,12 +41,12 @@ export default {
         // 目的: 处理Picker 需要的三个data值; 只要级别值改变 就触发此函数; Picker组件初始化时也会触发一次
         setPickerData() {
             let buildingList = this.$data.buildingList,                                             // 筛选器结果( 3列 )
-                argumentObj = this.$data.selectedValue,                                             // 交互返回结果
+                argumentObj = this.$data.selectedIndex,                                             // 交互返回结果
                 buildingResult = [],                                                                // 储存 建筑物 结果
                 floorResult = [],                                                                   // 储存 楼层 结果
                 roomResult = [],                                                                    // 储存 房间 结果
-                floorData = buildingList[argumentObj.buildingValue].floorArr,
-                roomData = floorData[argumentObj.floorValue].roomArr
+                floorData = buildingList[argumentObj.buildingIndex].floorArr,
+                roomData = floorData[argumentObj.floorIndex].roomArr
 
             class BuildingObj {
                 constructor( text, value ) {
@@ -85,13 +86,13 @@ export default {
             setFloorData()
             setRoomData()
         },
-        // 目的: 监听 Picker组件 筛选器更改结果 => 保存结果到 $data 然后执行 setPickerData() 处理数据
-        setPickerVal( pickerValObj ) {
+        // 目的: 监听 Picker筛选器更改的 index结果 => 保存结果到 $data 然后执行 setPickerData() 处理数据
+        setPickerIndex( pickerIndexArr ) {
             // 异步操作 $data中的 筛选器值
-            const asyncSelectedValue = ( valArr ) => {
+            const asyncSelectedIndex = ( indexArr ) => {
                 return new Promise( ( resolve ) => {
-                    for( let i = 0; i < valArr.length; i++ ) {
-                        this.$data.selectedValue[valArr[i].indexName] = valArr[i].val               // 如果是第一列改变 => 循环第二次目的是: 根据第二列的数据更新 第3列的数据
+                    for( let i = 0; i < indexArr.length; i++ ) {
+                        this.$data.selectedIndex[indexArr[i].indexName] = indexArr[i].index               // 如果是第一列改变 => 循环第二次目的是: 根据第二列的数据更新 第3列的数据
                         this.setPickerData()                                                        // 根据最新 筛选器结果 => 更新 筛选器 展示数据
                     }
                     resolve()
@@ -100,12 +101,25 @@ export default {
 
             const asyncSetPickerData = async () => {
                 try {
-                    await asyncSelectedValue( pickerValObj )                                        // 异步更改 $data中的 筛选器值
+                    await asyncSelectedIndex( pickerIndexArr )                                      // 异步更改 $data中的 筛选器值
                 } catch( err ) {
                     console.log( err )
                 }
             }
+
             asyncSetPickerData()
+        },
+        // 目的: 监听 Picker筛选器更改的value结果 => 去后台验证 3个value是否可用
+        setPickerValue( pickerValueArr ) {
+            let [ buildingVal, floorVal, roomVal ] = pickerValueArr                                 // 进行解构
+
+            // 验证 Picker 3个value 是否可用
+            this.$store.dispatch({
+                type: 'binding/VERIFY_VALUE',
+                buildingValue: buildingVal,
+                floorValue: floorVal,
+                roomValue: roomVal
+            })
         }
     },
     data() {
@@ -130,22 +144,26 @@ export default {
                 floorArr: [],                                                                       // 楼层 数组
                 roomArr: []                                                                         // 房间号 数组
             },
-            // Picker 选择结果( 3列 结果值 )
-            selectedValue: {                                                                        // 筛选器结果 保存值
-                buildingValue: 0,                                                                   // 建筑物 选择值
-                floorValue: 0,                                                                      // 楼层 选择值
-                roomValue: 0                                                                        // 房间 选择值
+            // Picker 选择结果( 3列 筛选器的值; 不是结果的value值 )
+            selectedIndex: {                                                                        // 筛选器结果 保存值
+                buildingIndex: 0,                                                                   // 建筑物 选择值
+                floorIndex: 0,                                                                      // 楼层 选择值
+                roomIndex: 0                                                                        // 房间 选择值
             }
         }
     },
     computed: mapGetters({
-        getterBuildingList: 'getterBuildingList'
+        getterBuildingList: 'getterBuildingList',
+        getterBuildingVerifyValue: 'getterBuildingVerifyValue'
     }),
     watch: {
         // 监听: '绑定' 建筑物列表
         getterBuildingList: function() {
             this.$data.buildingList = this.getterBuildingList
             this.setPickerData()                                                                  //  ( 初始化 )处理picker需要的 data数据
+        },
+        getterBuildingVerifyValue: function() {
+            console.log( 'getterBuildingVerifyValue发生改变:' + this.getterBuildingVerifyValue )   // 验证 value 返回结果
         }
     },
     mounted: function() {
