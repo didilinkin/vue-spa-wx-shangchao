@@ -18,12 +18,13 @@ export const apiBuildingList = () => {
     })
 }
 
-export const apiBuildingVerifyValue = ( pickerValObj ) => {
+export const apiRequireBinding = ( bindingValObj ) => {
     return new Promise( function( resolve, reject ) {
-        axios.post( mockAPI.BUILDING_VERIFY_VALUE, qs.stringify({
-            'buildingValue': pickerValObj.buildingValue,
-            'floorValue': pickerValObj.floorValue,
-            'roomValue': pickerValObj.roomValue
+        axios.post( mockAPI.BUILDING_REQUIRE, qs.stringify({
+            'buildingValue': bindingValObj.buildingValue,
+            'floorValue': bindingValObj.floorValue,
+            'roomValue': bindingValObj.roomValue,
+            'companyNo': bindingValObj.CompanyNO
         }) )
         .then( response => {
             let resulData = response.data.data

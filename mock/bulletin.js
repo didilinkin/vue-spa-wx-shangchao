@@ -10,8 +10,7 @@ for( let i = 0; i < 20; i++ ) {
         {
             id: faker.random.number( 5000 ),
             title: faker.name.firstName() + faker.name.lastName(),
-            time: faker.date.recent(),
-            text: faker.lorem.paragraphs()
+            time: faker.date.recent()
         }
     )
 }

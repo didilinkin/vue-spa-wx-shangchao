@@ -13,18 +13,15 @@ export default {
         }
         asyncBuildingList()
     },
-    [types.VERIFY_VALUE]: ({ commit }, pickerValObj ) => {
-        // console.log( commit )
-        // console.log( pickerValObj )
-        const asyncBuildingVerifyValue = async function() {
+    [types.REQUIRE_BINDING]: ({ commit }, bindingValObj ) => {
+        const asyncRequireBinding = async function() {
             try {
-                let result = await bindingAPI.apiBuildingVerifyValue( pickerValObj )
-                console.log( result )
-                commit( types.SET_VERIFY_VALUE, result )
+                let result = await bindingAPI.apiRequireBinding( bindingValObj )
+                commit( types.SET_BINDING, result )
             } catch( err ) {
                 console.log( err )
             }
         }
-        asyncBuildingVerifyValue()
+        asyncRequireBinding()
     }
 }

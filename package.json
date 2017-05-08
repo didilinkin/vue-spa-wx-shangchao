@@ -15,6 +15,7 @@
     "axios": "^0.16.1",
     "layzr.js": "^2.2.2",
     "mint-ui": "^2.2.3",
+    "sweetalert2": "^6.6.2",
     "vue": "^2.2.6",
     "vue-router": "^2.4.0",
     "vue-scrollto": "^2.6.7",

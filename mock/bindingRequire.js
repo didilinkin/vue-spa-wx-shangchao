@@ -4,7 +4,7 @@ const faker = require( 'faker' )
 faker.locale = 'zh_CN'
 
 module.exports = {
-    api: '/mock/bindingVerifyValue',
+    api: '/mock/bindingRequire',
     response: function( _req, res ) {
         res.json({
             rlt: 'true',

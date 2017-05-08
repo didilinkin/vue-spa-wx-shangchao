@@ -2,7 +2,7 @@
 <template lang="pug">
 #BulletinDetails.auto--modulePadding
     h2.auto--titleStyle {{ bulletinDetailsInfo.title }}
-    span.auto--assistStyle {{ bulletinDetailsInfo.dataTime }}
+    span.auto--assistStyle {{ bulletinDetailsInfo.dateTime }}
     ul 
         li(
             v-for="( item, index ) in bulletinDetailsInfo.content"

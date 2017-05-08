@@ -4,6 +4,7 @@
 
 import Vue          from 'vue'
 import 'mint-ui/lib/style.min.css'
+import 'sweetalert2/dist/sweetalert2.min.css'
 import Mint         from 'mint-ui'
 import layzr        from 'layzr.js'
 import VueScrollTo  from 'vue-scrollto'

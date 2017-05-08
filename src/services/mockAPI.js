@@ -8,5 +8,5 @@ export const BULLETIN_DETAILS = BaseUrl + '/bulletinDetails'            // 公�
 
 export const BUILDING_LIST = BaseUrl + '/binding'                       // 绑定
 
-export const BUILDING_VERIFY_VALUE = BaseUrl + '/bindingVerifyValue'    // 绑定 - 验证Value 信息
+export const BUILDING_REQUIRE = BaseUrl + '/bindingRequire'             // 绑定 - 请求绑定
 
