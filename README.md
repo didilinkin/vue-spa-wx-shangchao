@@ -54,6 +54,8 @@ npm run build
 npm run build --report
 ```
 ## API docs / 接口文档
+### ['公告'接口](./docs/API-bulletin.md)
+
 
 ## **ToDoList**
 - [x]  `Faker.js` 模拟数据
