@@ -27,6 +27,7 @@ export const apiRequireBinding = ( bindingValObj ) => {
             'companyNo': bindingValObj.CompanyNO
         }) )
         .then( response => {
+            console.log( response )
             let resulData = response.data.data
             resolve( resulData )
         })

@@ -51,7 +51,7 @@ export default {
     },
     data() {
         return {
-            bulletinDetailsInfo: {},                                 // '公告详情' 内容
+            bulletinDetailsInfo: {},                                    // '公告详情' 内容
             scrollStatus: false                                         // 滚轴状态 => 是否显示'返回顶部'
         }
     },

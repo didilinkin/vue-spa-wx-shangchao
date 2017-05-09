@@ -1,5 +1,5 @@
 # **公告 - 接口**
-> **URL:**  [BaseUrl/bulletin](*/bulletin)
+> **URL:**  [BaseUrl/bulletin](BaseUrl/bulletin)
 >
 > 无参数
 
