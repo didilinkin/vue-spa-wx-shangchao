@@ -29,17 +29,13 @@ export default {
                 type: 'binding/REQUEST_BUILDING_LIST'
             })
         },
-        // 目的: 触发'绑定' 按钮
-        setBinding() {
-            console.log( '子组件反馈触发事件' )                                                      // 用于'绑定'键
-        },
         // 目的: 处理Picker 需要的三个data值; 只要级别值改变 就触发此函数; Picker组件初始化时也会触发一次
         setPickerData() {
-            let buildingList = this.$data.buildingList,                                             // 筛选器结果( 3列 )
-                argumentObj = this.$data.selectedIndex,                                             // 交互返回结果
-                buildingResult = [],                                                                // 储存 建筑物 结果
-                floorResult = [],                                                                   // 储存 楼层 结果
-                roomResult = [],                                                                    // 储存 房间 结果
+            let buildingList = this.$data.buildingList,                                             
+                argumentObj = this.$data.selectedIndex,                                            
+                buildingResult = [],                                                               
+                floorResult = [],                                                                 
+                roomResult = [],                                                                    
                 floorData = buildingList[argumentObj.buildingIndex].floorArr,
                 roomData = floorData[argumentObj.floorIndex].roomArr
 
@@ -56,7 +52,7 @@ export default {
                     let buildingObj = new BuildingObj( buildingList[i].text, buildingList[i].value )
                     buildingResult.push( buildingObj )
                 }
-                this.$data.pickerDataObj.buildingArr = buildingResult                               // 将结果保存到 $data的结果中( 格式化后的所有建筑物 数组 )
+                this.$data.pickerDataObj.buildingArr = buildingResult                              
             }
 
             // 设置保存 楼层 结果
@@ -65,7 +61,7 @@ export default {
                     let floorObj = new BuildingObj( floorData[i].text, floorData[i].value )
                     floorResult.push( floorObj )
                 }
-                this.$data.pickerDataObj.floorArr = floorResult                                     // 将结果保存到 $data的结果中( 格式化后的所有建筑物 数组 )
+                this.$data.pickerDataObj.floorArr = floorResult                                     
             }
 
             // 设置保存 房间号 结果
@@ -76,7 +72,7 @@ export default {
                 }
                 this.$data.pickerDataObj.roomArr = roomResult
             }
-            setBuildingData()                                                                       // 最后运行 全部
+            setBuildingData()                                                                      
             setFloorData()
             setRoomData()
         },
@@ -86,15 +82,15 @@ export default {
             const asyncSelectedIndex = ( indexArr ) => {
                 return new Promise( ( resolve ) => {
                     for( let i = 0; i < indexArr.length; i++ ) {
-                        this.$data.selectedIndex[indexArr[i].indexName] = indexArr[i].index         // 如果是第一列改变 => 循环第二次目的是: 根据第二列的数据更新 第3列的数据
-                        this.setPickerData()                                                        // 根据最新 筛选器结果 => 更新 筛选器 展示数据
+                        this.$data.selectedIndex[indexArr[i].indexName] = indexArr[i].index         
+                        this.setPickerData()                                                        
                     }
                     resolve()
                 })
             }
             const asyncSetPickerData = async () => {
                 try {
-                    await asyncSelectedIndex( pickerIndexArr )                                      // 异步更改 $data中的 筛选器值
+                    await asyncSelectedIndex( pickerIndexArr )                                    
                 } catch( err ) {
                     console.log( err )
                 }
@@ -103,7 +99,7 @@ export default {
         },
         // 目的: 监听 Picker筛选器更改的value结果 => 去后台验证 3个value是否可用
         setPickerValue( pickerValueArr ) {
-            this.$data.selectedVal = pickerValueArr                                                 // 将Picker value值保存到 $data中
+            this.$data.selectedVal = pickerValueArr                                                 
             this.setCompanyNO()
         },
         // 目的: 设置'公司编号' ( 调用 sweetalert2弹框事件 )
@@ -115,7 +111,7 @@ export default {
                 title: '请输入公司编号',
                 text: '请联系客服管家查询公司编号',
                 input: 'number',
-                showCancelButton: true,                                         // 展示 '取消'按钮
+                showCancelButton: true,                                         
                 confirmButtonText: '确认',
                 showLoaderOnConfirm: true,
                 // 输入前确认 是否是 邮箱类型
@@ -125,26 +121,24 @@ export default {
                         // 异步请求绑定
                         const asyncRequireBuilding = async () => {
                             try {
-                                await that.requireBinding( number )                 // 请求绑定( 公司编号 )
-
+                                await that.requireBinding( number )                
                                 // 判断返回值
                                 let bindingResult = that.getterBindingResult
-
                                 if( bindingResult ) {
-                                    that.setPickerStyle( 'rgb( 35, 210, 150 )' )    // 成功色
-                                    resolve()                                       // 绑定成功
+                                    that.setPickerStyle( 'rgb( 35, 210, 150 )' )   
+                                    resolve()                                      
                                 } else {
-                                    that.setPickerStyle( 'rgb( 255, 61, 61 )' )     // 失败色
-                                    reject()                                        // 绑定失败
+                                    that.setPickerStyle( 'rgb( 255, 61, 61 )' )     
+                                    reject()                                       
                                 }
                             } catch( err ) {
-                                return reject( err )                                // 失败
+                                return reject( err )                                
                             }
                         }
-                        asyncRequireBuilding()                                      // 异步请求绑定
+                        asyncRequireBuilding()                                     
                     })
                 },
-                allowOutsideClick: false                                            // 是否允许外边点击
+                allowOutsideClick: false                                          
             }).then( function( _number ) {
                 swal({
                     type: 'success',
@@ -160,10 +154,8 @@ export default {
         // 请求绑定 房间编号 + 公司编号
         requireBinding( CompanyNO ) {
             return new Promise( ( resolve, _reject ) => {
-                // 此处编写 交互 请求绑定的逻辑
-                let [ buildingVal, floorVal, roomVal ] = this.$data.selectedVal                     // 进行解构
+                let [ buildingVal, floorVal, roomVal ] = this.$data.selectedVal     
 
-                // 验证 Picker 3个value 是否可用 + 公司编号 => 请求绑定
                 this.$store.dispatch({
                     type: 'binding/REQUIRE_BINDING',
                     buildingValue: buildingVal,
@@ -185,22 +177,21 @@ export default {
     },
     data() {
         return {
-            buildingList: [],                                                                       // 建筑列表
-            // Picker 样式对象
+            buildingList: [],                                                                       
             pickerStyleObj: {
-                boxShadowColor: 'rgba(0, 0, 0, 0.29)'                                               // '筛选'按钮 - 边框状态色
+                boxShadowColor: 'rgba(0, 0, 0, 0.29)'                                              
             },
             // Picker 用于展示的数据( 经过处理的data筛选值 )
             pickerDataObj: {
-                buildingArr: [],                                                                    // 建筑物 数组
-                floorArr: [],                                                                       // 楼层 数组
-                roomArr: []                                                                         // 房间号 数组
+                buildingArr: [],                                                                  
+                floorArr: [],                                                                  
+                roomArr: []                                                                       
             },
             // Picker 选择结果( 3列 筛选器的位值; 不是结果的value值 )
-            selectedIndex: {                                                                        // 筛选器结果 保存值
-                buildingIndex: 0,                                                                   // 建筑物 选择值
-                floorIndex: 0,                                                                      // 楼层 选择值
-                roomIndex: 0                                                                        // 房间 选择值
+            selectedIndex: {                                                                      
+                buildingIndex: 0,                                                                
+                floorIndex: 0,                                                                    
+                roomIndex: 0                                                                        
             },
             // Picker 选择结果( 3列 筛选器的value值 )
             selectedVal: []                         
@@ -214,7 +205,7 @@ export default {
         // 监听: '绑定' 建筑物列表
         getterBuildingList: function() {
             this.$data.buildingList = this.getterBuildingList
-            this.setPickerData()                                                                    //  ( 初始化 )处理picker需要的 data数据
+            this.setPickerData()                                                               
         }
     },
     mounted: function() {
