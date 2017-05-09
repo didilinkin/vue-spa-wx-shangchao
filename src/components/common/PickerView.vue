@@ -3,7 +3,9 @@
 .PickerView.auto--modulePaddingTB
     .Picker__btn(
         @click="pickerClick()"
+        v-bind:style="{ boxShadow: `1px 1px 1px ${styleObj.boxShadowColor}, inset 1px 1px 1px rgba(255, 255, 255, 0.44)` }"
     )
+        // styleObj.boxShadowColor
         img( v-bind:src="pickerIconImg" )
         span {{ pickerTitle }}
 </template>
@@ -15,6 +17,14 @@ import Picker       from 'better-picker'
 export default {
     name: 'PickerView',
     props: {
+        styleObj: {
+            type: Object,
+            default: function() {
+                return {
+                    boxShadowColor: 'rgba(0, 0, 0, 0.29)'
+                }
+            }
+        },
         buildingArr: {
             type: Array,
             default: function() {
@@ -64,8 +74,10 @@ export default {
             })
 
             // 保存 Picker筛选器结果 => 改变标题为 结果
-            picker.on( 'picker.select', ( _selectedVal, selectedIndex ) => {
-                this.$data.pickerTitle = `${ buildingArr[selectedIndex[0]].text } ${ floorArr[selectedIndex[1]].text } ${ roomArr[selectedIndex[2]].text }`
+            picker.on( 'picker.select', ( _selectedVal, _selectedIndex ) => {
+                // 暂时弃用
+                // this.$data.pickerTitle = `${ buildingArr[selectedIndex[0]].text } ${ floorArr[selectedIndex[1]].text } ${ roomArr[selectedIndex[2]].text }`
+                this.$data.pickerTitle = '继续绑定'
             })
 
             // 当一列滚动停止的时候，派发 picker.change 事件 => 传递: 列序号 index 及滚动停止的位置 selectedIndex
@@ -180,7 +192,6 @@ export default {
     },
     data() {
         return {
-            // $data 中暂时不保存 $props返回值;
             pickerTitle: '请选择房间编号',
             pickerIconImg: require( '../../assets/images/iconBuilding@2x.png' )
         }
@@ -193,11 +204,12 @@ export default {
 
 .PickerView
     .Picker__btn
+        +bC( $C-base )
         +ellipseBtn
         img
             +REM-W-H( $F-title*1.5 )
             +imgAlignBottom
             +REM( margin-right, $D-autoMargin )
         span
-            +REM-fontStyle( $F-title, $C-copy )
+            +REM-fontStyle( $F-title, $C-text )
 </style>

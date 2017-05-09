@@ -4,19 +4,12 @@
     PickerView(
         v-on:watchPickerIndex="setPickerIndex"
         v-on:watchPickerVal="setPickerValue"
+        v-bind:styleObj="pickerStyleObj"
         v-bind:buildingArr="pickerDataObj.buildingArr"
         v-bind:floorArr="pickerDataObj.floorArr"
         v-bind:roomArr="pickerDataObj.roomArr"
     )
-
     span 若您已租赁多个房间，选择任一房间即可
-
-    StateButton(
-        v-on:buttonClickEvent="setBinding()"
-        v-bind:buttonStyleObj="stateButtonObj.styleObj"
-        v-bind:buttonPlainBoolean="stateButtonObj.buttonPlainBoolean"
-        v-bind:buttonContentStr="stateButtonObj.title"
-    )
 </template>
 
 <script>
@@ -25,8 +18,7 @@ import swal             from 'sweetalert2'
 import { mapGetters }   from 'vuex'
 
 import PickerView       from '../components/common/PickerView'
-import StateButton      from '../components/common/StateButton'
-const components = { StateButton, PickerView }
+const components = { PickerView }
 
 export default {
     name: 'Binding',
@@ -84,7 +76,6 @@ export default {
                 }
                 this.$data.pickerDataObj.roomArr = roomResult
             }
-
             setBuildingData()                                                                       // 最后运行 全部
             setFloorData()
             setRoomData()
@@ -101,7 +92,6 @@ export default {
                     resolve()
                 })
             }
-
             const asyncSetPickerData = async () => {
                 try {
                     await asyncSelectedIndex( pickerIndexArr )                                      // 异步更改 $data中的 筛选器值
@@ -109,13 +99,11 @@ export default {
                     console.log( err )
                 }
             }
-
             asyncSetPickerData()
         },
         // 目的: 监听 Picker筛选器更改的value结果 => 去后台验证 3个value是否可用
         setPickerValue( pickerValueArr ) {
             this.$data.selectedVal = pickerValueArr                                                 // 将Picker value值保存到 $data中
-
             this.setCompanyNO()
         },
         // 目的: 设置'公司编号' ( 调用 sweetalert2弹框事件 )
@@ -134,21 +122,6 @@ export default {
                 preConfirm: function( number ) {
                     // 将Promise 改为 async()
                     return new Promise( function( resolve, reject ) {
-                        // 当请求绑定 => '成功'的返回框 ( 由 asyncRequireBuilding()调用 )
-                        const requireBindingSuccess = () => {
-                            swal({
-                                type: 'success',
-                                title: '绑定成功'
-                            })
-                        }
-                        // 当请求绑定 => '失败'的返回框 ( 由 asyncRequireBuilding()调用 )
-                        const requireBindingError = () => {
-                            swal({
-                                type: 'error',
-                                title: '绑定失败'
-                            })
-                        }
-
                         // 异步请求绑定
                         const asyncRequireBuilding = async () => {
                             try {
@@ -156,35 +129,31 @@ export default {
 
                                 // 判断返回值
                                 let bindingResult = that.getterBindingResult
-                                console.log( bindingResult )
-
 
                                 if( bindingResult ) {
-                                    console.log( '返回成功!' )
-                                    requireBindingSuccess()                          // 请求 - 绑定 => '成功'弹框
-                                    resolve()
+                                    that.setPickerStyle( 'rgb( 35, 210, 150 )' )    // 成功色
+                                    resolve()                                       // 绑定成功
                                 } else {
-                                    console.log( '返回失败!' )
-                                    requireBindingError()                           // 请求 - 绑定 => '失败'弹框
+                                    that.setPickerStyle( 'rgb( 255, 61, 61 )' )     // 失败色
+                                    reject()                                        // 绑定失败
                                 }
                             } catch( err ) {
                                 return reject( err )                                // 失败
                             }
                         }
-
-                        asyncRequireBuilding()  // 异步请求绑定
+                        asyncRequireBuilding()                                      // 异步请求绑定
                     })
                 },
                 allowOutsideClick: false                                            // 是否允许外边点击
             }).then( function( _number ) {
                 swal({
                     type: 'success',
-                    title: '绑定成功!'
+                    title: '成功绑定!'
                 })
             }).catch( () => {
                 swal({
                     type: 'error',
-                    title: '绑定失败'
+                    title: '失败绑定'
                 })
             })
         },
@@ -205,28 +174,22 @@ export default {
 
                 // 监听 '请求绑定' 返回值是否返回
                 this.$watch( 'getterBindingResult', () => {
-                    // console.log( '返回值已返回' )
-                    resolve()
+                    setTimeout( () => resolve(), 2000 )
                 })
             })
+        },
+        // 目的: 根据'请求绑定'返回值 修改'Picker'的状态样式
+        setPickerStyle( color ) {
+            this.$data.pickerStyleObj.boxShadowColor = color
         }
     },
     data() {
         return {
-            // 状态按钮 - props集合对象
-            stateButtonObj: {
-                styleObj: {
-                    className: 'auto--titleStyle',                                                  // 默认标题样式 / 完成后 传入主题色class( 禁用class: is-disabled )
-                    size: 'large'                                                                   // 默认尺寸: 大
-                },
-                buttonPlainBoolean: true,                                                           // 默认幽灵状态
-                title: '绑定',
-                icon: {
-                    iconState: 'null'
-                }
-            },
-            inputState: 'null',                                                                     // 输入状态
             buildingList: [],                                                                       // 建筑列表
+            // Picker 样式对象
+            pickerStyleObj: {
+                boxShadowColor: 'rgba(0, 0, 0, 0.29)'                                               // '筛选'按钮 - 边框状态色
+            },
             // Picker 用于展示的数据( 经过处理的data筛选值 )
             pickerDataObj: {
                 buildingArr: [],                                                                    // 建筑物 数组
@@ -253,11 +216,6 @@ export default {
             this.$data.buildingList = this.getterBuildingList
             this.setPickerData()                                                                    //  ( 初始化 )处理picker需要的 data数据
         }
-        // , 在 swal() 作用域中监听
-        // getterBindingResult: function() {
-        //     console.log( this.getterBindingResult )
-        //     console.log( 'getterBindingResult发生改变:' + this.getterBindingResult )             // 验证 value 返回结果
-        // }
     },
     mounted: function() {
         this.requireBuildingList()
@@ -271,4 +229,7 @@ export default {
 
 #Building
     +bC( $C-W )
+    +textCenter
+    >span
+        +REM-fontStyle( $F-assist, $C-copy )
 </style>
