@@ -23,7 +23,7 @@ const components = { PickerView }
 export default {
     name: 'Binding',
     methods: {
-        // 目的: 请求 - 建筑列表( 有哪些楼: 动态数据 )
+        // 目的: 请求 - 建筑列表
         requireBuildingList() {
             this.$store.dispatch({
                 type: 'binding/REQUEST_BUILDING_LIST'
