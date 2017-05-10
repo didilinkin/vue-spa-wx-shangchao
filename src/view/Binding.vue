@@ -78,7 +78,6 @@ export default {
         },
         // 目的: 监听 Picker筛选器更改的 index结果 => 保存结果到 $data 然后执行 setPickerData() 处理数据
         setPickerIndex( pickerIndexArr ) {
-            // 异步操作 $data中的 筛选器值
             const asyncSelectedIndex = ( indexArr ) => {
                 return new Promise( ( resolve ) => {
                     for( let i = 0; i < indexArr.length; i++ ) {
@@ -114,22 +113,28 @@ export default {
                 showCancelButton: true,                                         
                 confirmButtonText: '确认',
                 showLoaderOnConfirm: true,
-                // 输入前确认 是否是 邮箱类型
+                // 输入前确认 是否是 数值类型
                 preConfirm: function( number ) {
-                    // 将Promise 改为 async()
+                    // 使用 async()
                     return new Promise( function( resolve, reject ) {
-                        // 异步请求绑定
+                        // console.log( 'promise测试:' + number )
                         const asyncRequireBuilding = async () => {
                             try {
+                                // console.log( '请求异步前确认:' + number )
                                 await that.requireBinding( number )                
                                 // 判断返回值
-                                let bindingResult = that.getterBindingResult
+                                let bindingResult = that.$store.state.binding.bindingResult
                                 if( bindingResult ) {
                                     that.setPickerStyle( 'rgb( 35, 210, 150 )' )   
                                     resolve()                                      
                                 } else {
+                                    swal({
+                                        type: 'error',
+                                        title: '失败绑定'
+                                    })
                                     that.setPickerStyle( 'rgb( 255, 61, 61 )' )     
-                                    reject()                                       
+                                    reject()                     
+                                    console.log( '失败了' )                 
                                 }
                             } catch( err ) {
                                 return reject( err )                                
@@ -139,15 +144,10 @@ export default {
                     })
                 },
                 allowOutsideClick: false                                          
-            }).then( function( _number ) {
+            }).then( () => {
                 swal({
                     type: 'success',
                     title: '成功绑定!'
-                })
-            }).catch( () => {
-                swal({
-                    type: 'error',
-                    title: '失败绑定'
                 })
             })
         },
@@ -155,7 +155,6 @@ export default {
         requireBinding( CompanyNO ) {
             return new Promise( ( resolve, _reject ) => {
                 let [ buildingVal, floorVal, roomVal ] = this.$data.selectedVal     
-
                 this.$store.dispatch({
                     type: 'binding/REQUIRE_BINDING',
                     buildingValue: buildingVal,

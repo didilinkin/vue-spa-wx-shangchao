@@ -21,8 +21,10 @@
 | [Pug](https://pugjs.org/zh-cn/api/getting-started.html)       | Node模版语言         |  2.0.0-beta.12  |
 
 ## 使用插件:
-| 插件名称                                                           | 作用                           |  版本  |
-| --------                                                          | -----:                        | :----:  |
+| 插件名称                                                           | 作用                           |  版本  |    应用场景 | 
+| --------                                                          | -----:                        | -----:  |  :----:  |
+| [better-picker](https://github.com/ustbhuangyi/picker)            | ios风格移动端筛选器            |   1.1.3     |
+| [sweetalert2](https://github.com/limonte/sweetalert2)             | 美化弹框                       |   6.6.2     |
 | [Layzr.js](https://github.com/callmecavs/layzr.js)                | 图片懒加载 + 自适应分辨率       |   2.2.2     |
 | [vue-scrollto](https://github.com/rigor789/vue-scrollto)          | Vue卷轴插件                    |   2.6.7     |
 | [vue-star-rating](https://github.com/craigh411/vue-star-rating)   | Vue星星点评插件                 |   1.3.2     |

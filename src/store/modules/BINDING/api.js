@@ -24,7 +24,7 @@ export const apiRequireBinding = ( bindingValObj ) => {
             'buildingValue': bindingValObj.buildingValue,
             'floorValue': bindingValObj.floorValue,
             'roomValue': bindingValObj.roomValue,
-            'companyNo': bindingValObj.CompanyNO
+            'companyNo': bindingValObj.companyNo
         }) )
         .then( response => {
             let resulData = response.data.data
