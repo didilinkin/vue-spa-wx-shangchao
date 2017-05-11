@@ -1,16 +1,24 @@
-import Vue              from 'vue'
-import Router           from 'vue-router'
+import Vue                      from 'vue'
+import Router                   from 'vue-router'
 
-import BottomTitle      from '@/components/common/BottomTitle'
-import Home             from '@/view/Home'
+import BottomTitle              from '@/components/common/BottomTitle'
+import Home                     from '@/view/Home'
 
-import Bulletin         from '@/view/Bulletin'
-import Bill             from '@/view/Bill'
-import Fault            from '@/view/Fault'
-import Proposal         from '@/view/Proposal'
-import Binding          from '@/view/Binding'
+import Bulletin                 from '@/view/Bulletin'
+import Bill                     from '@/view/Bill'
+import Fault                    from '@/view/Fault'
+import Proposal                 from '@/view/Proposal'
+import Binding                  from '@/view/Binding'
 
-import BulletinDetails  from '@/pages/Bulletin/BulletinDetails'
+import BulletinDetails          from '@/pages/Bulletin/BulletinDetails'
+
+import BuildingFee              from '@/pages/Bill/BuildingFee'
+import PropertyFee              from '@/pages/Bill/PropertyFee'
+import ElectricityBill          from '@/pages/Bill/ElectricityBill'
+import WaterFee                 from '@/pages/Bill/WaterFee'
+import LeaseDeposit             from '@/pages/Bill/LeaseDeposit'
+import EnergyDeposit            from '@/pages/Bill/EnergyDeposit'
+import DecorationDeposit        from '@/pages/Bill/DecorationDeposit'
 
 Vue.use( Router )
 
@@ -70,6 +78,62 @@ export default new Router({
             meta: { title: '公告详情' },
             components: {
                 AppContent: BulletinDetails,
+                AppBottomTitle: BottomTitle
+            }
+        }, {                                                // 费用账单 - 二级类目
+            path: '/bill/buildingFee',                                      
+            name: 'BuildingFee',
+            meta: { title: '房屋租赁费' },
+            components: {
+                AppContent: BuildingFee,
+                AppBottomTitle: BottomTitle
+            }
+        }, {
+            path: '/bill/propertyFee',                                      
+            name: 'PropertyFee',
+            meta: { title: '物业管理费' },
+            components: {
+                AppContent: PropertyFee,
+                AppBottomTitle: BottomTitle
+            }
+        }, {
+            path: '/bill/electricityBill',                                      
+            name: 'ElectricityBill',
+            meta: { title: '电费' },
+            components: {
+                AppContent: ElectricityBill,
+                AppBottomTitle: BottomTitle
+            }
+        }, {
+            path: '/bill/waterFee',                                      
+            name: 'WaterFee',
+            meta: { title: '水费' },
+            components: {
+                AppContent: WaterFee,
+                AppBottomTitle: BottomTitle
+            }
+        }, {
+            path: '/bill/leaseDeposit',                                      
+            name: 'LeaseDeposit',
+            meta: { title: '租赁保证金' },
+            components: {
+                AppContent: LeaseDeposit,
+                AppBottomTitle: BottomTitle
+            }
+        }, {
+            path: '/bill/energyDeposit',                                      
+            name: 'EnergyDeposit',
+            meta: { title: '能源管理押金' },
+            components: {
+                AppContent: EnergyDeposit,
+                AppBottomTitle: BottomTitle
+            }
+        }, {
+            path: '/bill/decorationDeposit',                                      
+            name: 'DecorationDeposit',
+            meta: { title: '装修保证金' },
+            components: {
+                AppContent: DecorationDeposit,
                 AppBottomTitle: BottomTitle
             }
         }

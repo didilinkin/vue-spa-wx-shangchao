@@ -64,6 +64,12 @@
 =bC($backgroundColor)
     background-color: $backgroundColor
 
+// 背景渐变混合( 暂时只接受两个颜色. 可优化color为数组参数 )
+// $type( 必填, 默认: 线性渐变 ) = value: 渐变类型( linear线性 / radial径向 ) 
+// $repeat( 可选, 默认: 空 ) = value: 'repeating-' 重复渐变
+=bC-gradient($colorA, $colorB, $type: linear, $repeat: null)
+    background: unquote( "#{$repeat}#{$type}-gradient(#{$colorA}, #{$colorB})" )
+
 =light( $color, $size )
     lighten( $color, $size )
 
@@ -155,6 +161,14 @@
     -webkit-line-clamp: $lineNum
     -webkit-box-orient: vertical
     overflow: hidden
+
+// 省略号 截断文本( 单行用 )
+=ell-line-one( $maxWidth )
+    margin: 0 auto
+    max-width: $maxWidth
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
 
 // 椭圆按钮( 有阴影 )
 =ellipseBtn($padding-TB: 10px, $color: rgba(0,0,0, .29))
