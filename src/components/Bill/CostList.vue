@@ -8,7 +8,7 @@ ul.CostList
     )
         .CostList__iconBox( v-bind:style="{ backgroundColor: briefListObj.listIconColor }" )
             img( v-bind:src="briefListObj.listIcon" )
-        .CostList__contentBox
+        .CostList__contentBox( @click="showCostInfo( index )" )
             .CostList__contentBox__title
                 h2 {{ item.title }}
                 h2
@@ -26,7 +26,7 @@ ul.CostList
 </template>
 
 <script>
-/* global require: true */ 
+/* global require: true */
 export default {
     name: 'CostList',
     props: {
@@ -50,9 +50,22 @@ export default {
             }
         }
     },
+    methods: {
+        // 目的: 展示 '账单'详情( 根据index 进行展示 )
+        showCostInfo( index ) {
+            console.log( this.$data.showInfoIndex )
+            if( this.$data.showInfoIndex === null ) {                                       // 是否进行判空
+                console.log( 'null' )
+            } else {
+                console.log( '不为空' )
+            }
+            console.log( index )
+        }
+    },
     data() {
         return {
-            costListArrowIcon: require( '../../assets/images/iconListArrow@2x.png' )    // 箭头
+            costListArrowIcon: require( '../../assets/images/iconListArrow@2x.png' ),       // 箭头
+            showInfoIndex: null                                                             // 无显示 => 空
         }
     }
 }
@@ -88,12 +101,12 @@ export default {
     >img
         margin-left: 5%
         +REM-W-H( $F-text )
-        +imgAlign( middle )
+        +imgAlign( baseline )
         transform: rotate( 90deg )
 // 日期内容
 .CostList__contentBox__date
     +REM( padding-top, $D-autoPadding/2 )
-    span 
+    span
         +REM( margin-right, $F-assist/2 )
         +REM-fontStyle( $F-assist, $C-copy )
 </style>

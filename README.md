@@ -1,7 +1,7 @@
 # shangchao-pms-wx
 
 > 上朝科技-物业管理系统-微信公众号网站
-
+>
 > 本页面需要在服务器环境下访问( 可使用 `yarn run dev` 预览 ), 勿直接浏览静态页面
 
 ## 使用技术:
@@ -21,7 +21,7 @@
 | [Pug](https://pugjs.org/zh-cn/api/getting-started.html)       | Node模版语言         |  2.0.0-beta.12  |
 
 ## 使用插件:
-| 插件名称                                                           | 作用                           |  版本  |    应用场景 | 
+| 插件名称                                                           | 作用                           |  版本  |    应用场景 |
 | --------                                                          | -----:                        | -----:  |  :----:  |
 | [better-picker](https://github.com/ustbhuangyi/picker)            | ios风格移动端筛选器            |   1.1.3     |
 | [sweetalert2](https://github.com/limonte/sweetalert2)             | 美化弹框                       |   6.6.2     |
