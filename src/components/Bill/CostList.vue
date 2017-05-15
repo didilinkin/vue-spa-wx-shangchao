@@ -1,13 +1,16 @@
-// '费用账单' - 账单费用组件 - 应用组件( 房屋租赁费 / 物业管理费 /  电费 / 水费 )
+// '费用账单' - 账单费用组件 - 应用场景组件( 房屋租赁费 / 物业管理费 /  电费 / 水费 )
 <template lang="pug">
 ul.CostList
     li.auto--moduleMarginBottom(
-        v-for="( item, index ) in briefListObj.listArr"
+        v-for="( item, index ) in renderListObj.listArr"
         v-bind:key="index"
         v-bind:style="{ backgroundColor: '#FFF' }"
     )
+        // 非折叠 - 专属图标信息
         .CostList__iconBox( v-bind:style="{ backgroundColor: briefListObj.listIconColor }" )
             img( v-bind:src="briefListObj.listIcon" )
+        
+        // 非折叠 - 基本信息 
         .CostList__contentBox( @click="showCostInfo( index )" )
             .CostList__contentBox__title
                 h2 {{ item.title }}
@@ -23,10 +26,27 @@ ul.CostList
                 .CostList--text
                     span 交费期限
                     span {{ item.payDate }}
+
+        // 折叠 - 账单详细信息
+        .CostList__detailsInfo( v-show="item.showDetailInfo" )
+            // 详情列表( '房屋租赁费'不显示 此模块 )
+            CostDetailList( v-if="briefListObj.hasDetailList" )
+
+            // 价格 + 合计数值等
+            .CostList__detailsInfo__item.auto--moduleMarginTop.auto--modulePaddingTB(
+                v-for="( itemInfo, indexInfo ) in item.detailsInfo"
+                v-bind:key="indexInfo"
+            )
+                p
+                    b {{ itemInfo.title }}
+                p {{ itemInfo.value }}
 </template>
 
 <script>
 /* global require: true */
+import CostDetailList       from    './CostDetailList'
+const components = { CostDetailList }
+
 export default {
     name: 'CostList',
     props: {
@@ -43,9 +63,23 @@ export default {
                             money: '1111',
                             tollStartDate: '2017-01-01',
                             tollDeadline: '2017-03-31',
-                            payDate: '2017-04-10'
+                            payDate: '2017-04-10',
+                            detailsInfo: [
+                                {
+                                    title: '标题A',
+                                    value: 5
+                                }, {
+                                    title: '标题B',
+                                    value: 400
+                                }, {
+                                    title: '标题C',
+                                    value: 12345.12
+                                }
+                            ],
+                            showDetailInfo: false
                         }
-                    ]
+                    ],
+                    hasDetailList: false    // 是否显示 '详情列表': 否
                 }
             }
         }
@@ -53,21 +87,28 @@ export default {
     methods: {
         // 目的: 展示 '账单'详情( 根据index 进行展示 )
         showCostInfo( index ) {
-            console.log( this.$data.showInfoIndex )
-            if( this.$data.showInfoIndex === null ) {                                       // 是否进行判空
-                console.log( 'null' )
-            } else {
-                console.log( '不为空' )
+            let arr = this.$data.renderListObj.listArr                                      // 储存一个数组
+            let showIndexBoolean = arr[index].showDetailInfo
+            
+            for( let i = 0; i < arr.length; i++ ) {                                         // 将全部对象属性设为 '隐藏'
+                arr[i].showDetailInfo = false
             }
-            console.log( index )
+            this.$data.renderListObj.listArr[index].showDetailInfo = !showIndexBoolean      // 将之前储存的index.show属性取反
         }
     },
     data() {
         return {
+            renderListObj: this.$props.briefListObj,                                        // 将$props 保存在 $data( 点击事件处理'显示'逻辑 )
             costListArrowIcon: require( '../../assets/images/iconListArrow@2x.png' ),       // 箭头
-            showInfoIndex: null                                                             // 无显示 => 空
+            showInfoIndex: 0                                                                // 无显示 => 空
         }
-    }
+    },
+    watch: {
+        briefListObj: function() {
+            this.$data.renderListObj = this.$props.briefListObj                             // 赋值: 将 $props => $data
+        }
+    },
+    components: components
 }
 </script>
 
@@ -88,6 +129,7 @@ export default {
     .CostList__contentBox
         +REM( margin-left, ( $D-autoMargin + $F-big-title*1.5 ) )
         +REM( padding, $D-autoPadding )
+
 // 标题 + 金额
 .CostList__contentBox__title
     +REL
@@ -103,10 +145,24 @@ export default {
         +REM-W-H( $F-text )
         +imgAlign( baseline )
         transform: rotate( 90deg )
+
 // 日期内容
 .CostList__contentBox__date
     +REM( padding-top, $D-autoPadding/2 )
     span
         +REM( margin-right, $F-assist/2 )
         +REM-fontStyle( $F-assist, $C-copy )
+
+// 折叠 - 账单详细信息
+.CostList__detailsInfo
+    +flexCenter
+    +bC( $C-base )
+    >.CostList__detailsInfo__item
+        flex: 1
+        +bC( $C-W )
+        +textCenter
+        >p
+            +REM-fontStyle( $F-text, $C-title )
+            &:first-child
+                +REM( margin-bottom, $D-autoMargin/2 )
 </style>

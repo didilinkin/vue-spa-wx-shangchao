@@ -2,6 +2,7 @@
 <template lang="pug">
 #BuildingFee
     BillHeader( v-bind:contentObj="BillHeaderObj" )
+    // v-on:watchDetailInfo="setDetailIndex"
     CostList(
         v-bind:briefListObj="CostListBrief"
     )
@@ -41,21 +42,61 @@ export default {
                         money: '1111,456.00',
                         tollStartDate: '2017-01-01',
                         tollDeadline: '2017-03-31',
-                        payDate: '2017-04-10'
+                        payDate: '2017-04-10',
+                        detailsInfo: [
+                            {
+                                title: '单价',
+                                value: 5
+                            }, {
+                                title: '面积',
+                                value: 400
+                            }, {
+                                title: '本期费用合计',
+                                value: 12345.12
+                            }
+                        ],
+                        showDetailInfo: false
                     }, {
                         title: '房屋租赁费B',
                         money: '2222,456.00',
                         tollStartDate: '2017-01-01',
                         tollDeadline: '2017-03-31',
-                        payDate: '2017-04-10'
+                        payDate: '2017-04-10',
+                        detailsInfo: [
+                            {
+                                title: '单价',
+                                value: 5
+                            }, {
+                                title: '面积',
+                                value: 400
+                            }, {
+                                title: '本期费用合计',
+                                value: 12345.12
+                            }
+                        ],
+                        showDetailInfo: false
                     }, {
                         title: '房屋租赁费C',
                         money: '3333,456.00',
                         tollStartDate: '2017-01-01',
                         tollDeadline: '2017-03-31',
-                        payDate: '2017-04-10'
+                        payDate: '2017-04-10',
+                        detailsInfo: [
+                            {
+                                title: '单价',
+                                value: 5
+                            }, {
+                                title: '面积',
+                                value: 400
+                            }, {
+                                title: '本期费用合计',
+                                value: 12345.12
+                            }
+                        ],
+                        showDetailInfo: false
                     }
-                ]
+                ],
+                hasDetailList: false    // 是否显示 '详情列表': 否
             }
         }
     },

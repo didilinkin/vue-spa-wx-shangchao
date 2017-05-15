@@ -32,8 +32,8 @@ export default {
             },
             // 费用列表 - 简要( 收起样式 展示 )
             CostListBrief: {
-                listIcon: require( '../../assets/images/iconHousTitle@2x.png' ),
-                listIconColor: 'rgb( 255, 181, 0 )',
+                listIcon: require( '../../assets/images/iconEleTitle@2x.png' ),
+                listIconColor: 'rgb( 255, 111, 77 )',
                 // 列表数组
                 listArr: [
                     {
