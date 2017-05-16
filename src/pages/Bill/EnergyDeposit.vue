@@ -1,6 +1,6 @@
 g// '费用账单' - 能源管理押金
 <template lang="pug">
-#EnergyDeposit
+#EnergyDeposit.bill--backgroundColor
     BillHeader( v-bind:contentObj="BillHeaderObj" )
 </template> 
 

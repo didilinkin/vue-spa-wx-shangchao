@@ -1,6 +1,6 @@
 // '费用账单' - 水费
 <template lang="pug">
-#WaterFee
+#WaterFee.bill--backgroundColor
     BillHeader( v-bind:contentObj="BillHeaderObj" )
     CostList(
         v-bind:briefListObj="CostListBrief"

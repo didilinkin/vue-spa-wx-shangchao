@@ -1,6 +1,6 @@
 // '费用账单' - 租赁保证金
 <template lang="pug">
-#LeaseDeposit
+#LeaseDeposit.bill--backgroundColor
     BillHeader( v-bind:contentObj="BillHeaderObj" )
 </template> 
 

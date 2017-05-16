@@ -26,14 +26,19 @@ ul.CostList
                 .CostList--text
                     span 交费期限
                     span {{ item.payDate }}
+        
+        // 详情列表( '房屋租赁费'不显示 此模块 )
+        CostDetailList( 
+            v-if="briefListObj.hasDetailList"
+            v-show="item.showDetailInfo"
+            v-bind:detailListHeaderArr="detailHeaderArr"
+            v-bind:detailListArr="item.detailList"
+        )
 
         // 折叠 - 账单详细信息
-        .CostList__detailsInfo( v-show="item.showDetailInfo" )
-            // 详情列表( '房屋租赁费'不显示 此模块 )
-            CostDetailList( v-if="briefListObj.hasDetailList" )
-
+        .CostList__detailsInfo.auto--modulePaddingTB( v-show="item.showDetailInfo" )
             // 价格 + 合计数值等
-            .CostList__detailsInfo__item.auto--moduleMarginTop.auto--modulePaddingTB(
+            .CostList__detailsInfo__item.auto--modulePaddingTB(
                 v-for="( itemInfo, indexInfo ) in item.detailsInfo"
                 v-bind:key="indexInfo"
             )
@@ -64,6 +69,7 @@ export default {
                             tollStartDate: '2017-01-01',
                             tollDeadline: '2017-03-31',
                             payDate: '2017-04-10',
+                            showDetailInfo: false,
                             detailsInfo: [
                                 {
                                     title: '标题A',
@@ -76,11 +82,27 @@ export default {
                                     value: 12345.12
                                 }
                             ],
-                            showDetailInfo: false
+                            detailList: [
+                                [ '物业费', '4.85元/㎡ 月', 123456.00 ],
+                                [ '电梯费', '1.35元/㎡ 月', 456.00 ],
+                                [ '空调费', '0.39元/㎡ 月', 3456.00 ],
+                                [ '水费', '1.23元/㎡ 月', 56.00 ],
+                                [ '违约金', 56.00 ],
+                                [ '已收金额', 26.00 ]
+                            ]
                         }
                     ],
                     hasDetailList: false    // 是否显示 '详情列表': 否
                 }
+            }
+        },
+        // 详情列表头部( 展开样式 )
+        detailHeaderArr: {
+            type: Array,
+            default: function() {
+                return [
+                    '头部标题A', '头部标题B', '头部标题C'
+                ]
             }
         }
     },
@@ -120,15 +142,16 @@ export default {
     .CostList__iconBox
         +ABS
         +REM-margin-TB( $D-autoMargin )
-        +REM-margin-LR( $D-autoMargin/2 )
+        +REM-margin-LR( $D-autoMargin )
         +REM-W-H( $F-big-title*1.5 )
         +radius( 50% )
         >img
             padding: 20%
             +imgCover( 60% )
     .CostList__contentBox
-        +REM( margin-left, ( $D-autoMargin + $F-big-title*1.5 ) )
+        +REM( margin-left, ( $D-autoMargin*2 + $F-big-title*1.5 ) )
         +REM( padding, $D-autoPadding )
+        padding-left: 0
 
 // 标题 + 金额
 .CostList__contentBox__title
@@ -141,7 +164,10 @@ export default {
         &:first-child
             width: 50%
     >img
-        margin-left: 5%
+        // margin-left: 5%
+        +ABS
+        right: 0
+        top: 15%
         +REM-W-H( $F-text )
         +imgAlign( baseline )
         transform: rotate( 90deg )

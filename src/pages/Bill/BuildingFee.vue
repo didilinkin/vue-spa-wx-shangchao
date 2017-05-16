@@ -1,6 +1,6 @@
 // '费用账单' - 房屋租赁费
 <template lang="pug">
-#BuildingFee
+#BuildingFee.bill--backgroundColor
     BillHeader( v-bind:contentObj="BillHeaderObj" )
     // v-on:watchDetailInfo="setDetailIndex"
     CostList(
@@ -35,6 +35,7 @@ export default {
             CostListBrief: {
                 listIcon: require( '../../assets/images/iconHousTitle@2x.png' ),
                 listIconColor: 'rgb( 255, 181, 0 )',
+                hasDetailList: false,                           // 是否显示 '详情列表': 否
                 // 列表数组
                 listArr: [
                     {
@@ -43,6 +44,7 @@ export default {
                         tollStartDate: '2017-01-01',
                         tollDeadline: '2017-03-31',
                         payDate: '2017-04-10',
+                        showDetailInfo: false,
                         detailsInfo: [
                             {
                                 title: '单价',
@@ -54,14 +56,14 @@ export default {
                                 title: '本期费用合计',
                                 value: 12345.12
                             }
-                        ],
-                        showDetailInfo: false
+                        ]
                     }, {
                         title: '房屋租赁费B',
                         money: '2222,456.00',
                         tollStartDate: '2017-01-01',
                         tollDeadline: '2017-03-31',
                         payDate: '2017-04-10',
+                        showDetailInfo: false,
                         detailsInfo: [
                             {
                                 title: '单价',
@@ -73,14 +75,14 @@ export default {
                                 title: '本期费用合计',
                                 value: 12345.12
                             }
-                        ],
-                        showDetailInfo: false
+                        ]
                     }, {
                         title: '房屋租赁费C',
                         money: '3333,456.00',
                         tollStartDate: '2017-01-01',
                         tollDeadline: '2017-03-31',
                         payDate: '2017-04-10',
+                        showDetailInfo: false,
                         detailsInfo: [
                             {
                                 title: '单价',
@@ -92,11 +94,9 @@ export default {
                                 title: '本期费用合计',
                                 value: 12345.12
                             }
-                        ],
-                        showDetailInfo: false
+                        ]
                     }
-                ],
-                hasDetailList: false    // 是否显示 '详情列表': 否
+                ]
             }
         }
     },
@@ -106,10 +106,3 @@ export default {
     components: components
 }
 </script>
-
-<style lang="sass">
-@import "../../sass/main"
-
-#BuildingFee
-    +bC( $C-base )
-</style>

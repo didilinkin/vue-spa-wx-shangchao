@@ -1,6 +1,6 @@
 // '费用账单' - 装修保证金
 <template lang="pug">
-#DecorationDeposit
+#DecorationDeposit.bill--backgroundColor
     BillHeader( v-bind:contentObj="BillHeaderObj" )
 </template> 
 
