@@ -6,21 +6,22 @@ ul.CostDetailList
         .li--item(
             v-for="( item, index ) in detailListHeaderArr"
             v-bind:key="index"
-        ) 
+        )
             p {{ item }}
     // 修饰线
     hr
 
-    //  列表内容( $props: )
+    //  详情账单列表内容( $props: )
     .CostDetailList__contentBox(
         v-for="( arrListItem, arrListIndex ) in detailListArr"
         v-bind:key="arrListIndex"
     )
-        li
+        li( @click="openDetailCheck( arrListIndex )" )
+            // 详情账单列表内容 - 标题
             .li--item(
-                v-for="( listItem, listIndex ) in arrListItem"
+                v-for="( listItem, listIndex ) in arrListItem.detailListTitle"
                 v-bind:key="listItem"
-            ) 
+            )
                 p {{ listItem }}
         hr
 </template>
@@ -43,10 +44,51 @@ export default {
             type: Array,
             default: function() {
                 return [
-                    [ '费用A', '4.85元/㎡ 月', 123456.00 ],
-                    [ '费用B', '1.35元/㎡ 月', 456.00 ]
+                    {                                               // 第一个
+                        detailListTitle: [
+                            '招商银行正式用电', 8003.39
+                        ],
+                        detailListCheck: [
+                            {
+                                keyName: '上次抄表度数',
+                                val: 736990
+                            }, {
+                                keyName: '本次抄表度数',
+                                val: 745353
+                            }, {
+                                keyName: '电量( Kwh )',
+                                val: 8363
+                            }, {
+                                keyName: '变化',
+                                val: 1
+                            }, {
+                                keyName: '电损10%',
+                                val: 936.3
+                            }, {
+                                keyName: '总电量',
+                                val: 9199.3
+                            }, {
+                                keyName: '峰谷比例',
+                                val: 1
+                            }, {
+                                keyName: '单价',
+                                val: 0.87
+                            }, {
+                                keyName: '备注',
+                                val: `此处是备注信息此处是备注信息
+                                        此处是备注信息此处是备注信息
+                                        此处是备注信息`
+                            }
+                        ]
+                    }
                 ]
             }
+        }
+    },
+    methods: {
+        // 点击 '详情账单列表内容' li 事件 => 打开 详情列表账单
+        openDetailCheck( listIndex ) {
+            console.log( listIndex )
         }
     }
 }
@@ -80,7 +122,7 @@ ul li
             +REM-fontStyle( $F-text, $C-title )
 
 // 修饰线
-hr 
+hr
     +REM-margin-LR( $D-autoMargin )
     border: none
     +borderBottom( $C-line )

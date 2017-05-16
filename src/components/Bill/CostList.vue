@@ -9,8 +9,8 @@ ul.CostList
         // 非折叠 - 专属图标信息
         .CostList__iconBox( v-bind:style="{ backgroundColor: briefListObj.listIconColor }" )
             img( v-bind:src="briefListObj.listIcon" )
-        
-        // 非折叠 - 基本信息 
+
+        // 非折叠 - 基本信息
         .CostList__contentBox( @click="showCostInfo( index )" )
             .CostList__contentBox__title
                 h2 {{ item.title }}
@@ -26,9 +26,9 @@ ul.CostList
                 .CostList--text
                     span 交费期限
                     span {{ item.payDate }}
-        
-        // 详情列表( '房屋租赁费'不显示 此模块 )
-        CostDetailList( 
+
+        // 折叠 - 详情账单列表( '房屋租赁费'不显示 此模块 )
+        CostDetailList(
             v-if="briefListObj.hasDetailList"
             v-show="item.showDetailInfo"
             v-bind:detailListHeaderArr="detailHeaderArr"
@@ -83,12 +83,43 @@ export default {
                                 }
                             ],
                             detailList: [
-                                [ '物业费', '4.85元/㎡ 月', 123456.00 ],
-                                [ '电梯费', '1.35元/㎡ 月', 456.00 ],
-                                [ '空调费', '0.39元/㎡ 月', 3456.00 ],
-                                [ '水费', '1.23元/㎡ 月', 56.00 ],
-                                [ '违约金', 56.00 ],
-                                [ '已收金额', 26.00 ]
+                                {                                               // 第一个
+                                    detailListTitle: [
+                                        '招商银行正式用电', 8003.39
+                                    ],
+                                    detailListCheck: [
+                                        {
+                                            keyName: '上次抄表度数',
+                                            val: 736990
+                                        }, {
+                                            keyName: '本次抄表度数',
+                                            val: 745353
+                                        }, {
+                                            keyName: '电量( Kwh )',
+                                            val: 8363
+                                        }, {
+                                            keyName: '变化',
+                                            val: 1
+                                        }, {
+                                            keyName: '电损10%',
+                                            val: 936.3
+                                        }, {
+                                            keyName: '总电量',
+                                            val: 9199.3
+                                        }, {
+                                            keyName: '峰谷比例',
+                                            val: 1
+                                        }, {
+                                            keyName: '单价',
+                                            val: 0.87
+                                        }, {
+                                            keyName: '备注',
+                                            val: `此处是备注信息此处是备注信息
+                                                    此处是备注信息此处是备注信息
+                                                    此处是备注信息`
+                                        }
+                                    ]
+                                }
                             ]
                         }
                     ],
@@ -111,7 +142,7 @@ export default {
         showCostInfo( index ) {
             let arr = this.$data.renderListObj.listArr                                      // 储存一个数组
             let showIndexBoolean = arr[index].showDetailInfo
-            
+
             for( let i = 0; i < arr.length; i++ ) {                                         // 将全部对象属性设为 '隐藏'
                 arr[i].showDetailInfo = false
             }
