@@ -63,6 +63,7 @@ export default {
                                 detailListTitle: [
                                     '招商银行正式用电', 8003.39
                                 ],
+                                showDetailCheck: false,                     // 折叠 - 详情账单 是否展开( 3级列表 )
                                 detailListCheck: [
                                     {
                                         keyName: '上次抄表度数',
@@ -99,6 +100,7 @@ export default {
                                 detailListTitle: [
                                     '招商银行外置空调用电', 8003.39
                                 ],
+                                showDetailCheck: false,                     // 折叠 - 详情账单 是否展开( 3级列表 )
                                 detailListCheck: [
                                     {
                                         keyName: '上次抄表度数',
@@ -135,6 +137,7 @@ export default {
                                 detailListTitle: [
                                     '上月差额', 8003.39
                                 ],
+                                showDetailCheck: false,                     // 折叠 - 详情账单 是否展开( 3级列表 )
                                 detailListCheck: [
                                     {
                                         keyName: '总电量',
@@ -180,6 +183,7 @@ export default {
                                 detailListTitle: [
                                     '招商银行正式用电', 8003.39
                                 ],
+                                showDetailCheck: false,                     // 折叠 - 详情账单 是否展开( 3级列表 )
                                 detailListCheck: [
                                     {
                                         keyName: '上次抄表度数',
@@ -216,6 +220,7 @@ export default {
                                 detailListTitle: [
                                     '招商银行外置空调用电', 8003.39
                                 ],
+                                showDetailCheck: false,                     // 折叠 - 详情账单 是否展开( 3级列表 )
                                 detailListCheck: [
                                     {
                                         keyName: '上次抄表度数',
@@ -252,6 +257,7 @@ export default {
                                 detailListTitle: [
                                     '上月差额', 8003.39
                                 ],
+                                showDetailCheck: false,                     // 折叠 - 详情账单 是否展开( 3级列表 )
                                 detailListCheck: [
                                     {
                                         keyName: '总电量',
@@ -297,6 +303,7 @@ export default {
                                 detailListTitle: [
                                     '招商银行正式用电', 8003.39
                                 ],
+                                showDetailCheck: false,                     // 折叠 - 详情账单 是否展开( 3级列表 )
                                 detailListCheck: [
                                     {
                                         keyName: '上次抄表度数',
@@ -333,6 +340,7 @@ export default {
                                 detailListTitle: [
                                     '招商银行外置空调用电', 8003.39
                                 ],
+                                showDetailCheck: false,                     // 折叠 - 详情账单 是否展开( 3级列表 )
                                 detailListCheck: [
                                     {
                                         keyName: '上次抄表度数',
@@ -369,6 +377,7 @@ export default {
                                 detailListTitle: [
                                     '上月差额', 8003.39
                                 ],
+                                showDetailCheck: false,                     // 折叠 - 详情账单 是否展开( 3级列表 )
                                 detailListCheck: [
                                     {
                                         keyName: '总电量',

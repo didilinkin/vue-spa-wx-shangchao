@@ -11,22 +11,42 @@ ul.CostDetailList
     // 修饰线
     hr
 
-    //  详情账单列表内容( $props: )
+    //  详情账单列表内容( 循环$props )
     .CostDetailList__contentBox(
-        v-for="( arrListItem, arrListIndex ) in detailListArr"
+        v-for="( arrListItem, arrListIndex ) in renderDetailListArr"
         v-bind:key="arrListIndex"
     )
         li( @click="openDetailCheck( arrListIndex )" )
-            // 详情账单列表内容 - 标题
+            // 详情账单列表 - 标题部分
             .li--item(
                 v-for="( listItem, listIndex ) in arrListItem.detailListTitle"
                 v-bind:key="listItem"
             )
                 p {{ listItem }}
+            // v-if 判断 li内的check数组是否为空( 如果为空 返回的将是false => v-if 隐藏 )
+            img(
+                v-if="arrListItem.detailListCheck"
+                v-bind:src="detailListCheckIcon" 
+            )
+
+        // 详情账单列表 - '具体费用'容器
+        ul.detailCheckListBox( v-if="arrListItem.showDetailCheck" )
+            .CostDetailList__checkItem(
+                v-for="( checkItem, checkIndex ) in arrListItem.detailListCheck"
+                v-bind:key="checkItem"
+            )
+                li.detailCheckList--item
+                    // 详情账单列表 - 具体费用; 此处不能用循环来写 li--item, 需要用键值
+                    .li--item
+                        p {{ checkItem.keyName }}
+                    .li--item
+                        p {{ checkItem.val }}
+                hr.detailCheckList--hr
         hr
 </template>
 
 <script>
+/* global require: true */ 
 export default {
     name: 'CostDetailList',
     props: {
@@ -48,6 +68,7 @@ export default {
                         detailListTitle: [
                             '招商银行正式用电', 8003.39
                         ],
+                        showDetailCheck: false,                     // 折叠 - 详情账单 是否展开( 3级列表 )
                         detailListCheck: [
                             {
                                 keyName: '上次抄表度数',
@@ -88,7 +109,26 @@ export default {
     methods: {
         // 点击 '详情账单列表内容' li 事件 => 打开 详情列表账单
         openDetailCheck( listIndex ) {
-            console.log( listIndex )
+            let arr = this.$data.renderDetailListArr                                        // 将 传入的列表数组缓存
+            let showIndexBoolean = arr[listIndex].showDetailCheck                           // 将 index所在的对象中 '是否显示3级 详情账单列表'的 布尔值 临时储存
+
+            for( let i = 0; i < arr.length; i++ ) {
+                arr[i].showDetailCheck = false                                              // 将全部对象属性设为 '隐藏'
+            }
+            this.$data.renderDetailListArr[listIndex].showDetailCheck = !showIndexBoolean   // 将之前储存的index.show属性取反
+        }
+    },
+    data() {
+        return {
+            detailListCheckIcon: require( '../../assets/images/iconListArrow@2x.png' ),
+            renderDetailListArr: this.$props.detailListArr                                  // 将$props 保存在 $data( 点击事件处理'显示'逻辑 )
+        }
+    },
+    watch: {
+        // 监听: $props 传入数据; 将 $props数据保存到 $data
+        detailListArr: function() {
+            this.$data.renderDetailListArr = this.$props.detailListArr
+            console.log( '$props传入' )
         }
     }
 }
@@ -104,6 +144,14 @@ export default {
         &:last-child hr
             border: none
 
+// '具体费用'容器 - 要与列表标题 颜色做区分
+.CostDetailList__checkItem
+    .detailCheckList--item
+        +bC( $C-base )
+    &:last-of-type
+        .detailCheckList--hr
+            border: none
+
 ul li
     +flexCenter
     +REM-padding-LR( $D-autoPadding )
@@ -112,19 +160,23 @@ ul li
     >.li--item
         flex: 1
         +textCenter
-        &:first-child
+        >p
+            +REM-fontStyle( $F-text, $C-title )
+        &:first-of-type
             text-align: left
             >p
                 +fW( bold )
-        &:last-child
+        &:last-of-type
             text-align: right
-        >p
-            +REM-fontStyle( $F-text, $C-title )
+    // 详情账单列表 可展开箭头图标 
+    >img
+        +REM-W-H( $F-text )
+        +REM( margin-left, $F-text )
+        transform: rotate( 90deg )
 
 // 修饰线
 hr
     +REM-margin-LR( $D-autoMargin )
     border: none
     +borderBottom( $C-line )
-
 </style>

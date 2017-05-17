@@ -58,12 +58,37 @@ export default {
                             }
                         ],
                         detailList: [
-                            [ '物业费', '4.85元/㎡ 月', 123456.00 ],
-                            [ '电梯费', '1.35元/㎡ 月', 456.00 ],
-                            [ '空调费', '0.39元/㎡ 月', 3456.00 ],
-                            [ '水费', '1.23元/㎡ 月', 56.00 ],
-                            [ '违约金', 56.00 ],
-                            [ '已收金额', 26.00 ]
+                            {
+                                detailListTitle: [
+                                    '物业费', '4.85元/㎡ 月', 123456.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '电梯费', '1.35元/㎡ 月', 456.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '空调费', '0.39元/㎡ 月', 3456.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '水费', '1.23元/㎡ 月', 56.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '违约金', 56.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '已收金额', 26.00
+                                ],
+                                detailListCheck: false
+                            }
                         ]
                     }, {
                         title: '物业管理费B',
@@ -85,12 +110,37 @@ export default {
                             }
                         ],
                         detailList: [
-                            [ '物业费', '4.85元/㎡ 月', 123456.00 ],
-                            [ '电梯费', '1.35元/㎡ 月', 456.00 ],
-                            [ '空调费', '0.39元/㎡ 月', 3456.00 ],
-                            [ '水费', '1.23元/㎡ 月', 56.00 ],
-                            [ '违约金', 56.00 ],
-                            [ '已收金额', 26.00 ]
+                            {
+                                detailListTitle: [
+                                    '物业费', '4.85元/㎡ 月', 123456.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '电梯费', '1.35元/㎡ 月', 456.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '空调费', '0.39元/㎡ 月', 3456.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '水费', '1.23元/㎡ 月', 56.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '违约金', 56.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '已收金额', 26.00
+                                ],
+                                detailListCheck: false
+                            }
                         ]
                     }, {
                         title: '物业管理费C',
@@ -112,12 +162,37 @@ export default {
                             }
                         ],
                         detailList: [
-                            [ '物业费', '4.85元/㎡ 月', 123456.00 ],
-                            [ '电梯费', '1.35元/㎡ 月', 456.00 ],
-                            [ '空调费', '0.39元/㎡ 月', 3456.00 ],
-                            [ '水费', '1.23元/㎡ 月', 56.00 ],
-                            [ '违约金', 56.00 ],
-                            [ '已收金额', 26.00 ]
+                            {
+                                detailListTitle: [
+                                    '物业费', '4.85元/㎡ 月', 123456.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '电梯费', '1.35元/㎡ 月', 456.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '空调费', '0.39元/㎡ 月', 3456.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '水费', '1.23元/㎡ 月', 56.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '违约金', 56.00
+                                ],
+                                detailListCheck: false
+                            }, {
+                                detailListTitle: [
+                                    '已收金额', 26.00
+                                ],
+                                detailListCheck: false
+                            }
                         ]
                     }
                 ]

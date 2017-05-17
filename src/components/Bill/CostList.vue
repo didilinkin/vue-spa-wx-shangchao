@@ -69,7 +69,7 @@ export default {
                             tollStartDate: '2017-01-01',
                             tollDeadline: '2017-03-31',
                             payDate: '2017-04-10',
-                            showDetailInfo: false,
+                            showDetailInfo: false,                              // 折叠 - 信息 是否展开( 2级列表 ) 
                             detailsInfo: [
                                 {
                                     title: '标题A',
@@ -87,6 +87,7 @@ export default {
                                     detailListTitle: [
                                         '招商银行正式用电', 8003.39
                                     ],
+                                    showDetailCheck: false,                     // 折叠 - 详情账单 是否展开( 3级列表 )
                                     detailListCheck: [
                                         {
                                             keyName: '上次抄表度数',
