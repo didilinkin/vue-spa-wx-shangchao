@@ -20,7 +20,8 @@ export default {
 @import "./sass/Modules/ModulesStyle"
 
 #app
-    height: 100%
+    height: 100vh
+    +bC( $C-base )
 h1
     color: red
 </style>
