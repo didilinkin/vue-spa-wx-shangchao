@@ -9,7 +9,6 @@ export const apiBulletinInfo = () => {
     return new Promise( function( resolve, reject ) {
         axios.post( mockAPI.BULLETIN )
         .then( response => {
-            console.log( response )
             let resulData = response.data.data
             resolve( resulData )
         })

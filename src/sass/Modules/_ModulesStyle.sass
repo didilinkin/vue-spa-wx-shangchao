@@ -17,6 +17,9 @@
 .auto--modulePaddingTB
     +REM-padding-TB( $D-autoPadding )
 
+.auto--modulePaddingLR
+    +REM-padding-LR( $D-autoPadding )
+
 .auto--moduleMarginTop
     +REM( margin-top, $D-autoMargin )
 
@@ -35,6 +38,14 @@
 
 .auto--routerContentBottom
     +pB( 2.3rem )
+
+// 通用 - iconBox 图标容器混合
+.auto--moduleIconBox
+    +ABS
+    +REM-margin-TB( $D-autoMargin )
+    +REM-margin-LR( $D-autoMargin )
+    +REM-W-H( $F-big-title*1.5 )
+    +radius( 50% )
 
 // 文本缩进两个文字
 .auto--textIndent

@@ -7,7 +7,9 @@ ul.CostList
         v-bind:style="{ backgroundColor: '#FFF' }"
     )
         // 非折叠 - 专属图标信息
-        .CostList__iconBox( v-bind:style="{ backgroundColor: briefListObj.listIconColor }" )
+        .CostList__iconBox.auto--moduleIconBox(
+            v-bind:style="{ backgroundColor: briefListObj.listIconColor }"
+        )
             img( v-bind:src="briefListObj.listIcon" )
 
         // 非折叠 - 基本信息
@@ -42,8 +44,7 @@ ul.CostList
                 v-for="( itemInfo, indexInfo ) in item.detailsInfo"
                 v-bind:key="indexInfo"
             )
-                p
-                    b {{ itemInfo.title }}
+                p {{ itemInfo.title }}
                 p {{ itemInfo.value }}
 </template>
 
@@ -171,15 +172,9 @@ export default {
 
 .CostList
     +REL
-    .CostList__iconBox
-        +ABS
-        +REM-margin-TB( $D-autoMargin )
-        +REM-margin-LR( $D-autoMargin )
-        +REM-W-H( $F-big-title*1.5 )
-        +radius( 50% )
-        >img
-            padding: 20%
-            +imgCover( 60% )
+    .CostList__iconBox >img
+        padding: 20%
+        +imgCover( 60% )
     .CostList__contentBox
         +REM( margin-left, ( $D-autoMargin*2 + $F-big-title*1.5 ) )
         +REM( padding, $D-autoPadding )

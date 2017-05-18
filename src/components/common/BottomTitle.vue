@@ -21,7 +21,7 @@ export default {
 <style lang="sass">
 @import "../../sass/main"
 
-#BottomTitle
+#BottomTitle 
     +FIXED
     bottom: 0
     +flexCenter
