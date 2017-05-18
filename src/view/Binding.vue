@@ -218,7 +218,6 @@ export default {
 @import "../sass/main"
 
 #Building
-    +bC( $C-W )
     +textCenter
     >span
         +REM-fontStyle( $F-assist, $C-copy )

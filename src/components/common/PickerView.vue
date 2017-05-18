@@ -76,12 +76,12 @@ export default {
             })
 
             picker.on( 'picker.change', ( index, selectedIndex ) => {
-                let selectArr = []      
+                let selectArr = []
                 const emitSelectedIndex = ( selectIndexArr ) => {
                     return new Promise( ( resolve ) => {
                         this.$emit( 'watchPickerIndex', selectIndexArr )
                         this.$watch( 'roomArr', () => {
-                            resolve()                                       
+                            resolve()
                         })
                     })
                 }
@@ -93,18 +93,18 @@ export default {
                 }
                 switch( index ) {
                     case 0:
-                        picker.scrollColumn( 1, 0 )                        
-                        picker.scrollColumn( 2, 0 )                        
+                        picker.scrollColumn( 1, 0 )
+                        picker.scrollColumn( 2, 0 )
                         let selectedObjA = new PickerIndexObj( 'buildingIndex', selectedIndex ),
-                            defaultSelectedObjC = new PickerIndexObj( 'floorIndex', 0 )          
+                            defaultSelectedObjC = new PickerIndexObj( 'floorIndex', 0 )
                         selectArr = [ selectedObjA, defaultSelectedObjC ]
                         const asyncSetBuildingIndex = async () => {
                             try {
-                                await emitSelectedIndex( selectArr )         
-                                let asyncFloorArr = this.$props.floorArr   
-                                let asyncRoomArr = this.$props.roomArr     
-                                picker.refillColumn( 1, asyncFloorArr )     
-                                picker.refillColumn( 2, asyncRoomArr )      
+                                await emitSelectedIndex( selectArr )
+                                let asyncFloorArr = this.$props.floorArr
+                                let asyncRoomArr = this.$props.roomArr
+                                picker.refillColumn( 1, asyncFloorArr )
+                                picker.refillColumn( 2, asyncRoomArr )
                             } catch( err ) {
                                 console.log( err )
                             }
@@ -117,7 +117,7 @@ export default {
                         const asyncSetFloorIndex = async () => {
                             try {
                                 await emitSelectedIndex( selectArr )
-                                let asyncRoomArr = this.$props.roomArr  
+                                let asyncRoomArr = this.$props.roomArr
                                 picker.refillColumn( 2, asyncRoomArr )
                             } catch( err ) {
                                 console.log( err )
@@ -145,7 +145,7 @@ export default {
                 const emitSelectedVal = ( selectValArr ) => {
                     return new Promise( ( resolve ) => {
                         this.$emit( 'watchPickerVal', selectValArr )
-                        resolve()               
+                        resolve()
                     })
                 }
                 const asyncSetBindingVal = async () => {
@@ -174,7 +174,7 @@ export default {
 
 .PickerView
     .Picker__btn
-        +bC( $C-base )
+        +bC( $C-W )
         +ellipseBtn
         img
             +REM-W-H( $F-title*1.5 )
