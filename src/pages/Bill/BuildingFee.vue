@@ -33,6 +33,7 @@ export default {
             },
             // 费用列表 - 简要( 收起样式 展示 )
             CostListBrief: {
+                showNullBill: false,                            // 是否显示 '空账单'
                 listIcon: require( '../../assets/images/iconHousTitle@2x.png' ),
                 listIconColor: 'rgb( 255, 181, 0 )',
                 hasDetailList: false,                           // 是否显示 '详情列表': 否

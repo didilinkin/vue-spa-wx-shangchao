@@ -1,7 +1,16 @@
 // '费用账单' - 账单费用组件 - 应用场景组件( 房屋租赁费 / 物业管理费 /  电费 / 水费 )
 <template lang="pug">
 ul.CostList
+    // 直接判断 $props是否显示, 不需要经过 $data
+    li.CostList--nullBill( v-if="briefListObj.showNullBill" )
+        img(
+            v-bind:srcset="nullBillImgObj.normal + ' 1x,' + nullBillImgObj.retina + ' 2x'"
+        )
+        h2.auto--textStyle 抱歉！暂无账单~
+
+    // '账单费用' 如果非空, 显示列表内容 
     li.auto--moduleMarginBottom(
+        v-else
         v-for="( item, index ) in renderListObj.listArr"
         v-bind:key="index"
         v-bind:style="{ backgroundColor: '#FFF' }"
@@ -61,6 +70,7 @@ export default {
             type: Object,
             default: function() {
                 return {
+                    showNullBill: false,                                        // 是否显示 '空账单'
                     listIcon: require( '../../assets/images/iconHousTitle@2x.png' ),
                     listIconColor: 'rgb( 255, 181, 0 )',
                     listArr: [
@@ -155,7 +165,11 @@ export default {
         return {
             renderListObj: this.$props.briefListObj,                                        // 将$props 保存在 $data( 点击事件处理'显示'逻辑 )
             costListArrowIcon: require( '../../assets/images/iconListArrow@2x.png' ),       // 箭头
-            showInfoIndex: 0                                                                // 无显示 => 空
+            showInfoIndex: 0,                                                               // 无显示 => 空
+            nullBillImgObj: {
+                normal: require( '../../assets/images/billno@2x.png' ),                 
+                retina: require( '../../assets/images/billno@3x.png' )
+            }
         }
     },
     watch: {
@@ -218,4 +232,10 @@ export default {
             +REM-fontStyle( $F-text, $C-title )
             &:first-child
                 +REM( margin-bottom, $D-autoMargin/2 )
+
+// '空账单' - 居中图
+.CostList--nullBill
+    +textCenter
+    +pT( 10% )
+
 </style>
