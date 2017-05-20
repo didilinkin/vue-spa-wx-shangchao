@@ -3,12 +3,12 @@
 /* global require:true */
 
 import Vue          from 'vue'
-import 'mint-ui/lib/style.min.css'
-import 'sweetalert2/dist/sweetalert2.min.css'
 import Mint         from 'mint-ui'
 import layzr        from 'layzr.js'
 import VueScrollTo  from 'vue-scrollto'
 import StarRating   from 'vue-star-rating'
+import 'mint-ui/lib/style.min.css'
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 import App          from './App'
 import router       from './router'
