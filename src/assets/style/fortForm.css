@@ -73,21 +73,21 @@ and (max-width : 320px) {
     text-align: center;
     color: #009dff;
     text-decoration: underline;
-    -webkit-animation: hue 60s infinite linear;
+    /*-webkit-animation: hue 60s infinite linear;*/
     padding-top: 8px;
     font-size: 16px;
 }
 ul li{
-display: inline-block;
-list-style-type: none;
-text-align: center;
+    display: inline-block;
+    list-style-type: none;
+    text-align: center;
 }
 .h1h{
-  color: #000;
-  text-align: center;
+    color: #000;
+    text-align: center;
 }
 .lil{
-  display: inline-block;
+    display: inline-block;
 }
 nav li a {
     color: #369;
