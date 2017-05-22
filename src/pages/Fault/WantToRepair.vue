@@ -1,6 +1,5 @@
 // '故障报修' - 我要报修
 <template lang="pug">
-// .form-wrapper
 #WantToRepair
     // 多行文本输入框( 限制500字 )
     .mtextBox
@@ -12,46 +11,30 @@
         p {{ message.length }} / 500
 
     // 单行文本
-    // <mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
-
-    form( name="form" action="#" )
-        .form
-            // 输入框( 昵称 / 电话号码 )
-            .form-item.textBox(
-                v-for="( item, index ) in inputTextObj"
-                v-bind:key="index"
-            )
-                span {{ item.title }}
-                input.textInput(
-                    type="text"
-                    name="text"
-                    required="required"
-                    v-bind:placeholder="item.placeholder"
-                    autocomplete="off"
-                )
-
-            // '确认'按钮
-            .button-panel
-                input.button(
-                    type="submit"
-                    title="Sign In"
-                    value="Test It Out"
-                )
+    FortForm(
+        v-bind:FortTypeObj="fortType"
+        v-bind:FortInputArr="fortInputText"
+        v-bind:FortConfigObj="fortConfig"
+    )
 </template>
 
 <script>
-/* global Fort: true */
+import FortForm     from '../../components/common/FortForm'
+const components = { FortForm }
+
 export default {
     name: 'WantToRepair',
-    methods: {
-        addFort() {
-            Fort.solid( '#23d296' )
-        }
-    },
     data() {
         return {
+            // 多行文本 输入文本 - msg
             message: '',
-            inputTextObj: [
+            // Fort.js 类型配置
+            fortType: {
+                effects: 'default',                 // 默认配置
+                colorArr: ['#23d296']               // 配置颜色
+            },
+            // Fort.js 文本框内容
+            fortInputText: [
                 {
                     title: '报修人',
                     placeholder: '您的称呼'
@@ -59,19 +42,22 @@ export default {
                     title: '电话',
                     placeholder: '您的手机号'
                 }
-            ]
+            ],
+            // Fort.js 高级配置
+            fortConfig: {
+                isOpen: true,                       // 是否开启 '高级配置'
+                height: '5px',
+                duration: '1s',
+                alignment: 'bottom'
+            }
         }
     },
-    mounted: function() {
-        this.addFort()
-    }
+    components: components
 }
 </script>
 
 <style lang="sass">
 @import "../../sass/main"
-@import "../../assets/style/fort.min.css"
-@import "../../assets/style/fortForm.css"
 
 #WantToRepair
     +REL
@@ -89,17 +75,5 @@ export default {
             bottom: $D-autoPadding
             right: $D-autoPadding
             +REM-fontStyle( $F-assist, $C-assist )
-
-    // 单行文本框
-    .textBox
-        display: flex
-        padding: 5%
-        width: 90%
-        +bC( $C-W )
-        >span
-            flex: 1
-            +REM-fontStyle( $F-assist, $C-assist )
-        >.textInput
-            flex: 4
 </style>
 
