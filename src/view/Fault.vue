@@ -3,23 +3,17 @@
 #Fault
     // 切换标签
     .Fault__navBar
-        .Fault--title( 
-            @click="active()"
-            v-bind:class="{ active: showActive }"
+        .Fault--title#wantToRepair( 
+            onClick="window.sayHi( 'wantToRepair' )"
         )
             h2.auto--textStyle 我要保修
 
-        .Fault--title(
-            @click="active()"
-            v-bind:class="{ active: !showActive }"
+        .Fault--title#myRepair(
+            onClick="window.sayHi( 'myRepair' )"
         )
             h2.auto--textStyle 我的保修
     
-    // 切换标签 内容 - '我要保修'
-    WantToRepair( v-show="showActive" )
-    
-    // 切换标签 内容 - '我的保修'
-    MyRepair( v-show="!showActive" )
+    // 嵌套路由
 </template>
 
 <script>
@@ -32,6 +26,7 @@ export default {
     methods: {
         // 目的: 点击标签时, 状态取反.
         active() {
+            console.log( 1 )
             this.$data.showActive = !this.$data.showActive
         }
     },
@@ -39,6 +34,9 @@ export default {
         return {
             showActive: true                                    // true: '我要保修'; false: '我的保修'
         }
+    },
+    mounted: function() {
+        console.log( this.$route.params.id )
     },
     components: components
 }

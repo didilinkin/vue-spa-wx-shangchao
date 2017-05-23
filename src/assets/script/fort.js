@@ -1,5 +1,4 @@
-/* eslint-disable */
-export default Fort = {
+var Fort = {
     clean: function clean() {
         var forms = document.querySelectorAll(".form");
         for (var i = forms.length; i--;) {
@@ -295,4 +294,3 @@ export default Fort = {
         }
     }
 };
-

@@ -116,12 +116,8 @@ export default {
         }
     },
     mounted: function() {
-        // this.addFort()                          // 添加Fort.js 事件
-        let that = this
-
-        setTimeout(
-            that.addFort(), 2000
-        )
+        console.log( Fort )
+        this.addFort()                          // 添加Fort.js 事件
     },
     components: components
 }

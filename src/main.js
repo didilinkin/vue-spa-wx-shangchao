@@ -1,7 +1,6 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 /* global require:true */
-
 import Vue          from 'vue'
 import Mint         from 'mint-ui'
 import layzr        from 'layzr.js'
@@ -13,6 +12,8 @@ import 'sweetalert2/dist/sweetalert2.min.css'
 import App          from './App'
 import router       from './router'
 import store        from './store'
+
+// require( './assets/script/fort.js' )
 
 Vue.config.productionTip = false
 Vue.config.devtools = true
@@ -47,4 +48,20 @@ if ( /(iPhone|iPad|iPod|iOS )/i.test( navigator.userAgent ) ) {
     document.body.style.fontFamily = 'NoteSansCJKsc-Regular'
 } else {
     document.body.style.fontFamily = 'Microsoft Yahei'
+}
+
+// explicitly set on window
+window.sayHi = function( module ) {
+    // 重置class
+    let arr = document.getElementsByClassName( 'Fault--title' )
+    for( let i = 0; i < arr.length; i++ ) {
+        arr[i].className = 'Fault--title'
+    }
+
+    // 选中元素, 添加选中类
+    let elObj = document.querySelector( '#' + module )
+    elObj.setAttribute( 'class', 'Fault--title active' )
+
+    // 跳转URL
+    location.href = '#/fault/' + module
 }

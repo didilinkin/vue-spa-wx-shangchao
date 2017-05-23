@@ -1,21 +1,22 @@
 // '故障报修' - 我要报修
 <template lang="pug">
 #WantToRepair
-    // 多行文本输入框( 限制500字 )
-    .mtextBox
-        textarea(
-            v-model="message"
-            maxlength="500"
-            placeholder="请输入问题详情, 以便我们更好地处理"
-        )
-        p {{ message.length }} / 500
+    h1 我要保修
+    // // 多行文本输入框( 限制500字 )
+    // .mtextBox
+    //     textarea(
+    //         v-model="message"
+    //         maxlength="500"
+    //         placeholder="请输入问题详情, 以便我们更好地处理"
+    //     )
+    //     p {{ message.length }} / 500
 
-    // 单行文本
-    FortForm(
-        v-bind:FortTypeObj="fortType"
-        v-bind:FortInputArr="fortInputText"
-        v-bind:FortConfigObj="fortConfig"
-    )
+    // // 单行文本
+    // FortForm(
+    //     v-bind:FortTypeObj="fortType"
+    //     v-bind:FortInputArr="fortInputText"
+    //     v-bind:FortConfigObj="fortConfig"
+    // )
 </template>
 
 <script>
@@ -45,10 +46,7 @@ export default {
             ],
             // Fort.js 高级配置
             fortConfig: {
-                isOpen: true,                       // 是否开启 '高级配置'
-                height: '5px',
-                duration: '1s',
-                alignment: 'bottom'
+                isOpen: false                       // 是否开启 '高级配置'
             }
         }
     },

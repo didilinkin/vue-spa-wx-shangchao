@@ -49,7 +49,7 @@ export default new Router({
                 AppBottomTitle: BottomTitle
             }
         }, {
-            path: '/fault',                                      
+            path: '/fault/:id',                                      
             name: 'Fault',
             meta: { title: '故障报修' },
             components: {
