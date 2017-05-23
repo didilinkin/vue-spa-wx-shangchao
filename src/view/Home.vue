@@ -17,7 +17,7 @@ export default {
         // 目的: 执行跳转
         toUrl( url ) {
             location.href = '#/' + url
-        } 
+        }
     },
     data() {
         return {
@@ -29,7 +29,7 @@ export default {
                     url: 'bill',
                     title: '费用账单'
                 }, {
-                    url: 'fault',
+                    url: 'fault/wantToRepair',
                     title: '故障报修'
                 }, {
                     url: 'proposal',
@@ -37,7 +37,7 @@ export default {
                 }, {
                     url: 'binding',
                     title: '绑定房间'
-                }   
+                }
             ]
         }
     }
