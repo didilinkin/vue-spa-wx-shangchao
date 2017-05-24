@@ -1,109 +1,50 @@
 // 通用组件 - Fort.js文本表单( 包含状态按钮 )
 <template lang="pug">
 #FortForm.form-wrapper
-    form( name="form" action="#" )
+    // action="#"
+    form( name="form" )
         .form
             // 输入框
             .form-item(
                 v-for="( item, index ) in FortInputArr"
                 v-bind:key="index"
             )
-                span {{ item.title }}
-                input(
-                    type="text"
-                    name="text"
-                    required="required"
+                span.formFont {{ item.title }}
+                input.formFont(
+                    v-bind:type="item.inputType"
+                    v-bind:name="item.inputName"
+                    v-bind:maxlength="item.maxlength"
                     v-bind:placeholder="item.placeholder"
+                    required="required"
                     autocomplete="off"
                 )
             
             // '提交' 按钮
-            StateButton(
+            StateButton.auto--moduleMarginTop(
                 v-bind:buttonContentStr="stateButtonContent"
             )
 </template>
 
 <script>
-/* global Fort: true */ 
 import StateButton  from './StateButton'
 const components = { StateButton }
 
 export default {
     name: 'FortForm',
     props: {
-        // Fort类型
-        FortTypeObj: {
-            type: Object,
-            default: function() {
-                return {
-                    effects: 'default',                             // Fort.js效果: default / gradient / sections / flash / merge
-                    colorArr: ['#FF0']                              // Fort.js颜色: 根据Fort效果类型, 输出不同的颜色( 可能多色 ) 过度条
-                }
-            }
-        },
         // Fort文本框内容
         FortInputArr: {
             type: Array,
             default: function() {
                 return [
                     {
+                        inputName: 'userName',
+                        inputType: 'text',
+                        maxlength: '20',
                         title: '文本框标题',
                         placeholder: '输入框提示内容'
                     }
                 ]
-            }
-        },
-        // Fort高级配置( 进度条宽度 / 过渡时间 / 过渡条位置 )
-        FortConfigObj: {
-            type: Object,
-            default: function() {
-                return {
-                    isOpen: false,                                  // 是否开启 '高级配置'功能: 默认为 false( 不开启 )
-                    height: '10px',
-                    duration: '3s',
-                    alignment: 'bottom'
-                }
-            }
-        }
-    },
-    methods: {
-        addFort() {
-            let effectsType = this.$props.FortTypeObj.effects       // 保存 Fort.js的类型
-            let colorArr    = this.$props.FortTypeObj.colorArr      // 保存 颜色数组
-            let configObj   = this.$props.FortConfigObj             // 保存 Fort.js 是否需要配置高级配置
-            
-            // 判断类型
-            switch( effectsType ) {
-                case 'default':
-                    Fort.solid( colorArr )
-                    break
-                
-                case 'gradient': 
-                    Fort.gradient( colorArr )
-                    break
-                
-                case 'sections':
-                    Fort.sections( colorArr )
-                    break
-                
-                case 'flash':
-                    Fort.flash( colorArr )
-                    break
-
-                case 'merge':
-                    Fort.merge( colorArr )
-                    break
-                
-                default:    // null
-            }
-
-            // 判断是否需要 Fort.js 的'高级特性'
-            if( configObj.isOpen ) {
-                Fort.config({
-                    height: configObj.height,
-                    duration: configObj.duration,
-                    alignment: configObj.alignment
-                })
             }
         }
     },
@@ -115,18 +56,30 @@ export default {
             stateButtonContent: '提交'
         }
     },
-    mounted: function() {
-        this.addFort()                          // 添加Fort.js 事件
-    },
     components: components
 }
 </script>
 
 <style lang="sass">
 @import "../../sass/main"
-@import "../../assets/style/fort.min.css"
-@import "../../assets/style/fortForm.css"
 
 #FortForm
 
+.form
+    .form-item
+        +flexCenter
+        +REM( padding, $D-autoPadding )
+        +bC( $C-W )
+        input
+            flex: 3
+            border: none
+
+.formFont
+    flex: 1
+    +REM-fontStyle( $F-assist, $C-title, 2 )
+
+.StateButton
+    +flexCenter
+    >button
+        width: 40%
 </style>

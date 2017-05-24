@@ -49,11 +49,7 @@ export default new Router({
                 AppBottomTitle: BottomTitle
             }
         }, {
-            // 重定向 - 防止访问2级路径( 未带参数id ), url无匹配
             path: '/fault',                                      
-            redirect: '/fault/wantToRepair'
-        }, {
-            path: '/fault/:id',                                      
             name: 'Fault',
             meta: { title: '故障报修' },
             components: {

@@ -2,14 +2,12 @@
 <template lang="pug">
 #wantToRepair.Fault--module
     // 多行文本输入框( 限制500字 )
-    MtextBox( v-bind:setMtextBoxObj="setMtextBox" )
+    MtextBox.auto--moduleMarginBottom( v-bind:setMtextBoxObj="setMtextBox" )
 
+    // 图片上传( 未添加 )
+    
     // 单行文本
-    FortForm(
-        v-bind:FortTypeObj="fortType"
-        v-bind:FortInputArr="fortInputText"
-        v-bind:FortConfigObj="fortConfig"
-    )
+    FortForm( v-bind:FortInputArr="fortInputText" )
 </template>
 
 <script>
@@ -26,25 +24,22 @@ export default {
                 maxLength: 500,
                 placeholder: '请输入问题详情, 以便我们更好地处理'
             },
-            // Fort.js 类型配置
-            fortType: {
-                effects: 'default',                 // 默认配置
-                colorArr: ['#23d296']               // 配置颜色
-            },
             // Fort.js 文本框内容
             fortInputText: [
                 {
+                    inputName: 'userName',
+                    inputType: 'text',
+                    maxlength: '10',
                     title: '报修人',
                     placeholder: '您的称呼'
                 }, {
+                    inputName: 'phone',
+                    inputType: 'number',
+                    maxlength: '13',
                     title: '电话',
                     placeholder: '您的手机号'
                 }
-            ],
-            // Fort.js 高级配置
-            fortConfig: {
-                isOpen: false                       // 是否开启 '高级配置'
-            }
+            ]
         }
     },
     components: components
@@ -55,20 +50,5 @@ export default {
 @import "../../sass/main"
 
 #wantToRepair
-    +REL
-    // 多行文本
-    .mtextBox
-        +REL
-        textarea
-            padding: 5%
-            width: 90%
-            +REM( height, $F-text*11 )
-            border: none
-            +REM-fontStyle( $F-text, $C-assist,2 )
-        >p
-            +ABS
-            bottom: $D-autoPadding
-            right: $D-autoPadding
-            +REM-fontStyle( $F-assist, $C-assist )
 </style>
 

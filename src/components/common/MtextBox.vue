@@ -3,9 +3,8 @@
 .MtextBox
     textarea(
         v-model="message"
-        b-bind:maxlength="setMtextBoxObj.maxLength"
+        v-bind:maxLength="setMtextBoxObj.maxLength"
         v-bind:placeholder="setMtextBoxObj.placeholder"
-        v-bind:oninput="test()"
     )
     p {{ message.length }} / {{ setMtextBoxObj.maxLength }}
 </template>
@@ -39,5 +38,19 @@ export default {
 </script>
 
 <style lang="sass">
-    
+@import "../../sass/main"
+
+.MtextBox
+    +REL
+    textarea
+        padding: 5%
+        width: 90%
+        +REM( height, $F-text*11 )
+        border: none
+        +REM-fontStyle( $F-text, $C-assist,2 )
+    >p
+        +ABS
+        bottom: $D-autoPadding
+        right: $D-autoPadding
+        +REM-fontStyle( $F-assist, $C-assist )
 </style>

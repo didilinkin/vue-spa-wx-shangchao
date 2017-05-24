@@ -4,19 +4,20 @@
     // 切换标签
     .Fault__navBar
         .Fault--title#wantToRepair--link( 
-            onClick="window.toFaultDetail( 'wantToRepair' )"
-            class="Fault--title active"
+            @click="toggleShow( 'wantToRepair' )"
+            v-bind:class="{ active: !showMyRepair }"
         )
             h2.auto--textStyle 我要保修
 
         .Fault--title#myRepair--link(
-            onClick="window.toFaultDetail( 'myRepair' )"
+            @click="toggleShow( 'myRepair' )"
+            v-bind:class="{ active: showMyRepair }"
         )
             h2.auto--textStyle 我的保修
     
     // 根据路由参数 匹配渲染子组件
-    WantToRepair
-    MyRepair( style="{ display: 'none' }" )
+    WantToRepair( v-show="!showMyRepair" )
+    MyRepair( v-show="showMyRepair" )
 </template>
 
 <script>
@@ -26,8 +27,20 @@ const components = { WantToRepair, MyRepair }
 
 export default {
     name: 'Fault',
+    methods: {
+        // 目的: 切换详情组件
+        toggleShow( detailName ) {
+            if( detailName === 'wantToRepair' ) {
+                this.$data.showMyRepair = false
+            } else {
+                this.$data.showMyRepair = true
+            }
+        }
+    },
     data() {
-        return {}
+        return {
+            showMyRepair: false
+        }
     },
     components: components
 }
@@ -46,7 +59,7 @@ export default {
         flex: 1
         +bC( $C-W )
         +textCenter
-        +borderBottom( $C-W )
+        +borderBottom( $C-line )
     .active 
         +borderBottom( $C-theme )
         >h2

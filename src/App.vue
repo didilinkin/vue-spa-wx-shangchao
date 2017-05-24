@@ -3,7 +3,7 @@
     router-view(
         name="AppContent"
         v-wechat-title="$route.meta.title"
-        img-set="/static/favicon.png"
+        img-set="/static/favicon-icon.png"
         class="auto--routerContentBottom"
     )
     router-view( name="AppBottomTitle" )
