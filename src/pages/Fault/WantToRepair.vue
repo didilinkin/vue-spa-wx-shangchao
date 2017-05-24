@@ -1,34 +1,31 @@
 // '故障报修' - 我要报修
 <template lang="pug">
-#WantToRepair
-    h1 我要保修
-    // // 多行文本输入框( 限制500字 )
-    // .mtextBox
-    //     textarea(
-    //         v-model="message"
-    //         maxlength="500"
-    //         placeholder="请输入问题详情, 以便我们更好地处理"
-    //     )
-    //     p {{ message.length }} / 500
+#wantToRepair.Fault--module
+    // 多行文本输入框( 限制500字 )
+    MtextBox( v-bind:setMtextBoxObj="setMtextBox" )
 
-    // // 单行文本
-    // FortForm(
-    //     v-bind:FortTypeObj="fortType"
-    //     v-bind:FortInputArr="fortInputText"
-    //     v-bind:FortConfigObj="fortConfig"
-    // )
+    // 单行文本
+    FortForm(
+        v-bind:FortTypeObj="fortType"
+        v-bind:FortInputArr="fortInputText"
+        v-bind:FortConfigObj="fortConfig"
+    )
 </template>
 
 <script>
 import FortForm     from '../../components/common/FortForm'
-const components = { FortForm }
+import MtextBox     from '../../components/common/MtextBox'
+const components = { FortForm, MtextBox }
 
 export default {
     name: 'WantToRepair',
     data() {
         return {
-            // 多行文本 输入文本 - msg
-            message: '',
+            // 多行文本 基本配置
+            setMtextBox: {
+                maxLength: 500,
+                placeholder: '请输入问题详情, 以便我们更好地处理'
+            },
             // Fort.js 类型配置
             fortType: {
                 effects: 'default',                 // 默认配置
@@ -57,7 +54,7 @@ export default {
 <style lang="sass">
 @import "../../sass/main"
 
-#WantToRepair
+#wantToRepair
     +REL
     // 多行文本
     .mtextBox

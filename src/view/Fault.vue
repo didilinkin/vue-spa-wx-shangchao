@@ -3,17 +3,20 @@
 #Fault
     // 切换标签
     .Fault__navBar
-        .Fault--title#wantToRepair( 
-            onClick="window.sayHi( 'wantToRepair' )"
+        .Fault--title#wantToRepair--link( 
+            onClick="window.toFaultDetail( 'wantToRepair' )"
+            class="Fault--title active"
         )
             h2.auto--textStyle 我要保修
 
-        .Fault--title#myRepair(
-            onClick="window.sayHi( 'myRepair' )"
+        .Fault--title#myRepair--link(
+            onClick="window.toFaultDetail( 'myRepair' )"
         )
             h2.auto--textStyle 我的保修
     
-    // 嵌套路由
+    // 根据路由参数 匹配渲染子组件
+    WantToRepair
+    MyRepair( style="{ display: 'none' }" )
 </template>
 
 <script>
@@ -23,20 +26,8 @@ const components = { WantToRepair, MyRepair }
 
 export default {
     name: 'Fault',
-    methods: {
-        // 目的: 点击标签时, 状态取反.
-        active() {
-            console.log( 1 )
-            this.$data.showActive = !this.$data.showActive
-        }
-    },
     data() {
-        return {
-            showActive: true                                    // true: '我要保修'; false: '我的保修'
-        }
-    },
-    mounted: function() {
-        console.log( this.$route.params.id )
+        return {}
     },
     components: components
 }

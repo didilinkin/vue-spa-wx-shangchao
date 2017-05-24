@@ -51,7 +51,7 @@ if ( /(iPhone|iPad|iPod|iOS )/i.test( navigator.userAgent ) ) {
 }
 
 // explicitly set on window
-window.sayHi = function( module ) {
+window.toFaultDetail = function( module ) {
     // 重置class
     let arr = document.getElementsByClassName( 'Fault--title' )
     for( let i = 0; i < arr.length; i++ ) {
@@ -59,8 +59,17 @@ window.sayHi = function( module ) {
     }
 
     // 选中元素, 添加选中类
-    let elObj = document.querySelector( '#' + module )
+    let elObj = document.querySelector( '#' + module + '--link' )
     elObj.setAttribute( 'class', 'Fault--title active' )
+
+    // 详情 组件
+    let faultModuleArr = document.querySelectorAll( '.Fault--module' )  // 重置掉两个 模块隐藏
+    for( let i = 0; i < faultModuleArr.length; i++ ) {
+        faultModuleArr[i].setAttribute( 'style', 'display: none' )
+    }
+
+    let elComponent = document.querySelector( '#' + module )            // 显示 选中的 模块
+    elComponent.removeAttribute( 'style' )
 
     // 跳转URL
     location.href = '#/fault/' + module

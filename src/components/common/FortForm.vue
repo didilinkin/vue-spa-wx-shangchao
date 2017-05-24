@@ -116,7 +116,6 @@ export default {
         }
     },
     mounted: function() {
-        console.log( Fort )
         this.addFort()                          // 添加Fort.js 事件
     },
     components: components
