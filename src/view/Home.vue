@@ -29,7 +29,7 @@ export default {
                     url: 'bill',
                     title: '费用账单'
                 }, {
-                    url: 'fault/wantToRepair',
+                    url: 'fault',
                     title: '故障报修'
                 }, {
                     url: 'proposal',

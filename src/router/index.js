@@ -56,6 +56,16 @@ export default new Router({
                 AppContent: Fault,
                 AppBottomTitle: BottomTitle
             }
+            // ,beforeEnter: ( _to, _from, next ) => {
+            //     // ...
+            //     console.log( this )
+            //     next()
+            // },
+            // beforeRouteLeave: ( _to, _from, next ) => {
+            //     console.log( 'this is page beforeRouteLeave' )
+            //     console.log( this )
+            //     next()
+            // }
         }, {
             path: '/proposal',                                      
             name: 'Proposal',
