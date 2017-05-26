@@ -3,10 +3,7 @@
 ul.CostList
     // 直接判断 $props是否显示, 不需要经过 $data
     li.CostList--nullBill( v-if="briefListObj.showNullBill" )
-        img(
-            v-bind:srcset="nullBillImgObj.normal + ' 1x,' + nullBillImgObj.retina + ' 2x'"
-        )
-        h2.auto--textStyle 抱歉！暂无账单~
+        ContentNull( v-bind:setContentNullObj="setContentNull" )
 
     // '账单费用' 如果非空, 显示列表内容 
     li.auto--moduleMarginBottom(
@@ -59,8 +56,9 @@ ul.CostList
 
 <script>
 /* global require: true */
+import ContentNull          from    '../common/ContentNull'
 import CostDetailList       from    './CostDetailList'
-const components = { CostDetailList }
+const components = { ContentNull, CostDetailList }
 
 export default {
     name: 'CostList',
@@ -166,9 +164,12 @@ export default {
             renderListObj: this.$props.briefListObj,                                        // 将$props 保存在 $data( 点击事件处理'显示'逻辑 )
             costListArrowIcon: require( '../../assets/images/iconListArrow@2x.png' ),       // 箭头
             showInfoIndex: 0,                                                               // 无显示 => 空
-            nullBillImgObj: {
-                normal: require( '../../assets/images/billno@2x.png' ),                 
-                retina: require( '../../assets/images/billno@3x.png' )
+            setContentNull: {                                                               // '内容为空' 渲染内容
+                contentImg: {
+                    normal: require( '../../assets/images/billno@2x.png' ),                 
+                    retina: require( '../../assets/images/billno@3x.png' )
+                },
+                contentTitle: '抱歉！暂无账单~'
             }
         }
     },
@@ -232,10 +233,4 @@ export default {
             +REM-fontStyle( $F-text, $C-title )
             &:first-child
                 +REM( margin-bottom, $D-autoMargin/2 )
-
-// '空账单' - 居中图
-.CostList--nullBill
-    +textCenter
-    +pT( 10% )
-
 </style>

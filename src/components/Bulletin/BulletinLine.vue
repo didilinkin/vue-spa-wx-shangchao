@@ -17,18 +17,15 @@
             span.auto--assistStyle {{ item.date }}
             span.auto--assistStyle {{ item.time }}
             .BulletinLine--labelCircle
-    .BulletinLine--null(
-        v-else
-        class="auto--modulePaddingTB"
-    )
-        img(
-            v-bind:srcset="bulletinNullObj.normalImg + ' 1x,' + bulletinNullObj.retinaImg + ' 2x'"
-        )
-        h2.auto--titleStyle {{ bulletinNullObj.title }}
+    .BulletinLine--null( v-else )
+        ContentNull( v-bind:setContentNullObj="setContentNull" )
 </template>
 
 <script>
 /* global Promise require:true */
+import ContentNull      from '../common/ContentNull'
+const components = { ContentNull }
+
 export default {
     name: 'BulletinLine',
     props: {
@@ -108,10 +105,12 @@ export default {
             renderArr: [],
             bulletinNum: 0,                                                                                     // $props中 '公告'数量
             loadNum: 0,                                                                                         // 加载次数
-            bulletinNullObj: {
-                normalImg: require( '../../assets/images/picNotice@2x.png' ),
-                retinaImg: require( '../../assets/images/picNotice@3x.png' ),
-                title: '抱歉！当前没有公告~'
+            setContentNull: {                                           // 设置 '内容为空' 组件 内容
+                contentImg: {
+                    normal: require( '../../assets/images/picNotice@2x.png' ),
+                    retina: require( '../../assets/images/picNotice@3x.png' )
+                },
+                contentTitle: '抱歉！当前没有公告~'
             }
         }
     },
@@ -126,7 +125,8 @@ export default {
                 this.$data.canRender = false                                                                    // 不可 -> 显示'无消息'图片
             }
         }
-    }
+    },
+    components: components
 }
 </script>
 
@@ -161,11 +161,4 @@ export default {
             +boxShadow( 0, 0, $F-title/2, darken( $C-theme, 2% ) )
     ul
         +mB( 2rem )
-    // '空数据'
-    .BulletinLine--null
-        +mT( 20% )
-        +textCenter
-        >img
-            +mB( $D-autoMargin )
-            +imgCover( 25% )
 </style>

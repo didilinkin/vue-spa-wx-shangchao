@@ -20,6 +20,9 @@
 .auto--modulePaddingLR
     +REM-padding-LR( $D-autoPadding )
 
+.auto--moduleMarginLR
+    +REM-margin-LR( $D-autoMargin )
+
 .auto--moduleMarginTop
     +REM( margin-top, $D-autoMargin )
 
@@ -56,9 +59,27 @@
 .auto--themeBackgroundColor
     +bC( $C-theme )
 
-// 特定模块样式
+// '账单'模块 样式
 .bill--backgroundColor
     // height: 100vh
     +bC( $C-base )
 
+// '故障维修' - '我的维修' 类型配色 —— '已提交'
+.fault--submitted--typeColor
+    color: $C-W
+    +bC( $C-fault-submitted )
 
+// '故障维修' - '我的维修' 类型配色 —— '已派单'
+.fault--send--typeColor
+    color: $C-W
+    +bC( $C-fault-send )
+
+// '故障维修' - '我的维修' 类型配色 —— '已完工'
+.fault--finished--typeColor
+    color: $C-W
+    +bC( $C-fault-finished )
+
+// '故障维修' - '我的维修' 类型配色 —— '已评价'
+.fault--evaluation--typeColor
+    color: $C-W
+    +bC( $C-fault-evaluation )
