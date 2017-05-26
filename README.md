@@ -75,3 +75,4 @@ npm run build --report
 - [ ]  'Bill - 费用账单' 模块, 判空需要一个算法
 - [ ]  'MtextBox - 多行文本框' 模块, 需要处理滚轮滚动时 文字高度限制问题
 - [ ]  'MtextBox - 多行文本框' 模块, 最大字数 弹出提示
+- [ ]  'FaultDetail - 报修详情' 模块, 是通过模板页 从 `$store` 处获取数据 和 状态 

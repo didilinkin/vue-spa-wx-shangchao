@@ -20,6 +20,8 @@ import LeaseDeposit             from '@/pages/Bill/LeaseDeposit'
 import EnergyDeposit            from '@/pages/Bill/EnergyDeposit'
 import DecorationDeposit        from '@/pages/Bill/DecorationDeposit'
 
+import FaultDetail              from '@/pages/Fault/FaultDetail'
+
 Vue.use( Router )
 
 export default new Router({
@@ -144,6 +146,14 @@ export default new Router({
             meta: { title: '装修保证金' },
             components: {
                 AppContent: DecorationDeposit,
+                AppBottomTitle: BottomTitle
+            }
+        }, {
+            path: '/fault/:id',                                      
+            name: 'FaultDetail',
+            meta: { title: '报修详情' },
+            components: {
+                AppContent: FaultDetail,
                 AppBottomTitle: BottomTitle
             }
         }

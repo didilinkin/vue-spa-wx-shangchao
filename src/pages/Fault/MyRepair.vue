@@ -2,7 +2,10 @@
 <template lang="pug">
 #myRepair.Fault--module
     // 说明: 因为渲染组件需要复用, 所以需要在一个渲染组件内进行渲染
-    RepairState( v-bind:repairStateArr="repairState" )
+    RepairState(
+        v-bind:repairStateArr="repairState"
+        v-bind:canClickBoolean="true"
+    )
 </template>
 
 <script>    

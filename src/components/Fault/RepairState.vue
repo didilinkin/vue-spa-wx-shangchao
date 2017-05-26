@@ -18,7 +18,10 @@ ul#repairState
 
         // 状态 - 文本内容
         .replaceState--contentText
-            p {{ item.text }}
+            p(
+                v-bind:class="{ 'clickText': canClickBoolean }"
+                @click="toRepairDetail( item )"
+            ) {{ item.text }}
 </template>
 
 <script>
@@ -44,6 +47,21 @@ export default {
                     }   
                 ]
             }
+        },
+        // '报修状态' - 是否可点击
+        canClickBoolean: {
+            type: Boolean,
+            default: false
+        }
+    },
+    methods: {
+        // 目的: 点击内容文字 => 跳转 '报修详情‘ 页面
+        toRepairDetail( itemObj ) {
+            // 内部判断
+            if( this.$props.canClickBoolean ) {
+                // console.log( index )    // 允许跳转 => 操作保存 对应的数据 传给 '报修详情'页面
+                console.dir( itemObj )
+            } 
         }
     },
     data() {
@@ -88,5 +106,6 @@ ul
         p
             +REM-fontStyle( $F-text, $C-text )
             +ell-line( $F-text*1.5, 3 )
+        p.clickText
             +pseudoClassColor( active, color, darken, $C-theme, 2% )
 </style>

@@ -7,13 +7,13 @@
             @click="toggleShow( 'wantToRepair' )"
             v-bind:class="{ active: !showMyRepair }"
         )
-            h2.auto--textStyle 我要保修
+            h2.auto--textStyle 我要报修
 
         .Fault--title#myRepair--link(
             @click="toggleShow( 'myRepair' )"
             v-bind:class="{ active: showMyRepair }"
         )
-            h2.auto--textStyle 我的保修
+            h2.auto--textStyle 我的报修
     
     // 根据路由参数 匹配渲染子组件
     WantToRepair( v-show="!showMyRepair" )
