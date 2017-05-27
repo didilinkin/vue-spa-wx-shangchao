@@ -1,0 +1,1 @@
+export const getterRepairDetail = state => state.repairDetail       // 报修详情 对象

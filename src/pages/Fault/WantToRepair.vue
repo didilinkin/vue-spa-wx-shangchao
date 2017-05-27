@@ -1,4 +1,4 @@
-// '故障报修' - 我要报修
+// '故障报修' - '我要报修'页
 <template lang="pug">
 #wantToRepair.Fault--module
     // 多行文本输入框( 限制500字 )

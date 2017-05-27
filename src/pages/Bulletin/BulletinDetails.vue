@@ -1,4 +1,4 @@
-// '物业公告' - 详情
+// '物业公告' - '详情'页
 <template lang="pug">
 #BulletinDetails.auto--modulePadding
     h2.auto--titleStyle {{ bulletinDetailsInfo.title }}
