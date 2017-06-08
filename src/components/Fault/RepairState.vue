@@ -25,7 +25,7 @@ ul#repairState
 </template>
 
 <script>
-/* global require: true */ 
+/* global require: true */
 import { mapGetters }   from 'vuex'
 
 import ContentNull      from '../common/ContentNull'
@@ -52,7 +52,7 @@ export default {
                         submittedInfo: {                                // '已提交'的信息
                             dateTime: '2016-05-25 11:46'
                         }
-                    }   
+                    }
                 ]
             }
         },
@@ -72,7 +72,7 @@ export default {
                 this.$watch( 'canToDetail', () => {
                     location.href = '#/fault/' + itemObj.id                     // 当 $store更新后再执行跳转
                 })
-            } 
+            }
         },
         // 目的: 将报修详情对象 保存到 $store中
         saveRepairDetail( detailObj ) {
@@ -97,7 +97,7 @@ export default {
                 },
                 contentTitle: '抱歉！暂时没有任何记录~'
             },
-            canToDetail: false                                          
+            canToDetail: false
         }
     },
     computed: mapGetters({
