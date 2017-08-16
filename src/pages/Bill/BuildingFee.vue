@@ -6,10 +6,12 @@
     CostList(
         v-bind:briefListObj="CostListBrief"
     )
-</template> 
+</template>
 
 <script>
-/* global require: true */ 
+/* global require: true */
+import { mapGetters }   from 'vuex'
+
 import BillHeader       from '../../components/Bill/BillHeader'
 import CostList         from '../../components/Bill/CostList'
 const components = { BillHeader, CostList }
@@ -20,7 +22,7 @@ export default {
         // 目的: 请求 - 账单详情
         requireBuildingFee() {
             this.$store.dispatch({
-                type: 'bill/REQUIRE_BUILDING_FEE'
+                type: 'bill/REQUIRE_RENT_FEE'
             })
         }
     },
@@ -28,8 +30,7 @@ export default {
         return {
             BillHeaderObj: {
                 title: '房屋租赁费',
-                money: '123,456.00',
-                companyName: this.$store.state.globalState.userInfo.companyName
+                money: '123,456.00'
             },
             // 费用列表 - 简要( 收起样式 展示 )
             CostListBrief: {
@@ -39,66 +40,23 @@ export default {
                 hasDetailList: false,                           // 是否显示 '详情列表': 否
                 // 列表数组
                 listArr: [
-                    {
-                        title: '房屋租赁费A',
-                        money: '1111,456.00',
-                        tollStartDate: '2017-01-01',
-                        tollDeadline: '2017-03-31',
-                        payDate: '2017-04-10',
-                        showDetailInfo: false,
-                        detailsInfo: [
-                            {
-                                title: '单价',
-                                value: 5
-                            }, {
-                                title: '面积',
-                                value: 400
-                            }, {
-                                title: '本期费用合计',
-                                value: 12345.12
-                            }
-                        ]
-                    }, {
-                        title: '房屋租赁费B',
-                        money: '2222,456.00',
-                        tollStartDate: '2017-01-01',
-                        tollDeadline: '2017-03-31',
-                        payDate: '2017-04-10',
-                        showDetailInfo: false,
-                        detailsInfo: [
-                            {
-                                title: '单价',
-                                value: 5
-                            }, {
-                                title: '面积',
-                                value: 400
-                            }, {
-                                title: '本期费用合计',
-                                value: 12345.12
-                            }
-                        ]
-                    }, {
-                        title: '房屋租赁费C',
-                        money: '3333,456.00',
-                        tollStartDate: '2017-01-01',
-                        tollDeadline: '2017-03-31',
-                        payDate: '2017-04-10',
-                        showDetailInfo: false,
-                        detailsInfo: [
-                            {
-                                title: '单价',
-                                value: 5
-                            }, {
-                                title: '面积',
-                                value: 400
-                            }, {
-                                title: '本期费用合计',
-                                value: 12345.12
-                            }
-                        ]
-                    }
+
                 ]
             }
+        }
+    },
+    computed: mapGetters({
+        getterRentInfo: 'getterRentInfo',
+        getterSumRent: 'getterSumRent'
+    }),
+    watch: {
+        getterRentInfo: function() {
+//            this.$data.listArr = this.getterRentInfo
+//            console.log( '888888888888' )
+//            console.log( this.getterRentInfo )
+            this.$data.CostListBrief.listArr = this.getterRentInfo
+            this.$data.BillHeaderObj.money = this.getterSumRent
+            console.dir( this.getterSumRent )
         }
     },
     mounted: function() {

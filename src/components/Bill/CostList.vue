@@ -8,7 +8,7 @@ ul.CostList
         )
         h2.auto--textStyle 抱歉！暂无账单~
 
-    // '账单费用' 如果非空, 显示列表内容 
+    // '账单费用' 如果非空, 显示列表内容
     li.auto--moduleMarginBottom(
         v-else
         v-for="( item, index ) in renderListObj.listArr"
@@ -80,7 +80,7 @@ export default {
                             tollStartDate: '2017-01-01',
                             tollDeadline: '2017-03-31',
                             payDate: '2017-04-10',
-                            showDetailInfo: false,                              // 折叠 - 信息 是否展开( 2级列表 ) 
+                            showDetailInfo: false,                              // 折叠 - 信息 是否展开( 2级列表 )
                             detailsInfo: [
                                 {
                                     title: '标题A',
@@ -167,7 +167,7 @@ export default {
             costListArrowIcon: require( '../../assets/images/iconListArrow@2x.png' ),       // 箭头
             showInfoIndex: 0,                                                               // 无显示 => 空
             nullBillImgObj: {
-                normal: require( '../../assets/images/billno@2x.png' ),                 
+                normal: require( '../../assets/images/billno@2x.png' ),
                 retina: require( '../../assets/images/billno@3x.png' )
             }
         }

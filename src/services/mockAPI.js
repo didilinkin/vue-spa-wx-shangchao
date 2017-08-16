@@ -1,6 +1,10 @@
 // 接口配置
 
+// const LocalUrl = '/mock'                                                 // for local mock test
+
 const BaseUrl = '/mock'                                                 // for local mock test
+
+export const LocalUrl = 'http://127.0.0.1:18081/wx/listCollectRent?clientNum=1'                           // 后台链接
 
 export const BULLETIN = BaseUrl + '/bulletin'                           // 公告
 
