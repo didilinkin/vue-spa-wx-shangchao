@@ -8,12 +8,6 @@ export default {
         const resArr = list
         let sumRent = 0
         for( let i = 0; i < list.length; i++ ) {
-            // let resTimeArr = resArr[i]
-            // let dateObj = resTimeArr[0]
-            // let timeArr = resTimeArr[1].split( ':' )
-            // let timeObj = `${ timeArr[0] }:${ timeArr[1] } `
-            // resArr[i]['date'] = dateObj
-            // resArr[i]['time'] = timeObj
             let rent = list[i]
             resArr[i]['title'] = '房屋租赁费'
             resArr[i]['money'] = rent.actualPaidMoney
@@ -27,7 +21,29 @@ export default {
 
         state.rentInfo = resArr
         state.sumRent = sumRent                                 // 将resArr 数据存入 state
-
         // state.bulletinInfo = []                                  // 空数组 - 用于测试空数据
+    },
+    [types.SET_BILL_LIST]( state, res ) {
+        let Fee = res
+        state.feeInfo = Fee
+    },
+    [types.SET_PM_FEE]( state, res ) {
+        const pm = res
+        let list = res
+        let sumPm = 0
+        for( let i = 0; i < list.length; i++ ) {
+            let pmOne = list[i]
+            pm[i]['title'] = '物业管理费'
+            pm[i]['money'] = pmOne.actualPaidMoney
+            pm[i]['tollStartDate'] = pmOne.startDate
+            pm[i]['tollDeadline'] = pmOne.endDate
+            pm[i]['payDate'] = pmOne.payDeadline
+            pm[i]['showDetailInfo'] = false
+            pm[i]['detailsInfo'] = pmOne.detailsInfo
+            pm[i]['detailList'] = pmOne.detailList
+            sumPm = sumPm + pmOne.actualPaidMoney
+        }
+        state.pmInfo = pm
+        state.sumPm = sumPm
     }
 }

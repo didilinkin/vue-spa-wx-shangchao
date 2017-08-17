@@ -4,7 +4,13 @@
 
 const BaseUrl = '/mock'                                                 // for local mock test
 
-export const LocalUrl = 'http://127.0.0.1:18081/wx/listCollectRent?clientNum=1'                           // 后台链接
+const url = 'http://127.0.0.1:18081'                                    // 后台链接
+
+export const RentUrl = url + '/wx/listCollectRent?clientNum=1'          // 租赁费用链接
+
+export const FeeUrl = url + '/wx/listFee?clientNum=1'                   // 费用列表链接
+
+export const pmUrl = url + '/wx/listPropertyFee?clientNum=1'                    // 物业费用列表链接
 
 export const BULLETIN = BaseUrl + '/bulletin'                           // 公告
 

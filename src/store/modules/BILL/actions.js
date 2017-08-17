@@ -2,28 +2,6 @@ import * as billAPI         from './api'
 import * as types               from './types'
 
 export default {
-    // [types.REQUEST_BULLETIN_INFO]: ({ commit }) => {
-    //     const asyncBulletinInfo = async function() {
-    //         try {
-    //             let result = await bulletinAPI.apiBulletinInfo()
-    //             commit( types.SET_BULLETIN_INFO, result )
-    //         } catch( err ) {
-    //             console.log( err )
-    //         }
-    //     }
-    //     asyncBulletinInfo()
-    // },
-    // [types.REQUEST_BULLETIN_DETAILS_INFO]: ({ commit }, bulletinDetailsIdObj ) => {
-    //     const asyncBulletinDetailsInfo = async function() {
-    //         try {
-    //             let result = await bulletinAPI.apiBulletinDetailsInfo( bulletinDetailsIdObj )
-    //             commit( types.SET_BULLETIN_DETAILS_INFO, result )
-    //         } catch( err ) {
-    //             console.log( err )
-    //         }
-    //     }
-    //     asyncBulletinDetailsInfo()
-    // },
     [types.REQUIRE_RENT_FEE]: ({ commit }) => {
         const asyncRentInfo = async function() {
             try {
@@ -34,5 +12,27 @@ export default {
             }
         }
         asyncRentInfo()
+    },
+    [types.REQUIRE_BILL_LIST]: ({ commit }) => {
+        const asyncFeeInfo = async function() {
+            try {
+                let result = await billAPI.apiFeeInfo()
+                commit( types.SET_BILL_LIST, result )
+            } catch( err ) {
+                console.log( err )
+            }
+        }
+        asyncFeeInfo()
+    },
+    [types.REQUIRE_PM_FEE]: ({ commit }) => {
+        const asyncPmInfo = async function() {
+            try {
+                let result = await billAPI.apipmInfo()
+                commit( types.SET_PM_FEE, result )
+            } catch( err ) {
+                console.log( err )
+            }
+        }
+        asyncPmInfo()
     }
 }

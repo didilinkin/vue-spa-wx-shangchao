@@ -7,7 +7,7 @@ ul#Bill
         @click="toBillDetails( item.id )"
     )
         .Bill--imgBox
-            img( v-bind:src="item.iconImg" )   
+            img( v-bind:src="item.iconImg" )
         .Bill--textBox
             h2.auto--titleStyle {{ item.title }}
             span.auto--assistStyle {{ item.text }}
@@ -19,6 +19,7 @@ ul#Bill
 
 <script>
 import { dataBillObj }      from './dataBill'
+import { mapGetters }   from 'vuex'
 
 export default {
     name: 'Bill',
@@ -32,12 +33,41 @@ export default {
         // 目的: 跳转'账单'详情页
         toBillDetails( url ) {
             location.href = '#/bill/' + url
+        },
+
+        // 目的: 修改 $data.billDataObj 静态数据 => 改为 后台获取的时间
+        setDataTime( returnObj ) {
+//            console.log( returnObj )
+            this.$data.billDataObj.listArr[0].data = returnObj.rentDate
+            this.$data.billDataObj.listArr[1].data = returnObj.pmDate
+            this.$data.billDataObj.listArr[2].data = returnObj.eleDate
+            this.$data.billDataObj.listArr[3].data = returnObj.waterDate
+//            console.log( '检查是否改变 $data' )
+//            console.log( this.$data )
         }
     },
     data() {
         return {
             billDataObj: dataBillObj        // 整个 $data 都以module的形式引入
         }
+    },
+    computed: mapGetters({
+        getterFeeInfo: 'getterFeeInfo'
+    }),
+    watch: {
+        getterFeeInfo: function() {
+//            this.$data.listArr = this.getterRentInfo
+//            console.log( '888888888888' )
+//            console.log( this.getterRentInfo )
+//            console.log( '监听改变' )
+            // console.log( this.$data.billDataObj )
+            this.setDataTime( this.getterFeeInfo ) // 修改时间
+//            this.$data.listArr[0] = this.getterRentInfo
+//            console.dir( this.getterFeeInfo )
+        }
+    },
+    mounted: function() {
+        this.requireBillList()       // 请求 - 账单详情
     }
 }
 </script>

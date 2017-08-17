@@ -27,7 +27,9 @@ const state = {
         money: 1024
     },
     rentInfo: [],
-    sumRent: ""
+    pmInfo: [],
+    sumRent: "",
+    feeInfo: []
 }
 
 export default {
