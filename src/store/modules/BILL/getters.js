@@ -6,4 +6,4 @@ export const getterSumPmInfo = state => state.sumPm                             
 export const getterEleInfo = state => state.eleInfo                             // 电费
 export const getterSumEleInfo = state => state.sumEle                             // 电费的和
 export const getterWaterInfo = state => state.waterInfo                             // 电费
-export const getterWaterPmInfo = state => state.sumWater                            // 电费的和
+export const getterSumWaterInfo = state => state.sumWater                            // 电费的和

@@ -49,7 +49,7 @@ export default {
     [types.REQUIRE_WATER_FEE]: ({ commit }) => {
         const asyncPmInfo = async function() {
             try {
-                let result = await billAPI.apiEleInfo()
+                let result = await billAPI.apiWaterInfo()
                 commit( types.SET_WATER_FEE, result )
             } catch( err ) {
                 console.log( err )

@@ -20,7 +20,7 @@ export default {
         }
 
         state.rentInfo = resArr
-        state.sumRent = sumRent                                 // 将resArr 数据存入 state
+        state.sumRent = sumRent.toFixed( 1 )                                 // 将resArr 数据存入 state
         // state.bulletinInfo = []                                  // 空数组 - 用于测试空数据
     },
     [types.SET_BILL_LIST]( state, res ) {
@@ -44,7 +44,7 @@ export default {
             sumPm = sumPm + pmOne.actualPaidMoney
         }
         state.pmInfo = pm
-        state.sumPm = sumPm
+        state.sumPm = sumPm.toFixed( 1 )
     },
     [types.SET_ELE_FEE]( state, res ) {
         const ele = res
@@ -64,8 +64,27 @@ export default {
         }
         state.eleInfo = ele
         state.sumEle = sumEle.toFixed( 1 )
+    },
+    [types.SET_WATER_FEE]( state, res ) {
+        const water = res
+        let list = res
+        let sumWater = 0
+        for( let i = 0; i < list.length; i++ ) {
+            let waterOne = list[i]
+            water[i]['title'] = '水费'
+            water[i]['money'] = waterOne.receivableMoney
+            water[i]['tollStartDate'] = waterOne.preMeterDate
+            water[i]['tollDeadline'] = waterOne.meterDate
+            water[i]['payDate'] = waterOne.overdueDate
+            water[i]['showDetailInfo'] = false
+            water[i]['detailsInfo'] = waterOne.detailsInfo
+            water[i]['detailList'] = waterOne.detailList
+            sumWater = sumWater + waterOne.receivableMoney
+        }
+        state.waterInfo = water
+        state.sumWater = sumWater.toFixed( 1 )
         console.log( '11111111111111111' )
-        console.log( state.eleInfo )
-        console.log( state.sumEle )
+        console.log( state.waterInfo )
+        console.log( state.sumWater )
     }
 }

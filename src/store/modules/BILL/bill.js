@@ -31,7 +31,9 @@ const state = {
     sumRent: "",
     feeInfo: [],
     sumEle: "",
-    eleInfo: []
+    eleInfo: [],
+    sumWater: "",
+    waterInfo: []
 }
 
 export default {
