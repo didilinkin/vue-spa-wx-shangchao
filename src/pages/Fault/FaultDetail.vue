@@ -1,7 +1,7 @@
 // '故障报修' - '故障详情'页
 <template lang="pug">
 #FaultDetail
-    // 报修评价
+    // 报修评价( 评星 )
     Evaluation( v-if="showEvaluation" )
     // 报修状态
     RepairState(
@@ -62,8 +62,8 @@ export default {
         }
     },
     mounted: function() {
-        this.judgeShowEvaluation()                                         
-        this.setRepairProps()                                               
+        this.judgeShowEvaluation()
+        this.setRepairProps()
     },
     components: components
 }
