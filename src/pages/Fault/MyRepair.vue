@@ -8,7 +8,7 @@
     )
 </template>
 
-<script>    
+<script>
 import RepairState      from    '../../components/Fault/RepairState'
 const components = { RepairState }
 
@@ -25,9 +25,9 @@ export default {
                     text: `此处是已提交文本此处是已提交文本
                             此处是已提交文本此处是已提交文本
                             此处是已提交文本此处是已提交文本`,
-                    showSchedule: 'submitted',                      // 进度状态: '已提交' ( 用于显示'进度' - 因'已处理'无法判断, 所以添加此属性 )
+                    showSchedule: 'submitted',                                  // 进度状态: '已提交' ( 用于显示'进度' - 因'已处理'无法判断, 所以添加此属性 )
                     // '进度' - 具体信息
-                    submittedInfo: {                                // '已提交'的信息
+                    submittedInfo: {                                            // '已提交'的信息
                         dateTime: '2016-05-25 11:46'
                     }
                 }, {
@@ -37,13 +37,13 @@ export default {
                     dateTime: '2016-11-12 11:51',
                     text: `此处是已派单文本此处是已派单文本
                             此处是已派单文本此处是已派单文本`,
-                    showSchedule: 'send',                           // 进度状态: '已派单'
+                    showSchedule: 'send',                                       // 进度状态: '已派单'
                     // '进度' - 具体信息
                     submittedInfo: {
                         dateTime: '2016-05-25 11:46'
                     },
                     sendInfo: {
-                        handlePeople: '张先生( 处理人 )',             
+                        handlePeople: '张先生( 处理人 )',
                         dateTime: '2016-11-12 11:51'
                     }
                 }, {
@@ -53,13 +53,13 @@ export default {
                     dateTime: '2016-11-13 12:55',
                     text: `此处是已派单文本此处是已派单文本
                             此处是已派单文本此处是已派单文本`,
-                    showSchedule: 'beingProcessed',                           // 进度状态: '开始处理'
+                    showSchedule: 'beingProcessed',                             // 进度状态: '开始处理'
                     // '进度' - 具体信息
                     submittedInfo: {
                         dateTime: '2016-05-25 11:46'
                     },
                     sendInfo: {
-                        handlePeople: '张先生( 处理人 )',             
+                        handlePeople: '张先生( 处理人 )',
                         dateTime: '2016-11-12 11:51'
                     },
                     beingProcessedInfo: {
@@ -79,7 +79,7 @@ export default {
                         dateTime: '2016-05-25 11:46'
                     },
                     sendInfo: {
-                        handlePeople: '张先生( 处理人 )',             
+                        handlePeople: '张先生( 处理人 )',
                         dateTime: '2016-11-12 11:51'
                     },
                     beingProcessedInfo: {
@@ -105,7 +105,7 @@ export default {
                         dateTime: '2016-05-25 11:46'
                     },
                     sendInfo: {
-                        handlePeople: '张先生( 处理人 )',             
+                        handlePeople: '张先生( 处理人 )',
                         dateTime: '2016-11-12 11:51'
                     },
                     beingProcessedInfo: {
