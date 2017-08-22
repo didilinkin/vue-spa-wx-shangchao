@@ -7,7 +7,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 
 export const apiBuildingList = () => {
     return new Promise( function( resolve, reject ) {
-        axios.post( mockAPI.BUILDING_LIST )
+        axios.get( mockAPI.BUILDING_LIST )
         .then( response => {
             let resulData = response.data.data
             resolve( resulData )
