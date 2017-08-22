@@ -45,3 +45,29 @@ export const apipmInfo = () => {
     })
 }
 
+export const apiEleInfo = () => {
+    return new Promise( function( resolve, reject ) {
+        axios.get( mockAPI.eleUrl )
+             .then( response => {
+                 let resulData = response.data.data
+                 resolve( resulData )
+             })
+             .catch( error => {
+                 reject( error )
+             })
+    })
+}
+
+export const apiWaterInfo = () => {
+    return new Promise( function( resolve, reject ) {
+        axios.get( mockAPI.waterUrl )
+             .then( response => {
+                 let resulData = response.data.data
+                 resolve( resulData )
+             })
+             .catch( error => {
+                 reject( error )
+             })
+    })
+}
+

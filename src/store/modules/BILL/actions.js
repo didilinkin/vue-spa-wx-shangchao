@@ -34,5 +34,27 @@ export default {
             }
         }
         asyncPmInfo()
+    },
+    [types.REQUIRE_ELE_FEE]: ({ commit }) => {
+        const asyncPmInfo = async function() {
+            try {
+                let result = await billAPI.apiEleInfo()
+                commit( types.SET_ELE_FEE, result )
+            } catch( err ) {
+                console.log( err )
+            }
+        }
+        asyncPmInfo()
+    },
+    [types.REQUIRE_WATER_FEE]: ({ commit }) => {
+        const asyncPmInfo = async function() {
+            try {
+                let result = await billAPI.apiEleInfo()
+                commit( types.SET_WATER_FEE, result )
+            } catch( err ) {
+                console.log( err )
+            }
+        }
+        asyncPmInfo()
     }
 }

@@ -10,7 +10,11 @@ export const RentUrl = url + '/wx/listCollectRent?clientNum=1'          // 租�
 
 export const FeeUrl = url + '/wx/listFee?clientNum=1'                   // 费用列表链接
 
-export const pmUrl = url + '/wx/listPropertyFee?clientNum=1'                    // 物业费用列表链接
+export const pmUrl = url + '/wx/listPropertyFee?clientNum=1'            // 物业费用列表链接
+
+export const eleUrl = url + '/wx/listWattHour?clientNum=1'           // 电费用列表链接
+
+export const waterUrl = url + '/wx/listWaterRecord?clientNum=1'         // 水费用列表链接
 
 export const BULLETIN = BaseUrl + '/bulletin'                           // 公告
 

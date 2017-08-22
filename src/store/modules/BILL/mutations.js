@@ -45,5 +45,27 @@ export default {
         }
         state.pmInfo = pm
         state.sumPm = sumPm
+    },
+    [types.SET_ELE_FEE]( state, res ) {
+        const ele = res
+        let list = res
+        let sumEle = 0
+        for( let i = 0; i < list.length; i++ ) {
+            let eleOne = list[i]
+            ele[i]['title'] = '电费'
+            ele[i]['money'] = eleOne.actualReceivable
+            ele[i]['tollStartDate'] = eleOne.preWattDate
+            ele[i]['tollDeadline'] = eleOne.wattDate
+            ele[i]['payDate'] = eleOne.overdueDate
+            ele[i]['showDetailInfo'] = false
+            ele[i]['detailsInfo'] = eleOne.detailsInfo
+            ele[i]['detailList'] = eleOne.detailList
+            sumEle = sumEle + eleOne.actualReceivable
+        }
+        state.eleInfo = ele
+        state.sumEle = sumEle.toFixed( 1 )
+        console.log( '11111111111111111' )
+        console.log( state.eleInfo )
+        console.log( state.sumEle )
     }
 }
