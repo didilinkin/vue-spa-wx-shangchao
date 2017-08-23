@@ -1,7 +1,7 @@
 // '故障报修' - 报修评价( 评星星 )
 <template lang="pug">
 #Evaluation.auto--moduleMarginBottom
-    .select.auto--modulePaddingTB
+    .select.auto--moduleMarginTop
         // h1 报修评价
         star-rating(
             v-model="rating"
@@ -10,8 +10,13 @@
             v-bind:show-rating="false"
         )
         h3.auto--modulePaddingTB {{ starType }}
-    .remark.auto--modulePaddingTB
-
+    .remark.auto--moduleMarginBottom
+        mt-field.auto--modulePadding(
+            placeholder="感觉维修师傅怎么样，还满意吗？来叨叨几句吧~"
+            type="textarea"
+            rows="4"
+            v-model="introduction"
+        )
 
 </template>
 
@@ -43,7 +48,8 @@ export default {
     data() {
         return {
             rating: 3,
-            starType: '满意' // 很差 / 一般 / 满意 / 非常满意 / 无可挑剔
+            starType: '满意', // 很差 / 一般 / 满意 / 非常满意 / 无可挑剔
+            introduction: ''
         }
     },
     watch: {
@@ -66,5 +72,12 @@ export default {
     .select
         +dib
         >h3
-            +REM-fontStyle( $F-title, $C-title )
+            +REM-fontStyle( $F-text, $C-text )
+        a:hover
+            text-decoration: none
+
+.mint-field-core
+    +REM-fontStyle( $F-text, $C-text )
+.mint-cell:last-child
+    background-image: none;
 </style>

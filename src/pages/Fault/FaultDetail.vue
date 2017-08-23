@@ -8,6 +8,7 @@
         v-bind:repairStateArr="repairState"
         v-bind:canClickBoolean="false"
     )
+    // 进度轴
     Schedule()
 </template>
 

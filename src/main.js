@@ -12,6 +12,8 @@ import App          from './App'
 import router       from './router'
 import store        from './store'
 
+require( './assets/iconFont/font-awesome.min.css' )
+
 Vue.config.productionTip = false
 Vue.config.devtools = true
 Vue.config.debug = true
