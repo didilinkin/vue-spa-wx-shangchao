@@ -18,16 +18,31 @@ export const apiBuildingList = () => {
     })
 }
 
+/*
+    |   clientName  |String| 微信昵称 |
+    |   phone  |String|  电话 |
+    |   buildId  |Long|  楼宇id |
+    |   buildName  |String|  楼盘名称 |
+    |   roomId  |Long|  房间id |
+    |   roomName  |String|  房间名称 |
+    |   companyNum  |String|  公司编码 |
+    |   clientNum  |String|  微信客户编号 |
+ */
 export const apiRequireBinding = ( bindingValObj ) => {
+    // console.log( '11111111111111111' )
+    // console.log( bindingValObj )
     return new Promise( function( resolve, reject ) {
         axios.post( mockAPI.BUILDING_REQUIRE, qs.stringify({
-            'buildingValue': bindingValObj.buildingValue,
+            'phone': "15275263276",
+            'clientName': "测试",
+            'clientNum': "1",
+            'buildId': bindingValObj.buildingValue,
             'floorValue': bindingValObj.floorValue,
-            'roomValue': bindingValObj.roomValue,
-            'companyNo': bindingValObj.companyNo
+            'roomId': bindingValObj.roomValue,
+            'companyNum': bindingValObj.companyNo
         }) )
         .then( response => {
-            let resulData = response.data.data
+            let resulData = response.data.success
             resolve( resulData )
         })
         .catch( error => {

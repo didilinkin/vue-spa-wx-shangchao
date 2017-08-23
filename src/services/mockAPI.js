@@ -18,9 +18,9 @@ export const waterUrl = url + '/wx/listWaterRecord?clientNum=1'         // 水�
 
 export const BUILDING_LIST = url + '/wx/buildingList'                       // 绑定
 
+export const BUILDING_REQUIRE =  url + '/wx/bindingRoom'             // 绑定 - 请求绑定
+
 export const BULLETIN = BaseUrl + '/bulletin'                           // 公告
 
 export const BULLETIN_DETAILS = BaseUrl + '/bulletinDetails'            // 公告详情
-
-export const BUILDING_REQUIRE = BaseUrl + '/bindingRequire'             // 绑定 - 请求绑定
 
