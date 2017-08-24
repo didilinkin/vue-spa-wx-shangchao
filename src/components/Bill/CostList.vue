@@ -5,7 +5,7 @@ ul.CostList
     li.CostList--nullBill( v-if="briefListObj.showNullBill" )
         ContentNull( v-bind:setContentNullObj="setContentNull" )
 
-    // '账单费用' 如果非空, 显示列表内容 
+    // '账单费用' 如果非空, 显示列表内容
     li.auto--moduleMarginBottom(
         v-else
         v-for="( item, index ) in renderListObj.listArr"
@@ -78,7 +78,7 @@ export default {
                             tollStartDate: '2017-01-01',
                             tollDeadline: '2017-03-31',
                             payDate: '2017-04-10',
-                            showDetailInfo: false,                              // 折叠 - 信息 是否展开( 2级列表 ) 
+                            showDetailInfo: false,                              // 折叠 - 信息 是否展开( 2级列表 )
                             detailsInfo: [
                                 {
                                     title: '标题A',
@@ -164,12 +164,18 @@ export default {
             renderListObj: this.$props.briefListObj,                                        // 将$props 保存在 $data( 点击事件处理'显示'逻辑 )
             costListArrowIcon: require( '../../assets/images/iconListArrow@2x.png' ),       // 箭头
             showInfoIndex: 0,                                                               // 无显示 => 空
+<<<<<<< HEAD
             setContentNull: {                                                               // '内容为空' 渲染内容
                 contentImg: {
                     normal: require( '../../assets/images/billno@2x.png' ),                 
                     retina: require( '../../assets/images/billno@3x.png' )
                 },
                 contentTitle: '抱歉！暂无账单~'
+=======
+            nullBillImgObj: {
+                normal: require( '../../assets/images/billno@2x.png' ),
+                retina: require( '../../assets/images/billno@3x.png' )
+>>>>>>> dd2e200ee3979abdf9caf624a1318e5f20de277e
             }
         }
     },

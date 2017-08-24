@@ -25,7 +25,15 @@ const state = {
     },
     decorationDeposit: {        // 装修保证金
         money: 1024
-    }
+    },
+    rentInfo: [],
+    pmInfo: [],
+    sumRent: "",
+    feeInfo: [],
+    sumEle: "",
+    eleInfo: [],
+    sumWater: "",
+    waterInfo: []
 }
 
 export default {
