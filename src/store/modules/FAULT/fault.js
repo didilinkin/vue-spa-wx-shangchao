@@ -4,7 +4,8 @@ import * as getters     from './getters'
 import * as types       from './types'
 
 const state = {
-    repairDetail: {}
+    repairDetail: {},
+    list: {}
 }
 
 export default {

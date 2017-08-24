@@ -6,6 +6,8 @@ const BaseUrl = '/mock'                                                 // for l
 
 const url = 'http://127.0.0.1:18081'                                    // 后台链接
 
+const devUrl = 'http://192.168.5.21:18081'                             // 开发后台 url
+
 export const RentUrl = url + '/wx/listCollectRent?clientNum=1'          // 租赁费用链接
 
 export const FeeUrl = url + '/wx/listFee?clientNum=1'                   // 费用列表链接
@@ -24,3 +26,5 @@ export const BULLETIN = BaseUrl + '/bulletin'                           // 公�
 
 export const BULLETIN_DETAILS = BaseUrl + '/bulletinDetails'            // 公告详情
 
+// 本地测试环境
+export const FAULT = devUrl + '/wx/listRepair'                          // 故障报修 - '我的保修' 列表获取 // 正式: '/wx/listRepair'

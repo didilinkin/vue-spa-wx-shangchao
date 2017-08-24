@@ -3,7 +3,7 @@
 #Fault
     // 切换标签
     .Fault__navBar
-        .Fault--title#wantToRepair--link( 
+        .Fault--title#wantToRepair--link(
             @click="toggleShow( 'wantToRepair' )"
             v-bind:class="{ active: !showMyRepair }"
         )
@@ -14,7 +14,7 @@
             v-bind:class="{ active: showMyRepair }"
         )
             h2.auto--textStyle 我的报修
-    
+
     // 根据路由参数 匹配渲染子组件
     WantToRepair( v-show="!showMyRepair" )
     MyRepair( v-show="showMyRepair" )
@@ -35,6 +35,15 @@ export default {
             } else {
                 this.$data.showMyRepair = true
             }
+        },
+        // 目的: 请求 '故障报修' 列表信息( 用户参数由内部获取, 不已外部传入 )
+        requireFaultList() {
+            // console.log( '请求信息' )
+            // console.log( this.$store.state.globalState.userInfo.userId )
+            this.$store.dispatch({
+                type: 'fault/REQUIRE_FAULT_LIST',
+                userId: 1 // this.$store.state.globalState.userInfo.userId
+            })
         }
     },
     data() {
@@ -42,9 +51,12 @@ export default {
             showMyRepair: false
         }
     },
+    mounted: function() {
+        this.requireFaultList()
+    },
     components: components
 }
-    
+
 </script>
 
 <style lang="sass">
@@ -60,7 +72,7 @@ export default {
         +bC( $C-W )
         +textCenter
         +borderBottom( $C-line )
-    .active 
+    .active
         +borderBottom( $C-theme )
         >h2
             color: $C-theme
