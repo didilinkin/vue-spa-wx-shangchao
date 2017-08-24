@@ -164,18 +164,12 @@ export default {
             renderListObj: this.$props.briefListObj,                                        // 将$props 保存在 $data( 点击事件处理'显示'逻辑 )
             costListArrowIcon: require( '../../assets/images/iconListArrow@2x.png' ),       // 箭头
             showInfoIndex: 0,                                                               // 无显示 => 空
-<<<<<<< HEAD
             setContentNull: {                                                               // '内容为空' 渲染内容
                 contentImg: {
-                    normal: require( '../../assets/images/billno@2x.png' ),                 
+                    normal: require( '../../assets/images/billno@2x.png' ),
                     retina: require( '../../assets/images/billno@3x.png' )
                 },
                 contentTitle: '抱歉！暂无账单~'
-=======
-            nullBillImgObj: {
-                normal: require( '../../assets/images/billno@2x.png' ),
-                retina: require( '../../assets/images/billno@3x.png' )
->>>>>>> dd2e200ee3979abdf9caf624a1318e5f20de277e
             }
         }
     },

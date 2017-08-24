@@ -33,9 +33,9 @@ export const apiRequireBinding = ( bindingValObj ) => {
     // console.log( bindingValObj )
     return new Promise( function( resolve, reject ) {
         axios.post( mockAPI.BUILDING_REQUIRE, qs.stringify({
-            'phone': "15275263276",
-            'clientName': "测试",
-            'clientNum': "1",
+            'phone': '15275263276',
+            'clientName': '测试',
+            'clientNum': '1',
             'buildId': bindingValObj.buildingValue,
             'floorValue': bindingValObj.floorValue,
             'roomId': bindingValObj.roomValue,

@@ -28,11 +28,11 @@ const state = {
     },
     rentInfo: [],
     pmInfo: [],
-    sumRent: "",
+    sumRent: '',
     feeInfo: [],
-    sumEle: "",
+    sumEle: '',
     eleInfo: [],
-    sumWater: "",
+    sumWater: '',
     waterInfo: []
 }
 
