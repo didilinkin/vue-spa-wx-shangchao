@@ -21,6 +21,13 @@ const components = { Evaluation, RepairState, Schedule }
 export default {
     name: 'FaultDetail',
     methods: {
+        // 目的: 根据当前 打开的 评价 ID, 去后台获取详细 进度
+        requireFaultDetail() {
+            this.$store.dispatch({
+                type: 'fault/REQUIRE_FAULT_DETAIL',
+                detailId: '2' // url ID
+            })
+        },
         // 目的: 判断是否需要显示 '评分' 功能
         judgeShowEvaluation() {
             if( this.$data.faultDetailObj.stateType === 'finished' ) {      // 当 '进度状态' 为 '已完成'时 => 显示 '评分'组件; 否则不显示
@@ -45,6 +52,7 @@ export default {
         }
     },
     mounted: function() {
+        this.requireFaultDetail()
         this.judgeShowEvaluation()
         this.setRepairProps()
     },

@@ -5,7 +5,8 @@ import * as types       from './types'
 
 const state = {
     repairDetail: {},
-    list: {}
+    list: {},
+    detail: {}
 }
 
 export default {

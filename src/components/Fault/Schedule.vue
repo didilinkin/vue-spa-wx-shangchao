@@ -106,7 +106,7 @@ export default {
             return {
                 public: '2'
             }
-        },
+        }
     },
     components: components
 }

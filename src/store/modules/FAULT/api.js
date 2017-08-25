@@ -1,4 +1,4 @@
-/* global Promise: true */ // require
+/* global Promise : true */ // require
 import axios from 'axios'
 import * as mockAPI from '../../../services/mockAPI'
 
@@ -10,6 +10,23 @@ export const apiFaultList = ( obj ) => {
     return new Promise( function( resolve, reject ) {
         axios.get(
             mockAPI.FAULT + '?clientNum=' + obj.userId + '&pageFirst=0'
+        )
+        .then( response => {
+            let resulData = response.data
+            resolve( resulData )
+        })
+        .catch( error => {
+            reject( error )
+        })
+    })
+}
+
+export const apiFaultDetail = () => {
+    return new Promise( function( resolve, reject ) {
+        axios.get(
+            // http://192.168.5.250:18081/repair/getDetails?id=2
+            // mockAPI.FAULT_DETAIL + '?id=' + obj.detailId
+            'http://192.168.5.21:18081/repair/getDetails?id=2'
         )
         .then( response => {
             let resulData = response.data

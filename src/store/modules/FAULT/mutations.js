@@ -7,5 +7,8 @@ export default {
     },
     [types.SET_FAULT_LIST]( state, res ) {
         state.list = res
+    },
+    [types.SET_FAULT_DETAIL]( state, res ) {
+        state.detail = res
     }
 }

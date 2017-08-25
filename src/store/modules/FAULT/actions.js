@@ -17,5 +17,16 @@ export default {
             }
         }
         asyncFaultList()
+    },
+    [types.REQUIRE_FAULT_DETAIL]: ({ commit }, obj ) => {
+        const asyncFaultDetail = async function() {
+            try {
+                let result = await faultAPI.apiFaultDetail( obj )
+                commit( types.SET_FAULT_DETAIL, result )
+            } catch ( err ) {
+                console.log( err )
+            }
+        }
+        asyncFaultDetail()
     }
 }
