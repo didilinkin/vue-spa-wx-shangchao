@@ -1,50 +1,58 @@
 // '故障报修' - 报修进度( 进度轴 )
 <template lang="pug">
 #Schedule.auto--moduleMarginTop
-    h1.auto--moduleMarginBottom 进度
+    h1.auto--moduleMarginBottom.plan 进度
     // 进度轴
     ul.progress
-        li( v-if="progressType > 4" )
-            i.fa( class="fa fa-star" )
+        li.line.auto--moduleMarginBottom( v-if="progressType > 4" )
+            .icon
+                i.fa( class="fa fa-star" )
             .contentBox
-                h3 客户已评价
-                p {{ scheduleObj.evaluation.time }}
-                star-rating.auto--moduleMarginBottom(
+                h3.client-f  客户已评价
+                p.data {{ scheduleObj.evaluation.time }}
+                star-rating.auto--moduleMarginBottom.pentagon-star(
                     v-bind:rating="scheduleObj.evaluation.starNum"
                     v-bind:read-only="true"
                     v-bind:star-size="20"
                 )
+                .string
 
-
-        li( v-if="progressType > 3 " )
-            i.fa( class="fa fa-check-square-o" )
+        li.line.auto--moduleMarginBottom( v-if="progressType > 3 " )
+            div.icon
+                i.fa( class="fa fa-check-square-o" )
             .contentBox
-                h3 已处理完毕
-                p 维修人: {{ scheduleObj.finished.repair }}
-                p 维修费:
-                    b.fault--maintenanceFees {{ scheduleObj.finished.maintenanceFees }}
+                h3.client-f 已处理完毕
+                p.people 维修人: {{ scheduleObj.finished.repair }}
+                p.price 维修费:
+                    b.fault--maintenanceFees  {{ scheduleObj.finished.maintenanceFees }}
                     | 元
-                p {{ scheduleObj.finished.time }}
+                p.time {{ scheduleObj.finished.time }}
+                .wire
 
-        li( v-if="progressType > 2" )
-            i.fa( class="fa fa-clock-o" )
+        li.line.auto--moduleMarginBottom( v-if="progressType > 2" )
+            div.icon
+                i.fa( class="fa fa-clock-o" )
             .contentBox
-                h3 已开始处理
-                p 维修人: {{ scheduleObj.doing.repair }}
-                p {{ scheduleObj.doing.time }}
+                h3.client-f 已开始处理
+                p.people 维修人: {{ scheduleObj.doing.repair }}
+                p.time {{ scheduleObj.doing.time }}
+                .string
 
-        li( v-if="progressType > 1" )
-            i.fa( class="fa fa-rocket" )
+        li.line.auto--moduleMarginBottom( v-if="progressType > 1" )
+            div.icon
+                i.fa( class="fa fa-rocket" )
             .contentBox
-                h3 已派单
-                p 受理人: {{ scheduleObj.send.acceptor }}
-                p {{ scheduleObj.send.time }}
+                h3.client-f 已派单
+                p.people 受理人: {{ scheduleObj.send.acceptor }}
+                p.time {{ scheduleObj.send.time }}
+                .string
 
-        li
-            i.fa( class="fa fa-user-o" )
+        li.line.auto--moduleMarginBottom
+            .icon
+                i.fa( class="fa fa-user-o" )
             .contentBox
-                h3 客户已提交报修
-                p {{ scheduleObj.submitted.time }}
+                h3.client-f 客户已提交报修
+                p.time {{ scheduleObj.submitted.time }}
 </template>
 
 <script>
@@ -109,4 +117,62 @@ export default {
 
 #Schedule
     +bC( $C-W )
+.plan
+    color: rgb( 51,51,51 )
+    +REM-fontStyle( $F-title, 2 )
+    +REM( margin-left, 16px)
+    +REM( padding-top, 15px)
+.icon
+    +REM-W-H( 50px )
+    +flexCenter
+    background-color: rgb(204,204,204)
+    +REM( border-radius, 25px )
+    +REM( margin-left, 20px)
+    +REM( margin-top, 24px)
+    .fa
+        color: #fff
+        font-size: 20px
+.string
+    width: 1px
+    height: 46px
+    background-color: #ccc
+    position: absolute
+    left: 38px
+    top: 50px
+.wire
+    width: 1px
+    height: 60px
+    background-color: #ccc
+    position: absolute
+    left: 38px
+    top: 50px
+.data
+    +REM( margin-left, 80px)
+    +REM( margin-top, -5px)
+    +REM( font-size, $F-text)
+    color: #666
+.pentagon-star
+    +REM( margin-left, 41px )
+    +REM( padding-left, 35px )
+.client-f
+    color: rgb(102,102,102)
+    +REM-fontStyle( $F-title, $C-title, 2 )
+    +REM( margin-left, 80px)
+    +REM( margin-top, -60px)
+.people
+    +REM( margin-left, 80px)
+    +REM( margin-top, -5px)
+    +REM-fontStyle( $F-text, 2.5 )
+    color: rgb(153,153,153)
+.price
+    +REM( margin-left, 80px)
+.time
+    +REM( margin-left, 80px)
+    +REM-fontStyle( $F-text, $C-text )
+.line
+    border-bottom: none
+.contentBox
+    position: relative
+.progress
+    +REM( padding-bottom, 76px )
 </style>
