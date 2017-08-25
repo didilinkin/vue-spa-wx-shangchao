@@ -9,6 +9,7 @@ export default {
         state.list = res
     },
     [types.SET_FAULT_DETAIL]( state, res ) {
+        console.dir( res )
         state.detail = res
     }
 }
