@@ -106,7 +106,7 @@ export default {
             return {
                 public: '2'
             }
-        }
+        },
     },
     components: components
 }
@@ -134,17 +134,17 @@ export default {
         font-size: 20px
 .string
     width: 1px
-    height: 46px
+    height: 63px
     background-color: #ccc
     position: absolute
-    left: 38px
+    left: 45px
     top: 50px
 .wire
     width: 1px
-    height: 60px
+    height: 80px
     background-color: #ccc
     position: absolute
-    left: 38px
+    left: 45px
     top: 50px
 .data
     +REM( margin-left, 80px)
