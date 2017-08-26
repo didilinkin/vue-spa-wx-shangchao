@@ -118,7 +118,7 @@
     #Schedule
         +bC( $C-W )
         .plan
-            +C( $C-Y )
+            color: rgb( 51, 51, 51 )
             +REM-fontStyle( $F-title, 2 )
             +mL( 16px )
             +pT( 15px )
@@ -134,12 +134,12 @@
                     +mL( 20px )
                     +mT( 24px )
                     .fa
-                        +C( $C-W )
+                        color: #fff
                         +REM( font-size, 25px )
                 .contentBox
                     position: relative
                     .client-f
-                        +C( $C-title )
+                        color: rgb( 102, 102, 102 )
                         +REM-fontStyle( $F-title, $C-title, 2 )
                         +mL( 80px)
                         +mT( -60px)
@@ -147,13 +147,13 @@
                         +mL( 80px)
                         +mT( -5px)
                         +REM( font-size, $F-text)
-                        +C( $C-L )
+                        color: #666
                     .pentagon-star
                         +mL( 41px )
                         +pL( 35px )
                     .string
                         +REM-W-H( 1px, 63px )
-                        +bC( $C-C )
+                        background-color: #ccc
                         +ABS
                         left: 45px
                         top: 50px
@@ -161,7 +161,7 @@
                         +mL( 80px )
                         +mT( -5px )
                         +REM-fontStyle( $F-text, 2.5 )
-                        +C( $C-assist )
+                        color: rgb( 153, 153, 153 )
                     .price
                         +mL( 80px )
                     .time
@@ -169,7 +169,7 @@
                         +REM-fontStyle( $F-text, $C-text )
                     .wire
                         +REM-W-H( 1px, 80px )
-                        +bC( $C-C )
+                        background-color: #ccc
                         position: absolute
                         left: 45px
                         top: 50px
