@@ -9,10 +9,15 @@
         v-bind:canClickBoolean="false"
     )
     // 进度轴
-    Schedule()
+    Schedule(
+        v-bind:scheduleObj="detailObj"
+        v-bind:progressType="5"
+    )
 </template>
 
 <script>
+import { mapGetters }   from 'vuex'
+
 import Evaluation   from    '../../components/Fault/Evaluation'
 import RepairState  from    '../../components/Fault/RepairState'
 import Schedule     from    '../../components/Fault/Schedule'
@@ -48,7 +53,17 @@ export default {
         return {
             faultDetailObj: this.$store.state.fault.repairDetail,           // 详情对象( 在跳转前已保存 )
             showEvaluation: false,
-            repairState: []
+            repairState: [],
+            detailObj: {}
+        }
+    },
+    computed: mapGetters({
+        getterFaultDetail: 'getterFaultDetail'
+    }),
+    watch: {
+        // 当 公告内容获取到, 触发
+        getterFaultDetail: function() {
+            this.$data.detailObj = this.getterFaultDetail
         }
     },
     mounted: function() {
