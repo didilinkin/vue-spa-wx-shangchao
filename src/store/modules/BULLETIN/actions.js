@@ -19,7 +19,7 @@ export default {
                 let result = await bulletinAPI.apiBulletinDetailsInfo( bulletinDetailsIdObj )
                 commit( types.SET_BULLETIN_DETAILS_INFO, result )
             } catch( err ) {
-                console.log( err ) 
+                console.log( err )
             }
         }
         asyncBulletinDetailsInfo()

@@ -9,11 +9,20 @@
 </template>
 
 <script>
+import { mapGetters }   from 'vuex'
 import RepairState      from    '../../components/Fault/RepairState'
 const components = { RepairState }
 
 export default {
     name: 'myRepair',
+    methods: {
+        // 目的: 发起请求 - 获取最新的公告信息
+        requireBulletinInfo() {
+            this.$store.dispatch({
+                type: 'fault/SET_FAULT_DETAILL'
+            })
+        }
+    },
     data() {
         return {
             repairState: [
@@ -125,12 +134,23 @@ export default {
             ]
         }
     },
+    computed: mapGetters({
+        getterrepairState: 'getterrepairState'
+    }),
+    watch: {
+        // 当 公告内容获取到, 触发
+        getterrepairState: function() {
+            this.$data.repairState = this.getterrepairState
+        }
+    },
+    mounted: function() {
+        this.requireBulletinInfo()
+    },
     components: components
 }
 </script>
 
 <style lang="sass">
-import "../../sass/main"
 
 #myRepair
 </style>

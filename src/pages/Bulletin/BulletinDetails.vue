@@ -3,7 +3,7 @@
 #BulletinDetails.auto--modulePadding
     h2.auto--titleStyle {{ bulletinDetailsInfo.title }}
     span.auto--assistStyle {{ bulletinDetailsInfo.dateTime }}
-    ul 
+    ul
         li(
             v-for="( item, index ) in bulletinDetailsInfo.content"
             v-bind:key="index"
@@ -46,7 +46,7 @@ export default {
                 } else {
                     this.$data.scrollStatus = true                      // 改变
                 }
-            } 
+            }
         }
     },
     data() {

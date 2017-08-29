@@ -16,7 +16,6 @@
                     v-bind:star-size="20"
                     )
                     .string
-
             li.line.auto--moduleMarginBottom( v-if="progressType > 3 " )
                 div.icon
                     i.fa( class="fa fa-check-square-o" )

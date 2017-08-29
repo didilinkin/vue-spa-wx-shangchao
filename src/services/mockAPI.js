@@ -24,7 +24,7 @@ export const BUILDING_LIST = url + '/wx/buildingList'                       // �
 
 export const BUILDING_REQUIRE =  url + '/wx/bindingRoom'             // 绑定 - 请求绑定
 
-export const BULLETIN = BaseUrl + '/bulletin'                           // 公告
+export const BULLETIN = devUrl + '/wx/listNotice'                           // 公告
 
 export const BULLETIN_DETAILS = BaseUrl + '/bulletinDetails'            // 公告详情
 

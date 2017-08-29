@@ -7,8 +7,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 
 export const apiBulletinInfo = () => {
     return new Promise( function( resolve, reject ) {
-        axios.post( mockAPI.BULLETIN )
-        .then( response => {
+        axios.get( mockAPI.BULLETIN ).then( response => {
             let resulData = response.data.data
             resolve( resulData )
         })

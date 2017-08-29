@@ -5,7 +5,7 @@
     MtextBox.auto--moduleMarginBottom( v-bind:setMtextBoxObj="setMtextBox" )
 
     // 图片上传( 未添加 )
-    
+
     // 单行文本
     FortForm( v-bind:FortInputArr="fortInputText" )
 </template>

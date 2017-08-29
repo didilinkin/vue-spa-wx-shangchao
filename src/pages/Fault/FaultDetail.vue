@@ -54,7 +54,12 @@ export default {
             faultDetailObj: this.$store.state.fault.repairDetail,           // 详情对象( 在跳转前已保存 )
             showEvaluation: false,
             repairState: [],
-            detailObj: {}
+            detailObj: {},
+            submitted: {},
+            evaluation: {},
+            finished: {},
+            doing: {},
+            send: {}
         }
     },
     computed: mapGetters({
