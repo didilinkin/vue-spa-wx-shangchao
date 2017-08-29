@@ -14,8 +14,8 @@
             h2.auto--titleStyle(
                 @click="toBulletinDetails( item.id )"
             ) {{ item.title }}
-            span.auto--assistStyle {{ item.date }}
-            span.auto--assistStyle {{ item.time }}
+            span.auto--assistStyle {{ item.createDate }}
+            //span.auto--assistStyle {{ item.time }}
             .BulletinLine--labelCircle
     .BulletinLine--null( v-else )
         ContentNull( v-bind:setContentNullObj="setContentNull" )

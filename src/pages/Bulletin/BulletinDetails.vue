@@ -2,14 +2,14 @@
 <template lang="pug">
 #BulletinDetails.auto--modulePadding
     h2.auto--titleStyle {{ bulletinDetailsInfo.title }}
-    span.auto--assistStyle {{ bulletinDetailsInfo.dateTime }}
+    span.auto--assistStyle {{ bulletinDetailsInfo.createDate }}
     ul
         li(
             v-for="( item, index ) in bulletinDetailsInfo.content"
             v-bind:key="index"
         )
             // 段落
-            p.auto--textStyle.auto--textIndent( v-if="item.type === 'paragraph'" ) {{ item.paragraph }}
+            p.auto--textStyle.auto--textIndent( v-if="item.type === 'paragraph'" ) {{ item.content }}
             // 图片
             // v-bind:srcset="item.imgUrl"
             img(

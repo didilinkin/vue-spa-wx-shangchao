@@ -1,7 +1,7 @@
-/* global Promise require: true */
+/* global Promise : true */ // require
 import axios            from 'axios'
 import * as mockAPI     from '../../../services/mockAPI'
-const qs = require( 'qs' )
+// const qs = require( 'qs' )
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
@@ -19,7 +19,7 @@ export const apiBulletinInfo = () => {
 
 export const apiBulletinDetailsInfo = ( bulletinDetailsIdObj ) => {
     return new Promise( function( resolve, reject ) {
-        axios.post( mockAPI.BULLETIN_DETAILS, qs.stringify({ 'id': bulletinDetailsIdObj.id }) )
+        axios.get( mockAPI.BULLETIN_DETAILS + `?id=${ bulletinDetailsIdObj.id }` )
         .then( response => {
             let resulData = response.data.data
             resolve( resulData )
