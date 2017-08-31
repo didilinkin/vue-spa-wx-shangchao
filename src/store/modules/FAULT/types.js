@@ -10,4 +10,4 @@ export const REQUIRE_FAULT_DETAIL   = 'fault/REQUIRE_FAULT_DETAIL'      // 请�
 
 export const SET_FAULT_DETAIL       = 'fault/SET_FAULT_DETAIL'          // 设置 - '故障报修' - '详情'数据
 
-export const SET_FAULT_DETAILL       = 'fault/SET_FAULT_DETAILL'          // 我的报修，请求数据
+export const SET_FAULT_DETAILL       = 'fault/SET_FAULT_DETAILL'          // 我的报修，--  列表数据

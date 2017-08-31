@@ -16,7 +16,8 @@ export default {
     },
     [types.SET_BULLETIN_DETAILS_INFO]( state, res ) {
         let resObj = res
-        resObj['content'] = res.content.contentInfo
+        console.dir( res )
+        resObj['content'] = res.content
         state.bulletinDetailsInfo = resObj
     }
 }

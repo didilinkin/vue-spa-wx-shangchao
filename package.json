@@ -14,6 +14,7 @@
   "dependencies": {
     "axios": "^0.16.1",
     "layzr.js": "^2.2.2",
+    "lodash": "^4.17.4",
     "mint-ui": "^2.2.3",
     "sweetalert2": "^6.6.2",
     "vue": "^2.2.6",

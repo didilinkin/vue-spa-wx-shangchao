@@ -135,12 +135,12 @@ export default {
         }
     },
     computed: mapGetters({
-        getterrepairState: 'getterrepairState'
+        getterFaultDetail: 'getterrepairState'
     }),
     watch: {
         // 当 公告内容获取到, 触发
-        getterrepairState: function() {
-            this.$data.repairState = this.getterrepairState
+        getterFaultDetail: function() {
+            this.$data.repairState = this.getterFaultDetail
         }
     },
     mounted: function() {

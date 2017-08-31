@@ -8,6 +8,7 @@ export default {
     [types.SET_FAULT_LIST]( state, res ) {
         state.list = res
     },
+    // 进度条数据
     [types.SET_FAULT_DETAIL]( state, res ) {
         console.dir( res )
         let detailObj = {
@@ -41,17 +42,34 @@ export default {
         state.detail = Object.assign( detailObj, {})
     },
     [types.SET_FAULT_DETAILL]( state, res ) {
-        console.log( res )
+        // console.log( res )
+        let arr = res.repairList
+        console.dir( arr )
         let json = []
+
+        arr.map( ( item ) => {
+            // console.dir( item )
+            if( item.pieStatus === 1 ) { // 是否派单
+                if( item.repairStatus === 1 ) { // 维修状态
+                    console.log( '维修过' )
+                } else {
+                    console.log( '未维修' )
+                }
+            } else {
+                console.log( '未派单' )
+                let obj = {}
+                obj.title = item.createDate
+                json.push( obj )
+            }
+        })
+
         res.forEach( r => {
             json.push({
                 id: 35648,
                 stateType: 'evaluation',
                 stateTitle: '已评价',
                 dateTime: r.createDate,
-                text: `此处是已评价文本此处是已评价文本
-                            此处是已评价文本此处是已评价文本
-                            此处是已评价文本`,
+                text: r.repairedContent,
                 showSchedule: 'evaluation',                                 // 进度状态: '已评价'
                 // '进度' - 具体信息
                 submittedInfo: {

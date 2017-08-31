@@ -3,19 +3,20 @@
 #BulletinDetails.auto--modulePadding
     h2.auto--titleStyle {{ bulletinDetailsInfo.title }}
     span.auto--assistStyle {{ bulletinDetailsInfo.createDate }}
+    p.auto--textStyle.auto--textIndent {{ bulletinDetailsInfo.content }}
     ul
-        li(
-            v-for="( item, index ) in bulletinDetailsInfo.content"
-            v-bind:key="index"
-        )
-            // 段落
-            p.auto--textStyle.auto--textIndent( v-if="item.type === 'paragraph'" ) {{ item.content }}
-            // 图片
-            // v-bind:srcset="item.imgUrl"
-            img(
-                v-else
-                v-lazy="item.imgUrl"
-            )
+        <!--li(-->
+            <!--v-for="( item, index ) in bulletinDetailsInfo.content"-->
+            <!--v-bind:key="index"-->
+        <!--)-->
+            <!--// 段落-->
+            <!--p.auto&#45;&#45;textStyle.auto&#45;&#45;textIndent( v-if="item.type === 'paragraph'" ) {{ item.content }}-->
+            <!--// 图片-->
+            <!--// v-bind:srcset="item.imgUrl"-->
+            <!--img(-->
+                <!--v-else-->
+                <!--v-lazy="item.imgUrl"-->
+            <!--)-->
     ScrollTo(
         v-bind:ScrollToCanShowBoolean="this.$data.scrollStatus"
     )

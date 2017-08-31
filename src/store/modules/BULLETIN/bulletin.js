@@ -5,7 +5,9 @@ import * as types       from './types'
 
 const state = {
     bulletinInfo: {},
-    bulletinDetailsInfo: {}
+    bulletinDetailsInfo: {
+        content: ''
+    }
 }
 
 export default {

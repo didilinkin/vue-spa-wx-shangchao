@@ -7,7 +7,7 @@ export default {
             try {
                 let result = await bulletinAPI.apiBulletinInfo()
                 commit( types.SET_BULLETIN_INFO, result )
-            } catch( err ) {
+            } catch ( err ) {
                 console.log( err )
             }
         }
@@ -18,10 +18,11 @@ export default {
             try {
                 let result = await bulletinAPI.apiBulletinDetailsInfo( bulletinDetailsIdObj )
                 commit( types.SET_BULLETIN_DETAILS_INFO, result )
-            } catch( err ) {
+            } catch ( err ) {
                 console.log( err )
             }
         }
         asyncBulletinDetailsInfo()
     }
+
 }

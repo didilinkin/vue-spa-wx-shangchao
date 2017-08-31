@@ -20,7 +20,7 @@ export const apiFaultList = ( obj ) => {
         })
     })
 }
-
+// 进度条接口
 export const apiFaultDetail = ( obj ) => {
     return new Promise( function( resolve, reject ) {
         axios.get(
@@ -37,7 +37,7 @@ export const apiFaultDetail = ( obj ) => {
         })
     })
 }
-
+// 我的报修列表接口
 export const apirepairState = () => {
     return new Promise( function( resolve, reject ) {
         axios.get(
