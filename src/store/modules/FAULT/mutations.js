@@ -1,4 +1,5 @@
 import * as types from './types'
+import { cloneDeep } from 'lodash' // 深拷贝
 
 export default {
     [types.SET_REPAIR_DETAIL]( state, res ) {
@@ -45,10 +46,39 @@ export default {
         // console.log( res )
         let arr = res.repairList
         console.dir( arr )
+
+        // 初始化状态
+        let initTypeObj = {
+            id: '',
+            stateType: 'submitted',
+            stateTitle: '已提交',
+            dateTime: '2016-05-25 11:46',
+            text: `此处是已提交文本此处是已提交文本
+                                此处是已提交文本此处是已提交文本
+                                此处是已提交文本此处是已提交文本`,
+            showSchedule: 'submitted',                      // 进度状态: '已提交' ( 用于显示'进度' - 因'已处理'无法判断, 所以添加此属性 )
+            // '进度' - 具体信息
+            submittedInfo: {                                // '已提交'的信息
+                dateTime: '2016-05-25 11:46'
+            }
+        }
         let json = []
 
+        let setTypeObj = ( typeState, obj ) => {
+            let typeObj = cloneDeep( initTypeObj )
+
+            if ( typeState === 'submitted' ) { // 配置 '已提交' 对象
+                typeObj.id = obj.id
+                typeObj.stateType = 'submitted'
+                typeObj.stateTitle = '已提交',
+                typeObj.dateTime = obj.createDate // 数据时间
+                typeObj.text = obj.repairedContent // 文本内容
+            }
+
+            json.push( typeObj )
+        }
+
         arr.map( ( item ) => {
-            // console.dir( item )
             if( item.pieStatus === 1 ) { // 是否派单
                 if( item.repairStatus === 1 ) { // 维修状态
                     console.log( '维修过' )
@@ -57,43 +87,13 @@ export default {
                 }
             } else {
                 console.log( '未派单' )
-                let obj = {}
-                obj.title = item.createDate
-                json.push( obj )
+                setTypeObj( 'submitted', item )
             }
         })
 
-        res.forEach( r => {
-            json.push({
-                id: 35648,
-                stateType: 'evaluation',
-                stateTitle: '已评价',
-                dateTime: r.createDate,
-                text: r.repairedContent,
-                showSchedule: 'evaluation',                                 // 进度状态: '已评价'
-                // '进度' - 具体信息
-                submittedInfo: {
-                    dateTime: '2016-05-25 11:46'
-                },
-                sendInfo: {
-                    handlePeople: '张先生( 处理人 )',
-                    dateTime: '2016-11-12 11:51'
-                },
-                beingProcessedInfo: {
-                    repairMan: '王先生( 维修人 ) 刘先生( 维修人 )',
-                    dateTime: '2016-11-13 12:55'
-                },
-                finishedInfo: {
-                    repairMan: '王先生( 维修人 ) 刘先生( 维修人 )',
-                    maintenanceFees: 30,                                    // 维修费
-                    dateTime: '2016-07-11 12:12'
-                },
-                evaluationInfo: {                                           // 评价信息
-                    dateTime: '2016-01-22 15:34',
-                    score: 4                                                // 评分星星数
-                }
-            })
-        })
+
+        console.log( '最后检查json' )
+        console.dir( json ) // 成功
         state.repairState = json
     }
 }
