@@ -29,8 +29,7 @@ export default {
         return {
             BillHeaderObj: {
                 title: '水费',
-                money: '123,456.00',
-                companyName: this.$store.state.globalState.userInfo.companyName
+                money: '123,456.00'
             },
             // 费用列表 - 简要( 收起样式 展示 )
             CostListBrief: {
