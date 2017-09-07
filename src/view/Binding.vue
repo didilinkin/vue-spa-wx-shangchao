@@ -109,7 +109,7 @@ export default {
                 confirmButtonColor: '#23d296',
                 title: '请输入公司编号',
                 text: '请联系客服管家查询公司编号',
-                input: 'number',
+                input: 'text',
                 showCancelButton: true,
                 confirmButtonText: '确认',
                 showLoaderOnConfirm: true,
