@@ -31,6 +31,9 @@ export default {
                 }, {
                     url: 'fault',
                     title: '故障报修'
+                }, {
+                    url: 'proposal',
+                    title: '投诉建议'
                 },
                 // {   // 暂时不需要此类目
                 //     url: 'proposal',
