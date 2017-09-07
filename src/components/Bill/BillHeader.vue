@@ -34,7 +34,7 @@ export default {
             }
         }
     }
-} 
+}
 </script>
 
 <style lang="sass">
@@ -55,7 +55,7 @@ export default {
         +W100
         +REM( padding-top, $D-autoMargin )
         +textCenter
-        >h1 
+        >h1
             +REM-fontStyle( $F-big-title, $C-W, 2 )
         >p.BillHeader--companyName
             +REM-fontStyle( $F-badge, $C-copy )

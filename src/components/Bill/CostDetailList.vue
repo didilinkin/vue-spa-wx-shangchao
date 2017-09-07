@@ -26,7 +26,7 @@ ul.CostDetailList
             // v-if 判断 li内的check数组是否为空( 如果为空 返回的将是false => v-if 隐藏 )
             img(
                 v-if="arrListItem.detailListCheck"
-                v-bind:src="detailListCheckIcon" 
+                v-bind:src="detailListCheckIcon"
             )
 
         // 详情账单列表 - '具体费用'容器
@@ -46,7 +46,7 @@ ul.CostDetailList
 </template>
 
 <script>
-/* global require: true */ 
+/* global require: true */
 export default {
     name: 'CostDetailList',
     props: {
@@ -143,6 +143,8 @@ export default {
     .CostDetailList__contentBox
         &:last-child hr
             border: none
+        &:last-child li         //隐藏已收金额div
+            display: none
 
 // '具体费用'容器 - 要与列表标题 颜色做区分
 .CostDetailList__checkItem
@@ -168,7 +170,7 @@ ul li
                 +fW( bold )
         &:last-of-type
             text-align: right
-    // 详情账单列表 可展开箭头图标 
+    // 详情账单列表 可展开箭头图标
     >img
         +REM-W-H( $F-text )
         +REM( margin-left, $F-text )

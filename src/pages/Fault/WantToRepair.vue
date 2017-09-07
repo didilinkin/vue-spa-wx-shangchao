@@ -5,6 +5,12 @@
     MtextBox.auto--moduleMarginBottom( v-bind:setMtextBoxObj="setMtextBox" )
 
     // 图片上传( 未添加 )
+    #upload
+    //button.submit submit
+    div.ftp
+        span 您最多可上传
+        span.dll 5
+        span 张图片，单张照片最大2M
 
     // 单行文本
     FortForm( v-bind:FortInputArr="fortInputText" )
@@ -48,7 +54,18 @@ export default {
 
 <style lang="sass">
 @import "../../sass/main"
-
+.addimg
+.ftp
+    color: rgb( 178,178,178 )
+    font-size: 14px
+    margin-left: 15.5px
+    padding-bottom: 15.5px
+    padding-top: 15.5px
+    .dll
+        color: rgb( 35,210,150 )
 #wantToRepair
+#upload
+    display: block
+
 </style>
 

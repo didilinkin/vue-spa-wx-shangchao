@@ -1,8 +1,8 @@
-/* global require: true */ 
+/* global require: true */
 // 'Bill.vue' 组件 $data 数据
 const dataBillObj = {
     listArr: [
-        {   
+        {
             id: 'buildingFee',
             iconImg: require( '../assets/images/iconHousing@2x.png' ),
             title: '房屋租赁费',

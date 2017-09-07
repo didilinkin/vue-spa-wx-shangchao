@@ -28,7 +28,7 @@ export default {
     data() {
         return {
             BillHeaderObj: {
-                title: '水费',
+                title: '未交金额合计',
                 money: '123,456.00'
             },
             // 费用列表 - 简要( 收起样式 展示 )

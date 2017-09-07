@@ -45,7 +45,7 @@ export default {
 <style lang="sass" scoped>
 @import "../../sass/main"
 
-.DepositList 
+.DepositList
     +bC( $C-W )
     >li
         +REL
@@ -70,14 +70,14 @@ export default {
                 >h2.DepositList--date
                     text-align: left
                 >h2.DepositList--money
-                    text-align: right  
+                    text-align: right
             // 说明文字
             p.DepositList--description
                 +REM-fontStyle( $F-badge, $C-assist, 2 )
                 +ell-line( $F-badge*2, 2 )
         &:last-of-type
             border: none
-            
+
 // 圆圈配色 - 根据class名称
 .DepositList--charge
     +bC( $C-bill-charge )

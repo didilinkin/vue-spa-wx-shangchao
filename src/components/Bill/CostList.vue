@@ -23,7 +23,7 @@ ul.CostList
             .CostList__contentBox__title
                 h2 {{ item.title }}
                 h2
-                    b {{ item.money }}
+                    b.cl {{ item.money }}
                 img.CostList--arrowIcon( v-bind:src="costListArrowIcon" )
             .CostList__contentBox__date
                 .CostList--text
@@ -51,7 +51,7 @@ ul.CostList
                 v-bind:key="indexInfo"
             )
                 p {{ itemInfo.title }}
-                p {{ itemInfo.value }}
+                p.ficl {{ itemInfo.value }}
 </template>
 
 <script>
@@ -205,6 +205,8 @@ export default {
         +REM-fontStyle( $F-big-title/2, $C-title )
         &:first-child
             width: 50%
+        .cl
+            color: #42a0fe
     >img
         // margin-left: 5%
         +ABS
@@ -229,8 +231,12 @@ export default {
         flex: 1
         +bC( $C-W )
         +textCenter
+        &:first-child p         //改变颜色
+            color: #666
         >p
             +REM-fontStyle( $F-text, $C-title )
             &:first-child
                 +REM( margin-bottom, $D-autoMargin/2 )
+        .ficl
+            color: #fd741a
 </style>

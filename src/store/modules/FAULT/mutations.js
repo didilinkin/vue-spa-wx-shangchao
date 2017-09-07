@@ -42,6 +42,7 @@ export default {
 
         state.detail = Object.assign( detailObj, {})
     },
+    // 我的报修列表接口数据
     [types.SET_FAULT_DETAILL]( state, res ) {
         // console.log( res )
         let arr = res.repairList
@@ -56,7 +57,7 @@ export default {
             text: `此处是已提交文本此处是已提交文本
                                 此处是已提交文本此处是已提交文本
                                 此处是已提交文本此处是已提交文本`,
-            showSchedule: 'submitted',                      // 进度状态: '已提交' ( 用于显示'进度' - 因'已处理'无法判断, 所以添加此属性 )
+            showSchedule: 'submitted',                      // 进度状态:'已提交'(用于显示'进度'因'已处理'无法判断,所以添加此属性)
             // '进度' - 具体信息
             submittedInfo: {                                // '已提交'的信息
                 dateTime: '2016-05-25 11:46'
@@ -90,7 +91,6 @@ export default {
                 setTypeObj( 'submitted', item )
             }
         })
-
 
         console.log( '最后检查json' )
         console.dir( json ) // 成功

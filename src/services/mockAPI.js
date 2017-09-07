@@ -4,9 +4,9 @@
 
 // const BaseUrl = '/mock'                                                 // for local mock test
 
-const url = 'http://127.0.0.1:18081'                                    // 后台链接
+const url = 'http://192.168.5.21:18081'                                    // 后台链接
 
-const devUrl = 'http://192.168.5.21:18081'                             // 开发后台 url
+const devUrl = 'http://192.168.5.250:18081'                             // 开发后台 url
 
 // const testUrl = 'http://192.168.5.250:18081'                             // 开发后台 url
 
