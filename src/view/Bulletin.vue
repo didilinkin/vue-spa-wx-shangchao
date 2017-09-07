@@ -48,6 +48,10 @@ export default {
         // 当 公告内容获取到, 触发
         getterBulletinInfo: function() {
             this.$data.BulletinLineArr = this.getterBulletinInfo
+            console.log( '888888888888' )
+            console.log( this.$route.query )
+            console.log( this.$route.query.openId )
+            console.log( this.$route.query.nickName )
         }
     },
     mounted: function() {
