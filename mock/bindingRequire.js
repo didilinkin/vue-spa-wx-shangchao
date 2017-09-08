@@ -9,7 +9,14 @@ module.exports = {
         res.json({
             rlt: 'true',
             msg: 'ok',
-            data: faker.random.boolean()
+            data: {
+                state: faker.random.boolean(),
+                arrLift: [
+                    '长江中心A',
+                    '长江中心B',
+                    '长江中心C'
+                ]
+            }
         })
     }
 }

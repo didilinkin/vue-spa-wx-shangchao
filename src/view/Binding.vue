@@ -10,13 +10,7 @@
         v-bind:roomArr="pickerDataObj.roomArr"
     )
     span 若您已租赁多个房间，选择任一房间即可
-    //.binding-ele
-    //    span 您已绑定
-    //    span.style 2
-    //    span 个房间
-    //.box-info
-    //    span.company 长江中心A座-2408
-    //    a.unbind 解绑
+    Bindlist
 </template>
 
 <script>
@@ -25,7 +19,8 @@ import swal             from 'sweetalert2'
 import { mapGetters }   from 'vuex'
 
 import PickerView       from '../components/common/PickerView'
-const components = { PickerView }
+import Bindlist         from '../components/Binding/Bindlist'
+const components = { PickerView, Bindlist }
 
 export default {
     name: 'Binding',
@@ -229,31 +224,6 @@ export default {
     +textCenter
     >span
         +REM-fontStyle( $F-assist, $C-copy )
-    .binding-ele
-        text-align: left
-        font-size: 16px
-        color: rgb( 102, 102, 102 )
-        .style
-            color: rgb( 35,210,150 )
-    .box-info
-        height: 60px
-        line-height: 60px
-        width: 100%
-        .company
-            font-size: 16px
-            margin-left: -12px
-            color: rgb( 102,102,102 )
-        .unbind
-            width: 54px
-            height: 26px
-            display: inline-block
-            color: #fff
-            background-color: rgb( 16,142,233 )
-            border-radius: 13px
-            text-align: center
-            line-height: 26px
-            font-size: 14px
-            margin-left: 145px
 
 
 </style>

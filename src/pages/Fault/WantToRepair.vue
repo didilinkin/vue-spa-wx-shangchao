@@ -4,9 +4,8 @@
     // 多行文本输入框( 限制500字 )
     MtextBox.auto--moduleMarginBottom( v-bind:setMtextBoxObj="setMtextBox" )
 
-    // 图片上传( 未添加 )
+    // 图片上传(  )
     #upload
-    //button.submit submit
     div.ftp
         span 您最多可上传
         span.dll 5
