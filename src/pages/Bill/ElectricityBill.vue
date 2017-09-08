@@ -21,7 +21,8 @@ export default {
         // 目的: 请求 - 电费
         requireElectricityBill() {
             this.$store.dispatch({
-                type: 'bill/REQUIRE_ELE_FEE'
+                type: 'bill/REQUIRE_ELE_FEE',
+                clientNum: this.$data.clientNum
             })
         }
     },
@@ -44,7 +45,8 @@ export default {
                 ]
             },
             // 费用列表 - 详情列表( 展开样式 )
-            CostDetailHeader: [ '费用类别', '金额( 元 )' ]
+            CostDetailHeader: [ '费用类别', '金额( 元 )' ],
+            clientNum: '1'
         }
     },
     computed: mapGetters({
@@ -55,6 +57,7 @@ export default {
         getterEleInfo: function() {
             this.$data.CostListBrief.listArr = this.getterEleInfo
             this.$data.BillHeaderObj.money = this.getterSumEleInfo
+            this.$data.BillHeaderObj.clientNum = this.$route.query.openId
         }
     },
     mounted: function() {

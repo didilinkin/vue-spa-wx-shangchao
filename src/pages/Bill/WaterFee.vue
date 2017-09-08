@@ -21,7 +21,8 @@ export default {
         // 目的: 请求 - 水费
         requireWaterFee() {
             this.$store.dispatch({
-                type: 'bill/REQUIRE_WATER_FEE'
+                type: 'bill/REQUIRE_WATER_FEE',
+                clientNum: this.$data.clientNum
             })
         }
     },
@@ -43,7 +44,8 @@ export default {
                 ]
             },
             // 费用列表 - 详情列表( 展开样式 )
-            CostDetailHeader: [ '费用类别', '金额( 元 )' ]
+            CostDetailHeader: [ '费用类别', '金额( 元 )' ],
+            clientNum: '1'
         }
     },
     computed: mapGetters({
@@ -54,6 +56,7 @@ export default {
         getterWaterInfo: function() {
             this.$data.CostListBrief.listArr = this.getterWaterInfo
             this.$data.BillHeaderObj.money = this.getterSumWaterInfo
+            this.$data.BillHeaderObj.clientNum = this.$route.query.openId
         }
     },
     mounted: function() {

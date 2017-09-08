@@ -200,7 +200,8 @@ export default {
                 roomIndex: 0
             },
             // Picker 选择结果( 3列 筛选器的value值 )
-            selectedVal: []
+            selectedVal: [],
+            clientNum: '1'
         }
     },
     computed: mapGetters({

@@ -22,7 +22,8 @@ export default {
         // 目的: 请求 - 账单详情
         requireBuildingFee() {
             this.$store.dispatch({
-                type: 'bill/REQUIRE_RENT_FEE'
+                type: 'bill/REQUIRE_RENT_FEE',
+                clientNum: this.$data.clientNum
             })
         }
     },
@@ -42,7 +43,9 @@ export default {
                 listArr: [
 
                 ]
-            }
+            },
+            clientNum: '1'
+
         }
     },
     computed: mapGetters({
@@ -56,7 +59,12 @@ export default {
 //            console.log( this.getterRentInfo )
             this.$data.CostListBrief.listArr = this.getterRentInfo
             this.$data.BillHeaderObj.money = this.getterSumRent
-            console.dir( this.getterSumRent )
+            this.$data.clientNum = this.$route.query.openId
+//            console.dir( this.getterSumRent )
+//            console.log( '888888888888' )
+//            console.log( this.$route.query )
+//            console.log( this.$route.query.openId )
+//            console.log( this.$route.query.nickName )
         }
     },
     mounted: function() {

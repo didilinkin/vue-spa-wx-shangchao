@@ -21,7 +21,8 @@ export default {
         // 目的: 请求 - 物业管理费
         requirePropertyFee() {
             this.$store.dispatch({
-                type: 'bill/REQUIRE_PM_FEE'
+                type: 'bill/REQUIRE_PM_FEE',
+                clientNum: this.$data.clientNum
             })
         }
     },
@@ -43,7 +44,8 @@ export default {
                 ]
             },
             // 费用列表 - 详情列表( 展开样式 )
-            CostDetailHeader: [ '费用类别', '单价', '金额( 元 )' ]
+            CostDetailHeader: [ '费用类别', '单价', '金额( 元 )' ],
+            clientNum: '1'
         }
     },
     computed: mapGetters({
@@ -57,6 +59,7 @@ export default {
 //            console.log( this.getterRentInfo )
             this.$data.CostListBrief.listArr = this.getterpmInfo
             this.$data.BillHeaderObj.money = this.getterSumPmInfo
+            this.$data.BillHeaderObj.clientNum = this.$route.query.openId
         }
     },
     mounted: function() {
