@@ -3,7 +3,7 @@
 #Bindlist
     .bind-ele
         span 您已绑定
-        span.ele-num 2
+        span.ele-num#num 2
         span 个房间
     .river-list(
         v-for="(todo, index) in arrList"
@@ -15,13 +15,24 @@
 <script>
     export default {
         name: 'Bindlist',
+        props: {
+            // 简要列表( 收起样式 )
+            arrList: {
+                type: Array
+            }
+        },
         data() {
             return {
-                arrList: [
+                list: [
                     { title: '长江中心A座-2408' },
                     { title: '长江中心A座-2407' },
                     { title: '长江中心A座-2406' }
                 ]
+            }
+        },
+        watch: {
+            arrList: function() {
+                this.$data.list = this.$props.arrList
             }
         }
     }

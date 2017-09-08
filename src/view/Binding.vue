@@ -10,7 +10,9 @@
         v-bind:roomArr="pickerDataObj.roomArr"
     )
     span 若您已租赁多个房间，选择任一房间即可
-    Bindlist
+    Bindlist(
+        v-bind:arrList="arrList"
+    )
 </template>
 
 <script>
@@ -196,7 +198,12 @@ export default {
             },
             // Picker 选择结果( 3列 筛选器的value值 )
             selectedVal: [],
-            clientNum: '1'
+            clientNum: '1',
+            arrList: [
+                { title: '长江中心A座-1112' },
+                { title: '长江中心A座-1111' },
+                { title: '长江中心A座-2222' }
+            ]
         }
     },
     computed: mapGetters({
