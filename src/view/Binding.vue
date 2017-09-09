@@ -223,7 +223,7 @@ export default {
         // 监听: '绑定' 建筑物列表
         getterBuildingList: function() {
             this.$data.buildingList = this.getterBuildingList
-            this.$data.arrList = this.getterRoomList
+            // this.$data.arrList = this.getterRoomList
             this.setPickerData()
             this.$data.clientNum = 1
             this.$data.nickName = this.$route.query.nickName
