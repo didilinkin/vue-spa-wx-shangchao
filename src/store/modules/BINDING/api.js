@@ -20,9 +20,13 @@ export const apiBuildingList = () => {
 
 export const apiRoomList = ( obj ) => {
     return new Promise( function( resolve, reject ) {
-        axios.get( mockAPI.ROOM_LIST, qs.stringify({
-            'clientNum': obj.clientNum
-        }) )
+        console.log( '222222222222222' )
+        console.log( obj.clientNum )
+        axios.get( 'http://192.168.5.21:80/wx/listUserWX?clientNum=' + obj.clientNum
+          //   mockAPI.ROOM_LIST, qs.stringify({
+          //   'clientNum': '12222'
+          // })
+        )
             .then( response => {
                 let resulData = response.data.data
                 resolve( resulData )
@@ -49,8 +53,8 @@ export const apiRequireBinding = ( bindingValObj ) => {
     return new Promise( function( resolve, reject ) {
         axios.post( mockAPI.BUILDING_REQUIRE, qs.stringify({
             'phone': '15275263276',
-            'clientName': '测试',
-            'clientNum': '1',
+            'clientName': bindingValObj.nickName,
+            'clientNum': bindingValObj.clientNum,
             'buildId': bindingValObj.buildingValue,
             'floorValue': bindingValObj.floorValue,
             'roomId': bindingValObj.roomValue,

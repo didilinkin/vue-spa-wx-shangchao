@@ -6,7 +6,7 @@
         span.ele-num {{ number }}
         span 个房间
     .river-list(
-        v-for="(todo, index) in arrList"
+        v-for="(todo, index) in list"
         v-bind:key="index"
     )
         span.center  {{ todo.title }}
@@ -42,8 +42,12 @@
         },
         watch: {
             arrList: function() {
-                this.$data.list = this.$props.arrList.userWxList
+                this.$data.list = this.$props.arrList.roomList
                 this.$data.number = this.$props.arrList.size
+
+                console.log( '44444444444444' )
+                console.log( this.$props.arrList.roomList )
+                console.log( this.$props.arrList.size )
             }
         }
     }

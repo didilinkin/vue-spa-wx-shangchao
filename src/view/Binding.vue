@@ -36,7 +36,7 @@ export default {
         // 目的: 请求 - 房间列表
         requireRoomList() {
             this.$store.dispatch({
-                type: 'binding/REQUEST_BUILDING_LIST',
+                type: 'binding/REQUEST_ROOM_LIST',
                 clientNum: this.$data.clientNum
             })
         },
@@ -171,7 +171,14 @@ export default {
                     buildingValue: buildingVal,
                     floorValue: floorVal,
                     roomValue: roomVal,
+                    clientNum: this.$data.clientNum,
+                    nickName: this.$data.nickName,
                     companyNo: CompanyNO
+                })
+                .then( response => {
+                    if( response.data.success ){
+                        this.requireRoomList()
+                    }
                 })
 
                 // 监听 '请求绑定' 返回值是否返回
@@ -223,14 +230,15 @@ export default {
         // 监听: '绑定' 建筑物列表
         getterBuildingList: function() {
             this.$data.buildingList = this.getterBuildingList
-            // this.$data.arrList = this.getterRoomList
+            this.$data.arrList = this.getterRoomList
             this.setPickerData()
-            this.$data.clientNum = 1
+            this.$data.clientNum = '1'
             this.$data.nickName = this.$route.query.nickName
         }
     },
     mounted: function() {
         this.requireBuildingList()
+        this.requireRoomList()
     },
     components: components
 }
