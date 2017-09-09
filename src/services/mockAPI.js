@@ -2,7 +2,7 @@
 
 // const LocalUrl = '/mock'                                                 // for local mock test
 
-// const BaseUrl = '/mock'                                                 // for local mock test
+// const BaseUrl = '/mock'                                                  // for local mock test
 
 // const url = 'http://127.0.0.1:18081'                                    // 后台链接
 

@@ -176,7 +176,7 @@ export default {
                     companyNo: CompanyNO
                 })
                 .then( response => {
-                    if( response.data.success ){
+                    if( response.data.success ) {
                         this.requireRoomList()
                     }
                 })
