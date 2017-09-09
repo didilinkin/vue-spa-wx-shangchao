@@ -16,41 +16,57 @@
         ) 解绑
 </template>
 <script>
-    export default {
-        name: 'Bindlist',
-        methods: {
-            alert( id ) {
-                console.log( '1111111111111' )
-                console.log( id )
-            }
-        },
-        props: {
-            // 简要列表( 收起样式 )
-            arrList: {
-                type: Array
-            }
-        },
-        data() {
-            return {
-                list: [
-                    { title: '长江中心A座-1112', id: '1' },
-                    { title: '长江中心A座-1111', id: '2' },
-                    { title: '长江中心A座-2222', id: '3' }
-                ],
-                number: '3'
-            }
-        },
-        watch: {
-            arrList: function() {
-                this.$data.list = this.$props.arrList.roomList
-                this.$data.number = this.$props.arrList.size
+import swal from 'sweetalert2'
 
-                console.log( '44444444444444' )
-                console.log( this.$props.arrList.roomList )
-                console.log( this.$props.arrList.size )
-            }
+export default {
+    name: 'Bindlist',
+    methods: {
+        alert( id ) {
+            console.log( '1111111111111' )
+            console.log( id )
+            swal({
+                title: '确定解除绑定吗?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '解除绑定'
+            }).then( function() {
+                swal(
+                    '解绑成功!',
+                    ' ',
+                    'success'
+                )
+            })
+        }
+    },
+    props: {
+        // 简要列表( 收起样式 )
+        arrList: {
+            type: Array
+        }
+    },
+    data() {
+        return {
+            list: [
+                { title: '长江中心A座-1112', id: '1' },
+                { title: '长江中心A座-1111', id: '2' },
+                { title: '长江中心A座-2222', id: '3' }
+            ],
+            number: '3'
+        }
+    },
+    watch: {
+        arrList: function() {
+            this.$data.list = this.$props.arrList.roomList
+            this.$data.number = this.$props.arrList.size
+
+            console.log( '44444444444444' )
+            console.log( this.$props.arrList.roomList )
+            console.log( this.$props.arrList.size )
         }
     }
+}
 
 </script>
 <style lang="sass">
