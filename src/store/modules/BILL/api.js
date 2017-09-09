@@ -9,7 +9,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 export const apiRentInfo = ( obj ) => {
     return new Promise( function( resolve, reject ) {
         axios.get( mockAPI.RentUrl, qs.stringify({
-            'clientNum': obj.buildingValue
+            'clientNum': obj.clientNum
         }) )
              .then( response => {
                  let resulData = response.data.data
@@ -21,11 +21,9 @@ export const apiRentInfo = ( obj ) => {
     })
 }
 
-export const apiFeeInfo = ( obj ) => {
+export const apiFeeInfo = ( ) => {
     return new Promise( function( resolve, reject ) {
-        axios.get( mockAPI.FeeUrl, qs.stringify({
-            'clientNum': obj.buildingValue
-        }) )
+        axios.get( mockAPI.FeeUrl )
              .then( response => {
                  let resulData = response.data.data
                  resolve( resulData )
@@ -39,7 +37,7 @@ export const apiFeeInfo = ( obj ) => {
 export const apipmInfo = ( obj ) => {
     return new Promise( function( resolve, reject ) {
         axios.get( mockAPI.pmUrl, qs.stringify({
-            'clientNum': obj.buildingValue
+            'clientNum': obj.clientNum
         }) )
              .then( response => {
                  let resulData = response.data.data
@@ -54,7 +52,7 @@ export const apipmInfo = ( obj ) => {
 export const apiEleInfo = ( obj ) => {
     return new Promise( function( resolve, reject ) {
         axios.get( mockAPI.eleUrl, qs.stringify({
-            'clientNum': obj.buildingValue
+            'clientNum': obj.clientNum
         }) )
              .then( response => {
                  let resulData = response.data.data
@@ -69,7 +67,7 @@ export const apiEleInfo = ( obj ) => {
 export const apiWaterInfo = ( obj ) => {
     return new Promise( function( resolve, reject ) {
         axios.get( mockAPI.waterUrl, qs.stringify({
-            'clientNum': obj.buildingValue
+            'clientNum': obj.clientNum
         }) )
              .then( response => {
                  let resulData = response.data.data

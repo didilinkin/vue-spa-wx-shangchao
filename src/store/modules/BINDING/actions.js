@@ -13,6 +13,17 @@ export default {
         }
         asyncBuildingList()
     },
+    [types.REQUEST_ROOM_LIST]: ({ commit }, obj ) => {
+        const asyncBuildingList = async function() {
+            try {
+                let result = await bindingAPI.apiRoomList( obj )
+                commit( types.SET_ROOM_LIST, result )
+            } catch( err ) {
+                console.log( err )
+            }
+        }
+        asyncBuildingList()
+    },
     [types.REQUIRE_BINDING]: ({ commit }, bindingValObj ) => {
         const asyncRequireBinding = async function() {
             try {

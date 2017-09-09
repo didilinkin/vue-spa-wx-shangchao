@@ -33,6 +33,12 @@ export default {
                 type: 'binding/REQUEST_BUILDING_LIST'
             })
         },
+        // 目的: 请求 - 房间列表
+        requireBuildingList() {
+            this.$store.dispatch({
+                type: 'binding/REQUEST_BUILDING_LIST'
+            })
+        },
         // 目的: 处理Picker 需要的三个data值; 只要级别值改变 就触发此函数; Picker组件初始化时也会触发一次
         setPickerData() {
             let buildingList = this.$data.buildingList,
@@ -199,22 +205,27 @@ export default {
             // Picker 选择结果( 3列 筛选器的value值 )
             selectedVal: [],
             clientNum: '1',
+            nickName: '1',
             arrList: [
-                { title: '长江中心A座-1112' },
-                { title: '长江中心A座-1111' },
-                { title: '长江中心A座-2222' }
+                { title: '长江中心A座-1112', id: '1' },
+                { title: '长江中心A座-1111', id: '2' },
+                { title: '长江中心A座-2222', id: '3' }
             ]
         }
     },
     computed: mapGetters({
         getterBuildingList: 'getterBuildingList',
+        getterRoomList: 'getterRoomList',
         getterBindingResult: 'getterBindingResult'
     }),
     watch: {
         // 监听: '绑定' 建筑物列表
         getterBuildingList: function() {
             this.$data.buildingList = this.getterBuildingList
+            this.$data.arrList = this.getterRoomList
             this.setPickerData()
+            this.$data.clientNum = 1
+            this.$data.nickName = this.$route.query.nickName
         }
     },
     mounted: function() {

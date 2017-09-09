@@ -24,10 +24,10 @@ export default {
         }
         asyncFeeInfo()
     },
-    [types.REQUIRE_PM_FEE]: ({ commit }, obj ) => {
+    [types.REQUIRE_PM_FEE]: ({ commit }) => {
         const asyncPmInfo = async function() {
             try {
-                let result = await billAPI.apipmInfo( obj )
+                let result = await billAPI.apipmInfo( )
                 commit( types.SET_PM_FEE, result )
             } catch( err ) {
                 console.log( err )

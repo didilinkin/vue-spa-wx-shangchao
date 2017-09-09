@@ -18,6 +18,21 @@ export const apiBuildingList = () => {
     })
 }
 
+export const apiRoomList = ( obj ) => {
+    return new Promise( function( resolve, reject ) {
+        axios.get( mockAPI.ROOM_LIST, qs.stringify({
+            'clientNum': obj.clientNum
+        }) )
+            .then( response => {
+                let resulData = response.data.data
+                resolve( resulData )
+            })
+            .catch( error => {
+                reject( error )
+            })
+    })
+}
+
 /*
     |   clientName  |String| 微信昵称 |
     |   phone  |String|  电话 |

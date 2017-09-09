@@ -3,18 +3,27 @@
 #Bindlist
     .bind-ele
         span 您已绑定
-        span.ele-num#num 2
+        span.ele-num {{ number }}
         span 个房间
     .river-list(
         v-for="(todo, index) in arrList"
         v-bind:key="index"
     )
-        span.center {{ todo.title }}
-        span.unbind 解绑
+        span.center  {{ todo.title }}
+        span.dddd   {{ todo.id }}
+        span.unbind(
+           v-on:click="alert( todo.id )"
+        ) 解绑
 </template>
 <script>
     export default {
         name: 'Bindlist',
+        methods: {
+            alert( id ) {
+                console.log( '1111111111111' )
+                console.log( id )
+            }
+        },
         props: {
             // 简要列表( 收起样式 )
             arrList: {
@@ -24,15 +33,17 @@
         data() {
             return {
                 list: [
-                    { title: '长江中心A座-2408' },
-                    { title: '长江中心A座-2407' },
-                    { title: '长江中心A座-2406' }
-                ]
+                    { title: '长江中心A座-1112', id: '1' },
+                    { title: '长江中心A座-1111', id: '2' },
+                    { title: '长江中心A座-2222', id: '3' }
+                ],
+                number: '3'
             }
         },
         watch: {
             arrList: function() {
-                this.$data.list = this.$props.arrList
+                this.$data.list = this.$props.arrList.userWxList
+                this.$data.number = this.$props.arrList.size
             }
         }
     }
@@ -64,6 +75,8 @@
             border-radius: 13px
             line-height: 26px
             margin-left: 130px
+        .dddd
+            display: none
 
 
 
