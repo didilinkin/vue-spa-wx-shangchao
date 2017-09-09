@@ -18,6 +18,9 @@
 <script>
 import FortForm     from '../../components/common/FortForm'
 import MtextBox     from '../../components/common/MtextBox'
+import tinyImgUpload from '../../../static/js/tinyImgUpload'
+// import { up, tinyImgUpload, uploadImg }       from '../../../static/js/test.js'
+
 const components = { FortForm, MtextBox }
 
 export default {
@@ -46,6 +49,23 @@ export default {
                 }
             ]
         }
+    },
+    mounted: function() {
+        // 在这配置一下 options => 基本参数
+        let options = {
+            path: '/',
+            // 成功时
+            onSuccess: function( res ) {
+                console.log( res )
+                console.log( '成功' )
+            },
+            onFailure: function( res ) {
+                console.log( res )
+                console.log( '失败' )
+            }
+        }
+
+        tinyImgUpload( '#upload', options ) // 执行 上传事件
     },
     components: components
 }

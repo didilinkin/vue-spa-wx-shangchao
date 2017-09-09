@@ -23,9 +23,6 @@ var options = {
 }
 
 var upload = tinyImgUpload('#upload', options);
-document.getElementsByClassName('submit')[0].onclick = function (e) {
-    upload();
-}
 function tinyImgUpload(ele, options) {
     // 判断容器元素合理性并且添加基础元素
     var eleList = document.querySelectorAll(ele)
@@ -154,4 +151,5 @@ function tinyImgUpload(ele, options) {
     }
     return uploadImg
 }
+export default tinyImgUpload
 
