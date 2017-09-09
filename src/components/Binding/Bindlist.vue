@@ -21,6 +21,11 @@ import swal from 'sweetalert2'
 export default {
     name: 'Bindlist',
     methods: {
+        requireBuildingList() {
+            this.$store.dispatch({
+                type: 'binding/REQUEST_BUILDING_LIST'
+            })
+        },
         alert( id ) {
             console.log( '1111111111111' )
             console.log( id )
@@ -32,11 +37,12 @@ export default {
                 cancelButtonColor: '#d33',
                 confirmButtonText: '解除绑定'
             }).then( function() {
-                swal(
-                    '解绑成功!',
-                    ' ',
-                    'success'
-                )
+                console.log( '5555555555555555555' )
+//                swal(
+//                    '解绑成功!',
+//                    ' ',
+//                    'success'
+//                )
             })
         }
     },

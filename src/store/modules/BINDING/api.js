@@ -20,8 +20,6 @@ export const apiBuildingList = () => {
 
 export const apiRoomList = ( obj ) => {
     return new Promise( function( resolve, reject ) {
-        console.log( '222222222222222' )
-        console.log( obj.clientNum )
         axios.get( 'http://192.168.5.21:80/wx/listUserWX?clientNum=' + obj.clientNum
           //   mockAPI.ROOM_LIST, qs.stringify({
           //   'clientNum': '12222'

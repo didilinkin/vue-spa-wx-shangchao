@@ -136,6 +136,7 @@ export default {
                                 // 判断返回值
                                 let bindingResult = that.$store.state.binding.bindingResult
                                 if( bindingResult ) {
+                                    that.requireRoomList()
                                     that.setPickerStyle( 'rgb( 35, 210, 150 )' )
                                     resolve()
                                 } else {
@@ -174,11 +175,6 @@ export default {
                     clientNum: this.$data.clientNum,
                     nickName: this.$data.nickName,
                     companyNo: CompanyNO
-                })
-                .then( response => {
-                    if( response.data.success ) {
-                        this.requireRoomList()
-                    }
                 })
 
                 // 监听 '请求绑定' 返回值是否返回
@@ -230,10 +226,15 @@ export default {
         // 监听: '绑定' 建筑物列表
         getterBuildingList: function() {
             this.$data.buildingList = this.getterBuildingList
-            this.$data.arrList = this.getterRoomList
             this.setPickerData()
             this.$data.clientNum = '1'
             this.$data.nickName = this.$route.query.nickName
+        },
+        // 监听: '绑定' 房间列表
+        getterRoomList: function() {
+            this.$data.arrList = this.getterRoomList
+            console.log( '列表改变' )
+            console.log( this.$data.arrList )
         }
     },
     mounted: function() {
