@@ -24,6 +24,17 @@ export default {
         }
         asyncBuildingList()
     },
+    [types.REQUEST_ROOM_DELETE]: ({ commit }, obj ) => {
+        const asyncRoomDelete = async function() {
+            try {
+                let result = await bindingAPI.apiRoomDelete( obj )
+                commit( types.SET_ROOM_DELETE, result )
+            } catch( err ) {
+                console.log( err )
+            }
+        }
+        asyncRoomDelete()
+    },
     [types.REQUIRE_BINDING]: ({ commit }, bindingValObj ) => {
         const asyncRequireBinding = async function() {
             try {

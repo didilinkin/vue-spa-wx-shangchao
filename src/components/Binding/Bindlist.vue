@@ -17,18 +17,19 @@
 </template>
 <script>
 import swal from 'sweetalert2'
+import { mapGetters }   from 'vuex'
 
 export default {
     name: 'Bindlist',
     methods: {
-        requireBuildingList() {
+        requireRoomDelete( id ) {
             this.$store.dispatch({
-                type: 'binding/REQUEST_BUILDING_LIST'
+                type: 'binding/REQUEST_ROOM_DELETE',
+                id: id
             })
         },
         alert( id ) {
-            console.log( '1111111111111' )
-            console.log( id )
+            const that = this
             swal({
                 title: '确定解除绑定吗?',
                 type: 'warning',
@@ -38,18 +39,21 @@ export default {
                 confirmButtonText: '解除绑定'
             }).then( function() {
                 console.log( '5555555555555555555' )
-//                swal(
-//                    '解绑成功!',
-//                    ' ',
-//                    'success'
-//                )
+                that.requireRoomDelete( id )
+                if( this.getterDeleteUserWx ) {
+                    this.$emit( 'watchRequireBuildingList' )
+                }
+                swal(
+                    '解绑成功!',
+                    ' ',
+                    'success'
+                )
             })
         }
     },
     props: {
         // 简要列表( 收起样式 )
         arrList: {
-            type: Array
         }
     },
     data() {
@@ -59,17 +63,23 @@ export default {
                 { title: '长江中心A座-1111', id: '2' },
                 { title: '长江中心A座-2222', id: '3' }
             ],
-            number: '3'
+            number: '3',
+            msg: '解绑成功!'
         }
     },
+    computed: mapGetters({
+        getterDeleteUserWx: 'getterDeleteUserWx'
+    }),
     watch: {
         arrList: function() {
             this.$data.list = this.$props.arrList.roomList
             this.$data.number = this.$props.arrList.size
-
-            console.log( '44444444444444' )
-            console.log( this.$props.arrList.roomList )
-            console.log( this.$props.arrList.size )
+        },
+        // 监听返回结果
+        getterDeleteUserWx: function() {
+            this.$data.msg = this.getterDeleteUserWx
+            console.log( '6666666666666666666' )
+            console.log( this.getterDeleteUserWx )
         }
     }
 }

@@ -35,6 +35,23 @@ export const apiRoomList = ( obj ) => {
     })
 }
 
+export const apiRoomDelete = ( obj ) => {
+    return new Promise( function( resolve, reject ) {
+        axios.post( 'http://192.168.5.21:80/wx/deleteUserWx?id=' + obj.id
+            //   mockAPI.ROOM_LIST, qs.stringify({
+            //   'clientNum': '12222'
+            // })
+        )
+            .then( response => {
+                let resulData = response.data.success
+                resolve( resulData )
+            })
+            .catch( error => {
+                reject( error )
+            })
+    })
+}
+
 /*
     |   clientName  |String| 微信昵称 |
     |   phone  |String|  电话 |

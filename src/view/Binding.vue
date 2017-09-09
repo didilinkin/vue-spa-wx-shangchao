@@ -3,6 +3,7 @@
 #Building.auto--modulePadding
     PickerView(
         v-on:watchPickerIndex="setPickerIndex"
+        v-on:watchRequireBuildingList="requireBuildingList"
         v-on:watchPickerVal="setPickerValue"
         v-bind:styleObj="pickerStyleObj"
         v-bind:buildingArr="pickerDataObj.buildingArr"
