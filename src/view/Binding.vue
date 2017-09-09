@@ -34,9 +34,10 @@ export default {
             })
         },
         // 目的: 请求 - 房间列表
-        requireBuildingList() {
+        requireRoomList() {
             this.$store.dispatch({
-                type: 'binding/REQUEST_BUILDING_LIST'
+                type: 'binding/REQUEST_BUILDING_LIST',
+                clientNum: this.$data.clientNum
             })
         },
         // 目的: 处理Picker 需要的三个data值; 只要级别值改变 就触发此函数; Picker组件初始化时也会触发一次
