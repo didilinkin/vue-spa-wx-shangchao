@@ -7,3 +7,4 @@ export const getterEleInfo = state => state.eleInfo                             
 export const getterSumEleInfo = state => state.sumEle                             // 电费的和
 export const getterWaterInfo = state => state.waterInfo                             // 电费
 export const getterSumWaterInfo = state => state.sumWater                            // 电费的和
+export const getterClientNum = state => state.clientNum                            // 客户微信编号

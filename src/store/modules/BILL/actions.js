@@ -13,10 +13,10 @@ export default {
         }
         asyncRentInfo()
     },
-    [types.REQUIRE_BILL_LIST]: ({ commit }, obj ) => {
+    [types.REQUIRE_BILL_LIST]: ({ commit }) => {
         const asyncFeeInfo = async function() {
             try {
-                let result = await billAPI.apiFeeInfo( obj )
+                let result = await billAPI.apiFeeInfo( )
                 commit( types.SET_BILL_LIST, result )
             } catch( err ) {
                 console.log( err )
@@ -24,10 +24,10 @@ export default {
         }
         asyncFeeInfo()
     },
-    [types.REQUIRE_PM_FEE]: ({ commit }) => {
+    [types.REQUIRE_PM_FEE]: ({ commit }, obj ) => {
         const asyncPmInfo = async function() {
             try {
-                let result = await billAPI.apipmInfo( )
+                let result = await billAPI.apipmInfo( obj )
                 commit( types.SET_PM_FEE, result )
             } catch( err ) {
                 console.log( err )

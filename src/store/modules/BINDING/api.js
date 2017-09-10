@@ -20,7 +20,7 @@ export const apiBuildingList = () => {
 
 export const apiRoomList = ( obj ) => {
     return new Promise( function( resolve, reject ) {
-        axios.get( 'http://192.168.5.21:80/wx/listUserWX?clientNum=' + obj.clientNum
+        axios.get( mockAPI.ROOM_LIST + '?clientNum=' + obj.clientNum
           //   mockAPI.ROOM_LIST, qs.stringify({
           //   'clientNum': '12222'
           // })
@@ -37,7 +37,7 @@ export const apiRoomList = ( obj ) => {
 
 export const apiRoomDelete = ( obj ) => {
     return new Promise( function( resolve, reject ) {
-        axios.post( 'http://192.168.5.21:80/wx/deleteUserWx?id=' + obj.id
+        axios.post( mockAPI.ROOM_LIST + '?id=' + obj.id
             //   mockAPI.ROOM_LIST, qs.stringify({
             //   'clientNum': '12222'
             // })

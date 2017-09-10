@@ -39,16 +39,21 @@ export default {
         setDataTime( returnObj ) {
 //            console.log( returnObj )
             this.$data.billDataObj.listArr[0].data = returnObj.rentDate
+            // this.$data.billDataObj.listArr[0].id = 'buildingFee?' + this.$route.query.clientNum
             this.$data.billDataObj.listArr[1].data = returnObj.pmDate
+            // this.$data.billDataObj.listArr[1].id = 'propertyFee?' + this.$route.query.clientNum
             this.$data.billDataObj.listArr[2].data = returnObj.eleDate
+            // this.$data.billDataObj.listArr[2].id = 'electricityBill?' + this.$route.query.clientNum
             this.$data.billDataObj.listArr[3].data = returnObj.waterDate
+            // this.$data.billDataObj.listArr[3].id = 'waterFee?' + this.$route.query.clientNum
 //            console.log( '检查是否改变 $data' )
 //            console.log( this.$data )
         }
     },
     data() {
         return {
-            billDataObj: dataBillObj        // 整个 $data 都以module的形式引入
+            billDataObj: dataBillObj,       // 整个 $data 都以module的形式引入,
+            clientNum: '1'
         }
     },
     computed: mapGetters({
@@ -57,13 +62,11 @@ export default {
     watch: {
         getterFeeInfo: function() {
 //            this.$data.listArr = this.getterRentInfo
-//            console.log( '888888888888' )
-//            console.log( this.getterRentInfo )
 //            console.log( '监听改变' )
             // console.log( this.$data.billDataObj )
             this.setDataTime( this.getterFeeInfo ) // 修改时间
-//            this.$data.listArr[0] = this.getterRentInfo
-//            console.dir( this.getterFeeInfo )
+            this.$data.clientNum = this.$route.query.clientNum
+            this.$store.state.bill.clientNum = this.$route.query.clientNum
         }
     },
     mounted: function() {

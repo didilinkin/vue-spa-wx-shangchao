@@ -33,6 +33,7 @@ const state = {
     sumEle: '',
     eleInfo: [],
     sumWater: '',
+    clientNum: '1',
     waterInfo: []
 }
 
