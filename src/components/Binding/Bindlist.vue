@@ -23,9 +23,17 @@ export default {
     name: 'Bindlist',
     methods: {
         requireRoomDelete( id ) {
+            console.log( '解除房间列表' )
             this.$store.dispatch({
                 type: 'binding/REQUEST_ROOM_DELETE',
                 id: id
+            })
+        },
+        // 目的: 请求 - 房间列表
+        requireRoomList() {
+            this.$store.dispatch({
+                type: 'binding/REQUEST_ROOM_LIST',
+                clientNum: this.$data.clientNum
             })
         },
         alert( id ) {
@@ -38,11 +46,8 @@ export default {
                 cancelButtonColor: '#d33',
                 confirmButtonText: '解除绑定'
             }).then( function() {
-                console.log( '5555555555555555555' )
                 that.requireRoomDelete( id )
-                if( this.getterDeleteUserWx ) {
-                    this.$emit( 'watchRequireBuildingList' )
-                }
+                that.$emit( 'watchRequireRoomList' )
                 swal(
                     '解绑成功!',
                     ' ',
@@ -52,7 +57,9 @@ export default {
         }
     },
     props: {
-        // 简要列表( 收起样式 )
+        clientNumber: {
+
+        },
         arrList: {
         }
     },
@@ -64,7 +71,8 @@ export default {
                 { title: '长江中心A座-2222', id: '3' }
             ],
             number: '3',
-            msg: '解绑成功!'
+            msg: '解绑成功!',
+            clientNum: '1'
         }
     },
     computed: mapGetters({
@@ -74,12 +82,17 @@ export default {
         arrList: function() {
             this.$data.list = this.$props.arrList.roomList
             this.$data.number = this.$props.arrList.size
+            this.$data.clientNum = this.$props.clientNumber
         },
         // 监听返回结果
         getterDeleteUserWx: function() {
             this.$data.msg = this.getterDeleteUserWx
-            console.log( '6666666666666666666' )
-            console.log( this.getterDeleteUserWx )
+//            console.log( '6666666666666666666' )
+//            console.log( this.getterDeleteUserWx )
+//            if( this.getterDeleteUserWx ) {
+//                this.$emit( 'watchRequireRoomList' )
+//                // this.requireRoomList()
+//            }
         }
     }
 }

@@ -3,7 +3,6 @@
 #Building.auto--modulePadding
     PickerView(
         v-on:watchPickerIndex="setPickerIndex"
-        v-on:watchRequireBuildingList="requireBuildingList"
         v-on:watchPickerVal="setPickerValue"
         v-bind:styleObj="pickerStyleObj"
         v-bind:buildingArr="pickerDataObj.buildingArr"
@@ -12,7 +11,9 @@
     )
     span 若您已租赁多个房间，选择任一房间即可
     Bindlist(
+        v-on:watchRequireRoomList="requireRoomList"
         v-bind:arrList="arrList"
+        v-bind:clientNumber="clientNum"
     )
 </template>
 
@@ -38,7 +39,7 @@ export default {
         requireRoomList() {
             this.$store.dispatch({
                 type: 'binding/REQUEST_ROOM_LIST',
-                clientNum: this.$data.clientNum
+                clientNum: this.$route.query.clientNum
             })
         },
         // 目的: 处理Picker 需要的三个data值; 只要级别值改变 就触发此函数; Picker组件初始化时也会触发一次
@@ -138,6 +139,9 @@ export default {
                                 let bindingResult = that.$store.state.binding.bindingResult
                                 if( bindingResult ) {
                                     that.requireRoomList()
+
+                                    console.log( '11111111111111111' )
+                                    console.log( '请求' )
                                     that.setPickerStyle( 'rgb( 35, 210, 150 )' )
                                     resolve()
                                 } else {
@@ -228,8 +232,10 @@ export default {
         getterBuildingList: function() {
             this.$data.buildingList = this.getterBuildingList
             this.setPickerData()
-            this.$data.clientNum = '1'
+            this.$data.clientNum = this.$route.query.clientNum
             this.$data.nickName = this.$route.query.nickName
+            console.log( '6666666666666666666' )
+            console.log( this.$route.query.clientNum )
         },
         // 监听: '绑定' 房间列表
         getterRoomList: function() {

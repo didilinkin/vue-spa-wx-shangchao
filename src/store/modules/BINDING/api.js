@@ -63,11 +63,9 @@ export const apiRoomDelete = ( obj ) => {
     |   clientNum  |String|  微信客户编号 |
  */
 export const apiRequireBinding = ( bindingValObj ) => {
-    // console.log( '11111111111111111' )
-    // console.log( bindingValObj )
     return new Promise( function( resolve, reject ) {
         axios.post( mockAPI.BUILDING_REQUIRE, qs.stringify({
-            'phone': '15275263276',
+            // 'phone': '15275263276',
             'clientName': bindingValObj.nickName,
             'clientNum': bindingValObj.clientNum,
             'buildId': bindingValObj.buildingValue,
