@@ -37,7 +37,7 @@ export const apiRoomList = ( obj ) => {
 
 export const apiRoomDelete = ( obj ) => {
     return new Promise( function( resolve, reject ) {
-        axios.post( mockAPI.ROOM_LIST + '?id=' + obj.id
+        axios.post( mockAPI.BUILDING_DELETE + '?id=' + obj.id
             //   mockAPI.ROOM_LIST, qs.stringify({
             //   'clientNum': '12222'
             // })
