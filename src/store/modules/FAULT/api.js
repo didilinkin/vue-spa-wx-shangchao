@@ -26,7 +26,7 @@ export const apiFaultDetail = ( obj ) => {
         axios.get(
             // http://192.168.5.250:18081/repair/getDetails?id=2
             // mockAPI.FAULT_DETAIL + '?id=' + obj.detailId
-            `http://192.168.5.250:18081/wx/getDetails?id=${ obj.detailId }`
+            `http://192.168.5.21:80/wx/getDetails?id=${ obj.detailId }`
         )
         .then( response => {
             let resulData = response.data.data
@@ -43,7 +43,7 @@ export const apirepairState = () => {
         axios.get(
             // http://192.168.5.250:18081/repair/getDetails?id=2
             // mockAPI.FAULT_DETAIL + '?id=' + obj.detailId
-            'http://192.168.5.250:18081/wx/listRepair?clientNum=1&pageFirst=0'
+            'http://192.168.5.21:80/wx/listRepair?clientNum=1&pageFirst=0'
         )
             .then( response => {
                 let resulData = response.data.data
