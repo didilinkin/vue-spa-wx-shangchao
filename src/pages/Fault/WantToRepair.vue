@@ -25,6 +25,9 @@ const components = { FortForm, MtextBox }
 
 export default {
     name: 'WantToRepair',
+    mothods: {
+
+    },
     data() {
         return {
             // 多行文本 基本配置
@@ -83,8 +86,6 @@ export default {
     .dll
         color: rgb( 35,210,150 )
 #wantToRepair
-#upload
-    display: block
 
 </style>
 

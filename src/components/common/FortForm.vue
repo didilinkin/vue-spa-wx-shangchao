@@ -19,7 +19,7 @@
                 required="required"
                 autocomplete="off"
             )
-        
+
         // '提交' 按钮
         StateButton.auto--moduleMarginTop(
             v-on:buttonClickEvent="checkInputVal()"
@@ -57,7 +57,7 @@ export default {
     methods: {
         checkInputVal() {
             let boolean = this.$data.inputValueNull
-            let arr     = this.$data.inputArr 
+            let arr     = this.$data.inputArr
 
             // 遍历判断 value值是否为空
             for( let i = arr.length; i--; ) {
@@ -68,8 +68,8 @@ export default {
 
             if( !boolean ) {
                 swal(
-                    '禁止提交!', 
-                    '输入框未填写', 
+                    '禁止提交!',
+                    '输入框未填写',
                     'error'
                 )
             } else {
@@ -95,7 +95,7 @@ export default {
     },
     mounted: function() {
         this.$data.inputArr = this.$props.FortInputArr
-        
+
         for( let i = this.$data.inputArr.length; i--; ) {
             this.$data.inputArr[i]['itemMsg'] = ''
         }

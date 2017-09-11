@@ -20,6 +20,7 @@ export default {
                 return {
                     maxLength: 200,
                     placeholder: '提示文本'
+
                 }
             }
         }
@@ -34,7 +35,7 @@ export default {
             message: ''
         }
     }
-}   
+}
 </script>
 
 <style lang="sass">

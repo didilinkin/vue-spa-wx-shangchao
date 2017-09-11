@@ -18,6 +18,7 @@
     // 根据路由参数 匹配渲染子组件
     WantToRepair( v-show="!showMyRepair" )
     MyRepair( v-show="showMyRepair" )
+
 </template>
 
 <script>
