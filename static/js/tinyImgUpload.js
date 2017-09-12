@@ -27,7 +27,7 @@ function tinyImgUpload(ele, options) {
     // 判断容器元素合理性并且添加基础元素
     var eleList = document.querySelectorAll(ele)
     if(eleList.length == 0){
-        console.log('绑定的元素不存在')
+        // console.log('绑定的元素不存在')
         return;
     }else if(eleList.length>1){
         console.log('请绑定唯一元素')

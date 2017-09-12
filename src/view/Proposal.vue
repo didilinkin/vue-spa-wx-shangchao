@@ -1,6 +1,6 @@
 // 故障报修
 <template lang="pug">
-    #Fault
+    #proposal
         // 切换标签
         .Fault__navBar
             .Fault--title#wantToRepair--link(
@@ -16,17 +16,17 @@
                 h2.auto--textStyle 我的报修
 
         // 根据路由参数 匹配渲染子组件
-        WantToRepair( v-show="!showMyRepair" )
-        MyRepair( v-show="showMyRepair" )
+        WantToRepairzy( v-show="!showMyRepair" )
+        MyRepairzy( v-show="showMyRepair" )
 </template>
 
 <script>
-    import WantToRepair     from '../pages/Fault/WantToRepair'
-    import MyRepair         from '../pages/Fault/MyRepair'
-    const components = { WantToRepair, MyRepair }
+    import WantToRepairzy     from '../pages/proposal/WantToRepairzy'
+    import MyRepairzy         from '../pages/proposal/MyRepairzy'
+    const components = { WantToRepairzy, MyRepairzy }
 
     export default {
-        name: 'Fault',
+        name: 'proposal',
         methods: {
             // 目的: 切换详情组件
             toggleShow( detailName ) {
@@ -62,7 +62,7 @@
 <style lang="sass">
     @import "../sass/main"
 
-    #Fault
+    #proposal
 
     // 切换标签
     .Fault__navBar

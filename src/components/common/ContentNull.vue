@@ -1,6 +1,6 @@
 // 通用组件 - '内容为空' 组件
 <template lang="pug">
-.ContentNull    
+.ContentNull
     img(
         v-bind:srcset="setContentNullObj.contentImg.normal + ' 1x,' + setContentNullObj.contentImg.retina + ' 2x'"
     )
@@ -31,7 +31,7 @@ export default {
 <style lang="sass">
 @import "../../sass/main"
 
-.ContentNull 
+.ContentNull
     +REL
     +textCenter
     +pT( 10% )
