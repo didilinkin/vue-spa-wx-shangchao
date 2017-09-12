@@ -9,7 +9,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 export const apiFaultList = ( obj ) => {
     return new Promise( function( resolve, reject ) {
         axios.get(
-            mockAPI.FAULT + '?clientNum=' + obj.userId + '&pageFirst=0'
+            mockAPI.FAULT + '?clientNum=' + obj.userId
         )
         .then( response => {
             let resulData = response.data
@@ -26,7 +26,7 @@ export const apiFaultDetail = ( obj ) => {
         axios.get(
             // http://192.168.5.250:18081/repair/getDetails?id=2
             // mockAPI.FAULT_DETAIL + '?id=' + obj.detailId
-            `http://192.168.5.21:80/wx/getDetails?id=${ obj.detailId }`
+            mockAPI.FAULT_DETAIL + '?id=' + obj.detailId
         )
         .then( response => {
             let resulData = response.data.data
@@ -38,12 +38,12 @@ export const apiFaultDetail = ( obj ) => {
     })
 }
 // 我的报修列表接口
-export const apirepairState = () => {
+export const apirepairState = ( obj ) => {
     return new Promise( function( resolve, reject ) {
         axios.get(
             // http://192.168.5.250:18081/repair/getDetails?id=2
             // mockAPI.FAULT_DETAIL + '?id=' + obj.detailId
-            'http://192.168.5.21:80/wx/listRepair?clientNum=1&pageFirst=0'
+            mockAPI.FAULT + '?clientNum=' + obj.clientNum
         )
             .then( response => {
                 let resulData = response.data.data

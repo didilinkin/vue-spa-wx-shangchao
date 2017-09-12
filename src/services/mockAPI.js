@@ -24,6 +24,8 @@ export const BUILDING_LIST = devUrl + '/wx/buildingList'                       /
 
 export const BUILDING_REQUIRE =  devUrl + '/wx/bindingRoom'                // 绑定 - 请求绑定
 
+export const BUILDING_DELETE =  devUrl + '/wx/deleteUserWx'                // 绑定 - 解除绑定
+
 export const ROOM_LIST = devUrl + '/wx/listUserWX'                       // 绑定
 
 export const BULLETIN = devUrl + '/wx/listNotice'                       // 公告
@@ -33,4 +35,4 @@ export const BULLETIN_DETAILS = devUrl + '/wx/getNotice'                // 公�
 // 本地测试环境
 export const FAULT = devUrl + '/wx/listRepair'                          // 故障报修 - '我的保修' 列表获取 // 正式: '/wx/listRepair'
 
-export const FAULT_DETAIL = devUrl + '/repair/getDetails'              // 故障报修 - 详情 接口
+export const FAULT_DETAIL = devUrl + '/wx/getDetails'              // 故障报修 - 详情 接口
