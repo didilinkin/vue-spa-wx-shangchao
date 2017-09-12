@@ -1,31 +1,32 @@
 // '故障报修' - '我的报修'页
 <template lang="pug">
-    #myRepairzy.Fault--module
-        // 说明: 因为渲染组件需要复用, 所以需要在一个渲染组件内进行渲染
-        RepairStatezy(
-        v-bind:repairStateArr="repairState"
-        v-bind:canClickBoolean="true"
-        )
+#myProposal.Fault--module
+    // 说明: 因为渲染组件需要复用, 所以需要在一个渲染组件内进行渲染
+    RepairStatePro(
+    v-bind:repairStateArr="repairStatePro"
+    v-bind:canClickBoolean="true"
+    )
 </template>
 
 <script>
     import { mapGetters }   from 'vuex'
-    import RepairStatezy      from    '../../components/Proposal/RepairStatezy'
-    const components = { RepairStatezy }
+    import RepairStatePro      from '../../components/Proposal/RepairStatePro'
+    const components = { RepairStatePro }
 
     export default {
-        name: 'myRepairzy',
+        name: 'myProposal',
         methods: {
             // 目的: 发起请求 - 获取最新的公告信息
             requireBulletinInfo() {
                 this.$store.dispatch({
-                    type: 'fault/SET_FAULT_DETAILL'
+                    type: 'fault/SET_FAULT_DETAILL',
+                    clientNum: '1'
                 })
             }
         },
         data() {
             return {
-                repairState: [
+                repairStatePro: [
                     {
                         id: 45641,
                         stateType: 'submitted',
@@ -140,7 +141,7 @@
         watch: {
             // 当 公告内容获取到, 触发
             getterFaultDetail: function() {
-                this.$data.repairState = this.getterFaultDetail
+                this.$data.repairStatePro = this.getterFaultDetail
             }
         },
         mounted: function() {
@@ -152,5 +153,5 @@
 
 <style lang="sass">
 
-    #myRepairzy
+    #myProposal
 </style>

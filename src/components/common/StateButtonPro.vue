@@ -1,6 +1,6 @@
 // 通用组件 - 状态按钮( 绑定父级按钮状态 + 可添加回调事件 )
 <template lang="pug">
-    .StateButtonzy
+    .StateButtonPro
         mt-button(
         v-bind:class="buttonStyleObj.className"
         v-bind:size="buttonStyleObj.size"
@@ -24,7 +24,7 @@
 <script>
     /* global require:true */
     export default {
-        name: 'StateButtonzy',
+        name: 'StateButtonPro',
         props: {
             // 按钮 - 样式
             buttonStyleObj: {
@@ -74,6 +74,6 @@
 <style lang="sass">
     @import "../../sass/main"
 
-    .StateButtonzy
+    .StateButtonPro
 
 </style>

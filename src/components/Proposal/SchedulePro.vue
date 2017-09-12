@@ -1,6 +1,6 @@
 // '故障报修' - 报修进度( 进度轴 )
 <template lang="pug">
-    #Schedulezy.auto--moduleMarginTop
+    #SchedulePro.auto--moduleMarginTop
         h1.auto--moduleMarginBottom.plan 进度
         // 进度轴
         ul.progress
@@ -59,7 +59,7 @@
     const components = { StarRating }
 
     export default {
-        name: 'Schedulezy',
+        name: 'SchedulePro',
         props: {
             // '进度' 类型(数值型, 用于比较) 进度类型( 根据 $props 判断展示状态 )
             progressType: {
@@ -69,6 +69,7 @@
                 }
             },
             // '进度' 进度条 数据( 服务端返回的完整数据 )
+
             scheduleObj: {
                 type: Object,
                 default: function() {
@@ -114,7 +115,7 @@
 <style lang="sass">
     @import "../../sass/main.sass"
 
-    #Schedulezy
+    #SchedulePro
         +bC( $C-W )
         .plan
             color: rgb( 51, 51, 51 )

@@ -7,23 +7,23 @@
             @click="toggleShow( 'wantToRepair' )"
             v-bind:class="{ active: !showMyRepair }"
             )
-                h2.auto--textStyle 我要报修
+                h2.auto--textStyle 我要投诉
 
             .Fault--title#myRepair--link(
             @click="toggleShow( 'myRepair' )"
             v-bind:class="{ active: showMyRepair }"
             )
-                h2.auto--textStyle 我的报修
+                h2.auto--textStyle 我的投诉
 
         // 根据路由参数 匹配渲染子组件
-        WantToRepairzy( v-show="!showMyRepair" )
-        MyRepairzy( v-show="showMyRepair" )
+        WantToProposal( v-show="!showMyRepair" )
+        MyProposal( v-show="showMyRepair" )
 </template>
 
 <script>
-    import WantToRepairzy     from '../pages/proposal/WantToRepairzy'
-    import MyRepairzy         from '../pages/proposal/MyRepairzy'
-    const components = { WantToRepairzy, MyRepairzy }
+    import WantToProposal     from '../pages/proposal/WantToProposal'
+    import MyProposal         from '../pages/proposal/MyProposal'
+    const components = { WantToProposal, MyProposal }
 
     export default {
         name: 'proposal',

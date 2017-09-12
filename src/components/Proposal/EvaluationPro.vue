@@ -1,6 +1,6 @@
 // '故障报修' - 报修评价( 评星星 )
 <template lang="pug">
-    #Evaluationzy.auto--moduleMarginBottom
+    #EvaluationPro.auto--moduleMarginBottom
         .select.auto--moduleMarginTop
             // h1 报修评价
             star-rating(
@@ -25,7 +25,7 @@
     const components = { StarRating }
 
     export default {
-        name: 'Evaluationzy',
+        name: 'EvaluationPro',
         methods: {
             // 目的: 设置评分星星 提示词
             setStarType( starNum ) {
@@ -66,7 +66,7 @@
 <style lang="sass">
     @import "../../sass/main.sass"
 
-    #Evaluationzy
+    #EvaluationPro
         +bC( $C-W )
         +textCenter
         .select
@@ -79,5 +79,5 @@
     .mint-field-core
         +REM-fontStyle( $F-text, $C-text )
     .mint-cell:last-child
-        background-image: none;
+        background-image: none
 </style>

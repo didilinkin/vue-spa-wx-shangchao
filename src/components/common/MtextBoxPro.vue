@@ -1,6 +1,6 @@
 // 通用组件 - 多行文本输入框
 <template lang="pug">
-    .MtextBoxzy
+    .MtextBoxPro
         textarea(
         v-model="message"
         ref="input1"
@@ -12,7 +12,7 @@
 
 <script>
     export default {
-        name: 'MtextBoxzy',
+        name: 'MtextBoxPro',
         props: {
             // 多行文本 - 基本配置
             setMtextBoxObj: {
@@ -42,7 +42,7 @@
 <style lang="sass">
     @import "../../sass/main"
 
-    .MtextBoxzy
+    .MtextBoxPro
         +REL
         textarea
             padding: 5%

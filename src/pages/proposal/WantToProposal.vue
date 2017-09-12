@@ -1,21 +1,21 @@
 // '故障报修' - '我要报修'页
 <template lang="pug">
-    #wantToRepairzy.Fault--module
+    #wantToProposal.Fault--module
         // 多行文本输入框( 限制500字 )
 
         // 图片上传(  )
 
         // 单行文本
-        FortFormzy( v-bind:FortInputArr="fortInputText" )
+        FortFormPro( v-bind:FortInputArr="fortInputText" )
 </template>
 
 <script>
-    import FortFormzy     from '../../components/common/FortFormzy'
+    import FortFormPro     from '../../components/common/FortFormPro'
 
-    const components = { FortFormzy }
+    const components = { FortFormPro }
 
     export default {
-        name: 'WantToRepairzy',
+        name: 'WantToProposal',
         mothods: {
 
         },
@@ -54,7 +54,7 @@
 <style lang="sass">
     @import "../../sass/main"
     .addimg
-    #wantToRepairzy
+    #wantToProposal
 
 </style>
 

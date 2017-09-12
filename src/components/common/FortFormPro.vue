@@ -1,9 +1,9 @@
 // 通用组件 - Fort.js文本表单( 包含状态按钮 )
 <template lang="pug">
-    #FortFormzy.form-wrapper
+    #FortFormPro.form-wrapper
 
         // 通用组件 - 多行文本输入框
-        .MtextBoxzy
+        .MtextBoxPro
             textarea(
             v-model="message"
             ref="input1"
@@ -39,7 +39,7 @@
                 )
 
             // '提交' 按钮
-            StateButtonzy.auto--moduleMarginTop.tijiao(
+            StateButtonPro.auto--moduleMarginTop.tijiao(
             v-on:buttonClickEvent="checkInputVal()"
             v-bind:buttonStyleObj="stateButtonStyle"
             v-bind:buttonContentStr="stateButtonContent"
@@ -50,12 +50,12 @@
     // import  VueRouter   from    'vue-router'
 
     import swal         from 'sweetalert2'
-    import StateButtonzy  from './StateButtonzy'
+    import StateButtonPro  from './StateButtonPro'
     import tinyImgUpload from '../../../static/js/tinyImgUpload'
-    const components = { StateButtonzy }
+    const components = { StateButtonPro }
 
     export default {
-        name: 'FortFormzy',
+        name: 'FortFormPro',
         props: {
             // Fort文本框内容
             FortInputArr: {
@@ -87,8 +87,14 @@
             checkInputVal() {
                 let boolean = this.$data.inputValueNull
                 let arr     = this.$data.inputArr
-                let address = document.getElementById( 'address' )
-                console.log( address.src )
+                let imgs = document.getElementsByTagName( 'img' )
+                let imgURLs = new Array( imgs.length )
+                for( let i = 0; i < imgs.length; i++ ) {
+                    imgURLs[ i ] = imgs[ i ].src
+                }
+                console.dir( imgURLs )
+//                let address = document.getElementById( 'address' )
+//                console.log( address.src )
                 console.log( this.$refs.input1.value )
                 console.log( arr[0].itemMsg )
                 console.log( arr[1].itemMsg )
@@ -167,7 +173,7 @@
 <style lang="sass">
     @import "../../sass/main"
     // 多行文本
-    .MtextBoxzy
+    .MtextBoxPro
         +REL
         textarea
             padding: 5%
@@ -180,7 +186,7 @@
             bottom: $D-autoPadding
             right: $D-autoPadding
             +REM-fontStyle( $F-assist, $C-assist )
-    #FortFormzy
+    #FortFormPro
 
     .form
         .form-item
@@ -195,7 +201,7 @@
         flex: 1
         +REM-fontStyle( $F-assist, $C-title, 2 )
 
-    .StateButtonzy
+    .StateButtonPro
         +flexCenter
         >button
             width: 40%

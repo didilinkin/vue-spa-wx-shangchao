@@ -1,15 +1,15 @@
 // '故障报修' - '故障详情'页
 <template lang="pug">
-    #FaultDetailzy
+    #ProposalDetail
         // 报修评价( 评星 )
-        Evaluationzy( v-if="showEvaluation" )
+        EvaluationPro( v-if="showEvaluation" )
         // 报修状态
-        RepairStatezy(
+        RepairStatePro(
         v-bind:repairStateArr="repairState"
         v-bind:canClickBoolean="false"
         )
         // 进度轴
-        Schedulezy(
+        SchedulePro(
         v-bind:scheduleObj="detailObj"
         v-bind:progressType="5"
         )
@@ -18,13 +18,13 @@
 <script>
     import { mapGetters }   from 'vuex'
 
-    import Evaluationzy   from    '../../components/Fault/Evaluationzy'
-    import RepairStatezy  from    '../../components/Fault/RepairStatezy'
-    import Schedulezy     from    '../../components/Fault/Schedulezy'
-    const components = { Evaluationzy, RepairStatezy, Schedulezy }
+    import EvaluationPro   from    '../../components/Fault/EvaluationPro'
+    import RepairStatePro  from    '../../components/Fault/RepairStatePro'
+    import SchedulePro     from    '../../components/Fault/SchedulePro'
+    const components = { EvaluationPro, RepairStatePro, SchedulePro }
 
     export default {
-        name: 'FaultDetailzy',
+        name: 'ProposalDetail',
         methods: {
             // 目的: 根据当前 打开的 评价 ID, 去后台获取详细 进度
             requireFaultDetail() {

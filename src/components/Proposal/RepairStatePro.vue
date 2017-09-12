@@ -1,6 +1,6 @@
 // '故障报修' - 报修状态
 <template lang="pug">
-    ul#repairStatezy
+    ul#repairStatePro
         // $props 无内容
         li( v-if="renderNull" )
             ContentNull( v-bind:setContentNullObj="setContentNull" )
@@ -32,7 +32,7 @@
     const components = { ContentNull }
 
     export default {
-        name: 'repairStatezy',
+        name: 'repairStatePro',
         props: {
             // '报修状态' - 渲染数组
             repairStateArr: {
@@ -123,7 +123,7 @@
 <style lang="sass">
     @import "../../sass/main"
 
-    #repairStatezy
+    #repairStatePro
         +bC( $C-W )
         .replaceState__header
             +REM( margin-bottom, $D-autoMargin )
