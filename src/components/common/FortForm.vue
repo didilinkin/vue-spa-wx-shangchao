@@ -1,6 +1,24 @@
 // 通用组件 - Fort.js文本表单( 包含状态按钮 )
 <template lang="pug">
 #FortForm.form-wrapper
+
+    // 通用组件 - 多行文本输入框
+    .MtextBox
+        textarea(
+            v-model="message"
+            ref="input1"
+            v-bind:maxLength="setMtextBoxObj.maxLength"
+            v-bind:placeholder="setMtextBoxObj.placeholder"
+        )
+        p.font-num {{ message.length }} / {{ setMtextBoxObj.maxLength }}
+
+        // 图片上传(  )
+    #upload.upload
+    div.ftp
+        span 您最多可上传
+        span.dll 5
+        span 张图片，单张照片最大2M
+
     // 暂停使用表单方式 - form( name="form" action="#" )
     .form
         // 输入框
@@ -33,6 +51,7 @@
 
 import swal         from 'sweetalert2'
 import StateButton  from './StateButton'
+import tinyImgUpload from '../../../static/js/tinyImgUpload'
 const components = { StateButton }
 
 export default {
@@ -52,12 +71,27 @@ export default {
                     }
                 ]
             }
+        },
+        setMtextBoxObj: {
+            type: Object,
+            default: function() {
+                return {
+                    maxLength: 300,
+                    placeholder: '提示文本'
+
+                }
+            }
         }
     },
     methods: {
         checkInputVal() {
             let boolean = this.$data.inputValueNull
             let arr     = this.$data.inputArr
+            let address = document.getElementById( 'address' )
+            console.log( address.src )
+            console.log( this.$refs.input1.value )
+            console.log( arr[0].itemMsg )
+            console.log( arr[1].itemMsg )
 
             // 遍历判断 value值是否为空
             for( let i = arr.length; i--; ) {
@@ -90,7 +124,8 @@ export default {
             },
             stateButtonContent: '提交',
             inputArr: [],
-            inputValueNull: true
+            inputValueNull: true,
+            message: ''
         }
     },
     mounted: function() {
@@ -99,25 +134,23 @@ export default {
         for( let i = this.$data.inputArr.length; i--; ) {
             this.$data.inputArr[i]['itemMsg'] = ''
         }
+        // 在这配置一下 options => 基本参数 图片上传在组件刷新一次
+        let options = {
+            path: '/',
+            // 成功时
+            onSuccess: function( res ) {
+                console.log( res )
+                console.log( '成功' )
+            },
+            onFailure: function( res ) {
+                console.log( res )
+                console.log( '失败' )
+            }
+        }
+
+        tinyImgUpload( '#upload', options ) // 执行 上传事件
     },
     components: components
-    // ,
-    // beforeRouteEnter( _to, _from, next ) {
-    //     // 导航离开该组件的对应路由时调用
-    //     // 可以访问组件实例 `this`
-    //     console.log( 'this is page beforeRouteEnter' )
-    //     next()
-    // }
-    // ,
-    // beforeRouteUpdate( _to, _from, next ) {
-    //     next()
-    // }
-    // ,
-    // beforeRouteLeave( _to, _from, next ) {
-    //     console.log( 'this is page beforeRouteLeave' )
-    //     console.log( this )
-    //     next()
-    // }
     ,
     beforeRouteLeave( _to, _from, next ) {
         if( this ) {
@@ -133,7 +166,20 @@ export default {
 
 <style lang="sass">
 @import "../../sass/main"
-
+// 多行文本
+.MtextBox
+    +REL
+    textarea
+        padding: 5%
+        width: 90%
+        +REM( height, $F-text*11 )
+        border: none
+        +REM-fontStyle( $F-text, $C-assist,2 )
+    >p
+        +ABS
+        bottom: $D-autoPadding
+        right: $D-autoPadding
+        +REM-fontStyle( $F-assist, $C-assist )
 #FortForm
 
 .form
@@ -156,4 +202,15 @@ export default {
         color: $C-W
         +radius( 20px )
         +boxShadow( 0, 5px, 20px, $C-theme )
+//图片上传
+.ftp
+    color: rgb( 178,178,178 )
+    font-size: 14px
+    margin-left: 15.5px
+    padding-bottom: 15.5px
+    padding-top: 15.5px
+    .dll
+        color: rgb( 35,210,150 )
+.upload
+    padding-top: 10px
 </style>

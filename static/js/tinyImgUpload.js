@@ -77,7 +77,7 @@ function tinyImgUpload(ele, options) {
                         var oDiv = document.createElement('div');
                         oDiv.className = 'img-thumb img-item';
                         // 向图片容器里添加元素
-                        oDiv.innerHTML = '<img class="thumb-icon" src="'+e.target.result+'" />'+
+                        oDiv.innerHTML = '<img id="address" class="thumb-icon" src="'+e.target.result+'" />'+
                                         '<a href="javscript:;" class="img-remove">x</a>'
 
                         ele.insertBefore(oDiv, addBtn);
