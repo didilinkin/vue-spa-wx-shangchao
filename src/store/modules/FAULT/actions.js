@@ -18,10 +18,10 @@ export default {
         }
         asyncFaultList()
     },
-    [types.SET_FAULT_DETAILL]: ({ commit }) => {
+    [types.SET_FAULT_DETAILL]: ({ commit }, obj ) => {
         const asyncFaultDetail = async function() {
             try {
-                let result = await faultAPI.apirepairState()
+                let result = await faultAPI.apirepairState( obj )
                 commit( types.SET_FAULT_DETAILL, result )
             } catch ( err ) {
                 console.log( err )

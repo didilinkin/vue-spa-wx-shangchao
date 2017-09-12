@@ -19,7 +19,8 @@ export default {
         // 目的: 发起请求 - 获取最新的公告信息
         requireBulletinInfo() {
             this.$store.dispatch({
-                type: 'fault/SET_FAULT_DETAILL'
+                type: 'fault/SET_FAULT_DETAILL',
+                clientNum: '1'
             })
         }
     },
