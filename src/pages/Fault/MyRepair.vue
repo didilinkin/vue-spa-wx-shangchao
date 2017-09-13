@@ -142,9 +142,6 @@ export default {
         // 当 公告内容获取到, 触发
         getterrList: function() {
             this.$data.repairState = this.getterrList.data.repairList
-            console.log( this.getterrList.data.repairList )
-            console.log( '8888888888888888' )
-            console.log( this.$data.repairState )
         }
     },
     mounted: function() {
