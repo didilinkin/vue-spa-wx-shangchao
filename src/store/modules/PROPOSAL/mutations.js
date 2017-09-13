@@ -6,8 +6,8 @@ export default {
         state.repairDetail = {}     // 清空 状态
         state.toProposal = res
     },
-    [types.SET_FAULT_LIST]( state, res ) {
-        state.list = res
+    [types.SET_PROPOSAL_LIST]( state, res ) {
+        state.listProposal = res
     },
     // 进度条数据
     [types.SET_FAULT_DETAIL]( state, res ) {
