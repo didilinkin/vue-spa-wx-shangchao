@@ -7,7 +7,7 @@ export default {
         state.repairDetail = res
     },
     [types.SET_FAULT_LIST]( state, res ) {
-        state.list = res
+        state.list = res.data
     },
     // 进度条数据
     [types.SET_FAULT_DETAIL]( state, res ) {
@@ -95,5 +95,8 @@ export default {
         console.log( '最后检查json' )
         console.dir( json ) // 成功
         state.repairState = json
+    },
+    [types.SET_TO_FAULT]( state, res ) {
+        state.toRepair = res
     }
 }

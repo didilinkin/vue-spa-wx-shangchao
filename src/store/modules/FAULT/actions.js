@@ -9,8 +9,6 @@ export default {
         const asyncFaultList = async function() {
             try {
                 let result = await faultAPI.apiFaultList( obj )
-                // console.log( 'actions' )
-                // console.dir( result )
                 commit( types.SET_FAULT_LIST, result )
             } catch( err ) {
                 console.log( err )
@@ -34,6 +32,17 @@ export default {
             try {
                 let result = await faultAPI.apiFaultDetail( obj )
                 commit( types.SET_FAULT_DETAIL, result )
+            } catch ( err ) {
+                console.log( err )
+            }
+        }
+        asyncFaultDetail()
+    },
+    [types.REQUIRE_TO_FAULT]: ({ commit }, obj ) => {
+        const asyncFaultDetail = async function() {
+            try {
+                let result = await faultAPI.apiToRepair( obj )
+                commit( types.SET_TO_FAULT, result )
             } catch ( err ) {
                 console.log( err )
             }
