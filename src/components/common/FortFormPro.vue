@@ -52,6 +52,7 @@
     import swal         from 'sweetalert2'
     import StateButtonPro  from './StateButtonPro'
     import tinyImgUpload from '../../../static/js/tinyImgUpload'
+    import { mapGetters }   from 'vuex'
     const components = { StateButtonPro }
 
     export default {
@@ -84,20 +85,31 @@
             }
         },
         methods: {
+            // 目的: 请求 - 我要投诉
+            requireToProposal( arr, imgs ) {
+                this.$store.dispatch({
+                    type: 'proposal/SAVE_PROPOSAL',
+                    clientNum: '1',
+                    phone: arr[1].itemMsg,
+                    repairMan: arr[0].itemMsg,
+                    repairContent: this.$refs.input1.value,
+                    file: imgs.src
+                })
+            },
             checkInputVal() {
                 let boolean = this.$data.inputValueNull
                 let arr     = this.$data.inputArr
                 let imgs = document.getElementsByTagName( 'img' )
-                let imgURLs = new Array( imgs.length )
-                for( let i = 0; i < imgs.length; i++ ) {
-                    imgURLs[ i ] = imgs[ i ].src
-                }
-                console.dir( imgURLs )
+//                let imgURLs = new Array( imgs.length )
+//                for( let i = 0; i < imgs.length; i++ ) {
+//                    imgURLs[ i ] = imgs[ i ].src
+//                }
+//                console.dir( imgs )
 //                let address = document.getElementById( 'address' )
-//                console.log( address.src )
-                console.log( this.$refs.input1.value )
-                console.log( arr[0].itemMsg )
-                console.log( arr[1].itemMsg )
+//               console.log( address.src )
+//                console.log( this.$refs.input1.value )
+//                console.log( arr[0].itemMsg )
+//                console.log( arr[1].itemMsg )
 
                 // 遍历判断 value值是否为空
                 for( let i = arr.length; i--; ) {
@@ -113,11 +125,21 @@
                         'error'
                     )
                 } else {
-                    swal(
-                        '成功!',
-                        '您的问题已提交',
-                        'success'
-                    )
+                    //  提交投诉请求
+                    this.requireToProposal( arr, imgs )
+                    if( this.getterrToProposal.success === true ) {
+                        swal(
+                            '成功!',
+                            '您的问题已提交',
+                            'success'
+                        )
+                    }else {
+                        swal(
+                            '失败!',
+                            '提交失败，请电话联系',
+                            'error'
+                        )
+                    }
                 }
             }
         },
@@ -132,6 +154,16 @@
                 inputArr: [],
                 inputValueNull: true,
                 message: ''
+            }
+        },
+        computed: mapGetters({
+            getterrToProposal: 'getterrToProposal'
+        }),
+        watch: {
+            // 监听: '绑定' 建筑物列表
+            getterrToProposal: function() {
+//                console.log( '666666666666666666' )
+//                console.log( this.getterrToProposal.success )
             }
         },
         mounted: function() {

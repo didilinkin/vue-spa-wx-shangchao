@@ -6,19 +6,6 @@ export default {
         console.log( obj )
         commit( types.SET_REPAIR_DETAIL, obj.detailObj )
     },
-    [types.REQUIRE_FAULT_LIST]: ({ commit }, obj ) => {
-        const asyncFaultList = async function() {
-            try {
-                let result = await faultAPI.apiFaultList( obj )
-                // console.log( 'actions' )
-                // console.dir( result )
-                commit( types.SET_FAULT_LIST, result )
-            } catch( err ) {
-                console.log( err )
-            }
-        }
-        asyncFaultList()
-    },
     [types.SET_FAULT_DETAILL]: ({ commit }, obj ) => {
         const asyncFaultDetail = async function() {
             try {
@@ -30,15 +17,28 @@ export default {
         }
         asyncFaultDetail()
     },
-    [types.REQUIRE_FAULT_DETAIL]: ({ commit }, obj ) => {
+    [types.SAVE_PROPOSAL]: ({ commit }, obj ) => {
         const asyncFaultDetail = async function() {
             try {
-                let result = await faultAPI.apiFaultDetail( obj )
-                commit( types.SET_FAULT_DETAIL, result )
+                let result = await faultAPI.apiToProposal( obj )
+                commit( types.SET_PROPOSAL, result )
             } catch ( err ) {
                 console.log( err )
             }
         }
         asyncFaultDetail()
+    },
+    [types.REQUIRE_PROPOSAL_LIST]: ({ commit }, obj ) => {
+        const asyncFaultList = async function() {
+            try {
+                let result = await faultAPI.apiFaultList( obj )
+                // console.log( 'actions' )
+                // console.dir( result )
+                commit( types.SET_PROPOSAL_LIST, result )
+            } catch( err ) {
+                console.log( err )
+            }
+        }
+        asyncFaultList()
     }
 }

@@ -1,25 +1,11 @@
-/* global Promise: true */ // require
+/* global Promise require: true */ //
 import axios from 'axios'
 import * as mockAPI from '../../../services/mockAPI'
 
-// const qs = require( 'qs' )
+const qs = require( 'qs' )
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
-export const apiFaultList = ( obj ) => {
-    return new Promise( function( resolve, reject ) {
-        axios.get(
-            mockAPI.FAULT + '?clientNum=' + obj.userId
-        )
-            .then( response => {
-                let resulData = response.data
-                resolve( resulData )
-            })
-            .catch( error => {
-                reject( error )
-            })
-    })
-}
 // 进度条接口
 export const apiFaultDetail = ( obj ) => {
     return new Promise( function( resolve, reject ) {
@@ -47,6 +33,39 @@ export const apirepairState = ( obj ) => {
         )
             .then( response => {
                 let resulData = response.data.data
+                resolve( resulData )
+            })
+            .catch( error => {
+                reject( error )
+            })
+    })
+}
+// 我要投诉
+export const apiToProposal = ( obj ) => {
+    return new Promise( function( resolve, reject ) {
+        axios.post( mockAPI.TO_PROPOSAL, qs.stringify({
+            'phone': obj.phone,
+            'clientNum': obj.clientNum,
+            'complaintMan': obj.repairMan,
+            'complaintContent': obj.repairContent,
+            'file': obj.file
+        }) )
+            .then( response => {
+                let resulData = response.data
+                resolve( resulData )
+            })
+            .catch( error => {
+                reject( error )
+            })
+    })
+}
+export const apiFaultList = ( obj ) => {
+    return new Promise( function( resolve, reject ) {
+        axios.get(
+            mockAPI.PROPOSAL + '?clientNum=' + obj.clientNum
+        )
+            .then( response => {
+                let resulData = response.data
                 resolve( resulData )
             })
             .catch( error => {

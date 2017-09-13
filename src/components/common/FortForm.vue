@@ -85,7 +85,7 @@ export default {
         }
     },
     methods: {
-        // 目的: 请求 - 建筑列表
+        // 目的: 请求 - 我要报修
         requireToRepare( arr, address ) {
             this.$store.dispatch({
                 type: 'fault/REQUIRE_TO_FAULT',
@@ -100,10 +100,6 @@ export default {
             let boolean = this.$data.inputValueNull
             let arr     = this.$data.inputArr
             let address = document.getElementById( 'address' )
-            console.log( address.src )
-            console.log( this.$refs.input1.value )
-            console.log( arr[0].itemMsg )
-            console.log( arr[1].itemMsg )
 
             // 遍历判断 value值是否为空
             for( let i = arr.length; i--; ) {
@@ -121,7 +117,7 @@ export default {
             } else {
                 //  提交报修请求
                 this.requireToRepare( arr, address )
-                if( this.getterrToRepair.success ) {
+                if( this.getterrToRepair.success === true ) {
                     swal(
                         '成功!',
                         '您的问题已提交',
@@ -160,12 +156,6 @@ export default {
 //            console.log( '666666666666666666' )
 //            console.log( this.getterrToRepair.success )
             // this.$data.success = this.getterBuildingList
-        },
-        // 监听: '绑定' 房间列表
-        getterRoomList: function() {
-            this.$data.arrList = this.getterRoomList
-//            console.log( '列表改变' )
-//            console.log( this.$data.arrList )
         }
     },
     mounted: function() {

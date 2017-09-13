@@ -14,14 +14,14 @@
             // 状态 - 顶部
             .replaceState__header
                 span.replaceState--stateBtn( v-bind:class="'fault--' + item.stateType + '--typeColor'" ) {{ item.stateTitle }}
-                span.replaceState--dateTime {{ item.dateTime }}
+                span.replaceState--dateTime {{ item.createDate }}
 
             // 状态 - 文本内容
             .replaceState--contentText
                 p(
                     v-bind:class="{ 'clickText': canClickBoolean }"
                     @click="toRepairDetail( item )"
-                ) {{ item.text }}
+                ) {{ item.complaintContent }}
 </template>
 
 <script>
@@ -43,8 +43,8 @@
                             id: 45641,
                             stateType: 'submitted',
                             stateTitle: '已提交',
-                            dateTime: '2016-05-25 11:46',
-                            text: `此处是已提交文本此处是已提交文本
+                            createDate: '2016-05-25 11:46',
+                            complaintContent: `此处是已提交文本此处是已提交文本
                                 此处是已提交文本此处是已提交文本
                                 此处是已提交文本此处是已提交文本`,
                             showSchedule: 'submitted',                      // 进度状态: '已提交' ( 用于显示'进度' - 因'已处理'无法判断, 所以添加此属性 )
