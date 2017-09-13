@@ -2,9 +2,9 @@ import * as types from './types'
 import { cloneDeep } from 'lodash' // 深拷贝
 
 export default {
-    [types.SET_REPAIR_DETAIL]( state, res ) {
+    [types.SET_PROPOSAL]( state, res ) {
         state.repairDetail = {}     // 清空 状态
-        state.repairDetail = res
+        state.toProposal = res
     },
     [types.SET_FAULT_LIST]( state, res ) {
         state.list = res

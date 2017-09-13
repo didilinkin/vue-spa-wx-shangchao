@@ -56,23 +56,8 @@ export const apirepairState = ( obj ) => {
 }
 
 // 我要报修
-
-// type: 'binding/REQUEST_ROOM_LIST',
-//     clientNum: this.$route.query.clientNum,
-//     phone: arr[1].itemMsg,
-//     repairMan: arr[0].itemMsg,
-//     repairContent: this.$refs.input1.value,
-//     file: address.src
-// })
 export const apiToRepair = ( obj ) => {
     return new Promise( function( resolve, reject ) {
-        // axios.post(
-        //     mockAPI.TO_FAULT + '?clientNum=' + obj.clientNum
-        //     + '&phone = ' + obj.phone
-        //     + '&repairMan = ' + obj.repairMan
-        //     + '&repairContent = ' + obj.repairContent
-        //     + '&file = ' + obj.file
-        // )
         axios.post( mockAPI.TO_FAULT, qs.stringify({
             'phone': obj.phone,
             'clientNum': obj.clientNum,

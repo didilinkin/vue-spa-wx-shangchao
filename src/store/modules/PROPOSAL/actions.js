@@ -29,11 +29,11 @@ export default {
         }
         asyncFaultDetail()
     },
-    [types.REQUIRE_FAULT_DETAIL]: ({ commit }, obj ) => {
+    [types.SAVE_PROPOSAL]: ({ commit }, obj ) => {
         const asyncFaultDetail = async function() {
             try {
-                let result = await faultAPI.apiFaultDetail( obj )
-                commit( types.SET_FAULT_DETAIL, result )
+                let result = await faultAPI.apiToProposal( obj )
+                commit( types.SET_PROPOSAL, result )
             } catch ( err ) {
                 console.log( err )
             }
