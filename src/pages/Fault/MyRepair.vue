@@ -20,7 +20,8 @@ export default {
         requireBulletinInfo() {
             this.$store.dispatch({
                 type: 'fault/REQUIRE_FAULT_LIST',
-                clientNum: this.$route.query.clientNum
+//                clientNum: this.$route.query.clientNum
+                clientNum: 1
             })
         }
     },

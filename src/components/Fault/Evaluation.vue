@@ -8,6 +8,7 @@
             active-color="rgb( 255, 190, 76 )"
             v-bind:star-size="34"
             v-bind:show-rating="false"
+
         )
         h3.auto--modulePaddingTB {{ starType }}
     .remark.auto--moduleMarginBottom
@@ -16,7 +17,11 @@
             type="textarea"
             rows="4"
             v-model="introduction"
+            ref="input1"
         )
+    .event(
+        v-on:click="InputVal()"
+    ) 评价
 
 </template>
 
@@ -27,6 +32,10 @@ const components = { StarRating }
 export default {
     name: 'Evaluation',
     methods: {
+        InputVal() {
+            console.log( this.$refs.input1.value )
+            console.log( this.$data.starType )
+        },
         // 目的: 设置评分星星 提示词
         setStarType( starNum ) {
             switch ( starNum ) {
@@ -78,6 +87,17 @@ export default {
 
 .mint-field-core
     +REM-fontStyle( $F-text, $C-text )
+    background-color: #f2f2f2
 .mint-cell:last-child
-    background-image: none;
+    background-image: none
+.event
+    width: 110px
+    height: 40px
+    display: inline-block
+    background-color: #108ee9
+    color: #fff
+    border-radius: 5px
+    line-height: 40px
+    font-size: 14px
+    margin-bottom: 20px
 </style>
