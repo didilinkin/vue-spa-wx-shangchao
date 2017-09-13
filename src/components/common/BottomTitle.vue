@@ -3,7 +3,7 @@
 #BottomTitle
     .BottomTitle--content.auto--modulePaddingTB
         img( v-bind:src="BottomTitleImg" )
-        h2 长江中心物业管家系统
+        h2 长江财富中心物业管家系统
 </template>
 
 <script>
@@ -21,7 +21,7 @@ export default {
 <style lang="sass">
 @import "../../sass/main"
 
-#BottomTitle 
+#BottomTitle
     +FIXED
     bottom: 0
     +flexCenter

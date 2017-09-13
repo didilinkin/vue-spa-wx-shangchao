@@ -7,9 +7,9 @@
 
         // $props 有内容
         li.auto--moduleMarginLR.auto--modulePaddingTB(
-        v-else
-        v-for="( item, index ) in repairStateArr"
-        v-bind:key="index"
+            v-else
+            v-for="( item, index ) in repairStateArr"
+            v-bind:key="index"
         )
             // 状态 - 顶部
             .replaceState__header
@@ -19,7 +19,7 @@
             // 状态 - 文本内容
             .replaceState--contentText
                 p(
-                v-bind:class="{ 'clickText': canClickBoolean }"
+                    v-bind:class="{ 'clickText': canClickBoolean }"
                     @click="toRepairDetail( item )"
                 ) {{ item.text }}
 </template>
@@ -65,19 +65,22 @@
         methods: {
             // 目的: 点击内容文字 => 跳转 '报修详情‘ 页面
             toRepairDetail( itemObj ) {
+//                console.dir( itemObj )
+//                console.log( this.$props.canClickBoolean )
+
                 // 判断: 是否可点击跳转
                 if( this.$props.canClickBoolean ) {
                     this.saveRepairDetail( itemObj )                                // 将对象传给 $store保存( 跨组件共享 )
 
                     this.$watch( 'canToDetail', () => {
-                        location.href = '#/fault/' + itemObj.id                     // 当 $store更新后再执行跳转
+                        location.href = '#/proposal/' + itemObj.id                     // 当 $store更新后再执行跳转
                     })
                 }
             },
             // 目的: 将报修详情对象 保存到 $store中
             saveRepairDetail( detailObj ) {
                 this.$store.dispatch({
-                    type: 'fault/SAVE_REPAIR_DETAIL',
+                    type: 'proposal/SAVE_REPAIR_DETAIL',
                     detailObj: detailObj
                 })
             },
@@ -101,11 +104,11 @@
             }
         },
         computed: mapGetters({
-            getterRepairDetail: 'getterRepairDetail'
+            getterProDetail: 'getterProDetail'
         }),
         watch: {
             // 监听: 当 $store保存成功, 放行跳转功能
-            getterRepairDetail: function() {
+            getterProDetail: function() {
                 this.$data.canToDetail = true
             },
             // 监听: $props 传入后, 执行

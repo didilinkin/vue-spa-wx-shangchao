@@ -21,6 +21,8 @@ import EnergyDeposit            from '@/pages/Bill/EnergyDeposit'
 import DecorationDeposit        from '@/pages/Bill/DecorationDeposit'
 
 import FaultDetail              from '@/pages/Fault/FaultDetail'
+import ProposalDetail           from '@/pages/Proposal/ProposalDetail'
+
 
 Vue.use( Router )
 
@@ -35,7 +37,7 @@ export default new Router({
                 AppBottomTitle: BottomTitle
             }
         }, {
-            path: '/bulletin',                                      
+            path: '/bulletin',
             name: 'Bulletin',
             meta: { title: '物业公告' },
             components: {
@@ -43,7 +45,7 @@ export default new Router({
                 AppBottomTitle: BottomTitle
             }
         }, {
-            path: '/bill',                                      
+            path: '/bill',
             name: 'Bill',
             meta: { title: '费用账单' },
             components: {
@@ -51,7 +53,7 @@ export default new Router({
                 AppBottomTitle: BottomTitle
             }
         }, {
-            path: '/fault',                                      
+            path: '/fault',
             name: 'Fault',
             meta: { title: '故障报修' },
             components: {
@@ -69,7 +71,7 @@ export default new Router({
             //     next()
             // }
         }, {
-            path: '/proposal',                                      
+            path: '/proposal',
             name: 'Proposal',
             meta: { title: '投诉建议' },
             components: {
@@ -77,7 +79,7 @@ export default new Router({
                 AppBottomTitle: BottomTitle
             }
         }, {
-            path: '/binding',                                      
+            path: '/binding',
             name: 'Binding',
             meta: { title: '绑定房间' },
             components: {
@@ -93,7 +95,7 @@ export default new Router({
                 AppBottomTitle: BottomTitle
             }
         }, {                                                // 费用账单 - 二级类目
-            path: '/bill/buildingFee',                                      
+            path: '/bill/buildingFee',
             name: 'BuildingFee',
             meta: { title: '房屋租赁费' },
             components: {
@@ -101,7 +103,7 @@ export default new Router({
                 AppBottomTitle: BottomTitle
             }
         }, {
-            path: '/bill/propertyFee',                                      
+            path: '/bill/propertyFee',
             name: 'PropertyFee',
             meta: { title: '物业管理费' },
             components: {
@@ -109,7 +111,7 @@ export default new Router({
                 AppBottomTitle: BottomTitle
             }
         }, {
-            path: '/bill/electricityBill',                                      
+            path: '/bill/electricityBill',
             name: 'ElectricityBill',
             meta: { title: '电费' },
             components: {
@@ -117,7 +119,7 @@ export default new Router({
                 AppBottomTitle: BottomTitle
             }
         }, {
-            path: '/bill/waterFee',                                      
+            path: '/bill/waterFee',
             name: 'WaterFee',
             meta: { title: '水费' },
             components: {
@@ -125,7 +127,7 @@ export default new Router({
                 AppBottomTitle: BottomTitle
             }
         }, {
-            path: '/bill/leaseDeposit',                                      
+            path: '/bill/leaseDeposit',
             name: 'LeaseDeposit',
             meta: { title: '租赁保证金' },
             components: {
@@ -133,7 +135,7 @@ export default new Router({
                 AppBottomTitle: BottomTitle
             }
         }, {
-            path: '/bill/energyDeposit',                                      
+            path: '/bill/energyDeposit',
             name: 'EnergyDeposit',
             meta: { title: '能源管理押金' },
             components: {
@@ -141,7 +143,7 @@ export default new Router({
                 AppBottomTitle: BottomTitle
             }
         }, {
-            path: '/bill/decorationDeposit',                                      
+            path: '/bill/decorationDeposit',
             name: 'DecorationDeposit',
             meta: { title: '装修保证金' },
             components: {
@@ -149,11 +151,19 @@ export default new Router({
                 AppBottomTitle: BottomTitle
             }
         }, {
-            path: '/fault/:id',                                      
+            path: '/fault/:id',
             name: 'FaultDetail',
             meta: { title: '报修详情' },
             components: {
                 AppContent: FaultDetail,
+                AppBottomTitle: BottomTitle
+            }
+        }, {
+            path: '/proposal/:id',
+            name: 'ProposalDetail',
+            meta: { title: '投訴详情' },
+            components: {
+                AppContent: ProposalDetail,
                 AppBottomTitle: BottomTitle
             }
         }

@@ -3,6 +3,8 @@ import { cloneDeep } from 'lodash' // 深拷贝
 
 export default {
     [types.SET_REPAIR_DETAIL]( state, res ) {
+        console.log( 'mutations' )
+        console.log( res )
         state.repairDetail = {}     // 清空 状态
         state.repairDetail = res
     },
@@ -18,20 +20,8 @@ export default {
                 time: res.pieDate,
                 starNum: res.star
             },
-            // 已处理完毕
-            finished: {
-                time: res.ratedDate,
-                repair: res.repairedMan,
-                maintenanceFees: res.amountMoney
-            },
-            // 已开始处理
-            doing: {
-                time: res.repairDate,
-                repair: res.repairedMan
-            },
-            // 已派单
+            // 受理結果
             send: {
-                time: res.createDate,
                 acceptor: res.withMan
             },
             // 客户已提交保修
@@ -46,7 +36,7 @@ export default {
     [types.SET_FAULT_DETAILL]( state, res ) {
         // console.log( res )
         let arr = res.repairList
-        console.dir( arr )
+        // console.dir( arr )
 
         // 初始化状态
         let initTypeObj = {
@@ -84,16 +74,16 @@ export default {
                 if( item.repairStatus === 1 ) { // 维修状态
                     console.log( '维修过' )
                 } else {
-                    console.log( '未维修' )
+                    // console.log( '未维修' )
                 }
             } else {
-                console.log( '未派单' )
+                // console.log( '未派单' )
                 setTypeObj( 'submitted', item )
             }
         })
 
-        console.log( '最后检查json' )
-        console.dir( json ) // 成功
+        // console.log( '最后检查json' )
+        // console.dir( json ) // 成功
         state.repairState = json
     }
 }

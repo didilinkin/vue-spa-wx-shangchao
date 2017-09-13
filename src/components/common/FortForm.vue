@@ -87,11 +87,18 @@ export default {
         checkInputVal() {
             let boolean = this.$data.inputValueNull
             let arr     = this.$data.inputArr
-            let address = document.getElementById( 'address' )
-            console.log( address.src )
+            // 打印多个图片
+            let imgs = document.getElementsByTagName( 'img' )
+            let imgURLs = new Array( imgs.length )
+            for( let i = 0; i < imgs.length; i++ ) {
+                imgURLs[ i ] = imgs[ i ].src
+            }
+            console.dir( imgURLs )
             console.log( this.$refs.input1.value )
             console.log( arr[0].itemMsg )
             console.log( arr[1].itemMsg )
+//            this.$refs.input1.value = ''
+
 
             // 遍历判断 value值是否为空
             for( let i = arr.length; i--; ) {

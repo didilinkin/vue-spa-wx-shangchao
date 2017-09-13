@@ -16,41 +16,19 @@
                     v-bind:star-size="20"
                     )
                     .string
-            li.line.auto--moduleMarginBottom( v-if="progressType > 3 " )
-                div.icon
-                    i.fa( class="fa fa-check-square-o" )
-                .contentBox
-                    h3.client-f 已处理完毕
-                    p.people 维修人: {{ scheduleObj.finished.repair }}
-                    p.price 维修费:
-                        b.fault--maintenanceFees  {{ scheduleObj.finished.maintenanceFees }}
-                        | 元
-                    p.time {{ scheduleObj.finished.time }}
-                    .wire
-
-            li.line.auto--moduleMarginBottom( v-if="progressType > 2" )
-                div.icon
-                    i.fa( class="fa fa-clock-o" )
-                .contentBox
-                    h3.client-f 已开始处理
-                    p.people 维修人: {{ scheduleObj.doing.repair }}
-                    p.time {{ scheduleObj.doing.time }}
-                    .string
-
             li.line.auto--moduleMarginBottom( v-if="progressType > 1" )
                 div.icon
                     i.fa( class="fa fa-rocket" )
                 .contentBox
-                    h3.client-f 已派单
-                    p.people 受理人: {{ scheduleObj.send.acceptor }}
-                    p.time {{ scheduleObj.send.time }}
+                    h3.client-f 受理結果
+                    p.people {{ scheduleObj.send.acceptor }}
                     .string
 
             li.line.auto--moduleMarginBottom
                 .icon
                     i.fa( class="fa fa-user-o" )
                 .contentBox
-                    h3.client-f 客户已提交报修
+                    h3.client-f 客户已提交投诉
                     p.time {{ scheduleObj.submitted.time }}
 </template>
 
@@ -79,21 +57,11 @@
                             time: '2017-01-14 11:24',
                             starNum: 4
                         },
-                        // 已处理完毕
-                        finished: {
-                            time: '2017-01-14 16:24',
-                            repair: '张丽浩  刘鹏涛',
-                            maintenanceFees: 40
-                        },
-                        // 已开始处理
-                        doing: {
-                            time: '2017-01-14 16:24',
-                            repair: '李方云'
-                        },
                         // 已派单
                         send: {
-                            time: '2017-01-14 16:24',
-                            acceptor: '李方云'
+                            acceptor: '此處是受理結果此處是受理結果此處是受理結果此處是受理結果此處是受理結果' +
+                            '此處是受理結果此處是受理結果此處是受理結果此處是受理結果此處是受理結果此處是受理結果' +
+                            '此處是受理結果此處是受理結果此處是受理結果此處是受理結果此處是受理結果此處是受理結果'
                         },
                         // 客户已提交保修
                         submitted: {

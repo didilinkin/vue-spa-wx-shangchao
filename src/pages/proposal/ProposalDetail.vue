@@ -5,22 +5,22 @@
         EvaluationPro( v-if="showEvaluation" )
         // 报修状态
         RepairStatePro(
-        v-bind:repairStateArr="repairState"
-        v-bind:canClickBoolean="false"
+            v-bind:repairStateArr="repairState"
+            v-bind:canClickBoolean="false"
         )
         // 进度轴
         SchedulePro(
-        v-bind:scheduleObj="detailObj"
-        v-bind:progressType="5"
+            v-bind:scheduleObj="detailObj"
+            v-bind:progressType="5"
         )
 </template>
 
 <script>
     import { mapGetters }   from 'vuex'
 
-    import EvaluationPro   from    '../../components/Fault/EvaluationPro'
-    import RepairStatePro  from    '../../components/Fault/RepairStatePro'
-    import SchedulePro     from    '../../components/Fault/SchedulePro'
+    import EvaluationPro   from    '../../components/Proposal/EvaluationPro'
+    import RepairStatePro  from    '../../components/Proposal/RepairStatePro'
+    import SchedulePro     from    '../../components/Proposal/SchedulePro'
     const components = { EvaluationPro, RepairStatePro, SchedulePro }
 
     export default {
@@ -29,7 +29,7 @@
             // 目的: 根据当前 打开的 评价 ID, 去后台获取详细 进度
             requireFaultDetail() {
                 this.$store.dispatch({
-                    type: 'fault/REQUIRE_FAULT_DETAIL',
+                    type: 'proposal/REQUIRE_FAULT_DETAIL',
                     detailId: '2' // url ID
                 })
             },
@@ -58,15 +58,16 @@
             }
         },
         computed: mapGetters({
-            getterFaultDetail: 'getterFaultDetail'
+            getterProposalDetail: 'getterProposalDetail'
         }),
         watch: {
             // 当 公告内容获取到, 触发
-            getterFaultDetail: function() {
-                this.$data.detailObj = this.getterFaultDetail
+            getterProposalDetail: function() {
+                this.$data.detailObj = this.getterProposalDetail
             }
         },
         mounted: function() {
+            console.log( 'a' )
             this.requireFaultDetail()
             this.judgeShowEvaluation()
             this.setRepairProps()
