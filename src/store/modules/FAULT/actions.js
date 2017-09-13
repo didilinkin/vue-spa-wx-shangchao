@@ -9,8 +9,6 @@ export default {
         const asyncFaultList = async function() {
             try {
                 let result = await faultAPI.apiFaultList( obj )
-                // console.log( 'actions' )
-                // console.dir( result )
                 commit( types.SET_FAULT_LIST, result )
             } catch( err ) {
                 console.log( err )

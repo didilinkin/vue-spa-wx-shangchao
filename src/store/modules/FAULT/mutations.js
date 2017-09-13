@@ -7,7 +7,7 @@ export default {
         state.repairDetail = res
     },
     [types.SET_FAULT_LIST]( state, res ) {
-        state.list = res
+        state.list = res.data
     },
     // 进度条数据
     [types.SET_FAULT_DETAIL]( state, res ) {

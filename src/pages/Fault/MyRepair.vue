@@ -19,7 +19,7 @@ export default {
         // 目的: 发起请求 - 获取最新的公告信息
         requireBulletinInfo() {
             this.$store.dispatch({
-                type: 'fault/SET_FAULT_DETAILL',
+                type: 'fault/REQUIRE_FAULT_LIST',
                 clientNum: '1'
             })
         }
@@ -136,12 +136,15 @@ export default {
         }
     },
     computed: mapGetters({
-        getterFaultDetail: 'getterrepairState'
+        getterrList: 'getterrList'
     }),
     watch: {
         // 当 公告内容获取到, 触发
-        getterFaultDetail: function() {
-            this.$data.repairState = this.getterFaultDetail
+        getterrList: function() {
+            this.$data.repairState = this.getterrList.data.repairList
+            console.log( this.getterrList.data.repairList )
+            console.log( '8888888888888888' )
+            console.log( this.$data.repairState )
         }
     },
     mounted: function() {

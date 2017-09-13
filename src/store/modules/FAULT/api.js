@@ -9,10 +9,10 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 export const apiFaultList = ( obj ) => {
     return new Promise( function( resolve, reject ) {
         axios.get(
-            mockAPI.FAULT + '?clientNum=' + obj.userId
+            mockAPI.FAULT + '?clientNum=' + obj.clientNum
         )
         .then( response => {
-            let resulData = response.data
+            let resulData = response
             resolve( resulData )
         })
         .catch( error => {
