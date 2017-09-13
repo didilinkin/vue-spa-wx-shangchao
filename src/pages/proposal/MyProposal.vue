@@ -19,8 +19,8 @@
             // 目的: 发起请求 - 获取最新的公告信息
             requireBulletinInfo() {
                 this.$store.dispatch({
-                    type: 'fault/SET_FAULT_DETAILL',
-                    clientNum: '1'
+                    type: 'proposal/REQUIRE_PROPOSAL_LIST',
+                    clientNum: this.$route.query.clientNum
                 })
             }
         },
@@ -136,12 +136,12 @@
             }
         },
         computed: mapGetters({
-            getterFaultDetail: 'getterrepairState'
+            getterrProposalList: 'getterrProposalList'
         }),
         watch: {
             // 当 公告内容获取到, 触发
-            getterFaultDetail: function() {
-                this.$data.repairStatePro = this.getterFaultDetail
+            getterrProposalList: function() {
+                this.$data.repairStatePro = this.getterrProposalList.data.list
             }
         },
         mounted: function() {
