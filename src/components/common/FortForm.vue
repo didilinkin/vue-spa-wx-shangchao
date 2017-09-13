@@ -52,6 +52,7 @@
 import swal         from 'sweetalert2'
 import StateButton  from './StateButton'
 import tinyImgUpload from '../../../static/js/tinyImgUpload'
+import { mapGetters }   from 'vuex'
 const components = { StateButton }
 
 export default {
@@ -84,14 +85,25 @@ export default {
         }
     },
     methods: {
+        // 目的: 请求 - 建筑列表
+        requireToRepare( arr, address ) {
+            this.$store.dispatch({
+                type: 'fault/REQUIRE_TO_FAULT',
+                clientNum: this.$route.query.clientNum,
+                phone: arr[1].itemMsg,
+                repairMan: arr[0].itemMsg,
+                repairContent: this.$refs.input1.value,
+                file: address.src
+            })
+        },
         checkInputVal() {
             let boolean = this.$data.inputValueNull
             let arr     = this.$data.inputArr
             let address = document.getElementById( 'address' )
-            console.log( address.src )
-            console.log( this.$refs.input1.value )
-            console.log( arr[0].itemMsg )
-            console.log( arr[1].itemMsg )
+//            console.log( address.src )
+//            console.log( this.$refs.input1.value )
+//            console.log( arr[0].itemMsg )
+//            console.log( arr[1].itemMsg )
 
             // 遍历判断 value值是否为空
             for( let i = arr.length; i--; ) {
@@ -107,11 +119,21 @@ export default {
                     'error'
                 )
             } else {
-                swal(
-                    '成功!',
-                    '您的问题已提交',
-                    'success'
-                )
+                //  提交报修请求
+                this.requireToRepare( arr, address )
+                if( this.getterrToRepair.success ) {
+                    swal(
+                        '成功!',
+                        '您的问题已提交',
+                        'success'
+                    )
+                }else {
+                    swal(
+                        '失败!',
+                        '提交失败，请联系维修人员',
+                        'error'
+                    )
+                }
             }
         }
     },
@@ -125,7 +147,25 @@ export default {
             stateButtonContent: '提交',
             inputArr: [],
             inputValueNull: true,
+            success: true,
             message: ''
+        }
+    },
+    computed: mapGetters({
+        getterrToRepair: 'getterrToRepair'
+    }),
+    watch: {
+        // 监听: '绑定' 建筑物列表
+        getterrToRepair: function() {
+//            console.log( '666666666666666666' )
+//            console.log( this.getterrToRepair.success )
+            // this.$data.success = this.getterBuildingList
+        },
+        // 监听: '绑定' 房间列表
+        getterRoomList: function() {
+            this.$data.arrList = this.getterRoomList
+//            console.log( '列表改变' )
+//            console.log( this.$data.arrList )
         }
     },
     mounted: function() {

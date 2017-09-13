@@ -95,5 +95,8 @@ export default {
         console.log( '最后检查json' )
         console.dir( json ) // 成功
         state.repairState = json
+    },
+    [types.SET_TO_FAULT]( state, res ) {
+        state.toRepair = res
     }
 }
