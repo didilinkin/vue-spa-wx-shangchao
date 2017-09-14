@@ -7,15 +7,15 @@ const qs = require( 'qs' )
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
 // 进度条接口
-export const apiFaultDetail = ( obj ) => {
+export const apiProposalDetail = ( obj ) => {
     return new Promise( function( resolve, reject ) {
         axios.get(
             // http://192.168.5.250:18081/repair/getDetails?id=2
             // mockAPI.FAULT_DETAIL + '?id=' + obj.detailId
-            mockAPI.FAULT_DETAIL + '?id=' + obj.detailId
+            mockAPI.PROPOSAL_DETAIL + '?id=' + obj.detailId
         )
             .then( response => {
-                let resulData = response.data.data
+                let resulData = response.data
                 resolve( resulData )
             })
             .catch( error => {

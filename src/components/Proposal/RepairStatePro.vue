@@ -20,7 +20,7 @@
             .replaceState--contentText
                 p(
                     v-bind:class="{ 'clickText': canClickBoolean }"
-                    @click="toRepairDetail( item )"
+                    @click="toProposalDetail( item )"
                 ) {{ item.complaintContent }}
 </template>
 
@@ -64,7 +64,7 @@
         },
         methods: {
             // 目的: 点击内容文字 => 跳转 '报修详情‘ 页面
-            toRepairDetail( itemObj ) {
+            toProposalDetail( itemObj ) {
 //                console.dir( itemObj )
 //                console.log( this.$props.canClickBoolean )
 
@@ -73,14 +73,16 @@
                     this.saveRepairDetail( itemObj )                                // 将对象传给 $store保存( 跨组件共享 )
 
                     this.$watch( 'canToDetail', () => {
-                        location.href = '#/proposal/' + itemObj.id                     // 当 $store更新后再执行跳转
+                        location.href = '#/proposal/' + itemObj.id
+                        console.log( '9999999999999999999' )
+                        console.log( location.href )                // 当 $store更新后再执行跳转
                     })
                 }
             },
             // 目的: 将报修详情对象 保存到 $store中
             saveRepairDetail( detailObj ) {
                 this.$store.dispatch({
-                    type: 'proposal/SAVE_REPAIR_DETAIL',
+                    type: 'proposal/SAVE_PROPOSAL_DETAIL',
                     detailObj: detailObj
                 })
             },
@@ -104,12 +106,15 @@
             }
         },
         computed: mapGetters({
-            getterProDetail: 'getterProDetail'
+            getterProposalDetail: 'getterProposalDetail'
         }),
         watch: {
             // 监听: 当 $store保存成功, 放行跳转功能
-            getterProDetail: function() {
+            getterProposalDetail: function() {
                 this.$data.canToDetail = true
+                console.log( '11111111111111111111111' )
+                console.log( this.getterProposalDetail )
+                console.log( this.$data.canToDetail )
             },
             // 监听: $props 传入后, 执行
             repairStateArr: function() {

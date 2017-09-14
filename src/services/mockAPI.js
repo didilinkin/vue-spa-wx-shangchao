@@ -6,7 +6,7 @@
 
 // const url = 'http://127.0.0.1:18081'                                    // 后台链接
 
-const devUrl = 'http://192.168.5.21:80'                             // 开发后台 url
+const devUrl = 'http://weixin.aplusoffice.cn'                             // 开发后台 url
 
 // const testUrl = 'http://192.168.5.250:18081'                             // 开发后台 url
 
@@ -42,3 +42,5 @@ export const TO_FAULT = devUrl + '/wx/saveRepair'                          // �
 export const TO_PROPOSAL = devUrl + '/wx/saveComplaint'                          // 我要投诉 http://192.168.5.250:18081/wx/saveComplaint
 
 export const PROPOSAL = devUrl + '/wx/listComplaint'                          //  '我的投诉' 列表获取
+
+export const PROPOSAL_DETAIL = devUrl + '/wx/getComplaint'              // 我的投诉 - 详情 接口

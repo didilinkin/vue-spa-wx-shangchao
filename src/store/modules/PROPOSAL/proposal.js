@@ -5,6 +5,8 @@ import * as types       from './types'
 
 const state = {
     toProposal: {},
+    proposalDetail: {},
+    detail: {},
     listProposal: {}
 }
 

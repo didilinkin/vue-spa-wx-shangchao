@@ -9,6 +9,9 @@ export default {
     [types.SET_PROPOSAL_LIST]( state, res ) {
         state.listProposal = res
     },
+    [types.SET_PROPOSAL_DETAIL]( state, res ) {
+        state.detail = res
+    },
     // 进度条数据
     [types.SET_FAULT_DETAIL]( state, res ) {
         console.dir( res )

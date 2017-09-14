@@ -29,7 +29,7 @@
             // 目的: 根据当前 打开的 评价 ID, 去后台获取详细 进度
             requireFaultDetail() {
                 this.$store.dispatch({
-                    type: 'proposal/REQUIRE_FAULT_DETAIL',
+                    type: 'proposal/REQUIRE_PROPOSAL_DETAIL',
                     detailId: '2' // url ID
                 })
             },
@@ -63,11 +63,14 @@
         watch: {
             // 当 公告内容获取到, 触发
             getterProposalDetail: function() {
-                this.$data.detailObj = this.getterProposalDetail
+                console.log( '222222222222222222222222' )
+                this.$data.detailObj = this.getterProposalDetail.data
+                console.log( '3333333333333333333333333' )
+                console.log( this.$data.detailObj )
+                console.log( '44444444444444444444444' )
             }
         },
         mounted: function() {
-            console.log( 'a' )
             this.requireFaultDetail()
             this.judgeShowEvaluation()
             this.setRepairProps()
