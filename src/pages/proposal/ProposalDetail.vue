@@ -51,7 +51,7 @@
         },
         data() {
             return {
-                faultDetailObj: this.$store.state.fault.repairDetail,           // 详情对象( 在跳转前已保存 )
+                faultDetailObj: this.$store.state.proposal.detail,           // 详情对象( 在跳转前已保存 )
                 showEvaluation: false,
                 repairState: [],
                 detailObj: {}
