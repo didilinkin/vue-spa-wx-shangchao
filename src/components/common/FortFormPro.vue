@@ -100,6 +100,7 @@
                 let boolean = this.$data.inputValueNull
                 let arr     = this.$data.inputArr
                 let imgs = document.getElementsByTagName( 'img' )
+                setTimeout( 'location.reload()', 2000 )
 //                let imgURLs = new Array( imgs.length )
 //                for( let i = 0; i < imgs.length; i++ ) {
 //                    imgURLs[ i ] = imgs[ i ].src

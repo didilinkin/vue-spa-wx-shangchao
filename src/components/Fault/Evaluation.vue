@@ -1,7 +1,7 @@
 // '故障报修' - 报修评价( 评星星 )
 <template lang="pug">
 #Evaluation.auto--moduleMarginBottom
-    .select.auto--moduleMarginTop
+    #input1.select.auto--moduleMarginTop
         // h1 报修评价
         star-rating(
             v-model="rating"
@@ -11,7 +11,7 @@
 
         )
         h3.auto--modulePaddingTB {{ starType }}
-    .remark.auto--moduleMarginBottom
+    #input2.remark.auto--moduleMarginBottom
         mt-field.auto--modulePadding(
             placeholder="感觉维修师傅怎么样，还满意吗？来叨叨几句吧~"
             type="textarea"
@@ -19,7 +19,7 @@
             v-model="introduction"
             ref="input1"
         )
-    .event(
+    #input3.event(
         v-on:click="InputVal()"
     ) 评价
 
@@ -34,7 +34,13 @@ export default {
     methods: {
         InputVal() {
             console.log( this.$refs.input1.value )
-            console.log( this.$data.starType )
+            console.log( this.$data.rating )
+            let a = document.getElementById( 'input1' )
+            let b = document.getElementById( 'input2' )
+            let c = document.getElementById( 'input3' )
+            a.style.display = 'none'
+            b.style.display = 'none'
+            c.style.display = 'none'
         },
         // 目的: 设置评分星星 提示词
         setStarType( starNum ) {

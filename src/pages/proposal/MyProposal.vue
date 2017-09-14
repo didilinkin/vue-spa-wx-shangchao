@@ -3,8 +3,8 @@
 #myProposal.Fault--module
     // 说明: 因为渲染组件需要复用, 所以需要在一个渲染组件内进行渲染
     RepairStatePro(
-    v-bind:repairStateArr="repairStatePro"
-    v-bind:canClickBoolean="true"
+        v-bind:repairStateArr="repairStatePro"
+        v-bind:canClickBoolean="true"
     )
 </template>
 
@@ -20,7 +20,7 @@
             requireBulletinInfo() {
                 this.$store.dispatch({
                     type: 'proposal/REQUIRE_PROPOSAL_LIST',
-                    clientNum: this.$route.query.clientNum
+                    clientNum: '1'
                 })
             }
         },
