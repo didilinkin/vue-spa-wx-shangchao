@@ -1,7 +1,7 @@
 // '故障报修' - 报修评价( 评星星 )
 <template lang="pug">
     #EvaluationPro.auto--moduleMarginBottom
-        .select.auto--moduleMarginTop
+        #input4.select.auto--moduleMarginTop
             // h1 报修评价
             star-rating(
             v-model="rating"
@@ -10,14 +10,17 @@
             v-bind:show-rating="false"
             )
             h3.auto--modulePaddingTB {{ starType }}
-        .remark.auto--moduleMarginBottom
+        #input5.remark.auto--moduleMarginBottom
             mt-field.auto--modulePadding(
-            placeholder="感觉维修师傅怎么样，还满意吗？来叨叨几句吧~"
+            placeholder="处理结果还满意吗？来叨叨几句吧~"
             type="textarea"
             rows="4"
             v-model="introduction"
+            ref="input1"
             )
-
+        #input6.event(
+            v-on:click="InputVall()"
+        ) 评价
 </template>
 
 <script>
@@ -43,6 +46,16 @@
                     default:
                         return this.$data.starType = '满意'
                 }
+            },
+            InputVall() {
+                console.log( this.$refs.input1.value )
+                console.log( this.$data.rating )
+                let a = document.getElementById( 'input4' )
+                let b = document.getElementById( 'input5' )
+                let c = document.getElementById( 'input6' )
+                a.style.display = 'none'
+                b.style.display = 'none'
+                c.style.display = 'none'
             }
         },
         data() {
