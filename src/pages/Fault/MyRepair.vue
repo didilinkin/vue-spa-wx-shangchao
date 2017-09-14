@@ -21,8 +21,7 @@ export default {
             this.$store.dispatch({
                 type: 'fault/REQUIRE_FAULT_LIST',
                 clientNum: '1'
-//                clientNum: this.$route.query.clientNum
-
+                // clientNum: 1
             })
         }
     },
