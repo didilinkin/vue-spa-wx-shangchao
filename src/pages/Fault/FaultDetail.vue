@@ -1,18 +1,18 @@
 // '故障报修' - '故障详情'页
 <template lang="pug">
-#FaultDetail
-    // 报修评价( 评星 )
-    Evaluation( v-if="showEvaluation" )
-    // 报修状态
-    RepairState(
-        v-bind:repairStateArr="repairState"
-        v-bind:canClickBoolean="false"
-    )
-    // 进度轴
-    Schedule(
-        v-bind:scheduleObj="detailObj"
-        v-bind:progressType="5"
-    )
+    #FaultDetail
+        // 报修评价( 评星 )
+        Evaluation( v-if="showEvaluation" )
+        // 报修状态
+        RepairState(
+            v-bind:repairStateArr="repairState"
+            v-bind:canClickBoolean="false"
+        )
+        // 进度轴
+        Schedule(
+            v-bind:scheduleObj="detailObj"
+            v-bind:progressType="5"
+        )
 </template>
 
 <script>

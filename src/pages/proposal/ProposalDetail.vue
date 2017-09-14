@@ -1,6 +1,6 @@
 // '故障报修' - '故障详情'页
 <template lang="pug">
-    #ProposalDetail
+    #ProposDetail
         // 报修评价( 评星 )
         EvaluationPro( v-if="showEvaluation" )
         // 报修状态
@@ -51,7 +51,7 @@
         },
         data() {
             return {
-                faultDetailObj: this.$store.state.proposal.detail,           // 详情对象( 在跳转前已保存 )
+                faultDetailObj: this.$store.state.roposal.detail,           // 详情对象( 在跳转前已保存 )
                 showEvaluation: false,
                 repairState: [],
                 detailObj: {}
@@ -63,7 +63,6 @@
         watch: {
             // 当 公告内容获取到, 触发
             getterProposalDetail: function() {
-                console.log( '222222222222222222222222' )
                 this.$data.detailObj = this.getterProposalDetail.data
                 console.log( '3333333333333333333333333' )
                 console.log( this.$data.detailObj )
