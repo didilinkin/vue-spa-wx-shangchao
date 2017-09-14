@@ -3,8 +3,6 @@ import * as types               from './types'
 
 export default {
     [types.SAVE_PROPOSAL_DETAIL]: ({ commit }, obj ) => {
-        console.log( '777777777777777777777777' )
-        console.log( obj )
         commit( types.SET_PROPOSAL_DETAIL, obj.detailObj )
     },
     [types.SET_FAULT_DETAILL]: ({ commit }, obj ) => {
