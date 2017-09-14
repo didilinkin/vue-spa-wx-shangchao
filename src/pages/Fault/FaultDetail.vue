@@ -30,7 +30,7 @@ export default {
         requireFaultDetail() {
             this.$store.dispatch({
                 type: 'fault/REQUIRE_FAULT_DETAIL',
-                detailId: '2' // url ID
+                detailId: this.$route.params.id // url ID
             })
         },
         // 目的: 判断是否需要显示 '评分' 功能
