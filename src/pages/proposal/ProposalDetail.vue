@@ -2,26 +2,33 @@
 <template lang="pug">
     #ProposDetail
         // 报修评价( 评星 )
-        EvaluationPro( v-if="showEvaluation" )
+        EvaluationPro( v-if='this.getterProposalDetail.data.ratedStatus === 0' )
         // 报修状态
-        RepairStatePro(
+        ProposalStatePro(
             v-bind:repairStateArr="repairState"
             v-bind:canClickBoolean="false"
+            v-bind:createDate="this.getterProposalDetail.data.createDate"
+            v-bind:complaintContent="this.getterProposalDetail.data.complaintContent"
+            v-bind:stateTitle="this.getterProposalDetail.data.stateTitle"
         )
         // 进度轴
         SchedulePro(
-            v-bind:scheduleObj="detailObj"
-            v-bind:progressType="5"
+            v-bind:scheduleObj='detailObj'
+            v-bind:progressType='this.$data.progressSize'
+            v-bind:createDate="this.getterProposalDetail.data.createDate"
+            v-bind:star="this.getterProposalDetail.data.star"
+            v-bind:ratedDate="this.getterProposalDetail.data.ratedDate"
+            v-bind:handleContent="this.getterProposalDetail.data.handleContent"
         )
 </template>
 
 <script>
     import { mapGetters }   from 'vuex'
 
-    import EvaluationPro   from    '../../components/Proposal/EvaluationPro'
-    import RepairStatePro  from    '../../components/Proposal/RepairStatePro'
-    import SchedulePro     from    '../../components/Proposal/SchedulePro'
-    const components = { EvaluationPro, RepairStatePro, SchedulePro }
+    import EvaluationPro   from    '../../components/proposal/EvaluationPro'
+    import ProposalStatePro  from    '../../components/proposal/RepairStatePro'
+    import SchedulePro     from    '../../components/proposal/SchedulePro'
+    const components = { EvaluationPro, ProposalStatePro, SchedulePro }
 
     export default {
         name: 'ProposalDetail',
@@ -39,6 +46,7 @@
                     this.$data.showEvaluation = true
                 } else {
                     this.$data.showEvaluation = false
+                    this.$data.progressSize = '2'     // 进度显示  未完成 评价不显示
                 }
             },
             // 设置 '报修状态' 接口需要的 数组
@@ -54,7 +62,21 @@
                 faultDetailObj: this.$store.state.roposal.detail,           // 详情对象( 在跳转前已保存 )
                 showEvaluation: false,
                 repairState: [],
-                detailObj: {}
+                progressSize: [],
+                detailObj: {
+                    evaluation: {
+                        time: '2017-01-14 11:24',
+                        starNum: 4
+                    },
+                    // 已派单
+                    send: {
+                        acceptor: '4444444444444444444444'
+                    },
+                    // 客户已提交保修
+                    submitted: {
+                        time: '2017-11-14 16:24'
+                    }
+                }
             }
         },
         computed: mapGetters({
@@ -63,10 +85,27 @@
         watch: {
             // 当 公告内容获取到, 触发
             getterProposalDetail: function() {
-                this.$data.detailObj = this.getterProposalDetail.data
+                // this.$data.detailObj = this.getterProposalDetail.data
+                if( this.getterProposalDetail.data.stateType === 'finished' ) {      // 当 '进度状态' 为 '已完成'时 => 显示 '评分'组件; 否则不显示
+                    this.$data.progressSize = 5
+                } else {
+                    this.$data.progressSize = 2     // 进度显示  未完成 评价不显示
+                }
+
+                console.log( this.getterProposalDetail.data.ratedStatus )
+                console.log( '222222222222222222222' )
+                if( this.getterProposalDetail.data.ratedStatus === 0 ) {      // 当 '进度状态' 为 '已完成'时 => 显示 '评分'组件; 否则不显示
+                    this.$data.showEvaluation = true
+                } else {
+                    this.$data.showEvaluation = false
+                }
+                console.log( this.$data.faultDetailObj.stateType )
+                console.log( this.$data.showEvaluation )
                 console.log( '3333333333333333333333333' )
-                console.log( this.$data.detailObj )
-                console.log( '44444444444444444444444' )
+            },
+            // 监听: $props 传入后, 执行
+            repairStateArr: function() {
+                this.judgeRepairStateNull()
             }
         },
         mounted: function() {

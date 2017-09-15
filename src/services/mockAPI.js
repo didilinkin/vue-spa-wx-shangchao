@@ -44,3 +44,5 @@ export const TO_PROPOSAL = devUrl + '/wx/saveComplaint'                         
 export const PROPOSAL = devUrl + '/wx/listComplaint'                          //  '我的投诉' 列表获取
 
 export const PROPOSAL_DETAIL = devUrl + '/wx/getComplaint'              // 我的投诉 - 详情 接口
+
+export const PROPOSAL_UPDATE = devUrl + '/wx/updateComplaint'              // 我的投诉评价 -  接口

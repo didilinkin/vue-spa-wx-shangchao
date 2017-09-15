@@ -9,9 +9,9 @@
                     i.fa( class="fa fa-star" )
                 .contentBox
                     h3.client-f  客户已评价
-                    p.data {{ scheduleObj.evaluation.time }}
+                    p.data {{ scheduleObj.ratedDate }}
                     star-rating.auto--moduleMarginBottom.pentagon-star(
-                    v-bind:rating="scheduleObj.evaluation.starNum"
+                    v-bind:rating="scheduleObj.star"
                     v-bind:read-only="true"
                     v-bind:star-size="20"
                     )
@@ -21,7 +21,7 @@
                     i.fa( class="fa fa-rocket" )
                 .contentBox
                     h3.client-f 受理結果
-                    p.people {{ scheduleObj.send.acceptor }}
+                    p.people {{ scheduleObj.handleContent }}
                     .string
 
             li.line.auto--moduleMarginBottom
@@ -29,7 +29,7 @@
                     i.fa( class="fa fa-user-o" )
                 .contentBox
                     h3.client-f 客户已提交投诉
-                    p.time {{ scheduleObj.submitted.time }}
+                    p.time {{ scheduleObj.createDate }}
 </template>
 
 <script>
@@ -41,7 +41,31 @@
         props: {
             // '进度' 类型(数值型, 用于比较) 进度类型( 根据 $props 判断展示状态 )
             progressType: {
-                type: Number,
+                type: Object,
+                default: function() {
+                    return 5
+                }
+            },
+            createDate: {
+                type: Object,
+                default: function() {
+                    return 5
+                }
+            },
+            star: {
+                type: Object,
+                default: function() {
+                    return 5
+                }
+            },
+            ratedDate: {
+                type: Object,
+                default: function() {
+                    return 5
+                }
+            },
+            handleContent: {
+                type: Object,
                 default: function() {
                     return 5
                 }
@@ -75,6 +99,24 @@
                     public: '2'
                 }
             }
+        },
+        data() {
+            return {
+                textobj: []
+            }
+        },
+        mounted: function() {
+//            console.log( this.$props.scheduleObj )
+//            console.log( '6666666666666666666666666' )
+//            console.log( this.$props.progressType )
+//            console.log( '6666666666666666666666666' )
+//            console.log( this.$props.createDate )
+//            console.log( this.$props.star )
+//            console.log( this.$props.ratedDate )
+//            console.log( this.$props.handleContent )
+            this.$data.textobj = this.$props.scheduleObj
+//            console.log( '7777777777777777777777777' )
+//            console.log( this.$data.textobj )
         },
         components: components
     }

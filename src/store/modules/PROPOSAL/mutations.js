@@ -14,7 +14,6 @@ export default {
     },
     // 进度条数据
     [types.SET_FAULT_DETAIL]( state, res ) {
-        console.dir( res )
         let detailObj = {
             // 已评价
             evaluation: {

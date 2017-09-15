@@ -12,6 +12,11 @@ export const SAVE_PROPOSAL_DETAIL     = 'proposal/SAVE_PROPOSAL_DETAIL'        /
 export const SET_PROPOSAL_DETAIL      = 'proposal/SET_PROPOSAL_DETAIL'         // 设置 - '报修详情'( 保存到 $state )
 
 
+export const UPDATE_PROPOSAL     = 'proposal/UPDATE_PROPOSAL'        // 保存 - '投诉评价'
+
+export const SET_UPDATE_PROPOSAL      = 'proposal/SET_UPDATE_PROPOSAL'         // 设置 - '投诉评价'
+
+
 export const REQUIRE_PROPOSAL_DETAIL   = 'proposal/REQUIRE_PROPOSAL_DETAIL'      // 请求 - '故障报修' - '详情'数据
 
 export const SET_FAULT_DETAIL       = 'proposal/SET_FAULT_DETAIL'          // 设置 - '故障报修' - '详情'数据

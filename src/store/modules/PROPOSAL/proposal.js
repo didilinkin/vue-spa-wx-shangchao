@@ -7,6 +7,7 @@ const state = {
     toProposal: {},
     proposalDetail: {},
     detail: {},
+    updateResult: {},
     listProposal: {}
 }
 

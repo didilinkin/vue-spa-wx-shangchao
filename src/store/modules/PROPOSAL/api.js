@@ -73,3 +73,20 @@ export const apiFaultList = ( obj ) => {
             })
     })
 }
+// 我要投诉评价
+export const apiUpdateProposal = ( obj ) => {
+    return new Promise( function( resolve, reject ) {
+        axios.post( mockAPI.PROPOSAL_UPDATE, qs.stringify({
+            'star': obj.star,
+            'ratedContent': obj.ratedContent,
+            'ratedStatus': '1'
+        }) )
+            .then( response => {
+                let resulData = response.data
+                resolve( resulData )
+            })
+            .catch( error => {
+                reject( error )
+            })
+    })
+}

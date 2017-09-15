@@ -50,5 +50,18 @@ export default {
             }
         }
         asyncFaultList()
+    },
+    [types.UPDATE_PROPOSAL]: ({ commit }, obj ) => {
+        const asyncFaultList = async function() {
+            try {
+                let result = await proposalAPI.apiUpdateProposal( obj )
+                // console.log( 'actions' )
+                // console.dir( result )
+                commit( types.SET_UPDATE_PROPOSAL, result )
+            } catch( err ) {
+                console.log( err )
+            }
+        }
+        asyncFaultList()
     }
 }

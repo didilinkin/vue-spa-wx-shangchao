@@ -110,6 +110,11 @@
             // 监听: 当 $store保存成功, 放行跳转功能
             getterProposalDetail: function() {
                 this.$data.canToDetail = true
+//                console.log( '11111111111111111111111' )
+//                console.log( this.getterProposalDetail )
+//                console.log( this.$data.canToDetail )
+//                console.log( '9999999999999999999' )
+//                console.log( this.$props.repairStateArr )                // 当 $store更新后再执行跳转
             },
             // 监听: $props 传入后, 执行
             repairStateArr: function() {

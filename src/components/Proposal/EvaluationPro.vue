@@ -30,6 +30,12 @@
     export default {
         name: 'EvaluationPro',
         methods: {
+            updatePropoal() {
+                this.$store.dispatch({
+                    type: 'proposal/UPDATE_PROPOSAL',
+                    detailId: this.$route.params.id // url ID
+                })
+            },
             // 目的: 设置评分星星 提示词
             setStarType( starNum ) {
                 switch ( starNum ) {
@@ -50,6 +56,7 @@
             InputVall() {
                 console.log( this.$refs.input1.value )
                 console.log( this.$data.rating )
+                this.updatePropoal()
                 let a = document.getElementById( 'input4' )
                 let b = document.getElementById( 'input5' )
                 let c = document.getElementById( 'input6' )
