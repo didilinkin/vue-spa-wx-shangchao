@@ -2,7 +2,10 @@
 <template lang="pug">
     #ProposDetail
         // 报修评价( 评星 )
-        EvaluationPro( v-if='this.getterProposalDetail.data.ratedStatus === 0' )
+        EvaluationPro(
+            v-if='this.getterProposalDetail.data.ratedStatus === 0'
+            v-on:watchRequireFaultDetail="requireFaultDetail"
+        )
         // 报修状态
         ProposalStatePro(
             v-bind:repairStateArr="repairState"
@@ -46,7 +49,6 @@
                     this.$data.showEvaluation = true
                 } else {
                     this.$data.showEvaluation = false
-                    this.$data.progressSize = '2'     // 进度显示  未完成 评价不显示
                 }
             },
             // 设置 '报修状态' 接口需要的 数组
@@ -86,22 +88,17 @@
             // 当 公告内容获取到, 触发
             getterProposalDetail: function() {
                 // this.$data.detailObj = this.getterProposalDetail.data
-                if( this.getterProposalDetail.data.stateType === 'finished' ) {      // 当 '进度状态' 为 '已完成'时 => 显示 '评分'组件; 否则不显示
+                if( this.getterProposalDetail.data.ratedStatus === 1 ) {      // 当 '进度状态' 为 '已完成'时 => 显示 '评分'组件; 否则不显示
                     this.$data.progressSize = 5
                 } else {
                     this.$data.progressSize = 2     // 进度显示  未完成 评价不显示
                 }
 
-                console.log( this.getterProposalDetail.data.ratedStatus )
-                console.log( '222222222222222222222' )
                 if( this.getterProposalDetail.data.ratedStatus === 0 ) {      // 当 '进度状态' 为 '已完成'时 => 显示 '评分'组件; 否则不显示
                     this.$data.showEvaluation = true
                 } else {
                     this.$data.showEvaluation = false
                 }
-                console.log( this.$data.faultDetailObj.stateType )
-                console.log( this.$data.showEvaluation )
-                console.log( '3333333333333333333333333' )
             },
             // 监听: $props 传入后, 执行
             repairStateArr: function() {

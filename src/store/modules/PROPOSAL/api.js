@@ -79,7 +79,8 @@ export const apiUpdateProposal = ( obj ) => {
         axios.post( mockAPI.PROPOSAL_UPDATE, qs.stringify({
             'star': obj.star,
             'ratedContent': obj.ratedContent,
-            'ratedStatus': '1'
+            'ratedStatus': '1',
+            'id': obj.id
         }) )
             .then( response => {
                 let resulData = response.data

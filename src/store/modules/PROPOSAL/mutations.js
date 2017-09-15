@@ -12,6 +12,9 @@ export default {
     [types.SET_PROPOSAL_DETAIL]( state, res ) {
         state.detail = res
     },
+    [types.SET_UPDATE_PROPOSAL]( state, res ) {
+        state.updateResult = res
+    },
     // 进度条数据
     [types.SET_FAULT_DETAIL]( state, res ) {
         let detailObj = {

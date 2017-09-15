@@ -9,9 +9,9 @@
                     i.fa( class="fa fa-star" )
                 .contentBox
                     h3.client-f  客户已评价
-                    p.data {{ scheduleObj.ratedDate }}
+                    p.data {{ this.$props.star.ratedDate }}
                     star-rating.auto--moduleMarginBottom.pentagon-star(
-                    v-bind:rating="scheduleObj.star"
+                    v-bind:rating="this.$props.star"
                     v-bind:read-only="true"
                     v-bind:star-size="20"
                     )
@@ -21,7 +21,7 @@
                     i.fa( class="fa fa-rocket" )
                 .contentBox
                     h3.client-f 受理結果
-                    p.people {{ scheduleObj.handleContent }}
+                    p.people {{ this.$props.handleContent }}
                     .string
 
             li.line.auto--moduleMarginBottom
@@ -29,7 +29,7 @@
                     i.fa( class="fa fa-user-o" )
                 .contentBox
                     h3.client-f 客户已提交投诉
-                    p.time {{ scheduleObj.createDate }}
+                    p.time {{ this.$props.createDate }}
 </template>
 
 <script>

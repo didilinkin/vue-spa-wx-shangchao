@@ -25,15 +25,19 @@
 
 <script>
     import StarRating from 'vue-star-rating'
+    import { mapGetters }   from 'vuex'
+    import swal         from 'sweetalert2'
     const components = { StarRating }
 
     export default {
         name: 'EvaluationPro',
         methods: {
-            updatePropoal() {
+            updatePropoal( star, ratedContent ) {
                 this.$store.dispatch({
                     type: 'proposal/UPDATE_PROPOSAL',
-                    detailId: this.$route.params.id // url ID
+                    star: star,
+                    id: this.$route.params.id,
+                    ratedContent: ratedContent
                 })
             },
             // 目的: 设置评分星星 提示词
@@ -54,29 +58,51 @@
                 }
             },
             InputVall() {
-                console.log( this.$refs.input1.value )
-                console.log( this.$data.rating )
-                this.updatePropoal()
-                let a = document.getElementById( 'input4' )
-                let b = document.getElementById( 'input5' )
-                let c = document.getElementById( 'input6' )
-                a.style.display = 'none'
-                b.style.display = 'none'
-                c.style.display = 'none'
+                let star = this.$data.rating
+                let ratedContent = this.$refs.input1.value
+                this.updatePropoal( star, ratedContent )
+                if( this.getterUpdateResult.success === true ) {
+                    swal(
+                        '成功!',
+                        '您的问题已提交',
+                        'success'
+                    )
+                    let a = document.getElementById( 'input4' )
+                    let b = document.getElementById( 'input5' )
+                    let c = document.getElementById( 'input6' )
+                    a.style.display = 'none'
+                    b.style.display = 'none'
+                    c.style.display = 'none'
+                    this.$emit( 'watchRequireFaultDetail' )
+                }else {
+                    swal(
+                        '失败!',
+                        '提交失败，请电话联系',
+                        'error'
+                    )
+                }
             }
         },
         data() {
             return {
                 rating: 3,
                 starType: '满意', // 很差 / 一般 / 满意 / 非常满意 / 无可挑剔
-                introduction: ''
+                introduction: '',
+                proposalId: '0',
+                result: false
             }
         },
+        computed: mapGetters({
+            getterUpdateResult: 'getterUpdateResult'
+        }),
         watch: {
             // 监听: 评分 '星星'数值 => 提示评价词
             rating: function() {
                 let starNum = this.$data.rating
                 this.setStarType( starNum ) // 设置评分星星 提示词
+            },
+            getterUpdateResult: function() {
+                this.$data.result = this.getterUpdateResult.success
             }
         },
         components: components
