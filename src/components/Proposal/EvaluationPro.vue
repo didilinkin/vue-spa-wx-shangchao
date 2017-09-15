@@ -19,7 +19,7 @@
             ref="input1"
             )
         #input6.event(
-            v-on:click="InputVall()"
+        v-on:click="InputVall()"
         ) 评价
 </template>
 
