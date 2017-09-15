@@ -3,3 +3,4 @@ export const getterFaultDetail = state => state.detail              // 报修详
 export const getterrepairState = state => state.repairState              // 我的报修
 export const getterrToRepair = state => state.toRepair              // 我要报修
 export const getterrList = state => state.list              // 我的报修列表
+export const getterrRepairResult = state => state.updateResult              // 我的报修评价

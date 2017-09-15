@@ -74,3 +74,22 @@ export const apiToRepair = ( obj ) => {
             })
     })
 }
+
+// 我的报修评价
+export const apiUpdateRepair = ( obj ) => {
+    return new Promise( function( resolve, reject ) {
+        axios.post( mockAPI.UPDATEE_REPAIR, qs.stringify({
+            'star': obj.star,
+            'ratedContent': obj.ratedContent,
+            'ratedStatus': '1',
+            'id': obj.id
+        }) )
+            .then( response => {
+                let resulData = response.data
+                resolve( resulData )
+            })
+            .catch( error => {
+                reject( error )
+            })
+    })
+}

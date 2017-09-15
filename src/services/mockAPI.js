@@ -39,6 +39,8 @@ export const FAULT_DETAIL = devUrl + '/wx/getDetails'              // 故障报�
 
 export const TO_FAULT = devUrl + '/wx/saveRepair'                          // 我要报修 http://192.168.5.250:18081/wx/saveRepair
 
+export const UPDATEE_REPAIR = devUrl + '/wx/updateRepair'              // 我的报修评价 -  接口
+
 export const TO_PROPOSAL = devUrl + '/wx/saveComplaint'                          // 我要投诉 http://192.168.5.250:18081/wx/saveComplaint
 
 export const PROPOSAL = devUrl + '/wx/listComplaint'                          //  '我的投诉' 列表获取

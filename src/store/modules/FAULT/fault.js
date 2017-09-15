@@ -7,6 +7,7 @@ const state = {
     repairDetail: {},
     list: {},
     detail: {},
+    updateResult: {},
     toRepair: {},
     repairState: []
 }

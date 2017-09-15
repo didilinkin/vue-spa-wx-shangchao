@@ -27,20 +27,45 @@
 
 <script>
 import StarRating from 'vue-star-rating'
+import swal         from 'sweetalert2'
+import { mapGetters }   from 'vuex'
 const components = { StarRating }
 
 export default {
     name: 'Evaluation',
     methods: {
+        updatePropoal( star, ratedContent ) {
+            this.$store.dispatch({
+                type: 'fault/UPDATEE_REPAIR',
+                star: star,
+                id: this.$route.params.id,
+                ratedContent: ratedContent
+            })
+        },
         InputVal() {
-            console.log( this.$refs.input1.value )
-            console.log( this.$data.rating )
-            let a = document.getElementById( 'input1' )
-            let b = document.getElementById( 'input2' )
-            let c = document.getElementById( 'input3' )
-            a.style.display = 'none'
-            b.style.display = 'none'
-            c.style.display = 'none'
+            let star = this.$data.rating
+            let ratedContent = this.$refs.input1.value
+            this.updatePropoal( star, ratedContent )
+            if( this.getterrRepairResult.success === true ) {
+                swal(
+                    '成功!',
+                    '您的问题已提交',
+                    'success'
+                )
+                let a = document.getElementById( 'input1' )
+                let b = document.getElementById( 'input2' )
+                let c = document.getElementById( 'input3' )
+                a.style.display = 'none'
+                b.style.display = 'none'
+                c.style.display = 'none'
+                this.$emit( 'watchRequireFaultDetail' )
+            }else {
+                swal(
+                    '失败!',
+                    '提交失败，请电话联系',
+                    'error'
+                )
+            }
         },
         // 目的: 设置评分星星 提示词
         setStarType( starNum ) {
@@ -64,14 +89,21 @@ export default {
         return {
             rating: 3,
             starType: '满意', // 很差 / 一般 / 满意 / 非常满意 / 无可挑剔
-            introduction: ''
+            introduction: '',
+            result: false
         }
     },
+    computed: mapGetters({
+        getterrRepairResult: 'getterrRepairResult'
+    }),
     watch: {
         // 监听: 评分 '星星'数值 => 提示评价词
         rating: function() {
             let starNum = this.$data.rating
             this.setStarType( starNum ) // 设置评分星星 提示词
+        },
+        getterrRepairResult: function() {
+            this.$data.result = this.getterrRepairResult.success
         }
     },
     components: components

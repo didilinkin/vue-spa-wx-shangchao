@@ -15,3 +15,7 @@ export const SET_FAULT_DETAILL      = 'fault/SET_FAULT_DETAILL'          // 我�
 export const REQUIRE_TO_FAULT       = 'fault/REQUIRE_TO_FAULT'          // 请求 - 我要报修
 
 export const SET_TO_FAULT           = 'fault/SET_TO_FAULT'          // 设置  我要报修，
+
+export const UPDATEE_REPAIR         = 'fault/UPDATEE_REPAIR'          // 请求 - 我的报修评价
+
+export const SET_UPDATEE_REPAIR      = 'fault/SET_UPDATEE_REPAIR'          // 设置  我的报修评价，

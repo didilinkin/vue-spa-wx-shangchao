@@ -2,7 +2,10 @@
 <template lang="pug">
     #FaultDetail
         // 报修评价( 评星 )
-        Evaluation( v-if="showEvaluation" )
+        Evaluation(
+            v-if="showEvaluation"
+            v-on:watchRequireFaultDetail="requireFaultDetail"
+        )
         // 报修状态
         RepairState(
             v-bind:repairStateArr="repairState"
@@ -11,7 +14,7 @@
         // 进度轴
         Schedule(
             v-bind:scheduleObj="detailObj"
-            v-bind:progressType="5"
+            v-bind:progressType="progressSize"
         )
 </template>
 
@@ -54,6 +57,7 @@ export default {
             faultDetailObj: this.$store.state.fault.repairDetail,           // 详情对象( 在跳转前已保存 )
             showEvaluation: false,
             repairState: [],
+            progressSize: [],
             detailObj: {}
         }
     },
@@ -64,6 +68,17 @@ export default {
         // 当 公告内容获取到, 触发
         getterFaultDetail: function() {
             this.$data.detailObj = this.getterFaultDetail
+            console.log( '111111111111111111111111111111' )
+            console.log( this.$data.detailObj )
+            if( this.$data.detailObj.ratedStatus === 1 ) {
+                this.$data.progressSize = 5
+            }else if( this.$data.detailObj.repairStatus === 1 ) {
+                this.$data.progressSize = 4
+            }else if( this.$data.detailObj.pieStatus === 1 ) {
+                this.$data.progressSize = 2
+            }else {
+                this.$data.progressSize = 1
+            }
         }
     },
     mounted: function() {

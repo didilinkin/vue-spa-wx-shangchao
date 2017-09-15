@@ -9,9 +9,9 @@
                     i.fa( class="fa fa-star" )
                 .contentBox
                     h3.client-f  客户已评价
-                    p.data {{ scheduleObj.evaluation.time }}
+                    p.data {{ scheduleObj.ratedDate }}
                     star-rating.auto--moduleMarginBottom.pentagon-star(
-                    v-bind:rating="scheduleObj.evaluation.starNum"
+                    v-bind:rating="scheduleObj.star"
                     v-bind:read-only="true"
                     v-bind:star-size="20"
                     )
@@ -21,11 +21,11 @@
                     i.fa( class="fa fa-check-square-o" )
                 .contentBox
                     h3.client-f 已处理完毕
-                    p.people 维修人: {{ scheduleObj.finished.repair }}
+                    p.people 维修人: {{ scheduleObj.repairedMan }}
                     p.price 维修费:
-                        b.fault--maintenanceFees  {{ scheduleObj.finished.maintenanceFees }}
+                        b.fault--maintenanceFees  {{ scheduleObj.amountMoney }}
                         | 元
-                    p.time {{ scheduleObj.finished.time }}
+                    p.time {{ scheduleObj.repairedDate }}
                     .wire
 
             li.line.auto--moduleMarginBottom( v-if="progressType > 2" )
@@ -33,8 +33,8 @@
                     i.fa( class="fa fa-clock-o" )
                 .contentBox
                     h3.client-f 已开始处理
-                    p.people 维修人: {{ scheduleObj.doing.repair }}
-                    p.time {{ scheduleObj.doing.time }}
+                    p.people 维修人: {{ scheduleObj.repairedMan }}
+                    p.time {{ scheduleObj.repairedDate }}
                     .string
 
             li.line.auto--moduleMarginBottom( v-if="progressType > 1" )
@@ -42,8 +42,8 @@
                     i.fa( class="fa fa-rocket" )
                 .contentBox
                     h3.client-f 已派单
-                    p.people 受理人: {{ scheduleObj.send.acceptor }}
-                    p.time {{ scheduleObj.send.time }}
+                    p.people 受理人: {{ scheduleObj.pieMan }}
+                    p.time {{ scheduleObj.pieDate }}
                     .string
 
             li.line.auto--moduleMarginBottom
@@ -51,7 +51,7 @@
                     i.fa( class="fa fa-user-o" )
                 .contentBox
                     h3.client-f 客户已提交报修
-                    p.time {{ scheduleObj.submitted.time }}
+                    p.time {{ scheduleObj.createDate }}
 </template>
 
 <script>
