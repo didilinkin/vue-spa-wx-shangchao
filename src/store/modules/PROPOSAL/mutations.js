@@ -3,13 +3,13 @@ import { cloneDeep } from 'lodash' // 深拷贝
 
 export default {
     [types.SET_PROPOSAL]( state, res ) {
-        state.repairDetail = {}     // 清空 状态
         state.toProposal = res
     },
     [types.SET_PROPOSAL_LIST]( state, res ) {
         state.listProposal = res
     },
     [types.SET_PROPOSAL_DETAIL]( state, res ) {
+        state.detail = {}
         state.detail = res
     },
     [types.SET_UPDATE_PROPOSAL]( state, res ) {

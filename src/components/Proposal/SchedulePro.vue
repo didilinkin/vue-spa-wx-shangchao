@@ -41,31 +41,26 @@
         props: {
             // '进度' 类型(数值型, 用于比较) 进度类型( 根据 $props 判断展示状态 )
             progressType: {
-                type: Object,
                 default: function() {
                     return 5
                 }
             },
             createDate: {
-                type: Object,
                 default: function() {
                     return 5
                 }
             },
             star: {
-                type: Object,
                 default: function() {
                     return 5
                 }
             },
             ratedDate: {
-                type: Object,
                 default: function() {
                     return 5
                 }
             },
             handleContent: {
-                type: Object,
                 default: function() {
                     return 5
                 }

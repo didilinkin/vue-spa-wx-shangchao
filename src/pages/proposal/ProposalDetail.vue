@@ -3,25 +3,25 @@
     #ProposDetail
         // 报修评价( 评星 )
         EvaluationPro(
-            v-if='this.getterProposalDetail.data.ratedStatus === 0'
+            v-if='this.$data.ratedStatus === 0'
             v-on:watchRequireFaultDetail="requireFaultDetail"
         )
         // 报修状态
         ProposalStatePro(
             v-bind:repairStateArr="repairState"
             v-bind:canClickBoolean="false"
-            v-bind:createDate="this.getterProposalDetail.data.createDate"
-            v-bind:complaintContent="this.getterProposalDetail.data.complaintContent"
-            v-bind:stateTitle="this.getterProposalDetail.data.stateTitle"
+            v-bind:createDate="this.$data.createDate"
+            v-bind:complaintContent="this.$data.complaintContent"
+            v-bind:stateTitle="this.$data.stateTitle"
         )
         // 进度轴
         SchedulePro(
             v-bind:scheduleObj='detailObj'
             v-bind:progressType='this.$data.progressSize'
-            v-bind:createDate="this.getterProposalDetail.data.createDate"
-            v-bind:star="this.getterProposalDetail.data.star"
-            v-bind:ratedDate="this.getterProposalDetail.data.ratedDate"
-            v-bind:handleContent="this.getterProposalDetail.data.handleContent"
+            v-bind:createDate="this.$data.createDate"
+            v-bind:star="this.$data.star"
+            v-bind:ratedDate="this.$data.ratedDate"
+            v-bind:handleContent="this.$data.handleContent"
         )
 </template>
 
@@ -61,33 +61,32 @@
         },
         data() {
             return {
-                faultDetailObj: this.$store.state.roposal.detail,           // 详情对象( 在跳转前已保存 )
+                faultDetailObj: this.$store.state.proposal.detail,           // 详情对象( 在跳转前已保存 )
                 showEvaluation: false,
                 repairState: [],
                 progressSize: [],
-                detailObj: {
-                    evaluation: {
-                        time: '2017-01-14 11:24',
-                        starNum: 4
-                    },
-                    // 已派单
-                    send: {
-                        acceptor: '4444444444444444444444'
-                    },
-                    // 客户已提交保修
-                    submitted: {
-                        time: '2017-11-14 16:24'
-                    }
-                }
+                detailObj: {},
+                ratedStatus: [],
+                createDate: [],
+                stateTitle: [],
+                star: [],
+                ratedDate: [],
+                complaintContent: [],
+                handleContent: []
             }
         },
         computed: mapGetters({
             getterProposalDetail: 'getterProposalDetail'
         }),
         watch: {
-            // 当 公告内容获取到, 触发
             getterProposalDetail: function() {
-                // this.$data.detailObj = this.getterProposalDetail.data
+                this.$data.ratedStatus = this.getterProposalDetail.data.ratedStatus
+                this.$data.createDate = this.getterProposalDetail.data.createDate
+                this.$data.complaintContent = this.getterProposalDetail.data.complaintContent
+                this.$data.stateTitle = this.getterProposalDetail.data.stateTitle
+                this.$data.star = this.getterProposalDetail.data.star
+                this.$data.ratedDate = this.getterProposalDetail.data.ratedDate
+                this.$data.handleContent = this.getterProposalDetail.data.handleContent
                 if( this.getterProposalDetail.data.ratedStatus === 1 ) {      // 当 '进度状态' 为 '已完成'时 => 显示 '评分'组件; 否则不显示
                     this.$data.progressSize = 5
                 } else {

@@ -68,8 +68,6 @@ export default {
         // 当 公告内容获取到, 触发
         getterFaultDetail: function() {
             this.$data.detailObj = this.getterFaultDetail
-            console.log( '111111111111111111111111111111' )
-            console.log( this.$data.detailObj )
             if( this.$data.detailObj.ratedStatus === 1 ) {
                 this.$data.progressSize = 5
             }else if( this.$data.detailObj.repairStatus === 1 ) {
