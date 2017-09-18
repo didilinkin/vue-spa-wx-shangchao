@@ -93,19 +93,25 @@ export default {
                 phone: arr[1].itemMsg,
                 repairMan: arr[0].itemMsg,
                 repairContent: this.$refs.input1.value,
-                file: address.src
+                file: address
             })
         },
         checkInputVal() {
             let boolean = this.$data.inputValueNull
             let arr     = this.$data.inputArr
-            let address = document.getElementsByTagName( 'img' )
+            let imgs = document.getElementsByTagName( 'img' )
+            let imgURLs = new Array( imgs.length )
+            for( let i = 0; i < imgs.length; i++ ) {
+                imgURLs[ i ] = imgs[ i ].src
+            }
+
             // 遍历判断 value值是否为空
             for( let i = arr.length; i--; ) {
                 if( arr[i].itemMsg === '' ) {
                     boolean = false
                 }
             }
+
             if( !boolean ) {
                 swal({
                     title: '禁止提交!',
@@ -115,31 +121,7 @@ export default {
                 })
             } else {
                 //  提交报修请求
-                this.requireToRepare( arr, address )
-                if( this.getterrToRepair.success === true ) {
-                    swal({
-                        title: '成功!',
-                        text: '您的问题已提交',
-                        type: 'success',
-                        confirmButtonText: '确认'
-                    })
-                    this.$refs.input1.value = '' // 清空多行文本
-                    let address = document.getElementsByClassName( 'img-thumb' ) // 清空图片
-                    for( let i = 0; i < address.length; i++ ) {
-                        address[i].style.display = 'none'
-                    }
-                    let inputNum = document.getElementsByClassName( 'formFont' ) // 清空input框
-                    for( let i = 0; i < inputNum.length; i++ ) {
-                        inputNum[i].value = ''
-                    }
-                }else {
-                    swal({
-                        title: '失败!',
-                        text: '提交失败，请联系维修人员',
-                        type: 'error',
-                        confirmButtonText: '确认'
-                    })
-                }
+                this.requireToRepare( arr, imgURLs )
             }
         }
     },
@@ -163,9 +145,28 @@ export default {
     watch: {
         // 监听: '绑定' 建筑物列表
         getterrToRepair: function() {
-//            console.log( '666666666666666666' )
-//            console.log( this.getterrToRepair.success )
-            // this.$data.success = this.getterBuildingList
+            if( this.getterrToRepair.success === true ) {
+                swal(
+                    '成功!',
+                    '您的问题已提交',
+                    'success'
+                )
+                let address = document.getElementsByClassName( 'img-thumb' ) // 清空图片
+                for( let i = 0; i < address.length; i++ ) {
+                    address[i].style.display = 'none'
+                }
+                this.$refs.input1.value = '' // 清空多行文本
+                let inputNum = document.getElementsByClassName( 'formFont' ) // 清空input框
+                for( let i = 0; i < inputNum.length; i++ ) {
+                    inputNum[i].value = ''
+                }
+            }else {
+                swal(
+                    '失败!',
+                    '提交失败，请联系维修人员',
+                    'error'
+                )
+            }
         }
     },
     mounted: function() {
