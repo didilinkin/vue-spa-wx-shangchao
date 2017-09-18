@@ -87,12 +87,6 @@ export default {
         // 监听返回结果
         getterDeleteUserWx: function() {
             this.$data.msg = this.getterDeleteUserWx
-//            console.log( '6666666666666666666' )
-//            console.log( this.getterDeleteUserWx )
-//            if( this.getterDeleteUserWx ) {
-//                this.$emit( 'watchRequireRoomList' )
-//                // this.requireRoomList()
-//            }
         }
     }
 }

@@ -64,44 +64,7 @@ export default {
             type: Array,
             default: function() {
                 return [
-                    {                                               // 第一个
-                        detailListTitle: [
-                            '招商银行正式用电', 8003.39
-                        ],
-                        showDetailCheck: false,                     // 折叠 - 详情账单 是否展开( 3级列表 )
-                        detailListCheck: [
-                            {
-                                keyName: '上次抄表度数',
-                                val: 736990
-                            }, {
-                                keyName: '本次抄表度数',
-                                val: 745353
-                            }, {
-                                keyName: '电量( Kwh )',
-                                val: 8363
-                            }, {
-                                keyName: '变化',
-                                val: 1
-                            }, {
-                                keyName: '电损10%',
-                                val: 936.3
-                            }, {
-                                keyName: '总电量',
-                                val: 9199.3
-                            }, {
-                                keyName: '峰谷比例',
-                                val: 1
-                            }, {
-                                keyName: '单价',
-                                val: 0.87
-                            }, {
-                                keyName: '备注',
-                                val: `此处是备注信息此处是备注信息
-                                        此处是备注信息此处是备注信息
-                                        此处是备注信息`
-                            }
-                        ]
-                    }
+
                 ]
             }
         }

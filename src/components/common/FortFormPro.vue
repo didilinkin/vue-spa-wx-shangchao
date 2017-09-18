@@ -101,16 +101,6 @@
                 let arr     = this.$data.inputArr
                 let imgs = document.getElementsByTagName( 'img' )
                 setTimeout( 'location.reload()', 2000 )
-//                let imgURLs = new Array( imgs.length )
-//                for( let i = 0; i < imgs.length; i++ ) {
-//                    imgURLs[ i ] = imgs[ i ].src
-//                }
-//                console.dir( imgs )
-//                let address = document.getElementById( 'address' )
-//               console.log( address.src )
-//                console.log( this.$refs.input1.value )
-//                console.log( arr[0].itemMsg )
-//                console.log( arr[1].itemMsg )
 
                 // 遍历判断 value值是否为空
                 for( let i = arr.length; i--; ) {
@@ -163,7 +153,6 @@
         watch: {
             // 监听: '绑定' 建筑物列表
             getterrToProposal: function() {
-//                console.log( '666666666666666666' )
 //                console.log( this.getterrToProposal.success )
             }
         },
@@ -194,7 +183,6 @@
         beforeRouteLeave( _to, _from, next ) {
             if( this ) {
                 console.log( 'beforeRouteLeave ' + this )
-                // console.log( next )
             } else {
                 console.log( 'beforeRouteLeave undefined' )
             }

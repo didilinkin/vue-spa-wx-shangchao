@@ -72,66 +72,7 @@ export default {
                     listIcon: require( '../../assets/images/iconHousTitle@2x.png' ),
                     listIconColor: 'rgb( 255, 181, 0 )',
                     listArr: [
-                        {
-                            title: '账单费用',
-                            money: '1111',
-                            tollStartDate: '2017-01-01',
-                            tollDeadline: '2017-03-31',
-                            payDate: '2017-04-10',
-                            showDetailInfo: false,                              // 折叠 - 信息 是否展开( 2级列表 )
-                            detailsInfo: [
-                                {
-                                    title: '标题A',
-                                    value: 5
-                                }, {
-                                    title: '标题B',
-                                    value: 400
-                                }, {
-                                    title: '标题C',
-                                    value: 12345.12
-                                }
-                            ],
-                            detailList: [
-                                {                                               // 第一个
-                                    detailListTitle: [
-                                        '招商银行正式用电', 8003.39
-                                    ],
-                                    showDetailCheck: false,                     // 折叠 - 详情账单 是否展开( 3级列表 )
-                                    detailListCheck: [
-                                        {
-                                            keyName: '上次抄表度数',
-                                            val: 736990
-                                        }, {
-                                            keyName: '本次抄表度数',
-                                            val: 745353
-                                        }, {
-                                            keyName: '电量( Kwh )',
-                                            val: 8363
-                                        }, {
-                                            keyName: '变化',
-                                            val: 1
-                                        }, {
-                                            keyName: '电损10%',
-                                            val: 936.3
-                                        }, {
-                                            keyName: '总电量',
-                                            val: 9199.3
-                                        }, {
-                                            keyName: '峰谷比例',
-                                            val: 1
-                                        }, {
-                                            keyName: '单价',
-                                            val: 0.87
-                                        }, {
-                                            keyName: '备注',
-                                            val: `此处是备注信息此处是备注信息
-                                                    此处是备注信息此处是备注信息
-                                                    此处是备注信息`
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
+                        
                     ],
                     hasDetailList: false    // 是否显示 '详情列表': 否
                 }

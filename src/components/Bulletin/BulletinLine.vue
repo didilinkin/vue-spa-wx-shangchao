@@ -33,15 +33,7 @@ export default {
             type: Array,
             default: function() {
                 return [
-                    {
-                        id: 100,
-                        title: '测试标题',
-                        text: `测试文字测试文字测试文字测试文字测试文字
-                                测试文字测试文字测试文字测试文字
-                                测试文字测试文字`,
-                        date: '2017-04-20',
-                        time: '08:13'
-                    }
+
                 ]
             }
         }

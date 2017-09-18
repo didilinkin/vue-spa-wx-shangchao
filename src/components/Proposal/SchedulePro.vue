@@ -71,21 +71,7 @@
                 type: Object,
                 default: function() {
                     return {
-                        // 已评价
-                        evaluation: {
-                            time: '2017-01-14 11:24',
-                            starNum: 4
-                        },
-                        // 已派单
-                        send: {
-                            acceptor: '此處是受理結果此處是受理結果此處是受理結果此處是受理結果此處是受理結果' +
-                            '此處是受理結果此處是受理結果此處是受理結果此處是受理結果此處是受理結果此處是受理結果' +
-                            '此處是受理結果此處是受理結果此處是受理結果此處是受理結果此處是受理結果此處是受理結果'
-                        },
-                        // 客户已提交保修
-                        submitted: {
-                            time: '2017-01-14 16:24'
-                        }
+
                     }
                 }
             },
@@ -101,17 +87,7 @@
             }
         },
         mounted: function() {
-//            console.log( this.$props.scheduleObj )
-//            console.log( '6666666666666666666666666' )
-//            console.log( this.$props.progressType )
-//            console.log( '6666666666666666666666666' )
-//            console.log( this.$props.createDate )
-//            console.log( this.$props.star )
-//            console.log( this.$props.ratedDate )
-//            console.log( this.$props.handleContent )
             this.$data.textobj = this.$props.scheduleObj
-//            console.log( '7777777777777777777777777' )
-//            console.log( this.$data.textobj )
         },
         components: components
     }
