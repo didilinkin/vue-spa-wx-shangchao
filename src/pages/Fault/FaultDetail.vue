@@ -3,10 +3,9 @@
     #FaultDetail
         // 报修评价( 评星 )
         Evaluation(
-            v-if="showEvaluation"
+            v-if="this.$data.showEvaluation === true"
             v-on:watchRequireFaultDetail="requireFaultDetail"
         )
-        Evaluation( v-if="!showEvaluation" )
         // 报修状态
         RepairState(
             v-bind:repairStateArr="repairState"
@@ -39,10 +38,10 @@ export default {
         },
         // 目的: 判断是否需要显示 '评分' 功能
         judgeShowEvaluation() {
-            if( this.$data.faultDetailObj.stateType === 'finished' ) {      // 当 '进度状态' 为 '已完成'时 => 显示 '评分'组件; 否则不显示
-                this.$data.showEvaluation = true
-            } else {
+            if( this.$data.faultDetailObj.stateType === 'evaluation' ) {      // 当 '进度状态' 为 '已完成'时 => 显示 '评分'组件; 否则不显示
                 this.$data.showEvaluation = false
+            } else {
+                this.$data.showEvaluation = true
             }
         },
         // 设置 '报修状态' 接口需要的 数组
@@ -58,12 +57,13 @@ export default {
             faultDetailObj: this.$store.state.fault.repairDetail,           // 详情对象( 在跳转前已保存 )
             showEvaluation: false,
             repairState: [],
-            progressSize: [],
+            progressSize: 1,
             detailObj: {},
             evaluation: {},
             finished: {},
             doing: {},
             send: {},
+            ratedStatus: [],
             submitted: {}
         }
     },
@@ -73,22 +73,41 @@ export default {
     watch: {
         // 当 公告内容获取到, 触发
         getterFaultDetail: function() {
+//            console.log( '2222222222222222' )
+//            console.log( this.$data.repairState )
+//            console.log( '2222222222222222' )
+//            console.log( this.$data.faultDetailObj )
+//            console.log( '2222222222222222' )
+//            console.log( this.getterFaultDetail )
+//            console.log( '2222222222222222' )
+//            console.log( this.getterFaultDetail.ratedStatus )
+//            console.log( '3333333333333333333' )
+            this.$data.ratedStatus = this.getterFaultDetail.ratedStatus
             this.$data.detailObj = this.getterFaultDetail
-            if( this.$data.detailObj.ratedStatus === 1 ) {
+            if( this.getterFaultDetail.ratedStatus === 1 ) {
                 this.$data.progressSize = 5
-            }else if( this.$data.detailObj.repairStatus === 1 ) {
+            }else if( this.getterFaultDetail.repairStatus === 1 ) {
                 this.$data.progressSize = 4
-            }else if( this.$data.detailObj.pieStatus === 1 ) {
+            }else if( this.getterFaultDetail.pieStatus === 1 ) {
                 this.$data.progressSize = 2
             }else {
                 this.$data.progressSize = 1
             }
+//            console.log( this.getterFaultDetail )
+//            console.log( this.getterFaultDetail.ratedStatus )
+//            console.log( this.getterFaultDetail.repairStatus )
+//            console.log( this.getterFaultDetail.pieStatus )
+//            console.log( this.$data.progressSize )
+//            console.log( '111111111111111111111111' )
+
+            this.judgeShowEvaluation()
+            this.setRepairProps()
         }
     },
     mounted: function() {
         this.requireFaultDetail()
-        this.judgeShowEvaluation()
-        this.setRepairProps()
+        // this.judgeShowEvaluation()
+        // this.setRepairProps()
     },
     components: components
 }

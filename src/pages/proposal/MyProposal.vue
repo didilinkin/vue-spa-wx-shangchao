@@ -20,7 +20,7 @@
             requireBulletinInfo() {
                 this.$store.dispatch({
                     type: 'proposal/REQUIRE_PROPOSAL_LIST',
-                    clientNum: this.$route.query.clientNum
+                    clientNum: 1
 //                clientNum: this.$route.query.clientNum
                 })
             }

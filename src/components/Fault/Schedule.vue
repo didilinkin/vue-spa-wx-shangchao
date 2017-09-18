@@ -28,15 +28,6 @@
                     p.time {{ scheduleObj.repairedDate }}
                     .wire
 
-            li.line.auto--moduleMarginBottom( v-if="progressType > 2" )
-                div.icon
-                    i.fa( class="fa fa-clock-o" )
-                .contentBox
-                    h3.client-f 已开始处理
-                    p.people 维修人: {{ scheduleObj.repairedMan }}
-                    p.time {{ scheduleObj.repairedDate }}
-                    .string
-
             li.line.auto--moduleMarginBottom( v-if="progressType > 1" )
                 div.icon
                     i.fa( class="fa fa-rocket" )

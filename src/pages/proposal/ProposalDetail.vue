@@ -30,7 +30,8 @@
 
     import EvaluationPro   from    '../../components/proposal/EvaluationPro'
     import ProposalStatePro  from    '../../components/proposal/RepairStatePro'
-    const components = { EvaluationPro, ProposalStatePro }
+    import SchedulePro     from    '../../components/proposal/SchedulePro'
+    const components = { EvaluationPro, ProposalStatePro, SchedulePro }
 
     export default {
         name: 'ProposalDetail',

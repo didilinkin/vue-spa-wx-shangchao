@@ -46,28 +46,6 @@ export default {
             let star = this.$data.rating
             let ratedContent = this.$refs.input1.value
             this.updatePropoal( star, ratedContent )
-            if( this.getterrRepairResult.success === true ) {
-                swal({
-                    title: '成功!',
-                    text: '您的问题已提交',
-                    type: 'success',
-                    confirmButtonText: '确认'
-                })
-                let a = document.getElementById( 'input1' )
-                let b = document.getElementById( 'input2' )
-                let c = document.getElementById( 'input3' )
-                a.style.display = 'none'
-                b.style.display = 'none'
-                c.style.display = 'none'
-                this.$emit( 'watchRequireFaultDetail' )
-            }else {
-                swal({
-                    title: '失败!',
-                    text: '提交失败，请电话联系',
-                    type: 'error',
-                    confirmButtonText: '确认'
-                })
-            }
         },
         // 目的: 设置评分星星 提示词
         setStarType( starNum ) {
@@ -106,6 +84,28 @@ export default {
         },
         getterrRepairResult: function() {
             this.$data.result = this.getterrRepairResult.success
+            if( this.getterrRepairResult.success === true ) {
+                swal({
+                    title: '成功!',
+                    text: '您的问题已提交',
+                    type: 'success',
+                    confirmButtonText: '确认'
+                })
+                let a = document.getElementById( 'input1' )
+                let b = document.getElementById( 'input2' )
+                let c = document.getElementById( 'input3' )
+                a.style.display = 'none'
+                b.style.display = 'none'
+                c.style.display = 'none'
+                this.$emit( 'watchRequireFaultDetail' )
+            }else {
+                swal({
+                    title: '失败!',
+                    text: '提交失败，请电话联系',
+                    type: 'error',
+                    confirmButtonText: '确认'
+                })
+            }
         }
     },
     components: components

@@ -61,28 +61,6 @@
                 let star = this.$data.rating
                 let ratedContent = this.$refs.input1.value
                 this.updatePropoal( star, ratedContent )
-                if( this.getterUpdateResult.success === true ) {
-                    swal({
-                        title: '成功!',
-                        text: '您的问题已提交',
-                        type: 'success',
-                        confirmButtonText: '确认'
-                    })
-                    let a = document.getElementById( 'input4' )
-                    let b = document.getElementById( 'input5' )
-                    let c = document.getElementById( 'input6' )
-                    a.style.display = 'none'
-                    b.style.display = 'none'
-                    c.style.display = 'none'
-                    this.$emit( 'watchRequireFaultDetail' )
-                }else {
-                    swal({
-                        title: '失败!',
-                        text: '提交失败，请电话联系',
-                        type: 'error',
-                        confirmButtonText: '确认'
-                    })
-                }
             }
         },
         data() {
@@ -105,6 +83,28 @@
             },
             getterUpdateResult: function() {
                 this.$data.result = this.getterUpdateResult.success
+                if( this.getterUpdateResult.success === true ) {
+                    swal({
+                        title: '成功!',
+                        text: '您的问题已提交',
+                        type: 'success',
+                        confirmButtonText: '确认'
+                    })
+                    let a = document.getElementById( 'input4' )
+                    let b = document.getElementById( 'input5' )
+                    let c = document.getElementById( 'input6' )
+                    a.style.display = 'none'
+                    b.style.display = 'none'
+                    c.style.display = 'none'
+                    this.$emit( 'watchRequireFaultDetail' )
+                }else {
+                    swal({
+                        title: '失败!',
+                        text: '提交失败，请电话联系',
+                        type: 'error',
+                        confirmButtonText: '确认'
+                    })
+                }
             }
         },
         components: components
