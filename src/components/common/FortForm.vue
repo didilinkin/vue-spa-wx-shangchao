@@ -99,15 +99,7 @@ export default {
         checkInputVal() {
             let boolean = this.$data.inputValueNull
             let arr     = this.$data.inputArr
-            this.$refs.input1.value = '' // 清空多行文本
-            let address = document.getElementsByClassName( 'img-thumb' ) // 清空图片
-            for( let i = 0; i < address.length; i++ ) {
-                address[i].style.display = 'none'
-            }
-            let inputNum = document.getElementsByClassName( 'formFont' ) // 清空input框
-            for( let i = 0; i < inputNum.length; i++ ) {
-                inputNum[i].value = ''
-            }
+            let address = document.getElementsByTagName( 'img' )
             // 遍历判断 value值是否为空
             for( let i = arr.length; i--; ) {
                 if( arr[i].itemMsg === '' ) {
@@ -132,6 +124,15 @@ export default {
                         type: 'success',
                         confirmButtonText: '确认'
                     })
+                    this.$refs.input1.value = '' // 清空多行文本
+                    let address = document.getElementsByClassName( 'img-thumb' ) // 清空图片
+                    for( let i = 0; i < address.length; i++ ) {
+                        address[i].style.display = 'none'
+                    }
+                    let inputNum = document.getElementsByClassName( 'formFont' ) // 清空input框
+                    for( let i = 0; i < inputNum.length; i++ ) {
+                        inputNum[i].value = ''
+                    }
                 }else {
                     swal({
                         title: '失败!',

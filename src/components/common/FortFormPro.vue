@@ -100,7 +100,7 @@
                 let boolean = this.$data.inputValueNull
                 let arr     = this.$data.inputArr
                 let imgs = document.getElementsByTagName( 'img' )
-                this.$refs.input1.value = '' // 清空多行文本
+
 //                setTimeout( 'location.reload()', 3000 )
 //                let imgURLs = new Array( imgs.length )
 //                for( let i = 0; i < imgs.length; i++ ) {
@@ -137,6 +137,7 @@
                             type: 'success',
                             confirmButtonText: '确认'
                         })
+                        this.$refs.input1.value = '' // 清空多行文本
                         let address = document.getElementsByClassName( 'img-thumb' ) // 清空图片
                         for( let i = 0; i < address.length; i++ ) {
                             address[i].style.display = 'none'
