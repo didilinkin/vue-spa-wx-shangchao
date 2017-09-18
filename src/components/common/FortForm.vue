@@ -106,7 +106,6 @@ export default {
                     boolean = false
                 }
             }
-
             if( !boolean ) {
                 swal({
                     title: '禁止提交!',
