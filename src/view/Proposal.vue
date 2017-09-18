@@ -36,15 +36,6 @@
                     this.$data.showMyRepair = true
                 }
             }
-            // 目的: 请求 '故障报修' 列表信息( 用户参数由内部获取, 不已外部传入 )
-//            requireFaultList() {
-//                // console.log( '请求信息' )
-//                // console.log( this.$store.state.globalState.userInfo.userId )
-//                this.$store.dispatch({
-//                    type: 'fault/REQUIRE_FAULT_LIST',
-//                    userId: 1 // this.$store.state.globalState.userInfo.userId
-//                })
-//            }
         },
         data() {
             return {

@@ -20,8 +20,7 @@ export default {
             default: function() {
                 return {
                     title: '账单头部',
-                    money: '1,024.00',
-                    companyName: '信和汇金信息咨询（北京）有限公司青岛分公司'
+                    money: '0.00'
                 }
             }
         }

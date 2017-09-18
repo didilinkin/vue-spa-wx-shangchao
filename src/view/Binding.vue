@@ -235,14 +235,10 @@ export default {
             this.setPickerData()
             this.$data.clientNum = this.$route.query.clientNum
             this.$data.nickName = this.$route.query.nickName
-//            console.log( '6666666666666666666' )
-//            console.log( this.$route.query.clientNum )
         },
         // 监听: '绑定' 房间列表
         getterRoomList: function() {
             this.$data.arrList = this.getterRoomList
-//            console.log( '列表改变' )
-//            console.log( this.$data.arrList )
         }
     },
     mounted: function() {

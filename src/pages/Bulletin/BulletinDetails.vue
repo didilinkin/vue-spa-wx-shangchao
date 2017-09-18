@@ -63,7 +63,6 @@ export default {
         // 监听: 公告详细内容
         getterBulletinDetailsInfo: function() {
             this.$data.bulletinDetailsInfo = this.getterBulletinDetailsInfo
-            console.log()
         }
     },
     mounted: function() {
