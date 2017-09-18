@@ -101,14 +101,6 @@
                 let arr     = this.$data.inputArr
                 let imgs = document.getElementsByTagName( 'img' )
                 this.$refs.input1.value = '' // 清空多行文本
-                let address = document.getElementsByClassName( 'img-thumb' ) // 清空图片
-                for( let i = 0; i < address.length; i++ ) {
-                    address[i].style.display = 'none'
-                }
-                let inputNum = document.getElementsByClassName( 'formFont' ) // 清空input框
-                for( let i = 0; i < inputNum.length; i++ ) {
-                    inputNum[i].value = ''
-                }
 //                setTimeout( 'location.reload()', 3000 )
 //                let imgURLs = new Array( imgs.length )
 //                for( let i = 0; i < imgs.length; i++ ) {
@@ -129,26 +121,37 @@
                 }
 
                 if( !boolean ) {
-                    swal(
-                        '禁止提交!',
-                        '输入框未填写',
-                        'error'
-                    )
+                    swal({
+                        title: '禁止提交!',
+                        text: '输入框未填写',
+                        type: 'warning',
+                        confirmButtonText: '确认'
+                    })
                 } else {
                     //  提交投诉请求
                     this.requireToProposal( arr, imgs )
                     if( this.getterrToProposal.success === true ) {
-                        swal(
-                            '成功!',
-                            '您的问题已提交',
-                            'success'
-                        )
+                        swal({
+                            title: '成功!',
+                            text: '您的问题已提交',
+                            type: 'success',
+                            confirmButtonText: '确认'
+                        })
+                        let address = document.getElementsByClassName( 'img-thumb' ) // 清空图片
+                        for( let i = 0; i < address.length; i++ ) {
+                            address[i].style.display = 'none'
+                        }
+                        let inputNum = document.getElementsByClassName( 'formFont' ) // 清空input框
+                        for( let i = 0; i < inputNum.length; i++ ) {
+                            inputNum[i].value = ''
+                        }
                     }else {
-                        swal(
-                            '失败!',
-                            '提交失败，请电话联系',
-                            'error'
-                        )
+                        swal({
+                            title: '失败!',
+                            text: '提交失败，请电话联系',
+                            type: 'error',
+                            confirmButtonText: '确认'
+                        })
                     }
                 }
             }

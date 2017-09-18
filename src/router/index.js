@@ -161,7 +161,7 @@ export default new Router({
         }, {
             path: '/proposal/:id',
             name: 'ProposalDetail',
-            meta: { title: '投訴详情' },
+            meta: { title: '投诉详情' },
             components: {
                 AppContent: ProposalDetail,
                 AppBottomTitle: BottomTitle

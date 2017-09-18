@@ -99,11 +99,11 @@ export default {
         checkInputVal() {
             let boolean = this.$data.inputValueNull
             let arr     = this.$data.inputArr
+            this.$refs.input1.value = '' // 清空多行文本
             let address = document.getElementsByClassName( 'img-thumb' ) // 清空图片
             for( let i = 0; i < address.length; i++ ) {
                 address[i].style.display = 'none'
             }
-            this.$refs.input1.value = '' // 清空多行文本
             let inputNum = document.getElementsByClassName( 'formFont' ) // 清空input框
             for( let i = 0; i < inputNum.length; i++ ) {
                 inputNum[i].value = ''
@@ -116,26 +116,29 @@ export default {
             }
 
             if( !boolean ) {
-                swal(
-                    '禁止提交!',
-                    '输入框未填写',
-                    'error',
-                )
+                swal({
+                    title: '禁止提交!',
+                    text: '输入框未填写',
+                    type: 'warning',
+                    confirmButtonText: '确认'
+                })
             } else {
                 //  提交报修请求
                 this.requireToRepare( arr, address )
                 if( this.getterrToRepair.success === true ) {
-                    swal(
-                        '成功!',
-                        '您的问题已提交',
-                        'success'
-                    )
+                    swal({
+                        title: '成功!',
+                        text: '您的问题已提交',
+                        type: 'success',
+                        confirmButtonText: '确认'
+                    })
                 }else {
-                    swal(
-                        '失败!',
-                        '提交失败，请联系维修人员',
-                        'error'
-                    )
+                    swal({
+                        title: '失败!',
+                        text: '提交失败，请联系维修人员',
+                        type: 'error',
+                        confirmButtonText: '确认'
+                    })
                 }
             }
         }

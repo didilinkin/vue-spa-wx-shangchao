@@ -47,11 +47,12 @@ export default {
             let ratedContent = this.$refs.input1.value
             this.updatePropoal( star, ratedContent )
             if( this.getterrRepairResult.success === true ) {
-                swal(
-                    '成功!',
-                    '您的问题已提交',
-                    'success'
-                )
+                swal({
+                    title: '成功!',
+                    text: '您的问题已提交',
+                    type: 'success',
+                    confirmButtonText: '确认'
+                })
                 let a = document.getElementById( 'input1' )
                 let b = document.getElementById( 'input2' )
                 let c = document.getElementById( 'input3' )
@@ -60,11 +61,12 @@ export default {
                 c.style.display = 'none'
                 this.$emit( 'watchRequireFaultDetail' )
             }else {
-                swal(
-                    '失败!',
-                    '提交失败，请电话联系',
-                    'error'
-                )
+                swal({
+                    title: '失败!',
+                    text: '提交失败，请电话联系',
+                    type: 'error',
+                    confirmButtonText: '确认'
+                })
             }
         },
         // 目的: 设置评分星星 提示词

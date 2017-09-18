@@ -51,18 +51,18 @@ function tinyImgUpload(ele, options) {
 
     // 预览图片
     //处理input选择的图片
-    function handleFileSelect(evt) {
+    function handleFileSelect( evt ) {
         var files = evt.target.files
 
-        for(var i=0, f; f=files[i];i++){
+        for(var i = 0, f; f = files[i]; i++ ) {
             // 过滤掉非图片类型文件
-            if(!f.type.match('image.*')){
+            if( !f.type.match( 'image.*' ) ) {
                 continue
             }
             // 过滤掉重复上传的图片
             var tip = false
-            for(var j=0; j<(ele.files).length; j++){
-                if((ele.files)[j].name == f.name){
+            for( var j = 0; j < ( ele.files ).length; j++ ) {
+                if( ( ele.files )[j].name == f.name ) {
                     tip = true
                     break
                 }
@@ -72,8 +72,8 @@ function tinyImgUpload(ele, options) {
                 ele.files.push(f)
 
                 var reader = new FileReader()
-                reader.onload = (function (theFile) {
-                    return function (e) {
+                reader.onload = ( function( theFile ) {
+                    return function( e ) {
                         var oDiv = document.createElement('div');
                         oDiv.className = 'img-thumb img-item';
                         oDiv.id = 'inputN'
@@ -92,27 +92,27 @@ function tinyImgUpload(ele, options) {
     document.querySelector('#img-file-input').addEventListener('change', handleFileSelect, false);
 
     // 删除图片
-    function removeImg(evt) {
-        if(evt.target.className.match(/img-remove/)){
-            console.log('3',ele.files)
+    function removeImg( evt ) {
+        if( evt.target.className.match( /img-remove/ ) ) {
+            console.log( '3', ele.files )
             // 获取删除的节点的索引
             function getIndex(ele){
 
-                if(ele && ele.nodeType && ele.nodeType == 1) {
+                if( ele && ele.nodeType && ele.nodeType == 1 ) {
                     var oParent = ele.parentNode
                     var oChilds = oParent.children
                     for(var i = 0; i < oChilds.length; i++){
                         if(oChilds[i] == ele)
-                            return i
+                            return
                     }
                 }else {
                     return -1
                 }
             }
             // 根据索引删除指定的文件对象
-            var index = getIndex(evt.target.parentNode)
-            ele.removeChild(evt.target.parentNode)
-            if(index < 0){
+            var index = getIndex( evt.target.parentNode )
+            ele.removeChild( evt.target.parentNode )
+            if( index < 0 ) {
                 return;
             }else {
                 ele.files.splice(index, 1);

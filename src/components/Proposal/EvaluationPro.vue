@@ -62,11 +62,12 @@
                 let ratedContent = this.$refs.input1.value
                 this.updatePropoal( star, ratedContent )
                 if( this.getterUpdateResult.success === true ) {
-                    swal(
-                        '成功!',
-                        '您的问题已提交',
-                        'success'
-                    )
+                    swal({
+                        title: '成功!',
+                        text: '您的问题已提交',
+                        type: 'success',
+                        confirmButtonText: '确认'
+                    })
                     let a = document.getElementById( 'input4' )
                     let b = document.getElementById( 'input5' )
                     let c = document.getElementById( 'input6' )
@@ -75,11 +76,12 @@
                     c.style.display = 'none'
                     this.$emit( 'watchRequireFaultDetail' )
                 }else {
-                    swal(
-                        '失败!',
-                        '提交失败，请电话联系',
-                        'error'
-                    )
+                    swal({
+                        title: '失败!',
+                        text: '提交失败，请电话联系',
+                        type: 'error',
+                        confirmButtonText: '确认'
+                    })
                 }
             }
         },
