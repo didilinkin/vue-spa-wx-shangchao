@@ -77,8 +77,8 @@ export default {
                 typeObj.id = obj.id
                 typeObj.stateType = 'submitted'
                 typeObj.stateTitle = '已提交',
-                    typeObj.dateTime = obj.createDate // 数据时间
-                typeObj.text = obj.repairedContent // 文本内容
+                typeObj.dateTime = obj.createDate // 数据时间
+                typeObj.text = obj.complaintContent // 文本内容
             }
 
             json.push( typeObj )

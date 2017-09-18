@@ -20,10 +20,9 @@ ul#repairState
         .replaceState--contentText
             p(
                 v-bind:class="{ 'clickText': canClickBoolean }"
-                @click="toRepairDetail( item )"
+                v-on:click="toRepairDetail( item )"
             ) {{ item.repairedContent }}
 </template>
-
 <script>
 /* global require: true */
 import { mapGetters }   from 'vuex'

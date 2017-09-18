@@ -30,8 +30,7 @@
 
     import EvaluationPro   from    '../../components/proposal/EvaluationPro'
     import ProposalStatePro  from    '../../components/proposal/RepairStatePro'
-    import SchedulePro     from    '../../components/proposal/SchedulePro'
-    const components = { EvaluationPro, ProposalStatePro, SchedulePro }
+    const components = { EvaluationPro, ProposalStatePro }
 
     export default {
         name: 'ProposalDetail',
@@ -65,14 +64,15 @@
                 showEvaluation: false,
                 repairState: [],
                 progressSize: [],
-                detailObj: {},
                 ratedStatus: [],
                 createDate: [],
                 stateTitle: [],
                 star: [],
                 ratedDate: [],
                 complaintContent: [],
-                handleContent: []
+                handleContent: [],
+                repairStatePro: [],
+                detailObj: {}
             }
         },
         computed: mapGetters({
@@ -102,6 +102,10 @@
             // 监听: $props 传入后, 执行
             repairStateArr: function() {
                 this.judgeRepairStateNull()
+                this.$data.detailObj = this.getterProposalDetail.data
+//                console.log( '3333333333333333333333333' )
+//                console.log( this.$data.detailObj )
+//                console.log( '44444444444444444444444' )
             }
         },
         mounted: function() {

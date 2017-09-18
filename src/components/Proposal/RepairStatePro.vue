@@ -20,7 +20,7 @@
             .replaceState--contentText
                 p(
                     v-bind:class="{ 'clickText': canClickBoolean }"
-                    @click="toProposalDetail( item )"
+                    v-on:click="toProposalDetail( item )"
                 ) {{ item.complaintContent }}
 </template>
 

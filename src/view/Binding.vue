@@ -125,6 +125,7 @@ export default {
                 input: 'text',
                 showCancelButton: true,
                 confirmButtonText: '确认',
+                cancelButtonText: '取消',
                 showLoaderOnConfirm: true,
                 // 输入前确认 是否是 数值类型
                 preConfirm: function( number ) {

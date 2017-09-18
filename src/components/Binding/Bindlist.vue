@@ -44,7 +44,8 @@ export default {
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: '解除绑定'
+                confirmButtonText: '解除绑定',
+                cancelButtonText: '取消'
             }).then( function() {
                 that.requireRoomDelete( id )
                 that.$emit( 'watchRequireRoomList' )

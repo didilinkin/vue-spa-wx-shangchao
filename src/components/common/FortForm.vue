@@ -77,8 +77,8 @@ export default {
             type: Object,
             default: function() {
                 return {
-                    maxLength: 300,
-                    placeholder: '提示文本'
+                    maxLength: 500,
+                    placeholder: '请输入问题详情, 以便我们更好地处理'
 
                 }
             }
@@ -99,8 +99,15 @@ export default {
         checkInputVal() {
             let boolean = this.$data.inputValueNull
             let arr     = this.$data.inputArr
-            let address = document.getElementById( 'address' )
-
+            let address = document.getElementsByClassName( 'img-thumb' ) // 清空图片
+            for( let i = 0; i < address.length; i++ ) {
+                address[i].style.display = 'none'
+            }
+            this.$refs.input1.value = '' // 清空多行文本
+            let inputNum = document.getElementsByClassName( 'formFont' ) // 清空input框
+            for( let i = 0; i < inputNum.length; i++ ) {
+                inputNum[i].value = ''
+            }
             // 遍历判断 value值是否为空
             for( let i = arr.length; i--; ) {
                 if( arr[i].itemMsg === '' ) {
@@ -112,7 +119,7 @@ export default {
                 swal(
                     '禁止提交!',
                     '输入框未填写',
-                    'error'
+                    'error',
                 )
             } else {
                 //  提交报修请求

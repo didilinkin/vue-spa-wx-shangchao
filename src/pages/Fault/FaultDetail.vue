@@ -6,6 +6,7 @@
             v-if="showEvaluation"
             v-on:watchRequireFaultDetail="requireFaultDetail"
         )
+        Evaluation( v-if="!showEvaluation" )
         // 报修状态
         RepairState(
             v-bind:repairStateArr="repairState"
@@ -58,7 +59,12 @@ export default {
             showEvaluation: false,
             repairState: [],
             progressSize: [],
-            detailObj: {}
+            detailObj: {},
+            evaluation: {},
+            finished: {},
+            doing: {},
+            send: {},
+            submitted: {}
         }
     },
     computed: mapGetters({

@@ -77,8 +77,8 @@
                 type: Object,
                 default: function() {
                     return {
-                        maxLength: 300,
-                        placeholder: '提示文本'
+                        maxLength: 500,
+                        placeholder: '请输入问题详情, 以便我们更好地处理'
 
                     }
                 }
@@ -100,7 +100,16 @@
                 let boolean = this.$data.inputValueNull
                 let arr     = this.$data.inputArr
                 let imgs = document.getElementsByTagName( 'img' )
-                setTimeout( 'location.reload()', 2000 )
+                this.$refs.input1.value = '' // 清空多行文本
+                let address = document.getElementsByClassName( 'img-thumb' ) // 清空图片
+                for( let i = 0; i < address.length; i++ ) {
+                    address[i].style.display = 'none'
+                }
+                let inputNum = document.getElementsByClassName( 'formFont' ) // 清空input框
+                for( let i = 0; i < inputNum.length; i++ ) {
+                    inputNum[i].value = ''
+                }
+//                setTimeout( 'location.reload()', 3000 )
 //                let imgURLs = new Array( imgs.length )
 //                for( let i = 0; i < imgs.length; i++ ) {
 //                    imgURLs[ i ] = imgs[ i ].src
