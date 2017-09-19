@@ -73,15 +73,6 @@ export default {
     watch: {
         // 当 公告内容获取到, 触发
         getterFaultDetail: function() {
-//            console.log( '2222222222222222' )
-//            console.log( this.$data.repairState )
-//            console.log( '2222222222222222' )
-//            console.log( this.$data.faultDetailObj )
-//            console.log( '2222222222222222' )
-//            console.log( this.getterFaultDetail )
-//            console.log( '2222222222222222' )
-//            console.log( this.getterFaultDetail.ratedStatus )
-//            console.log( '3333333333333333333' )
             this.$data.ratedStatus = this.getterFaultDetail.ratedStatus
             this.$data.detailObj = this.getterFaultDetail
             if( this.getterFaultDetail.ratedStatus === 1 ) {
@@ -93,15 +84,16 @@ export default {
             }else {
                 this.$data.progressSize = 1
             }
-//            console.log( this.getterFaultDetail )
-//            console.log( this.getterFaultDetail.ratedStatus )
-//            console.log( this.getterFaultDetail.repairStatus )
-//            console.log( this.getterFaultDetail.pieStatus )
-//            console.log( this.$data.progressSize )
-//            console.log( '111111111111111111111111' )
-
             this.judgeShowEvaluation()
             this.setRepairProps()
+
+            this.$data.repairState['stateType'] = this.getterFaultDetail.stateType
+            this.$data.repairState['stateTitle'] = this.getterFaultDetail.stateTitle
+            this.$data.repairState['createDate'] = this.getterFaultDetail.createDate
+            document.getElementById( 'repairTitle' ).innerHTML = this.getterFaultDetail.stateTitle
+            document.getElementById( 'repairTime' ).innerHTML = this.getterFaultDetail.createDate
+            let repairTitle = document.getElementById( 'repairTitle' )
+            repairTitle.setAttribute( 'class', 'replaceState--stateBtn fault--evaluation--typeColor' )
         }
     },
     mounted: function() {

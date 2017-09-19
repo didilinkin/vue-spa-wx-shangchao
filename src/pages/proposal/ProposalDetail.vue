@@ -99,20 +99,22 @@
                 } else {
                     this.$data.showEvaluation = false
                 }
+                this.judgeShowEvaluation()
+                this.setRepairProps()
+
+                document.getElementById( 'proposalTitle' ).innerHTML = this.getterProposalDetail.data.stateTitle
+                document.getElementById( 'proposalTime' ).innerHTML = this.getterProposalDetail.data.createDate
+                let proposalTitle = document.getElementById( 'proposalTitle' )
+                proposalTitle.setAttribute( 'class', 'replaceState--stateBtn fault--finished--typeColor' )
             },
             // 监听: $props 传入后, 执行
             repairStateArr: function() {
                 this.judgeRepairStateNull()
                 this.$data.detailObj = this.getterProposalDetail.data
-//                console.log( '3333333333333333333333333' )
-//                console.log( this.$data.detailObj )
-//                console.log( '44444444444444444444444' )
             }
         },
         mounted: function() {
             this.requireFaultDetail()
-            this.judgeShowEvaluation()
-            this.setRepairProps()
         },
         components: components
     }

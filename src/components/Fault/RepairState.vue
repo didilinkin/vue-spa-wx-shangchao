@@ -13,11 +13,11 @@ ul#repairState
     )
         // 状态 - 顶部
         .replaceState__header
-            span.replaceState--stateBtn( v-bind:class="'fault--' + item.stateType + '--typeColor'" ) {{ item.stateTitle }}
-            span.replaceState--dateTime {{ item.createDate }}
+            span.replaceState--stateBtn#repairTitle( v-bind:class="'fault--' + item.stateType + '--typeColor'" ) {{ item.stateTitle }}
+            span.replaceState--dateTime#repairTime {{ item.createDate }}
 
         // 状态 - 文本内容
-        .replaceState--contentText
+        .replaceState--contentText#repairText
             p(
                 v-bind:class="{ 'clickText': canClickBoolean }"
                 v-on:click="toRepairDetail( item )"
@@ -37,20 +37,7 @@ export default {
         repairStateArr: {
             default: function() {
                 return [
-                    {
-                        id: 45641,
-                        stateType: 'submitted',
-                        stateTitle: '已提交',
-                        createDate: '2016-05-25 11:46',
-                        text: `此处是已提交文本此处是已提交文本
-                                此处是已提交文本此处是已提交文本
-                                此处是已提交文本此处是已提交文本`,
-                        showSchedule: 'submitted',                      // 进度状态: '已提交' ( 用于显示'进度' - 因'已处理'无法判断, 所以添加此属性 )
-                        // '进度' - 具体信息
-                        submittedInfo: {                                // '已提交'的信息
-                            dateTime: '2016-05-25 11:46'
-                        }
-                    }
+
                 ]
             }
         },

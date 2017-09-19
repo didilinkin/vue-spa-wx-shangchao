@@ -13,11 +13,11 @@
         )
             // 状态 - 顶部
             .replaceState__header
-                span.replaceState--stateBtn( v-bind:class="'fault--' + item.stateType + '--typeColor'" ) {{ item.stateTitle }}
-                span.replaceState--dateTime {{ item.createDate }}
+                span.replaceState--stateBtn#proposalTitle( v-bind:class="'fault--' + item.stateType + '--typeColor'" ) {{ item.stateTitle }}
+                span.replaceState--dateTime#proposalTime {{ item.createDate }}
 
             // 状态 - 文本内容
-            .replaceState--contentText
+            .replaceState--contentText#proposalText
                 p(
                     v-bind:class="{ 'clickText': canClickBoolean }"
                     v-on:click="toProposalDetail( item )"
