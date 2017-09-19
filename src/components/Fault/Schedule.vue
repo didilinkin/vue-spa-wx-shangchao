@@ -64,31 +64,6 @@
                 type: Object,
                 default: function() {
                     return {
-                        // 已评价
-                        evaluation: {
-                            time: '2017-01-14 11:24',
-                            starNum: 4
-                        },
-                        // 已处理完毕
-                        finished: {
-                            time: '2017-01-14 16:24',
-                            repair: '张丽浩  刘鹏涛',
-                            maintenanceFees: 40
-                        },
-                        // 已开始处理
-                        doing: {
-                            time: '2017-01-14 16:24',
-                            repair: '李方云'
-                        },
-                        // 已派单
-                        send: {
-                            time: '2017-01-14 16:24',
-                            acceptor: '李方云'
-                        },
-                        // 客户已提交保修
-                        submitted: {
-                            time: '2017-01-14 16:24'
-                        }
                     }
                 }
             },

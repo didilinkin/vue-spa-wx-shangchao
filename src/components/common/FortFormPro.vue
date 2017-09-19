@@ -124,11 +124,6 @@
                     })
                 } else {
                     //  提交投诉请求
-                    console.log( '11111111111111111111111' )
-                    console.log( imgs )
-                    console.log( '11111111111111111111111' )
-                    console.log( imgURLs )
-                    console.log( '11111111111111111111111' )
                     this.requireToProposal( arr, imgURLs )
                 }
             }

@@ -5,7 +5,7 @@ g// '费用账单' - 能源管理押金
 
     // 账单押金组件
     DepositList( v-bind:depositListArr="DepositList")
-</template> 
+</template>
 
 <script>
 import BillHeader       from '../../components/Bill/BillHeader'
@@ -26,7 +26,7 @@ export default {
         return {
             BillHeaderObj: {
                 title: '能源管理押金',
-                money: '123,456.00',
+                money: '',
                 companyName: this.$store.state.globalState.userInfo.companyName
             },
             // 账单 押金数据 => '账单押金组件'组件

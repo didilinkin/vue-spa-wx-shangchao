@@ -39,20 +39,7 @@
                 type: Array,
                 default: function() {
                     return [
-                        {
-                            id: 45641,
-                            stateType: 'submitted',
-                            stateTitle: '已提交',
-                            createDate: '2016-05-25 11:46',
-                            complaintContent: `此处是已提交文本此处是已提交文本
-                                此处是已提交文本此处是已提交文本
-                                此处是已提交文本此处是已提交文本`,
-                            showSchedule: 'submitted',                      // 进度状态: '已提交' ( 用于显示'进度' - 因'已处理'无法判断, 所以添加此属性 )
-                            // '进度' - 具体信息
-                            submittedInfo: {                                // '已提交'的信息
-                                dateTime: '2016-05-25 11:46'
-                            }
-                        }
+
                     ]
                 }
             },

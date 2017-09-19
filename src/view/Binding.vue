@@ -217,9 +217,6 @@ export default {
             clientNum: '1',
             nickName: '1',
             arrList: [
-                { title: '长江中心A座-1112', id: '1' },
-                { title: '长江中心A座-1111', id: '2' },
-                { title: '长江中心A座-2222', id: '3' }
             ]
         }
     },
