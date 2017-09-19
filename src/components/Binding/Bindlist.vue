@@ -94,31 +94,34 @@ export default {
 
 </script>
 <style lang="sass">
+    @import "../../sass/main"
     .bind-ele
         color: rgb( 102,102,102 )
-        font-size: 16px
+        +REM( font-size, 16px )
         text-align: left
-        margin-top: 20px
-        padding-bottom: 10px
+        +REM( margin-top, 20px )
+        +REM( padding-bottom, 10px )
         .ele-num
             color: rgb( 35,210,150 )
     .river-list
         background-color: #ffffff
-        line-height: 50px
+        +REM( line-height, 50px )
         border-bottom: 1px solid #f7f7fa
+        text-align: center
         .center
             color: rgb( 102,102,102 )
-            font-size: 16px
+            +REM( font-size, 16px )
         .unbind
-            width: 54px
-            height: 26px
+            /*width: 54px*/
+            /*height: 26px*/
+            +REM-W-H( 54px, 26px )
             display: inline-block
-            font-size: 14px
+            +REM( font-size, 14px )
             color: #ffffff
             background-color: rgb( 16,142,233 )
             border-radius: 13px
-            line-height: 26px
-            margin-left: 130px
+            +REM( line-height, 26px )
+            +REM( margin-left, 130px )
         .dddd
             display: none
 
