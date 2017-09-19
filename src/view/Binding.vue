@@ -137,18 +137,15 @@ export default {
                                 // console.log( '请求异步前确认:' + number )
                                 await that.requireBinding( number )
                                 // 判断返回值
-                                let bindingResult = that.$store.state.binding.bindingResult
+                                let bindingResult = that.$store.state.binding.bindingResult.success
                                 if( bindingResult ) {
                                     that.requireRoomList()
-
-                                    console.log( '11111111111111111' )
-                                    console.log( '请求' )
                                     that.setPickerStyle( 'rgb( 35, 210, 150 )' )
                                     resolve()
                                 } else {
                                     swal({
                                         type: 'error',
-                                        title: '失败绑定'
+                                        title: that.$store.state.binding.bindingResult.message
                                     })
                                     that.setPickerStyle( 'rgb( 255, 61, 61 )' )
                                     reject()

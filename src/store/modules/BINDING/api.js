@@ -74,7 +74,7 @@ export const apiRequireBinding = ( bindingValObj ) => {
             'companyNum': bindingValObj.companyNo
         }) )
         .then( response => {
-            let resulData = response.data.success
+            let resulData = response.data
             resolve( resulData )
         })
         .catch( error => {
