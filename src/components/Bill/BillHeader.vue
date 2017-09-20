@@ -6,8 +6,7 @@
     )
     .BillHeader__content
         p.BillHeader--title {{ contentObj.title }}
-        //h1 {{ contentObj.money }}
-        h1 0.00
+        h1 {{ contentObj.money }}
         p.BillHeader--companyName {{ contentObj.companyName }}
 </template>
 
@@ -21,7 +20,7 @@ export default {
             default: function() {
                 return {
                     title: '账单头部',
-                    money: '0.00'
+                    money: ''
                 }
             }
         }
