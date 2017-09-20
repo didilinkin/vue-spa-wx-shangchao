@@ -146,11 +146,11 @@ export default {
             +ABS
             left: -.25rem
             top: .5rem
-            +REM-W-H( $F-title )
+            +REM-W-H( $F-text )
             +bC( $C-theme )
             border: 1px solid $C-L-theme
             +radius( 50% )
-            +boxShadow( 0, 0, $F-title/2, darken( $C-theme, 2% ) )
+            +boxShadow( 0, 0, 5px, darken( $C-theme, 2% ) )
     ul
         +mB( 2rem )
 </style>
