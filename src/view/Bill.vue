@@ -27,7 +27,8 @@ export default {
         // 目的: 请求 - 费用账单列表
         requireBillList() {
             this.$store.dispatch({
-                type: 'bill/REQUIRE_BILL_LIST'
+                type: 'bill/REQUIRE_BILL_LIST',
+                clientNum: this.$route.query.clientNum
             })
         },
         // 目的: 跳转'账单'详情页
