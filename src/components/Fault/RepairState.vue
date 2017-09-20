@@ -21,7 +21,7 @@ ul#repairState
             p(
                 v-bind:class="{ 'clickText': canClickBoolean }"
                 v-on:click="toRepairDetail( item )"
-            ) {{ item.repairedContent }}
+            ) {{ item.repairContent }}
 </template>
 <script>
 /* global require: true */
