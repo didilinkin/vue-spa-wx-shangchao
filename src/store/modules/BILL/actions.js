@@ -13,10 +13,10 @@ export default {
         }
         asyncRentInfo()
     },
-    [types.REQUIRE_BILL_LIST]: ({ commit }) => {
+    [types.REQUIRE_BILL_LIST]: ({ commit }, obj ) => {
         const asyncFeeInfo = async function() {
             try {
-                let result = await billAPI.apiFeeInfo( )
+                let result = await billAPI.apiFeeInfo( obj )
                 commit( types.SET_BILL_LIST, result )
             } catch( err ) {
                 console.log( err )

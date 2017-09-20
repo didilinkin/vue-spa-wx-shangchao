@@ -19,9 +19,9 @@ export const apiRentInfo = ( obj ) => {
     })
 }
 
-export const apiFeeInfo = ( ) => {
+export const apiFeeInfo = ( obj ) => {
     return new Promise( function( resolve, reject ) {
-        axios.get( mockAPI.FeeUrl )
+        axios.get( mockAPI.FeeUrl + '?clientNum=' + obj.clientNum )
              .then( response => {
                  let resulData = response.data.data
                  resolve( resulData )
