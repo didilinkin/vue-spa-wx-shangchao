@@ -7,25 +7,25 @@ const dataBillObj = {
             iconImg: require( '../assets/images/iconHousing@2x.png' ),
             title: '房屋租赁费',
             text: '交费期限',
-            data: '2017-02-21'
+            data: ''
         }, {
             id: 'propertyFee',
             iconImg: require( '../assets/images/iconProperty@2x.png' ),
             title: '物业管理费',
             text: '交费期限',
-            data: '2017-02-21'
+            data: ''
         }, {
             id: 'electricityBill',
             iconImg: require( '../assets/images/iconElectricity@2x.png' ),
             title: '电费',
             text: '交费期限',
-            data: '2017-02-21'
+            data: ''
         }, {
             id: 'waterFee',
             iconImg: require( '../assets/images/iconWater@2x.png' ),
             title: '水费',
             text: '交费期限',
-            data: '2017-02-21'
+            data: ''
         }
         // {
         //     id: 'leaseDeposit',
