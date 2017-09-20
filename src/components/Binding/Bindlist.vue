@@ -68,7 +68,8 @@ export default {
         return {
             list: [
             ],
-            number: '3',
+//            number: '3',
+            number: '0',
             msg: '解绑成功!',
             clientNum: '1'
         }
