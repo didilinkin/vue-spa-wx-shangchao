@@ -28,20 +28,20 @@ module.exports = {
         "no-unused-vars": [
             // 如果不需要检查的变量( 全局引入变量 ), 使用注明方法说明
             // 注释:  foo is considered used here // 'foo'变量不需要
-            "error", { 
+            "error", {
                 // 全部 变量检查
                 "vars": "all",
                 // 全部 参数检查
                 "args": "all",
                 // 下划线开头的参数 不需要检查
-                "argsIgnorePattern": "^_" 
+                "argsIgnorePattern": "^_"
             }],
         // 要求或禁止函数圆括号之前有一个空格
         "space-before-function-paren": ["error", {
             // 匿名函数
             "anonymous": "never",
             // 命名的函数表达式
-            "named": "never", 
+            "named": "never",
             // 针对异步的箭头函数表达式( 需要带空格 )
             "asyncArrow": "always"
         }],
@@ -55,7 +55,7 @@ module.exports = {
         "no-multiple-empty-lines": ["error", {
             // 最大为2行
             "max": 2,
-            // 文件开头最多1行空行 
+            // 文件开头最多1行空行
             "maxBOF": 1,
             // 文件末尾最多1行空行
             "maxEOF": 1,
@@ -65,11 +65,11 @@ module.exports = {
         // 中缀操作符周围有空格 ( 运算符两侧要有空格 )
         "space-infix-ops": "error",
         // 强制在逗号周围使用空格
-        "comma-spacing": ["error", { 
+        "comma-spacing": ["error", {
             // 逗号前 禁止使用空格
             "before": false,
             // 逗号后 需要添加空格
-            "after": true 
+            "after": true
         }],
         // 大括号风格要求: 大括号开括号禁止独自一行, 但是允许开括号与闭括号在同一行( 应用于一行表达式 )
         "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
@@ -129,7 +129,7 @@ module.exports = {
             }
         }],
         // 禁止使用alert等突兀内容
-        "no-alert": "error",	
+        // "no-alert": "error",
         // 禁止多次声明同一变量
         "no-redeclare": "error",
         // 禁止自身比较
@@ -145,7 +145,7 @@ module.exports = {
         // 强制对象属性在不同行上
         "object-property-newline": ["error", {
             // 除非属性很少, 允许在一行当中
-            "allowMultiplePropertiesPerLine": true 
+            "allowMultiplePropertiesPerLine": true
         }],
         // 禁止块语句开始或末尾有空行
         "padded-blocks": ["error", "never"],
@@ -154,16 +154,16 @@ module.exports = {
         // 强制分号空格约束
         "semi-spacing": ["error", {
             // 分号之前 禁止空格
-            "before": false, 
+            "before": false,
             // 分号之后 强制空格
-            "after": true 
+            "after": true
         }],
         // 禁止删除变量
         "no-delete-var": "error",
         // 强制圆括号内有一个空格
         "space-in-parens": ["error", "always", {
             // 当圆括号内包含花括号时, 不需要空格
-            "exceptions": ["{}", "[]"] 
+            "exceptions": ["{}", "[]"]
         }],
         // 要求或禁止在注释前有空白
         "spaced-comment": ["error", "always"],
@@ -178,9 +178,9 @@ module.exports = {
         // 禁止使用令人困惑的多行表达式 - 配合 semi 禁用分号规则
         "no-unexpected-multiline": "error",
         // 禁止空块语句
-        "no-empty": ["error", { 
+        "no-empty": ["error", {
             // 允许出现空的 catch 子句
-            "allowEmptyCatch": true 
+            "allowEmptyCatch": true
         }],
         // 禁用不必要的分号
         "no-extra-semi": "error",
@@ -188,7 +188,7 @@ module.exports = {
         "no-sparse-arrays": "error",
         // 要求 Switch 语句中有 Default 分支
         "default-case": "error",
-        // 禁止出现空函数 
+        // 禁止出现空函数
         "no-empty-function": "error",
         // 禁用未使用过的标签
         "no-unused-labels": "error",
@@ -197,10 +197,10 @@ module.exports = {
         //      例子: /* global someFunction b:true */
         //      someFunction 与 b 为 提前声明好的变量, 所以允许使用
         "no-undef": ["error", {
-            "typeof": true 
+            "typeof": true
         }],
-        /* 
-            为了方便，ESlint 提供了预定义流行类库和运行时环境暴露的全局变量的快捷方式 
+        /*
+            为了方便，ESlint 提供了预定义流行类库和运行时环境暴露的全局变量的快捷方式
             添加  env: { browser: true } // 运行环境说明 -> 可使用全局环境下的快捷方式
         */
         // 强制注释周围有空行

@@ -47,19 +47,20 @@ if ( /(iPhone|iPad|iPod|iOS )/i.test( navigator.userAgent ) ) {
     document.body.style.fontFamily = 'Microsoft Yahei'
 }
 // 判斷是否微信登陸
-function isWeiXin() {
-    let ua = window.navigator.userAgent.toLowerCase()
-    console.log( ua )
-    if ( ua.match( /MicroMessenger/i ) === 'micromessenger' ) {
+function isWexin() {
+    let ua = navigator.userAgent.toLowerCase()
+    // alert( ua )
+
+    if( ua.match( 'micromessenger' ) === 'micromessenger' ) { // 是 微信端
         return true
-    } else {
+    } else { // 不是 微信端
         return false
     }
 }
-if( isWeiXin() ) {
-    console.log( '是来自微信内置浏览器' )
-    location.href = '#/weixin'
+
+if( isWexin() ) {
+    console.log( '是 微信端' )
 }else{
-    console.log( '不是来自微信内置浏览器' )
+    console.log( '不是 微信端' )
     // location.href = '#/weixin'
 }
