@@ -48,7 +48,6 @@ export default {
                 cancelButtonText: '取消'
             }).then( function() {
                 that.requireRoomDelete( id )
-                that.$emit( 'watchRequireRoomList' )
                 swal(
                     '解绑成功!',
                     ' ',
@@ -86,6 +85,7 @@ export default {
         // 监听返回结果
         getterDeleteUserWx: function() {
             this.$data.msg = this.getterDeleteUserWx
+            this.$emit( 'watchRequireRoomList' )
         }
     }
 }
