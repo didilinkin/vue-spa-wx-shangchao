@@ -104,7 +104,6 @@ export default {
             for( let i = 0; i < imgs.length; i++ ) {
                 imgURLs[ i ] = imgs[ i ].src
             }
-
             // 遍历判断 value值是否为空
             for( let i = arr.length; i--; ) {
                 if( arr[i].itemMsg === '' ) {

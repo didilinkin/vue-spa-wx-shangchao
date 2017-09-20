@@ -6,7 +6,8 @@
     )
     .BillHeader__content
         p.BillHeader--title {{ contentObj.title }}
-        h1 {{ contentObj.money }}
+        //h1 {{ contentObj.money }}
+        h1 0.00
         p.BillHeader--companyName {{ contentObj.companyName }}
 </template>
 
