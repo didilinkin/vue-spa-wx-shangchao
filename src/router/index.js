@@ -7,10 +7,12 @@ import Home                     from '@/view/Home'
 import Bulletin                 from '@/view/Bulletin'
 import Bill                     from '@/view/Bill'
 import Fault                    from '@/view/Fault'
+import Weixin                   from '@/view/Weixin'
 import Proposal                 from '@/view/Proposal'
 import Binding                  from '@/view/Binding'
 
 import BulletinDetails          from '@/pages/Bulletin/BulletinDetails'
+
 
 import BuildingFee              from '@/pages/Bill/BuildingFee'
 import PropertyFee              from '@/pages/Bill/PropertyFee'
@@ -77,6 +79,13 @@ export default new Router({
             components: {
                 AppContent: Proposal,
                 AppBottomTitle: BottomTitle
+            }
+        }, {
+            path: '/weixin',
+            name: 'Weixin',
+            meta: { title: '微信' },
+            components: {
+                AppContent: Weixin
             }
         }, {
             path: '/binding',

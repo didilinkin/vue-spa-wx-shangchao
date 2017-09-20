@@ -59,5 +59,6 @@ function isWeiXin() {
 if( isWeiXin() ) {
     console.log( '是来自微信内置浏览器' )
 }else{
-    console.log( '不是来自微信内置浏览器' )
+    // console.log( '不是来自微信内置浏览器' )
+    location.href = '#/weixin'
 }
