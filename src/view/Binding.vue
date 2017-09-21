@@ -162,7 +162,8 @@ export default {
             }).then( () => {
                 swal({
                     type: 'success',
-                    title: '成功绑定!'
+                    title: '成功绑定!',
+                    confirmButtonText: '确认'
                 })
             })
         },
