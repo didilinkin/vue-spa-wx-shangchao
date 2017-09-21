@@ -89,7 +89,7 @@
             requireToProposal( arr, imgs ) {
                 this.$store.dispatch({
                     type: 'proposal/SAVE_PROPOSAL',
-                    clientNum: '1',
+                    clientNum: this.$route.query.clientNum,
                     phone: arr[1].itemMsg,
                     repairMan: arr[0].itemMsg,
                     repairContent: this.$refs.input1.value,
