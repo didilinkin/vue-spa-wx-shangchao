@@ -6,17 +6,11 @@
     CostList(
         v-bind:briefListObj="CostListBrief"
     )
-    vue-loading.vue-loading(
-        type="bars"
-        color="#20a0ff"
-        v-show ="diskou"
-    )
 </template>
 
 <script>
 /* global require: true */
 import { mapGetters }   from 'vuex'
-import vueLoading       from 'vue-loading-template'
 
 import BillHeader       from '../../components/Bill/BillHeader'
 import CostList         from '../../components/Bill/CostList'
@@ -35,7 +29,6 @@ export default {
     },
     data() {
         return {
-            diskou: true,
             BillHeaderObj: {
                 title: '未交金额合计',
                 money: ''
@@ -67,12 +60,6 @@ export default {
     mounted: function() {
         this.requireBuildingFee()       // 请求 - 账单详情
     },
-    components: {
-        components, vueLoading
-    }
+    components: components
 }
 </script>
-<style lang="sass">
-    .vue-loading
-        padding-top: 200px
-</style>

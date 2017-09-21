@@ -23,7 +23,6 @@ export default {
     name: 'Bindlist',
     methods: {
         requireRoomDelete( id ) {
-            console.log( '解除房间列表' )
             this.$store.dispatch({
                 type: 'binding/REQUEST_ROOM_DELETE',
                 id: id
@@ -48,11 +47,7 @@ export default {
                 cancelButtonText: '取消'
             }).then( function() {
                 that.requireRoomDelete( id )
-                swal(
-                    '解绑成功!',
-                    ' ',
-                    'success'
-                )
+                that.$emit( 'watchRequireRoomList' )
             })
         }
     },
@@ -85,7 +80,21 @@ export default {
         // 监听返回结果
         getterDeleteUserWx: function() {
             this.$data.msg = this.getterDeleteUserWx
-            this.$emit( 'watchRequireRoomList' )
+            // this.$emit( 'watchRequireRoomList' )
+            if( this.getterDeleteUserWx.success === true ) {
+                this.$emit( 'watchRequireRoomList' )
+                swal(
+                    '解绑成功!',
+                    ' ',
+                    'success'
+                )
+            }else {
+                swal(
+                    '解绑失败!',
+                    ' ',
+                    'error'
+                )
+            }
         }
     }
 }
