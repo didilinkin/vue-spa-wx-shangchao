@@ -91,4 +91,5 @@
         top: 0
         background-color: #F7F7FA
         padding-left: 35%
+        padding-top: 50%
 </style>
