@@ -6,15 +6,21 @@
     CostList(
         v-bind:briefListObj="CostListBrief"
     )
+    #vueLoading.vue-loading
+        vue-loading(
+            type="bars"
+            color="#20a0ff"
+        )
 </template>
 
 <script>
 /* global require: true */
 import { mapGetters }   from 'vuex'
+import vueLoading       from 'vue-loading-template'
 
 import BillHeader       from '../../components/Bill/BillHeader'
 import CostList         from '../../components/Bill/CostList'
-const components = { BillHeader, CostList }
+const components = { BillHeader, CostList, vueLoading }
 
 export default {
     name: 'BuildingFee',
@@ -55,6 +61,10 @@ export default {
         getterRentInfo: function() {
             this.$data.CostListBrief.listArr = this.getterRentInfo
             this.$data.BillHeaderObj.money = this.getterSumRent
+            let loading = document.getElementById( 'vueLoading' )
+            console.log( '1111111111111111111111111' )
+            loading.style.display = 'none'
+            console.log( this.getterSumRent )
         }
     },
     mounted: function() {
@@ -63,3 +73,19 @@ export default {
     components: components
 }
 </script>
+<style lang="sass">
+    .vue-loading
+        padding-top: 100px
+        width: 100%
+        height: 100%
+        display: block
+        padding-top: 100px
+        width: 100%
+        height: 100%
+        display: block
+        position: absolute
+        left: 0
+        top: 0
+        background-color: #F7F7FA
+        padding-left: 35%
+</style>

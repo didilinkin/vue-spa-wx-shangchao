@@ -6,14 +6,21 @@
         v-bind:briefListObj="CostListBrief"
         v-bind:detailHeaderArr="CostDetailHeader"
     )
+    #vueLoading.vue-loading
+        vue-loading(
+        type="bars"
+        color="#20a0ff"
+    )
 </template>
 
 <script>
 /* global require: true */
 import { mapGetters }   from 'vuex'
+import vueLoading       from 'vue-loading-template'
+
 import BillHeader       from '../../components/Bill/BillHeader'
 import CostList         from '../../components/Bill/CostList'
-const components = { BillHeader, CostList }
+const components = { BillHeader, CostList, vueLoading }
 
 export default {
     name: 'ElectricityBill',
@@ -56,6 +63,9 @@ export default {
         getterEleInfo: function() {
             this.$data.CostListBrief.listArr = this.getterEleInfo
             this.$data.BillHeaderObj.money = this.getterSumEleInfo
+            let loading = document.getElementById( 'vueLoading' )
+            console.log( '333333333333333333333333333' )
+            loading.style.display = 'none'
         }
     },
     mounted: function() {
