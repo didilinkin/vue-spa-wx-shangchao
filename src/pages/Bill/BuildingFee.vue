@@ -75,18 +75,13 @@ export default {
 </script>
 <style lang="sass">
     .vue-loading
-        padding-top: 100px
-        width: 100%
-        height: 100%
-        display: block
-        padding-top: 100px
-        width: 100%
-        height: 100%
+        width: 55%
+        height: 71%
         display: block
         position: absolute
         left: 0
         top: 0
         background-color: #F7F7FA
-        padding-left: 35%
+        padding-left: 45%
         padding-top: 50%
 </style>
