@@ -4,7 +4,7 @@ ul#Bill
     li.auto--modulePadding.auto--moduleMarginBottom(
         v-for="( item, index ) in billDataObj.listArr"
         v-bind:key="item.id"
-        @click="toBillDetails( item.id )"
+        v-on:click="toBillDetails( item.id )"
     )
         .Bill--imgBox
             img( v-bind:src="item.iconImg" )
@@ -20,6 +20,7 @@ ul#Bill
 <script>
 import { dataBillObj }      from './dataBill'
 import { mapGetters }   from 'vuex'
+
 
 export default {
     name: 'Bill',
@@ -52,13 +53,20 @@ export default {
         }
     },
     computed: mapGetters({
-        getterFeeInfo: 'getterFeeInfo'
+        getterFeeInfo: 'getterFeeInfo',
+        getterSumRent: 'getterSumRent'
     }),
     watch: {
         getterFeeInfo: function() {
             this.setDataTime( this.getterFeeInfo ) // 修改时间
             this.$data.clientNum = this.$route.query.clientNum
             this.$store.state.bill.clientNum = this.$route.query.clientNum
+        },
+        getterSumRent: function() {
+            let loading = document.getElementById( 'vueLoading' )
+            console.log( '1111111111111111111111111' )
+            loading.style.display = 'none'
+            console.log( this.getterSumRent )
         }
     },
     mounted: function() {

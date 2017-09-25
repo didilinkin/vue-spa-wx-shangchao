@@ -1,57 +1,62 @@
 // '费用账单' - 账单费用组件 - 应用场景组件( 房屋租赁费 / 物业管理费 /  电费 / 水费 )
 <template lang="pug">
-ul.CostList
-    // 直接判断 $props是否显示, 不需要经过 $data
-    li.CostList--nullBill( v-if="briefListObj.showNullBill" )
-        ContentNull( v-bind:setContentNullObj="setContentNull" )
+div( v-if="renderNull" )
+    ContentNull( v-bind:setContentNullObj="setContentNull" )
+div(
+    v-else
+)
+    ul.CostList
+        // 直接判断 $props是否显示, 不需要经过 $data
+        li.CostList--nullBill( v-if="briefListObj.showNullBill" )
+            ContentNull( v-bind:setContentNullObj="setContentNull" )
 
-    // '账单费用' 如果非空, 显示列表内容
-    li.auto--moduleMarginBottom(
-        v-else
-        v-for="( item, index ) in renderListObj.listArr"
-        v-bind:key="index"
-        v-bind:style="{ backgroundColor: '#FFF' }"
-    )
-        // 非折叠 - 专属图标信息
-        .CostList__iconBox.auto--moduleIconBox(
-            v-bind:style="{ backgroundColor: briefListObj.listIconColor }"
+        // '账单费用' 如果非空, 显示列表内容
+        li.auto--moduleMarginBottom(
+            v-else
+            v-for="( item, index ) in renderListObj.listArr"
+            v-bind:key="index"
+            v-bind:style="{ backgroundColor: '#FFF' }"
         )
-            img( v-bind:src="briefListObj.listIcon" )
-
-        // 非折叠 - 基本信息
-        .CostList__contentBox( @click="showCostInfo( index )" )
-            .CostList__contentBox__title
-                h2 {{ item.title }}
-                h2
-                    b.cl {{ item.money }}
-                img.CostList--arrowIcon( v-bind:src="costListArrowIcon" )
-            .CostList__contentBox__date
-                .CostList--text
-                    span 收费周期
-                    span {{ item.tollStartDate }}
-                    span 至
-                    span {{ item.tollDeadline }}
-                .CostList--text
-                    span 交费期限
-                    span {{ item.payDate }}
-
-        // 折叠 - 详情账单列表( '房屋租赁费'不显示 此模块 )
-        CostDetailList(
-            v-if="briefListObj.hasDetailList"
-            v-show="item.showDetailInfo"
-            v-bind:detailListHeaderArr="detailHeaderArr"
-            v-bind:detailListArr="item.detailList"
-        )
-
-        // 折叠 - 账单详细信息
-        .CostList__detailsInfo.auto--modulePaddingTB( v-show="item.showDetailInfo" )
-            // 价格 + 合计数值等
-            .CostList__detailsInfo__item.auto--modulePaddingTB(
-                v-for="( itemInfo, indexInfo ) in item.detailsInfo"
-                v-bind:key="indexInfo"
+            // 非折叠 - 专属图标信息
+            .CostList__iconBox.auto--moduleIconBox(
+                v-bind:style="{ backgroundColor: briefListObj.listIconColor }"
             )
-                p {{ itemInfo.title }}
-                p.ficl {{ itemInfo.value }}
+                img( v-bind:src="briefListObj.listIcon" )
+
+            // 非折叠 - 基本信息
+            .CostList__contentBox( @click="showCostInfo( index )" )
+                .CostList__contentBox__title
+                    h2 {{ item.title }}
+                    h2
+                        b.cl {{ item.money }}
+                    img.CostList--arrowIcon( v-bind:src="costListArrowIcon" )
+                .CostList__contentBox__date
+                    .CostList--text
+                        span 收费周期
+                        span {{ item.tollStartDate }}
+                        span 至
+                        span {{ item.tollDeadline }}
+                    .CostList--text
+                        span 交费期限
+                        span {{ item.payDate }}
+
+            // 折叠 - 详情账单列表( '房屋租赁费'不显示 此模块 )
+            CostDetailList(
+                v-if="briefListObj.hasDetailList"
+                v-show="item.showDetailInfo"
+                v-bind:detailListHeaderArr="detailHeaderArr"
+                v-bind:detailListArr="item.detailList"
+            )
+
+            // 折叠 - 账单详细信息
+            .CostList__detailsInfo.auto--modulePaddingTB( v-show="item.showDetailInfo" )
+                // 价格 + 合计数值等
+                .CostList__detailsInfo__item.auto--modulePaddingTB(
+                    v-for="( itemInfo, indexInfo ) in item.detailsInfo"
+                    v-bind:key="indexInfo"
+                )
+                    p {{ itemInfo.title }}
+                    p.ficl {{ itemInfo.value }}
 </template>
 
 <script>
@@ -72,7 +77,7 @@ export default {
                     listIcon: require( '../../assets/images/iconHousTitle@2x.png' ),
                     listIconColor: 'rgb( 255, 181, 0 )',
                     listArr: [
-                        
+
                     ],
                     hasDetailList: false    // 是否显示 '详情列表': 否
                 }
@@ -102,6 +107,7 @@ export default {
     },
     data() {
         return {
+            renderNull: true,
             renderListObj: this.$props.briefListObj,                                        // 将$props 保存在 $data( 点击事件处理'显示'逻辑 )
             costListArrowIcon: require( '../../assets/images/iconListArrow@2x.png' ),       // 箭头
             showInfoIndex: 0,                                                               // 无显示 => 空

@@ -55,7 +55,7 @@ function isWexin() {
         // console.log( '微信' )
     }else {
         // console.log( '浏览器' )
-        return location.href = '#/weixin'
+        // return location.href = '#/weixin'
     }
 }
 isWexin()

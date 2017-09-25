@@ -37,4 +37,5 @@ export default {
     +pT( 10% )
     >img
         +imgCover( 30% )
+
 </style>

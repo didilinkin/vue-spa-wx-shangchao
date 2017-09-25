@@ -38,6 +38,7 @@ export const apipmInfo = ( obj ) => {
              .then( response => {
                  let resulData = response.data.data
                  resolve( resulData )
+                 console.log( resulData )
              })
              .catch( error => {
                  reject( error )

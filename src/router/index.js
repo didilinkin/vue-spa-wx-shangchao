@@ -8,11 +8,11 @@ import Bulletin                 from '@/view/Bulletin'
 import Bill                     from '@/view/Bill'
 import Fault                    from '@/view/Fault'
 import Weixin                   from '@/view/Weixin'
+import Notext                   from '@/view/Notext'
 import Proposal                 from '@/view/Proposal'
 import Binding                  from '@/view/Binding'
 
 import BulletinDetails          from '@/pages/Bulletin/BulletinDetails'
-
 
 import BuildingFee              from '@/pages/Bill/BuildingFee'
 import PropertyFee              from '@/pages/Bill/PropertyFee'
@@ -86,6 +86,13 @@ export default new Router({
             meta: { title: '微信' },
             components: {
                 AppContent: Weixin
+            }
+        }, {
+            path: '/Notext',
+            name: 'Notext',
+            meta: { title: '错误' },
+            components: {
+                AppContent: Notext
             }
         }, {
             path: '/binding',

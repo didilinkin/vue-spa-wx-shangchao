@@ -15,16 +15,22 @@
         v-bind:arrList="arrList"
         v-bind:clientNumber="clientNum"
     )
+    #vueLoading.vue-loading
+        vue-loading(
+            type="bars"
+            color="#20a0ff"
+        )
 </template>
 
 <script>
 /* global Promise: true */
 import swal             from 'sweetalert2'
 import { mapGetters }   from 'vuex'
+import vueLoading       from 'vue-loading-template'
 
 import PickerView       from '../components/common/PickerView'
 import Bindlist         from '../components/Binding/Bindlist'
-const components = { PickerView, Bindlist }
+const components = { PickerView, Bindlist, vueLoading }
 
 export default {
     name: 'Binding',
@@ -230,6 +236,9 @@ export default {
             this.setPickerData()
             this.$data.clientNum = this.$route.query.clientNum
             this.$data.nickName = this.$route.query.nickName
+            let loading = document.getElementById( 'vueLoading' )
+            console.log( '77777777777777777777777777777777' )
+            loading.style.display = 'none'
         },
         // 监听: '绑定' 房间列表
         getterRoomList: function() {

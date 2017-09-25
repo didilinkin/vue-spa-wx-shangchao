@@ -6,7 +6,7 @@
         CostList(
             v-bind:briefListObj="CostListBrief"
         )
-        #vueLoading.vueq-loading
+        #vueLoading.vue-loading
             vue-loading(
                 type="bars"
                 color="#20a0ff"
@@ -63,7 +63,6 @@
                 this.$data.CostListBrief.listArr = this.getterRentInfo
                 this.$data.BillHeaderObj.money = this.getterSumRent
                 let loading = document.getElementById( 'vueLoading' )
-                debugger
                 console.log( '1111111111111111111111111' )
                 loading.style.display = 'none'
                 console.log( 'getterRenInfo' )
@@ -76,14 +75,14 @@
     }
 </script>
 <style lang="sass">
-    .vueq-loading
-        width: 95%
-        height: 60%
+    .vue-loading
+        width: 50%
+        height: 50%
         display: block
         position: absolute
         left: 0
         top: 0
         background-color: #F7F7FA
-        padding-left: 5%
+        padding-left: 50%
         padding-top: 70%
 </style>

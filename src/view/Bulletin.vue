@@ -2,6 +2,11 @@
 <template lang="pug">
 #Bulletin
     BulletinLine( v-bind:bulletinLineArr="BulletinLineArr" )
+    #vueLoading.vue-loading
+        vue-loading(
+            type="bars"
+            color="#20a0ff"
+        )
     ScrollTo(
         v-bind:ScrollToCanShowBoolean="this.$data.scrollStatus"
     )
@@ -9,10 +14,11 @@
 
 <script>
 import { mapGetters }   from 'vuex'
+import vueLoading       from 'vue-loading-template'
 
 import BulletinLine     from '../components/Bulletin/BulletinLine'
 import ScrollTo         from '../components/common/ScrollTo'
-const components = { BulletinLine, ScrollTo }
+const components = { BulletinLine, ScrollTo, vueLoading }
 
 export default {
     name: 'Bulletin',
@@ -45,9 +51,16 @@ export default {
         getterBulletinInfo: 'getterBulletinInfo'
     }),
     watch: {
-        // 当 公告内容获取到, 触发
+        // 当公告内容获取到, 触发
         getterBulletinInfo: function() {
             this.$data.BulletinLineArr = this.getterBulletinInfo
+            let loading = document.getElementById( 'vueLoading' )
+            console.log( '1111111111111111111111111' )
+            loading.style.display = 'none'
+            console.log( this.$data.BulletinLineArr )
+            if( this.$data.BulletinLineArr.length === 0 ) {
+                return location.href = '#/Notext'
+            }
         }
     },
     mounted: function() {

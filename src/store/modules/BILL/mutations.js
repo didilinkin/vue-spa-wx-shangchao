@@ -83,8 +83,8 @@ export default {
         }
         state.waterInfo = water
         state.sumWater = sumWater.toFixed( 1 )
-        console.log( '11111111111111111' )
-        console.log( state.waterInfo )
-        console.log( state.sumWater )
+        // console.log( '11111111111111111' )
+        // console.log( state.waterInfo )
+        // console.log( state.sumWater )
     }
 }
