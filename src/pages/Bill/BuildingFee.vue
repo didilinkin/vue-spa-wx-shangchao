@@ -64,8 +64,12 @@
                 this.$data.BillHeaderObj.money = this.getterSumRent
                 let loading = document.getElementById( 'vueLoading' )
                 console.log( '1111111111111111111111111' )
+                console.log( this.$data.CostListBrief.listArr )
                 loading.style.display = 'none'
-                console.log( 'getterRenInfo' )
+                if( this.$data.CostListBrief.listArr.length === 0 ) {
+//                    this.$router.push({path: '/BillNotext'})
+                    this.$router.push( '/BillNotext' )
+                }
             }
         },
         mounted: function() {

@@ -26,6 +26,7 @@ export default {
         // 目的: 发起请求 - 获取最新的公告信息
         requireBulletinInfo() {
             this.$store.dispatch({
+//                type: 'o0CuEuD9L-YlwNO5nKEMUjK2zauY'
                 type: 'bulletin/REQUEST_BULLETIN_INFO'
             })
         },
@@ -59,7 +60,7 @@ export default {
             loading.style.display = 'none'
             console.log( this.$data.BulletinLineArr )
             if( this.$data.BulletinLineArr.length === 0 ) {
-                return location.href = '#/Notext'
+                this.$router.push({path: '/Notext'})
             }
         }
     },

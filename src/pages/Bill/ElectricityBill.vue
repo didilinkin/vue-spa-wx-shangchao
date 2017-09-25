@@ -66,6 +66,9 @@ export default {
             let loading = document.getElementById( 'vueLoading' )
             console.log( '333333333333333333333333333' )
             loading.style.display = 'none'
+            if( this.$data.CostListBrief.listArr.length === 0 ) {
+                this.$router.push({path: '/BillNotext'})
+            }
         }
     },
     mounted: function() {
