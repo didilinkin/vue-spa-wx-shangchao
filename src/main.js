@@ -1,16 +1,17 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 /* global require:true */
-import Vue          from 'vue'
-import Mint         from 'mint-ui'
-import layzr        from 'layzr.js'
-import VueScrollTo  from 'vue-scrollto'
+import Vue from 'vue'
+import Mint from 'mint-ui'
+import layzr from 'layzr.js'
+import VueScrollTo from 'vue-scrollto'
 import 'mint-ui/lib/style.min.css'
 import 'sweetalert2/dist/sweetalert2.min.css'
 
-import App          from './App'
-import router       from './router'
-import store        from './store'
+import App from './App'
+import router from './router'
+import store from './store'
+
 require( './assets/iconFont/font-awesome.min.css' )
 
 Vue.config.productionTip = false
@@ -35,7 +36,7 @@ new Vue({
     router,
     store,
     template: '<App/>',
-    components: { App }
+    components: {App}
 })
 
 // 不同平台下的文字效果不同
@@ -46,21 +47,15 @@ if ( /(iPhone|iPad|iPod|iOS )/i.test( navigator.userAgent ) ) {
 } else {
     document.body.style.fontFamily = 'Microsoft Yahei'
 }
+
 // 判斷是否微信登陸
 function isWexin() {
     let ua = navigator.userAgent.toLowerCase()
-    // alert( ua )
-
-    if( ua.match( 'micromessenger' ) === 'micromessenger' ) { // 是 微信端
-        return true
-    } else { // 不是 微信端
-        return false
+    if( String( ua.match( /micromessenger/i ) ) === 'micromessenger' ) {
+        // console.log( '微信' )
+    }else {
+        // console.log( '浏览器' )
+        return location.href = '#/weixin'
     }
 }
-
-if( isWexin() ) {
-    console.log( '是 微信端' )
-}else{
-    console.log( '不是 微信端' )
-    // location.href = '#/weixin'
-}
+isWexin()
