@@ -6,7 +6,7 @@
         CostList(
             v-bind:briefListObj="CostListBrief"
         )
-        #vueLoading.vue-loading
+        #vueLoading.vuee-loading
             vue-loading(
                 type="bars"
                 color="#20a0ff"
@@ -32,6 +32,13 @@
                     type: 'bill/REQUIRE_RENT_FEE',
                     clientNum: this.$store.state.bill.clientNum
                 })
+            },
+            pushHistory() {
+                let state = {
+                    title: "title",
+                    url: "#/"
+                }
+                window.history.pushState( state, "title", "#" )
             }
         },
         data() {
@@ -74,19 +81,20 @@
         },
         mounted: function() {
             this.requireBuildingFee()       // 请求 - 账单详情
+            this.pushHistory()
         },
         components: components
     }
 </script>
 <style lang="sass">
-    .vue-loading
-        width: 50%
-        height: 50%
-        display: block
-        position: absolute
-        left: 0
-        top: 0
-        background-color: #F7F7FA
-        padding-left: 50%
+    .vuee-loading
+        width: 100%
+        height: 100%
+        background-color: #ffffff
+        line-height: 100%
+        z-index: 999
         padding-top: 70%
+        position: absolute
+        top: 0
+        left: 0
 </style>

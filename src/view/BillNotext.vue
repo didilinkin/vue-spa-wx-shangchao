@@ -6,12 +6,12 @@
         )
         .BillHeader__content
             p.BillHeader--titled {{ contentObj.title }}
-        .weixindd
-            img.weixinPicd(
-                src='../assets/images/ico_bill.png'
-             )
-            p.opend 抱歉，当前没有数据！
-</template>
+            .weixindd
+                img.weixinPicd(
+                    src='../assets/images/ico_bill.png'
+                 )
+                p.opend 暂时没有费用账单！
+    </template>
 
 <script>
     /* global require: true */
@@ -67,17 +67,15 @@
                 +REM-fontStyle( $F-title, $C-copy, 1 )
                 +fW( bold )
                 +REM( margin-top, 20px )
-                margin-top: 20%
+                margin-top: 55%
+    .weixindd
+        position: relative
+        top: 150px
+
     .weixinPicd
         +REM-W-H( 90px )
-        position: absolute
-        top: 250px
-        left: 150px
     .opend
         +REM( font-size, 18px )
         text-align: center
         padding-top: 20px
-        position: absolute
-        top: 320px
-        left: 107px
 </style>

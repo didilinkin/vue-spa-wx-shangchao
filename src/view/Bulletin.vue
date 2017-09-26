@@ -2,7 +2,7 @@
 <template lang="pug">
 #Bulletin
     BulletinLine( v-bind:bulletinLineArr="BulletinLineArr" )
-    #vueLoading.vue-loading
+    #vueLoading.vuee-loading
         vue-loading(
             type="bars"
             color="#20a0ff"
@@ -40,6 +40,13 @@ export default {
                     this.$data.scrollStatus = true                      // 改变
                 }
             }
+        },
+        pushHistory() {
+            let state = {
+                title: "title",
+                url: "#/"
+            }
+            window.history.pushState( state, "title", "#" )
         }
     },
     data() {
@@ -61,12 +68,14 @@ export default {
             console.log( this.$data.BulletinLineArr )
             if( this.$data.BulletinLineArr.length === 0 ) {
                 this.$router.push({path: '/Notext'})
+//                window.location.replace = '/Notext'
             }
         }
     },
     mounted: function() {
         this.requireBulletinInfo()
         this.watchScroll()
+        this.pushHistory()
     },
     components: components
 }

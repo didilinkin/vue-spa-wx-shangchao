@@ -6,7 +6,7 @@
         v-bind:briefListObj="CostListBrief"
         v-bind:detailHeaderArr="CostDetailHeader"
     )
-    #vueLoading.vue-loading
+    #vueLoading.vuee-loading
         vue-loading(
         type="bars"
         color="#20a0ff"
@@ -31,6 +31,13 @@ export default {
                 type: 'bill/REQUIRE_WATER_FEE',
                 clientNum: this.$store.state.bill.clientNum
             })
+        },
+        pushHistory() {
+            let state = {
+                title: "title",
+                url: "#/"
+            }
+            window.history.pushState( state, "title", "#" )
         }
     },
     data() {
@@ -72,6 +79,7 @@ export default {
     },
     mounted: function() {
         this.requireWaterFee()       // 请求 - 水费
+        this.pushHistory()
     },
     components: components
 }

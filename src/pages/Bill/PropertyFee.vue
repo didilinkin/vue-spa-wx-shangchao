@@ -6,7 +6,7 @@
         v-bind:briefListObj="CostListBrief"
         v-bind:detailHeaderArr="CostDetailHeader"
         )
-        #vueLoading.vue-loading
+        #vueLoading.vuee-loading
             vue-loading(
                 type="bars"
                 color="#20a0ff"
@@ -31,6 +31,13 @@
                     type: 'bill/REQUIRE_PM_FEE',
                     clientNum: this.$store.state.bill.clientNum
                 })
+            },
+            pushHistory() {
+                let state = {
+                    title: "title",
+                    url: "#/"
+                }
+                window.history.pushState( state, "title", "#" )
             }
         },
         data() {
@@ -75,6 +82,7 @@
         },
         mounted: function() {
             this.requirePropertyFee()       // 请求 - 物业管理费
+            this.pushHistory()
         },
         components: components
     }
