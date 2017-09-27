@@ -15,7 +15,7 @@
         v-bind:arrList="arrList"
         v-bind:clientNumber="clientNum"
     )
-    #vueLoading.vue-loading
+    #vueLoading.vuee-loading
         vue-loading(
             type="bars"
             color="#20a0ff"
