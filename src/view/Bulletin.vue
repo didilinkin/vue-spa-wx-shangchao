@@ -43,10 +43,10 @@ export default {
         },
         pushHistory() {
             let state = {
-                title: "title",
-                url: "#/"
+                title: 'title',
+                url: '#/'
             }
-            window.history.pushState( state, "title", "#" )
+            window.history.pushState( state, 'title', '#' )
         }
     },
     data() {
