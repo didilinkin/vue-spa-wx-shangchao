@@ -29,15 +29,15 @@ export default {
         requireElectricityBill() {
             this.$store.dispatch({
                 type: 'bill/REQUIRE_ELE_FEE',
-                clientNum: this.$store.state.bill.clientNum
+                clientNum: 'o0CuEuD9L-YlwNO5nKEMUjK2zauY'
             })
         },
         pushHistory() {
             let state = {
-                title: "title",
-                url: "#/"
+                title: 'title',
+                url: '#/'
             }
-            window.history.pushState( state, "title", "#" )
+            window.history.pushState( state, 'title', '#' )
         }
     },
     data() {
@@ -71,7 +71,6 @@ export default {
             this.$data.CostListBrief.listArr = this.getterEleInfo
             this.$data.BillHeaderObj.money = this.getterSumEleInfo
             let loading = document.getElementById( 'vueLoading' )
-            console.log( '333333333333333333333333333' )
             loading.style.display = 'none'
             if( this.$data.CostListBrief.listArr.length === 0 ) {
                 this.$router.push({path: '/BillNotext'})

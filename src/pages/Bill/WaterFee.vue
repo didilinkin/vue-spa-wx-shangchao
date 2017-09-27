@@ -29,15 +29,15 @@ export default {
         requireWaterFee() {
             this.$store.dispatch({
                 type: 'bill/REQUIRE_WATER_FEE',
-                clientNum: this.$store.state.bill.clientNum
+                clientNum: 'o0CuEuD9L-YlwNO5nKEMUjK2zauY'
             })
         },
         pushHistory() {
             let state = {
-                title: "title",
-                url: "#/"
+                title: 'title',
+                url: '#/'
             }
-            window.history.pushState( state, "title", "#" )
+            window.history.pushState( state, 'title', '#' )
         }
     },
     data() {
@@ -70,7 +70,6 @@ export default {
             this.$data.CostListBrief.listArr = this.getterWaterInfo
             this.$data.BillHeaderObj.money = this.getterSumWaterInfo
             let loading = document.getElementById( 'vueLoading' )
-            console.log( '4444444444444444444444' )
             loading.style.display = 'none'
             if( this.$data.CostListBrief.listArr.length === 0 ) {
                 this.$router.push({path: '/BillNotext'})
