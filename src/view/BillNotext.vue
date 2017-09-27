@@ -31,8 +31,8 @@
         data() {
             return {
                 bCImg: {
-                    normal: require( '../assets/images/bgWave@2x.png' ), // 默认分辨率
-                    retina: require( '../assets/images/bgWave@3x.png' )  // 视网膜分辨率
+                    normal: require( '../assets/images/bg03@2x.png' ), // 默认分辨率
+                    retina: require( '../assets/images/bg03@3x.png' )  // 视网膜分辨率
                 }
             }
         }
@@ -53,6 +53,7 @@
             +ABS
             bottom: 0
             +imgCover( 100% )
+            height: 100%
         .BillHeader__content
             +REL
             +W100
@@ -64,7 +65,7 @@
                 +REM-fontStyle( $F-badge, $C-copy )
                 +ell-line-one( 80% )
             >p.BillHeader--titled
-                +REM-fontStyle( $F-title, $C-copy, 1 )
+                +REM-fontStyle( $F-title, $C-W, 1 )
                 +fW( bold )
                 +REM( margin-top, 20px )
                 margin-top: 55%

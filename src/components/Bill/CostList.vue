@@ -24,10 +24,10 @@ ul.CostList
             v-bind:style="{ backgroundColor: '#FFF' }"
         )
             // 非折叠 - 专属图标信息
-            .CostList__iconBox.auto--moduleIconBox(
-                v-bind:style="{ backgroundColor: briefListObj.listIconColor }"
-            )
-                img( v-bind:src="briefListObj.listIcon" )
+            <!--.CostList__iconBox.auto&#45;&#45;moduleIconBox(-->
+                <!--v-bind:style="{ backgroundColor: briefListObj.listIconColor }"-->
+            <!--)-->
+                <!--img( v-bind:src="briefListObj.listIcon" )-->
 
             // 非折叠 - 基本信息
             .CostList__contentBox( @click="showCostInfo( index )" )
@@ -42,7 +42,7 @@ ul.CostList
                         span {{ item.tollStartDate }}
                         span 至
                         span {{ item.tollDeadline }}
-                    .CostList--text
+                    .CostList--text.spendT
                         span 交费期限
                         span {{ item.payDate }}
 
@@ -77,10 +77,10 @@ ul.CostList
         v-bind:style="{ backgroundColor: '#FFF' }"
         )
             // 非折叠 - 专属图标信息
-            .CostList__iconBox.auto--moduleIconBox(
-            v-bind:style="{ backgroundColor: briefListObj.listIconColor }"
-            )
-                img( v-bind:src="briefListObj.listIcon" )
+            <!--.CostList__iconBox.auto&#45;&#45;moduleIconBox(-->
+            <!--v-bind:style="{ backgroundColor: briefListObj.listIconColor }"-->
+            <!--)-->
+            <!--img( v-bind:src="briefListObj.listIcon" )-->
 
             // 非折叠 - 基本信息
             .CostList__contentBox( @click="showCostInfo( index )" )
@@ -95,16 +95,16 @@ ul.CostList
                         span {{ item.tollStartDate }}
                         span 至
                         span {{ item.tollDeadline }}
-                    .CostList--text
+                    .CostList--text.spendT
                         span 交费期限
                         span {{ item.payDate }}
 
             // 折叠 - 详情账单列表( '房屋租赁费'不显示 此模块 )
             CostDetailList(
-            v-if="briefListObj.hasDetailList"
-            v-show="item.showDetailInfo"
-            v-bind:detailListHeaderArr="detailHeaderArr"
-            v-bind:detailListArr="item.detailList"
+                v-if="briefListObj.hasDetailList"
+                v-show="item.showDetailInfo"
+                v-bind:detailListHeaderArr="detailHeaderArr"
+                v-bind:detailListArr="item.detailList"
             )
 
             // 折叠 - 账单详细信息
@@ -218,13 +218,13 @@ a
     color: #a5a5a5
 .Nobill
     margin-top: 6%
-    width: 94%
-    margin-left: 3%
+    width: 90%
+    margin-left: 5%
     box-shadow: 0px 5px 12px 0px #d9e2e9
 .Noright
     margin-top: 6%
-    width: 94%
-    margin-left: 3%
+    width: 90%
+    margin-left: 5%
     box-shadow: 0px 5px 12px 0px #d9e2e9
 .CostList
     +REM( height, 490px )
@@ -240,16 +240,21 @@ a
 
 // 标题 + 金额
 .CostList__contentBox__title
+    margin-left: -25%
     +REL
     +REM( padding-bottom, $D-autoPadding/2 )
     +borderBottom( $C-line )
+    +REM( padding-top, 20px )
+    +REM( padding-bottom, 15px )
     h2
         +dib
         +REM-fontStyle( $F-big-title/2, $C-title )
         &:first-child
             width: 50%
+            +REM( font-size, 20px )
         .cl
-            color: #42a0fe
+            color: rgb( 121, 132, 243 )
+            +REM( font-size, 20px )
     >img
         // margin-left: 5%
         +ABS
@@ -258,13 +263,19 @@ a
         +REM-W-H( $F-text )
         +imgAlign( baseline )
         transform: rotate( 90deg )
+        +REM( padding-top, 33px )
 
 // 日期内容
 .CostList__contentBox__date
+    margin-left: -25%
+    +REM( line-height, 30px )
     +REM( padding-top, $D-autoPadding/2 )
+    .spendT
+        +REM( padding-bottom, 25px )
     span
         +REM( margin-right, $F-assist/2 )
         +REM-fontStyle( $F-assist, $C-copy )
+        +REM( font-size, 14px )
 
 // 折叠 - 账单详细信息
 .CostList__detailsInfo
