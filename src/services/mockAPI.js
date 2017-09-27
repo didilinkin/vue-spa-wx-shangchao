@@ -11,15 +11,23 @@ const devUrl = 'http://192.168.5.21:80'                             // 开发后
 
 // const testUrl = 'http://192.168.5.250:18081'                             // 开发后台 url
 
-export const RentUrl = devUrl + '/wx/listCollectRent'          // 租赁费用链接
+export const rentUrl = devUrl + '/wx/listCollectRent'          // 租赁未交费用链接
+
+export const rentHUrl = devUrl + '/wx/listCollectRentH'          // 租赁已交费用链接
 
 export const FeeUrl = devUrl + '/wx/listFee'                   // 费用列表链接
 
-export const pmUrl = devUrl + '/wx/listPropertyFee'            // 物业费用列表链接
+export const pmUrl = devUrl + '/wx/listPropertyFee'            // 物业费未交用列表链接
 
-export const eleUrl = devUrl + '/wx/listWattHour'           // 电费用列表链接
+export const pmHUrl = devUrl + '/wx/listPropertyFeeH'            // 物业已交费用列表链接
 
-export const waterUrl = devUrl + '/wx/listWaterRecord'         // 水费用列表链接
+export const eleUrl = devUrl + '/wx/listWattHour'           // 电费未交列表链接
+
+export const eleHUrl = devUrl + '/wx/listWattHourH'           // 电费已交列表链接
+
+export const waterUrl = devUrl + '/wx/listWaterRecord'         // 水费未交列表链接
+
+export const waterHUrl = devUrl + '/wx/listWaterRecordH'         // 水费已交列表链接
 
 export const BUILDING_LIST = devUrl + '/wx/buildingList'                       // 绑定
 

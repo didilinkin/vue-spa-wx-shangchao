@@ -72,7 +72,7 @@ ul.CostList
         // '账单费用' 如果非空, 显示列表内容
         li.auto--moduleMarginBottom(
         v-else
-        v-for="( item, index ) in renderListObj.listArr"
+        v-for="( item, index ) in renderListObj.listArrH"
         v-bind:key="index"
         v-bind:style="{ backgroundColor: '#FFF' }"
         )
@@ -83,7 +83,7 @@ ul.CostList
             <!--img( v-bind:src="briefListObj.listIcon" )-->
 
             // 非折叠 - 基本信息
-            .CostList__contentBox( @click="showCostInfo( index )" )
+            .CostList__contentBox( @click="showCostInfoH( index )" )
                 .CostList__contentBox__title
                     h2 {{ item.title }}
                     h2
@@ -162,6 +162,16 @@ export default {
                 arr[i].showDetailInfo = false
             }
             this.$data.renderListObj.listArr[index].showDetailInfo = !showIndexBoolean      // 将之前储存的index.show属性取反
+        },
+        // 目的: 展示 '账单'详情( 根据index 进行展示 )
+        showCostInfoH( index ) {
+            let arr = this.$data.renderListObj.listArrH                                      // 储存一个数组
+            let showIndexBoolean = arr[index].showDetailInfo
+
+            for( let i = 0; i < arr.length; i++ ) {                                         // 将全部对象属性设为 '隐藏'
+                arr[i].showDetailInfo = false
+            }
+            this.$data.renderListObj.listArrH[index].showDetailInfo = !showIndexBoolean      // 将之前储存的index.show属性取反
         },
         get: function() {
             this.weijiao = true,

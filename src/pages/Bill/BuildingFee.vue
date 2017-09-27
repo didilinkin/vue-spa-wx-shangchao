@@ -4,12 +4,12 @@
         BillHeader( v-bind:contentObj="BillHeaderObj" )
         // v-on:watchDetailInfo="setDetailIndex"
         CostList(
-            v-bind:briefListObj="CostListBrief"
+        v-bind:briefListObj="CostListBrief"
         )
         #vueLoading.vuee-loading
             vue-loading(
-                type="bars"
-                color="#20a0ff"
+            type="bars"
+            color="#20a0ff"
             )
 </template>
 
@@ -26,17 +26,24 @@
     export default {
         name: 'BuildingFee',
         methods: {
-            // 目的: 请求 - 账单详情
+            // 目的: 请求 - 账单详情未交
             requireBuildingFee() {
                 this.$store.dispatch({
                     type: 'bill/REQUIRE_RENT_FEE',
-                    clientNum: 'this.$store.state.bill.clientNum'
+                    clientNum: this.$store.state.bill.clientNum
+                })
+            },
+            // 目的: 请求 - 账单详情已交
+            requireBuildingFeeH() {
+                this.$store.dispatch({
+                    type: 'bill/REQUIRE_RENT_FEE_H',
+                    clientNum: this.$store.state.bill.clientNum
                 })
             },
             pushHistory() {
                 let state = {
                     title: 'title',
-                    url: '#/Bill'
+                    url: '#/'
                 }
                 window.history.pushState( state, 'title', '#' )
             }
@@ -53,8 +60,12 @@
                     listIcon: require( '../../assets/images/iconHousTitle@2x.png' ),
                     listIconColor: 'rgb( 255, 181, 0 )',
                     hasDetailList: false,                           // 是否显示 '详情列表': 否
-                    // 列表数组
+                    // 未交列表数组
                     listArr: [
+
+                    ],
+                    // 已交列表数组
+                    listArrH: [
 
                     ]
                 }
@@ -63,6 +74,7 @@
         },
         computed: mapGetters({
             getterRentInfo: 'getterRentInfo',
+            getterRentInfoH: 'getterRentInfoH',
             getterSumRent: 'getterSumRent'
         }),
         watch: {
@@ -71,14 +83,20 @@
                 this.$data.BillHeaderObj.money = this.getterSumRent
                 let loading = document.getElementById( 'vueLoading' )
                 loading.style.display = 'none'
-                if( this.$data.CostListBrief.listArr.length === 0 ) {
-//                    this.$router.push({path: '/BillNotext'})
+//                if( this.$data.CostListBrief.listArr.length === 0 ) {
+//                    this.$router.push( '/BillNotext' )
+//                }
+            },
+            getterRentInfoH: function() {
+                this.$data.CostListBrief.listArrH = this.getterRentInfoH
+                if( this.$data.CostListBrief.listArr.length === 0 && this.$data.CostListBrief.listArrH.length === 0 ) {
                     this.$router.push( '/BillNotext' )
                 }
             }
         },
         mounted: function() {
-            this.requireBuildingFee()       // 请求 - 账单详情
+            this.requireBuildingFee()
+            this.requireBuildingFeeH()
             this.pushHistory()
         },
         components: components

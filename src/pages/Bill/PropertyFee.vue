@@ -8,8 +8,8 @@
         )
         #vueLoading.vuee-loading
             vue-loading(
-                type="bars"
-                color="#20a0ff"
+            type="bars"
+            color="#20a0ff"
             )
 </template>
 
@@ -25,10 +25,17 @@
     export default {
         name: 'PropertyFee',
         methods: {
-            // 目的: 请求 - 物业管理费
+            // 目的: 请求 - 物业管理费未交
             requirePropertyFee() {
                 this.$store.dispatch({
                     type: 'bill/REQUIRE_PM_FEE',
+                    clientNum: this.$store.state.bill.clientNum
+                })
+            },
+            // 目的: 请求 - 物业管理费已交
+            requirePropertyFeeH() {
+                this.$store.dispatch({
+                    type: 'bill/REQUIRE_PM_FEE_H',
                     clientNum: this.$store.state.bill.clientNum
                 })
             },
@@ -52,8 +59,12 @@
                     listIcon: require( '../../assets/images/iconPyTitle@2x.png' ),
                     listIconColor: 'rgb( 16, 142, 233 )',
                     hasDetailList: true,               // 是否显示 '详情列表'
-                    // 列表数组
+                    // 未交列表数组
                     listArr: [
+
+                    ],
+                    // 已交列表数组
+                    listArrH: [
 
                     ]
                 },
@@ -63,24 +74,29 @@
         },
         computed: mapGetters({
             getterpmInfo: 'getterpmInfo',
+            getterpmInfoH: 'getterpmInfoH',
             getterSumPmInfo: 'getterSumPmInfo'
         }),
         watch: {
             getterpmInfo: function() {
-//            this.$data.listArr = this.getterRentInfo
-//            console.log( '888888888888' )
-//            console.log( this.getterRentInfo )
                 this.$data.CostListBrief.listArr = this.getterpmInfo
                 this.$data.BillHeaderObj.money = this.getterSumPmInfo
                 let loading = document.getElementById( 'vueLoading' )
                 loading.style.display = 'none'
-                if( this.$data.CostListBrief.listArr.length === 0 ) {
+//                if( this.$data.CostListBrief.listArr.length === 0 ) {
+//                    this.$router.push({path: '/BillNotext'})
+//                }
+            },
+            getterpmInfoH: function() {
+                this.$data.CostListBrief.listArrH = this.getterpmInfoH
+                if( this.$data.CostListBrief.listArrH.length === 0 && this.$data.CostListBrief.listArr.length === 0 ) {
                     this.$router.push({path: '/BillNotext'})
                 }
             }
         },
         mounted: function() {
-            this.requirePropertyFee()       // 请求 - 物业管理费
+            this.requirePropertyFee()        // 请求 - 物业管理费未交
+            this.requirePropertyFeeH()       // 请求 - 物业管理费已交
             this.pushHistory()
         },
         components: components

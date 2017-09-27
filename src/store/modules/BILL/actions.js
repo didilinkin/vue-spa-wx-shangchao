@@ -13,6 +13,17 @@ export default {
         }
         asyncRentInfo()
     },
+    [types.REQUIRE_RENT_FEE_H]: ({ commit }, obj ) => {
+        const asyncRentInfoH = async function( ) {
+            try {
+                let result = await billAPI.apiRentInfoH( obj )
+                commit( types.SET_RENT_FEE_H, result )
+            } catch( err ) {
+                console.log( err )
+            }
+        }
+        asyncRentInfoH()
+    },
     [types.REQUIRE_BILL_LIST]: ({ commit }, obj ) => {
         const asyncFeeInfo = async function() {
             try {
@@ -35,6 +46,17 @@ export default {
         }
         asyncPmInfo()
     },
+    [types.REQUIRE_PM_FEE_H]: ({ commit }, obj ) => {
+        const asyncPmInfoH = async function() {
+            try {
+                let result = await billAPI.apipmInfoH( obj )
+                commit( types.SET_PM_FEE_H, result )
+            } catch( err ) {
+                console.log( err )
+            }
+        }
+        asyncPmInfoH()
+    },
     [types.REQUIRE_ELE_FEE]: ({ commit }, obj ) => {
         const asyncPmInfo = async function() {
             try {
@@ -46,6 +68,17 @@ export default {
         }
         asyncPmInfo()
     },
+    [types.REQUIRE_ELE_FEE_H]: ({ commit }, obj ) => {
+        const asyncPmInfoH = async function() {
+            try {
+                let result = await billAPI.apiEleInfoH( obj )
+                commit( types.SET_ELE_FEE_H, result )
+            } catch( err ) {
+                console.log( err )
+            }
+        }
+        asyncPmInfoH()
+    },
     [types.REQUIRE_WATER_FEE]: ({ commit }, obj ) => {
         const asyncPmInfo = async function() {
             try {
@@ -56,5 +89,16 @@ export default {
             }
         }
         asyncPmInfo()
+    },
+    [types.REQUIRE_WATER_FEE_H]: ({ commit }, obj ) => {
+        const asyncPmInfoH = async function() {
+            try {
+                let result = await billAPI.apiWaterInfoH( obj )
+                commit( types.SET_WATER_FEE_H, result )
+            } catch( err ) {
+                console.log( err )
+            }
+        }
+        asyncPmInfoH()
     }
 }
