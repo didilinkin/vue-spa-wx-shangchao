@@ -28,8 +28,8 @@ export default {
     data() {
         return {
             bCImg: {
-                normal: require( '../../assets/images/bgWave@2x.png' ), // 默认分辨率
-                retina: require( '../../assets/images/bgWave@3x.png' )  // 视网膜分辨率
+                normal: require( '../../assets/images/bg03@2x.png' ), // 默认分辨率
+                retina: require( '../../assets/images/bg03@3x.png' )  // 视网膜分辨率
             }
         }
     }
@@ -40,6 +40,7 @@ export default {
 @import "../../sass/main"
 
 .BillHeader
+    +REM( margin-top,10px )
     +REL
     +flexCenter
     +REM( height, $D-autoHeaderHeight )
@@ -60,6 +61,6 @@ export default {
             +REM-fontStyle( $F-badge, $C-copy )
             +ell-line-one( 80% )
         >p.BillHeader--title
-            +REM-fontStyle( $F-title, $C-copy, 1 )
+            +REM-fontStyle( $F-titlee, $C-W, 1 )
             +fW( bold )
 </style>

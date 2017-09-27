@@ -9,7 +9,7 @@ ul#Bill
         .Bill--imgBox
             img( v-bind:src="item.iconImg" )
         .Bill--textBox
-            h2.auto--titleStyle {{ item.title }}
+            h2.auto--titleStyle.titleT {{ item.title }}
             span.auto--assistStyle {{ item.text }}
             span.auto--assistStyle( v-if="index < 5" ) {{ item.data }}
             span.auto--assistStyle( v-else ) {{ item.value }} 元
@@ -64,9 +64,7 @@ export default {
         },
         getterSumRent: function() {
             let loading = document.getElementById( 'vueLoading' )
-            console.log( '1111111111111111111111111' )
             loading.style.display = 'none'
-            console.log( this.getterSumRent )
         }
     },
     mounted: function() {
@@ -83,11 +81,14 @@ export default {
 
 #Bill
     +REL
-    +bC( $C-base )
+    background-color: #fff
+    height: 100%
     .Bill--imgBox
         +boxMixin( 20% )
         >img
             +imgCover( 70% )
+            +REM( height, 52px )
+            margin-left: 10%
     .Bill--textBox
         +boxMixin( 70% )
         >span
@@ -96,10 +97,20 @@ export default {
         +boxMixin( 10% )
         >img
             +REM-imgCover( $F-title )
+.Bill--textBox>span
+    margin-left: 5%
+.titleT
+    margin-left: 5%
 ul
     +bC( $C-base )
     li
         +flexCenter
         +bC( $C-W )
         +pseudoClassColor( active, $bC, darken, $C-base, 10% )
+        width: 80%
+        margin-left: 6%
+        margin-top: 4%
+        box-shadow: 0px 5px 12px 0px #d9e2e9
+        +REM( padding-top, 32px )
+        +REM( padding-bottom, 36px )
 </style>

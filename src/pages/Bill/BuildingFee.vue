@@ -30,13 +30,13 @@
             requireBuildingFee() {
                 this.$store.dispatch({
                     type: 'bill/REQUIRE_RENT_FEE',
-                    clientNum: 'o0CuEuD9L-YlwNO5nKEMUjK2zauY'
+                    clientNum: 'this.$store.state.bill.clientNum'
                 })
             },
             pushHistory() {
                 let state = {
                     title: 'title',
-                    url: '#/'
+                    url: '#/Bill'
                 }
                 window.history.pushState( state, 'title', '#' )
             }
@@ -72,6 +72,7 @@
                 let loading = document.getElementById( 'vueLoading' )
                 loading.style.display = 'none'
                 if( this.$data.CostListBrief.listArr.length === 0 ) {
+//                    this.$router.push({path: '/BillNotext'})
                     this.$router.push( '/BillNotext' )
                 }
             }

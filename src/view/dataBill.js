@@ -4,25 +4,25 @@ const dataBillObj = {
     listArr: [
         {
             id: 'buildingFee',
-            iconImg: require( '../assets/images/iconHousing@2x.png' ),
+            iconImg: require( '../assets/images/home@2x.png' ),
             title: '房屋租赁费',
             text: '交费期限',
             data: ''
         }, {
             id: 'propertyFee',
-            iconImg: require( '../assets/images/iconProperty@2x.png' ),
+            iconImg: require( '../assets/images/money@2x.png' ),
             title: '物业管理费',
             text: '交费期限',
             data: ''
         }, {
             id: 'electricityBill',
-            iconImg: require( '../assets/images/iconElectricity@2x.png' ),
+            iconImg: require( '../assets/images/elec@2x.png' ),
             title: '电费',
             text: '交费期限',
             data: ''
         }, {
             id: 'waterFee',
-            iconImg: require( '../assets/images/iconWater@2x.png' ),
+            iconImg: require( '../assets/images/water@2x.png' ),
             title: '水费',
             text: '交费期限',
             data: ''
@@ -47,7 +47,7 @@ const dataBillObj = {
         //     value: '123,456.00'
         // }
     ],
-    listArrowImg: require( '../assets/images/iconListArrow@2x.png' )    // 单箭头图标图片
+    listArrowImg: require( '../assets/images/icoArrow@2x.png' )    // 单箭头图标图片
 }
 
 export { dataBillObj }

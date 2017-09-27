@@ -29,7 +29,7 @@
             requirePropertyFee() {
                 this.$store.dispatch({
                     type: 'bill/REQUIRE_PM_FEE',
-                    clientNum: 'o0CuEuD9L-YlwNO5nKEMUjK2zauY'
+                    clientNum: this.$store.state.bill.clientNum
                 })
             },
             pushHistory() {
