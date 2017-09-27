@@ -17,7 +17,7 @@ export default {
             sumRent = sumRent + rent.unpaidLateMoney + rent.unpaidMoney
         }
         state.rentInfo = resArr
-        state.sumRent = sumRent.toFixed( 1 )                                 // 将resArr 数据存入 state
+        state.sumRent = '￥' + sumRent.toFixed( 1 )                                 // 将resArr 数据存入 state
     },
     [types.SET_RENT_FEE_H]( state, res ) {
         let list = res
@@ -55,7 +55,7 @@ export default {
             sumPm = sumPm + pmOne.unpaidLateMoney + pmOne.unpaidMoney
         }
         state.pmInfo = pm
-        state.sumPm = sumPm.toFixed( 1 )
+        state.sumPm = '￥' + sumPm.toFixed( 1 )
     },
     [types.SET_PM_FEE_H]( state, res ) {
         const pm = res
@@ -90,7 +90,7 @@ export default {
             sumEle = sumEle + eleOne.actualReceivable - eleOne.principalReceived + eleOne.liquidatedDamages - eleOne.liquidatedDamagesReceived
         }
         state.eleInfo = ele
-        state.sumEle = sumEle.toFixed( 1 )
+        state.sumEle = '￥' + sumEle.toFixed( 1 )
     },
     [types.SET_ELE_FEE_H]( state, res ) {
         const ele = res
@@ -125,7 +125,7 @@ export default {
             sumWater = sumWater + waterOne.penaltyUnpaidMoney + waterOne.unpaidMoney
         }
         state.waterInfo = water
-        state.sumWater = sumWater.toFixed( 1 )
+        state.sumWater = '￥' + sumWater.toFixed( 1 )
     },
     [types.SET_WATER_FEE_H]( state, res ) {
         const water = res
