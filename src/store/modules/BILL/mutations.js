@@ -16,7 +16,7 @@ export default {
             resArr[i]['payDate'] = rent.payDeadline
             resArr[i]['showDetailInfo'] = false
             resArr[i]['detailsInfo'] = rent.detailsInfo
-            sumRent = sumRent + rent.actualPaidMoney
+            sumRent = sumRent + rent.unpaidLateMoney + rent.unpaidMoney
         }
 
         state.rentInfo = resArr
@@ -41,7 +41,7 @@ export default {
             pm[i]['showDetailInfo'] = false
             pm[i]['detailsInfo'] = pmOne.detailsInfo
             pm[i]['detailList'] = pmOne.detailList
-            sumPm = sumPm + pmOne.actualPaidMoney
+            sumPm = sumPm + pmOne.unpaidLateMoney + pmOne.unpaidMoney
         }
         state.pmInfo = pm
         state.sumPm = sumPm.toFixed( 1 )
@@ -60,7 +60,7 @@ export default {
             ele[i]['showDetailInfo'] = false
             ele[i]['detailsInfo'] = eleOne.detailsInfo
             ele[i]['detailList'] = eleOne.detailList
-            sumEle = sumEle + eleOne.actualReceivable
+            sumEle = sumEle + eleOne.actualReceivable - eleOne.principalReceived + eleOne.liquidatedDamages - eleOne.liquidatedDamagesReceived
         }
         state.eleInfo = ele
         state.sumEle = sumEle.toFixed( 1 )
@@ -79,7 +79,7 @@ export default {
             water[i]['showDetailInfo'] = false
             water[i]['detailsInfo'] = waterOne.detailsInfo
             water[i]['detailList'] = waterOne.detailList
-            sumWater = sumWater + waterOne.receivableMoney
+            sumWater = sumWater + waterOne.penaltyUnpaidMoney + waterOne.unpaidMoney
         }
         state.waterInfo = water
         state.sumWater = sumWater.toFixed( 1 )
