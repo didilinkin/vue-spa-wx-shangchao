@@ -3,7 +3,9 @@
 #BulletinDetails.auto--modulePadding
     h2.auto--titleStyle {{ bulletinDetailsInfo.title }}
     span.auto--assistStyle {{ bulletinDetailsInfo.createDate }}
-    p.auto--textStyle.auto--textIndent {{ this.$data.content }}
+    p.auto--textStyle.auto--textIndent(
+        v-html="this.$data.content"
+    ) {{ this.$data.content }}
     ul
         <!--li(-->
             <!--v-for="( item, index ) in bulletinDetailsInfo.content"-->
