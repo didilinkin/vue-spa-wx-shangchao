@@ -3,7 +3,7 @@
 #BulletinDetails.auto--modulePadding
     h2.auto--titleStyle {{ bulletinDetailsInfo.title }}
     span.auto--assistStyle {{ bulletinDetailsInfo.createDate }}
-    p.auto--textStyle.auto--textIndent {{ bulletinDetailsInfo.content }}
+    p.auto--textStyle.auto--textIndent {{ this.$data.content }}
     ul
         <!--li(-->
             <!--v-for="( item, index ) in bulletinDetailsInfo.content"-->
@@ -52,7 +52,8 @@ export default {
     },
     data() {
         return {
-            bulletinDetailsInfo: {},                                    // '公告详情' 内容
+            bulletinDetailsInfo: {},
+            content: '',                                    // '公告详情' 内容
             scrollStatus: false                                         // 滚轴状态 => 是否显示'返回顶部'
         }
     },
@@ -63,6 +64,7 @@ export default {
         // 监听: 公告详细内容
         getterBulletinDetailsInfo: function() {
             this.$data.bulletinDetailsInfo = this.getterBulletinDetailsInfo
+            this.$data.content = this.getterBulletinDetailsInfo.content.replace( /&lt;/g, '<' ).replace( /&gt;/g, '>' ).replace( /&amp;nbsp;/g, '&nbsp;' ).replace( /&quot;/g, '"' )
         }
     },
     mounted: function() {
