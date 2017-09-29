@@ -3,9 +3,9 @@
 #BulletinLine
     ul(
         v-if="this.$data.canRender"
-        v-infinite-scroll="countBulletin"
-        infinite-scroll-disabled="loading"
-        infinite-scroll-distance="51"
+            v-infinite-scroll="countBulletin"
+            infinite-scroll-disabled="loading"
+            infinite-scroll-distance="51"
     )
         li.BulletinLine--item(
             v-for="item in renderArr"
@@ -18,13 +18,13 @@
             span.auto--assistStyle {{ item.time }}
             .BulletinLine--labelCircle
     .BulletinLine--null( v-else )
-        ContentNull( v-bind:setContentNullObj="setContentNull" )
+        ContentNullAn( v-bind:setContentNullObj="setContentNull" )
 </template>
 
 <script>
 /* global Promise require:true */
-import ContentNull      from '../common/ContentNull'
-const components = { ContentNull }
+import ContentNullAn      from '../common/ContentNullAn'
+const components = { ContentNullAn }
 
 export default {
     name: 'BulletinLine',
@@ -99,8 +99,8 @@ export default {
             loadNum: 0,                                                                                         // 加载次数
             setContentNull: {                                           // 设置 '内容为空' 组件 内容
                 contentImg: {
-                    normal: require( '../../assets/images/picNotice@2x.png' ),
-                    retina: require( '../../assets/images/picNotice@3x.png' )
+                    normal: require( '../../assets/images/bg.png' ),
+                    retina: require( '../../assets/images/bg.png' )
                 },
                 contentTitle: '抱歉！当前没有公告~'
             }
@@ -127,6 +127,7 @@ export default {
 
 #BulletinLine
     +bC( $C-W )
+    +REM( height, 650px )
     .BulletinLine--item
         +REL
         +REM-padding-TB( $D-autoPadding )

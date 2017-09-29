@@ -13,6 +13,11 @@ ul.CostList
     div.Nobill(
         v-show="weijiao"
     )
+        #notbill.weixinddq
+            img.weixinPicdq(
+                src='../../assets/images/ico_bill.png'
+            )
+            p.opendq 暂时没有费用账单！
         // 直接判断 $props是否显示, 不需要经过 $data
         li.CostList--nullBill( v-if="briefListObj.showNullBill" )
             ContentNull( v-bind:setContentNullObj="setContentNull" )
@@ -35,7 +40,9 @@ ul.CostList
                     h2 {{ item.title }}
                     h2
                         b.cl {{ item.money }}
-                    img.CostList--arrowIcon( v-bind:src="costListArrowIcon" )
+                    img#imgZ.CostList--arrowIcon(
+                        v-bind:src="costListArrowIcon"
+                     )
                 .CostList__contentBox__date
                     .CostList--text
                         span 收费周期
@@ -66,22 +73,23 @@ ul.CostList
     div.Noright(
         v-show="yijiao"
     )
+        #twobill.weixinddq
+            img.weixinPicdq(
+                src='../../assets/images/ico_bill.png'
+            )
+            p.opendq 暂时没有费用账单！
         // 直接判断 $props是否显示, 不需要经过 $data
-        li.CostList--nullBill( v-if="briefListObj.showNullBill" )
+        li.CostList--nullBill(
+            v-if="briefListObj.showNullBill"
+         )
             ContentNull( v-bind:setContentNullObj="setContentNull" )
         // '账单费用' 如果非空, 显示列表内容
         li.auto--moduleMarginBottom(
-        v-else
-        v-for="( item, index ) in renderListObj.listArrH"
-        v-bind:key="index"
-        v-bind:style="{ backgroundColor: '#FFF' }"
+            v-else
+            v-for="( item, index ) in renderListObj.listArrH"
+            v-bind:key="index"
+            v-bind:style="{ backgroundColor: '#FFF' }"
         )
-            // 非折叠 - 专属图标信息
-            <!--.CostList__iconBox.auto&#45;&#45;moduleIconBox(-->
-            <!--v-bind:style="{ backgroundColor: briefListObj.listIconColor }"-->
-            <!--)-->
-            <!--img( v-bind:src="briefListObj.listIcon" )-->
-
             // 非折叠 - 基本信息
             .CostList__contentBox( @click="showCostInfoH( index )" )
                 .CostList__contentBox__title
@@ -115,7 +123,7 @@ ul.CostList
                 v-bind:key="indexInfo"
                 )
                     p {{ itemInfo.title }}
-                    p.ficl {{ itemInfo.value }}
+                    p.ficl {{ itemInfo.value }}有费用账单！
 </template>
 
 <script>
@@ -138,7 +146,7 @@ export default {
                     listArr: [
 
                     ],
-                    hasDetailList: false    // 是否显示 '详情列表': 否
+                    hasDetailList: true    // 是否显示 '详情列表': 否
                 }
             }
         },
@@ -157,7 +165,6 @@ export default {
         showCostInfo( index ) {
             let arr = this.$data.renderListObj.listArr                                      // 储存一个数组
             let showIndexBoolean = arr[index].showDetailInfo
-
             for( let i = 0; i < arr.length; i++ ) {                                         // 将全部对象属性设为 '隐藏'
                 arr[i].showDetailInfo = false
             }
@@ -209,6 +216,21 @@ export default {
 
 <style lang="sass" scoped>
 @import "../../sass/main"
+// 空账单样式
+.weixinddq
+    display: none
+.weixinPicdq
+    +REM-W-H( 90px )
+    margin-left: 35%
+    margin-top: 10%
+.opendq
+    +REM( font-size, 18px )
+    text-align: center
+    padding-top: 20px
+    padding-bottom: 20%
+
+
+
 .billAB
     background-color: #ffffff
     box-shadow: 0px 5px 12px 0px #d9e2e9

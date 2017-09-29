@@ -103,13 +103,13 @@ export default {
 <style lang="sass">
     @import "../../sass/main"
     .bind-ele
-        color: rgb( 102,102,102 )
-        +REM( font-size, 16px )
-        text-align: left
-        +REM( margin-top, 20px )
+        color: rgb( 81, 81, 81 )
+        +REM( font-size, 20px )
+        text-align: center
+        +REM( margin-top, 16px )
         +REM( padding-bottom, 10px )
         .ele-num
-            color: rgb( 35,210,150 )
+            color: rgb( 121, 132, 243 )
     .river-list
         background-color: #ffffff
         +REM( line-height, 50px )

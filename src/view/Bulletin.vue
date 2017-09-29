@@ -26,7 +26,6 @@ export default {
         // 目的: 发起请求 - 获取最新的公告信息
         requireBulletinInfo() {
             this.$store.dispatch({
-//                type: 'o0CuEuD9L-YlwNO5nKEMUjK2zauY'
                 type: 'bulletin/REQUEST_BULLETIN_INFO'
             })
         },
@@ -40,13 +39,6 @@ export default {
                     this.$data.scrollStatus = true                      // 改变
                 }
             }
-        },
-        pushHistory() {
-            let state = {
-                title: 'title',
-                url: '#/'
-            }
-            window.history.pushState( state, 'title', '#' )
         }
     },
     data() {
@@ -63,19 +55,12 @@ export default {
         getterBulletinInfo: function() {
             this.$data.BulletinLineArr = this.getterBulletinInfo
             let loading = document.getElementById( 'vueLoading' )
-            console.log( '1111111111111111111111111' )
             loading.style.display = 'none'
-            console.log( this.$data.BulletinLineArr )
-            if( this.$data.BulletinLineArr.length === 0 ) {
-                this.$router.push({path: '/Notext'})
-//                window.location.replace = '/Notext'
-            }
         }
     },
     mounted: function() {
         this.requireBulletinInfo()
         this.watchScroll()
-        this.pushHistory()
     },
     components: components
 }

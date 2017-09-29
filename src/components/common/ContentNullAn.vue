@@ -1,10 +1,10 @@
 // 通用组件 - '内容为空' 组件
 <template lang="pug">
-    #ContentNullAn.ContentNullAn
+    .ContentNullAn
         img(
             v-bind:srcset="setContentNullObj.contentImg.normal + ' 1x,' + setContentNullObj.contentImg.retina + ' 2x'"
         )
-        h2.auto--textStyle {{ setContentNullObj.contentTitle }}
+        h2.auto--textStyle.fonttt {{ setContentNullObj.contentTitle }}
 </template>
 
 <script>
@@ -35,9 +35,10 @@
         +REL
         +textCenter
         +pT( 10% )
-        padding-top: 45%
-        padding-bottom: 70%
         >img
-            +imgCover( 30% )
-
+            +imgCover( 100% )
+            margin-top: -10%
+    .fonttt
+        +REM( font-size, 18px )
+        margin-top: 5%
 </style>

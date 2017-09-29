@@ -1,8 +1,8 @@
 // '费用账单' - 账单头部 - 通用组件
 <template lang="pug">
-    .BillHeaderd
+    .Billnotext
         img(
-        v-bind:srcset="`${bCImg.normal} 1x, ${bCImg.retina} 2x`"
+            v-bind:srcset="`${bCImg.normal} 1x, ${bCImg.retina} 2x`"
         )
         .BillHeader__content
             p.BillHeader--titled {{ contentObj.title }}
@@ -16,7 +16,7 @@
 <script>
     /* global require: true */
     export default {
-        name: 'BillHeader',
+        name: 'Billnotext',
         props: {
             contentObj: {
                 type: Object,
@@ -42,7 +42,7 @@
 <style lang="sass">
     @import "../sass/main"
 
-    .BillHeaderd
+    .Billnotext
         +REL
         +flexCenter
         +REM( height, $D-autoHeaderHeight )

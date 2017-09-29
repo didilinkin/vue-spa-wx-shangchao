@@ -1,6 +1,9 @@
 // 通用组件 - 筛选器组件( 只负责展示结果数组, 向上传递选择的参数; 筛选的逻辑在父级操作 通过$props向下传递 )
 <template lang="pug">
 .PickerView.auto--modulePaddingTB
+    img.imgT(
+        v-bind:src="pickerIconImgg"
+    )
     .Picker__btn(
         @click="pickerClick()"
         v-bind:style="{ boxShadow: `1px 1px 1px ${styleObj.boxShadowColor}, inset 1px 1px 1px rgba(255, 255, 255, 0.44)` }"
@@ -163,7 +166,7 @@ export default {
     data() {
         return {
             pickerTitle: '请选择房间编号',
-            pickerIconImg: require( '../../assets/images/iconBuilding@2x.png' )
+            pickerIconImgg: require( '../../assets/images/pixBuilding@2x.png' )
         }
     }
 }
@@ -173,13 +176,17 @@ export default {
 @import "../../sass/main"
 
 .PickerView
+    .imgT
+        +REM-W-H( 60px )
+        +REM( padding-bottom, 24px )
     .Picker__btn
-        +bC( $C-W )
+        +bC( $C-WW )
         +ellipseBtn
         img
             +REM-W-H( $F-title*1.5 )
             +imgAlignBottom
             +REM( margin-right, $D-autoMargin )
+            display: none
         span
-            +REM-fontStyle( $F-title, $C-text )
+            +REM-fontStyle( $F-titlet, $C-W )
 </style>

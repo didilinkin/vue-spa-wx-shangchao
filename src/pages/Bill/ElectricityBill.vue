@@ -3,8 +3,8 @@
     #ElectricityBill.bill--backgroundColor
         BillHeader( v-bind:contentObj="BillHeaderObj" )
         CostList(
-        v-bind:briefListObj="CostListBrief"
-        v-bind:detailHeaderArr="CostDetailHeader"
+            v-bind:briefListObj="CostListBrief"
+            v-bind:detailHeaderArr="CostDetailHeader"
         )
         #vueLoading.vuee-loading
             vue-loading(
@@ -38,14 +38,14 @@
                     type: 'bill/REQUIRE_ELE_FEE_H',
                     clientNum: this.$store.state.bill.clientNum
                 })
-            },
-            pushHistory() {
-                let state = {
-                    title: 'title',
-                    url: '#/'
-                }
-                window.history.pushState( state, 'title', '#' )
             }
+//            pushHistory() {
+//                let state = {
+//                    title: 'title',
+//                    url: '#/'
+//                }
+//                window.history.pushState( state, 'title', '#' )
+//            }
         },
         data() {
             return {
@@ -84,21 +84,26 @@
                 this.$data.BillHeaderObj.money = this.getterSumEleInfo
                 let loading = document.getElementById( 'vueLoading' )
                 loading.style.display = 'none'
-//            if( this.$data.CostListBrief.listArr.length === 0 ) {
-//                this.$router.push({path: '/BillNotext'})
-//            }
+                if( this.$data.CostListBrief.listArr.length === 0 ) {
+                    let notbill = document.getElementById( 'notbill' )
+                    notbill.style.display = 'block'
+                }
             },
             getterEleInfoH: function() {
                 this.$data.CostListBrief.listArrH = this.getterEleInfoH
-                if( this.$data.CostListBrief.listArr.length === 0 && this.$data.CostListBrief.listArrH.length === 0 ) {
-                    this.$router.push({path: '/BillNotext'})
+//                if( this.$data.CostListBrief.listArr.length === 0 && this.$data.CostListBrief.listArrH.length === 0 ) {
+//                    this.$router.push({path: '/Billnotext'})
+//                }
+                if( this.$data.CostListBrief.listArrH.length === 0 ) {
+                    let twobill = document.getElementById( 'twobill' )
+                    twobill.style.display = 'block'
                 }
             }
         },
         mounted: function() {
             this.requireElectricityBill()       // 请求 - 电费
             this.requireElectricityBillH()       // 请求 - 电费
-            this.pushHistory()
+//            this.pushHistory()
         },
         components: components
     }
