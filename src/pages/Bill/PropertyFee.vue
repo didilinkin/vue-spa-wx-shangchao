@@ -3,8 +3,8 @@
     #PropertyFee.bill--backgroundColor
         BillHeader( v-bind:contentObj="BillHeaderObj" )
         CostList(
-        v-bind:briefListObj="CostListBrief"
-        v-bind:detailHeaderArr="CostDetailHeader"
+            v-bind:briefListObj="CostListBrief"
+            v-bind:detailHeaderArr="CostDetailHeader"
         )
         #vueLoading.vuee-loading
             vue-loading(
@@ -39,13 +39,6 @@
                     clientNum: this.$store.state.bill.clientNum
                 })
             }
-//            pushHistory() {
-//                let state = {
-//                    title: 'title',
-//                    url: '#/'
-//                }
-//                window.history.pushState( state, 'title', '#' )
-//            }
         },
         data() {
             return {
@@ -93,7 +86,7 @@
             },
             getterpmInfoH: function() {
                 this.$data.CostListBrief.listArrH = this.getterpmInfoH
-                if( this.$data.CostListBrief.listArr.length === 0 ) {
+                if( this.$data.CostListBrief.listArrH.length === 0 ) {
                     let twobill = document.getElementById( 'twobill' )
                     twobill.style.display = 'block'
                 }
