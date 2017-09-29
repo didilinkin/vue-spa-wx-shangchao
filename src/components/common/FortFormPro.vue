@@ -100,7 +100,6 @@
                 let boolean = this.$data.inputValueNull
                 let arr     = this.$data.inputArr
                 let imgs = document.getElementsByTagName( 'img' )
-                this.$refs.input1.value = '' // 清空多行文本
 //                setTimeout( 'location.reload()', 3000 )
                 let imgURLs = new Array( imgs.length )
                 for( let i = 0; i < imgs.length; i++ ) {
